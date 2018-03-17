@@ -1,15 +1,17 @@
 #include "GameUtilities/Event/Listener.h"
 
-
-namespace Evt
+namespace GU
 {
-    Listener::Listener()
+    namespace Evt
     {
-        //ctor
-    }
+        Listener::Listener()
+        {
+            //ctor
+        }
 
-    Listener::~Listener()
-    {
-        //dtor
+        Listener::~Listener()
+        {
+            //dtor
+        }
     }
 }

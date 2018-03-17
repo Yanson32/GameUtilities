@@ -8,29 +8,33 @@
 #include "gameutilities_export.h"
 #include "GameUtilities/Event/EventQueue.h"
 #include "GameUtilities/Event/Dispatcher.h"
-namespace Evt
+
+namespace GU
 {
-
-	/*********************************************************************************//**
-	*	\brief	This class is usded as the central location where the games events
-	*			are managed.
-	*	\class 	Manager
-	*************************************************************************************/
-    class GAMEUTILITIES_EXPORT Manager: public Evt::EventQueue, public Evt::Dispatcher
+    namespace Evt
     {
-        public:
 
-            /**************************************************************************
-            *	\brief	Constructor
-            **************************************************************************/
-            Manager();
+        /*********************************************************************************//**
+        *	\brief	This class is usded as the central location where the games events
+        *			are managed.
+        *	\class 	Manager
+        *************************************************************************************/
+        class GAMEUTILITIES_EXPORT Manager: public Evt::EventQueue, public Evt::Dispatcher
+        {
+            public:
+
+                /**************************************************************************
+                *	\brief	Constructor
+                **************************************************************************/
+                Manager();
 
 
-            /**************************************************************************
-            *	\brief	Destructor
-            **************************************************************************/
-            virtual ~Manager();
-    };
+                /**************************************************************************
+                *	\brief	Destructor
+                **************************************************************************/
+                virtual ~Manager();
+        };
 
+    }
 }
 #endif // Event_MANAGER_H

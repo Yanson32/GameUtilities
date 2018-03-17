@@ -7,36 +7,39 @@
 #define GAMEUTILITIES_EVENT_EVENT_H
 #include "gameutilities_export.h"
 #include <memory>
-namespace Evt
+
+namespace GU
 {
-    const int ALL = -1;
-
-	/*********************************************************************************//**
-	*	\brief	This class is a base class for all events and should not be instantiated.
-	*	\class 	Event
-	*************************************************************************************/
-    struct GAMEUTILITIES_EXPORT Event
+    namespace Evt
     {
-            const int id = 0;
+        const int ALL = -1;
 
-            /**************************************************************************
-            *   \brief	Destructor
-            **************************************************************************/
-            virtual ~Event();
+        /*********************************************************************************//**
+        *	\brief	This class is a base class for all events and should not be instantiated.
+        *	\class 	Event
+        *************************************************************************************/
+        struct GAMEUTILITIES_EXPORT Event
+        {
+                const int id = 0;
+
+                /**************************************************************************
+                *   \brief	Destructor
+                **************************************************************************/
+                virtual ~Event();
 
 
-        protected:
+            protected:
 
 
-            /**************************************************************************
-            *	\brief	Event class constructor is not public to prevent it from
-            *         	being instantiated accidentally.
-            *   \param 	newId the id of the event.
-            **************************************************************************/
-            Event(const int newId = ALL);
-    };
+                /**************************************************************************
+                *	\brief	Event class constructor is not public to prevent it from
+                *         	being instantiated accidentally.
+                *   \param 	newId the id of the event.
+                **************************************************************************/
+                Event(const int newId = ALL);
+        };
 
-    typedef std::shared_ptr<Event> EventPtr;
+        typedef std::shared_ptr<Event> EventPtr;
+    }
 }
-
 #endif // EVENT_H

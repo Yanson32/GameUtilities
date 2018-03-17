@@ -6,26 +6,28 @@
 
 #include "GameUtilities/Event/Event.h"
 
-
-namespace Evt
+namespace GU
 {
-
-    /**************************************************************************
-    *	\brief	Event class constructor is not public to prevent it from
-    *         	being instantiated accidentally.
-    *   \brief 	param: const int the id of the event.
-    **************************************************************************/
-    Event::Event(const int newId): id(newId)
+    namespace Evt
     {
 
-    }
+        /**************************************************************************
+        *	\brief	Event class constructor is not public to prevent it from
+        *         	being instantiated accidentally.
+        *   \brief 	param: const int the id of the event.
+        **************************************************************************/
+        Event::Event(const int newId): id(newId)
+        {
+
+        }
 
 
-    /**************************************************************************
-    *   \brief	Virtual Destructor
-    **************************************************************************/
-    Event::~Event()
-    {
+        /**************************************************************************
+        *   \brief	Virtual Destructor
+        **************************************************************************/
+        Event::~Event()
+        {
 
+        }
     }
 }
