@@ -7,6 +7,7 @@
 #define GAMEUTILITIES_EVENT_EVENT_H
 #include "gameutilities_export.h"
 #include <memory>
+#include <string>
 
 namespace GU
 {
@@ -30,13 +31,16 @@ namespace GU
 
             protected:
 
-
                 /**************************************************************************
                 *	\brief	Event class constructor is not public to prevent it from
                 *         	being instantiated accidentally.
                 *   \param 	newId the id of the event.
                 **************************************************************************/
-                Event(const int newId = ALL);
+                Event(const int newLine = 0, const std::string newFile = "", const int newId = ALL);
+				std::string file;
+				int line = 0;
+
+				
         };
 
         typedef std::shared_ptr<Event> EventPtr;
