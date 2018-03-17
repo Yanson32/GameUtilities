@@ -1,9 +1,6 @@
 set(FILES "")
-set(SUB_DIRECTORIES 
-"Event"
-"Engin"
-"FrameRate"
-"Particle System"
+set(SUB_DIRECTORIES
+""
 )
 
 #Add subdirectories
@@ -17,5 +14,5 @@ if(FILES)
 	target_sources(	"${PROJECT_NAME}" PRIVATE ${FILES})
 
 	#Install source files
-	install(FILES ${FILES} DESTINATION "${CMAKE_INSTALL_PREFIX}/${RELATIVE_PATH}")
+	install(FILES ${FILES} DESTINATION "${RELATIVE_PATH}")
 endif()
