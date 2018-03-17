@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.5.1)
 
 #Give the project a name
-project("GameUtilities" VERSION "1.0.0.0")
+project("GameUtilities" VERSION "0.0.0.0")
 string(TOUPPER ${PROJECT_NAME} PROJECT_NAME_UPPER)
 
 include("${CMAKE_CURRENT_SOURCE_DIR}/cmake/Modules/Depricated.cmake")
