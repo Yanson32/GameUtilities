@@ -36,7 +36,7 @@ namespace GU
                 *         	being instantiated accidentally.
                 *   \param 	newId the id of the event.
                 **************************************************************************/
-                Event(const int newLine = 0, const std::string newFile = "", const int newId = ALL);
+                Event(const int newId = ALL, const int newLine = 0, const std::string newFile = "");
 				std::string file;
 				int line = 0;
 
