@@ -2,6 +2,7 @@
 #define GAMEUTILITIES_EVENTHANDLER_H
 
 #include "GameUtilities/Event/Event.h"
+#include "GameUtilities/Engin/Engin.h"
 #include "gameutilities_export.h"
 #include <memory>
 
@@ -15,7 +16,7 @@ namespace GU
         {
             public:
                 EventHandler();
-                virtual void handleGUEvent(std::unique_ptr<Event> event) = 0;
+                virtual void handleGUEvent(GU::Engin::Engin& engin, GU::Evt::EventPtr event) = 0;
                 virtual ~EventHandler();
             protected:
             private:
