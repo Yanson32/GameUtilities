@@ -12,7 +12,7 @@ namespace GU
 		class GAMEUTILITIES_EXPORT PlayMusic: public Event
 		{
 			public:
-				PlayMusic(const std::string &musicFile, const int newLine, const std::string newFile);
+				PlayMusic(const std::string &musicFile, const int newLine = 0, const std::string newFile = "");
 				std::string file;
 				virtual ~PlayMusic();
 		};

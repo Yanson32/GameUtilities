@@ -11,7 +11,7 @@ namespace GU
 		class GAMEUTILITIES_EXPORT SoundVolumeChanged: public Event
 		{
 			public:
-				SoundVolumeChanged(const int newLine, const std::string newFile);
+				SoundVolumeChanged(const int newLine = 0, const std::string newFile = "");
 				virtual ~SoundVolumeChanged();
 			protected:
 			private:
