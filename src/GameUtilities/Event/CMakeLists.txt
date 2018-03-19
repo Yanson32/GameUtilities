@@ -11,6 +11,7 @@ set(FILES
 "${CMAKE_CURRENT_SOURCE_DIR}/Pop.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/PlayMusic.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/PushState.cpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/EventHandler.cpp"
 )
 
 set(SUB_DIRECTORIES "")

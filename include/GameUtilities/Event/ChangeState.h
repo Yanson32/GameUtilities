@@ -1,5 +1,5 @@
-#ifndef CHANGESTATE_H
-#define CHANGESTATE_H
+#ifndef GAMEUTILITIES_CHANGESTATE_H
+#define GAMEUTILITIES_CHANGESTATE_H
 #include "gameutilities_export.h"
 #include "GameUtilities/Event/Event.h"
 

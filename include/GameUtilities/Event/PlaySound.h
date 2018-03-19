@@ -1,5 +1,5 @@
-#ifndef GU_PLAYSOUND_H
-#define GU_PLAYSOUND_H
+#ifndef GAMEUTILITIES_PLAYSOUND_H
+#define GAMEUTILITIES_PLAYSOUND_H
 #include <string>
 #include "gameutilities_export.h"
 #include "GameUtilities/Event/Event.h"

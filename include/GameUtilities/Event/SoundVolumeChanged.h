@@ -1,5 +1,5 @@
-#ifndef SOUNDVOLUMECHANGED_H
-#define SOUNDVOLUMECHANGED_H
+#ifndef GAMEUTILITIES_SOUNDVOLUMECHANGED_H
+#define GAMEUTILITIES_SOUNDVOLUMECHANGED_H
 #include "gameutilities_export.h"
 #include "GameUtilities/Event/Event.h"
 

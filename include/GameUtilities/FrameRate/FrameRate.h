@@ -1,5 +1,5 @@
-#ifndef FRAMERATE_H
-#define FRAMERATE_H
+#ifndef GAMEUTILITIES_FRAMERATE_H
+#define GAMEUTILITIES_FRAMERATE_H
 #include <deque>
 #include <cstddef> //std::size_t
 #include "gameutilities_export.h"

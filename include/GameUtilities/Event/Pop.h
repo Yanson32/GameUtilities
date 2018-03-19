@@ -1,5 +1,5 @@
-#ifndef POP_H
-#define POP_H
+#ifndef GAMEUTILITIES_POP_H
+#define GAMEUTILITIES_POP_H
 #include "gameutilities_export.h"
 #include "GameUtilities/Event/Event.h"
 

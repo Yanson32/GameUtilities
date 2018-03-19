@@ -1,5 +1,5 @@
-#ifndef PUSHSTATE_H
-#define PUSHSTATE_H
+#ifndef GAMEUTILITIES_PUSHSTATE_H
+#define GAMEUTILITIES_PUSHSTATE_H
 #include "gameutilities_export.h"
 #include "GameUtilities/Event/Event.h"
 
