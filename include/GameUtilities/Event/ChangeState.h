@@ -11,7 +11,7 @@ namespace GU
 		class GAMEUTILITIES_EXPORT ChangeState: public Event
 		{
 			public:
-				ChangeState(const int newStateId, const int newLine = 0, const std::string newFile = "");
+				ChangeState(const int newStateId, const int newLine = 0, const char* newFile = "");
 				const int stateId;
 				virtual ~ChangeState();
 		};

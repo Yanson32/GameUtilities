@@ -10,7 +10,7 @@ namespace GU
 		class GAMEUTILITIES_EXPORT PushState: public Event
 		{
 			public:
-				PushState(const int newStateId, const int newLine = 0, const std::string newFile = "");
+				PushState(const int newStateId, const int newLine = 0, const char* newFile = "");
 				const int id;
 				virtual ~PushState();
 			protected:

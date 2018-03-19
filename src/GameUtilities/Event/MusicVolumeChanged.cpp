@@ -4,7 +4,7 @@ namespace GU
 {
     namespace Evt
     {
-		MusicVolumeChanged::MusicVolumeChanged(const int newLine, const std::string newFile):
+		MusicVolumeChanged::MusicVolumeChanged(const int newLine, const char* newFile):
 		Event(5, newLine, newFile)
 		{
 			//ctor

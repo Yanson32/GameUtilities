@@ -4,7 +4,7 @@ namespace GU
 {
     namespace Evt
     {
-		Pop::Pop(const int newLine, const std::string newFile):
+		Pop::Pop(const int newLine, const char* newFile):
 		Event(2, newLine, newFile)
 		{
 			//ctor

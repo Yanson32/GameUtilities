@@ -4,7 +4,7 @@ namespace GU
 {
     namespace Evt
     {
-		PlaySound::PlaySound(const int &newId, const int newLine, const std::string newFile):
+		PlaySound::PlaySound(const int &newId, const int newLine, const char* newFile):
 		Event(3, newLine, newFile), soundId(newId)
 		{
 			//ctor

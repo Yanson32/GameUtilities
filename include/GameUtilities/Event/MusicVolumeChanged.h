@@ -11,7 +11,7 @@ namespace GU
 		class GAMEUTILITIES_EXPORT MusicVolumeChanged: public Event
 		{
 			public:
-				MusicVolumeChanged(const int newLine = 0, const std::string newFile = "");
+				MusicVolumeChanged(const int newLine = 0, const char* newFile = "");
 				int volume = 255;
 				virtual ~MusicVolumeChanged();
 			protected:

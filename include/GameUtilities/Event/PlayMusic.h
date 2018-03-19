@@ -2,7 +2,6 @@
 #define GAMEUTILITIES_PLAYMUSIC_H
 #include "gameutilities_export.h"
 #include "GameUtilities/Event/Event.h"
-#include <string>
 
 namespace GU
 {
@@ -12,8 +11,8 @@ namespace GU
 		class GAMEUTILITIES_EXPORT PlayMusic: public Event
 		{
 			public:
-				PlayMusic(const std::string &musicFile, const int newLine = 0, const std::string newFile = "");
-				std::string file;
+				PlayMusic(const char* newMusicFile, const int newLine = 0, const char* newFile = "");
+				const char* musicFile;
 				virtual ~PlayMusic();
 		};
 	}

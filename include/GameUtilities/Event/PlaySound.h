@@ -11,7 +11,7 @@ namespace GU
 		class GAMEUTILITIES_EXPORT PlaySound: public Event
 		{
 			public:
-				PlaySound(const int &newId, const int newLine = 0, const std::string newFile = "");
+				PlaySound(const int &newId, const int newLine = 0, const char* newFile = "");
 				int soundId;
 				virtual ~PlaySound();
 			protected:

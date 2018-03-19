@@ -4,7 +4,7 @@ namespace GU
 {
     namespace Evt
     {
-		ChangeState::ChangeState(const int newStateId, const int newLine, const std::string newFile):
+		ChangeState::ChangeState(const int newStateId, const int newLine, const char* newFile):
 		Event(0, newLine, newFile),
 		stateId(newStateId)
 		{

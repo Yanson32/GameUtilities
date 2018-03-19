@@ -4,9 +4,9 @@ namespace GU
 {
     namespace Evt
     {
-		PlayMusic::PlayMusic(const std::string &musicFile, const int newLine, const std::string newFile):
+		PlayMusic::PlayMusic(const char* newMusicFile, const int newLine, const char* newFile):
 		Event(6, newLine, newFile),
-		file(musicFile)
+		musicFile(newMusicFile)
 		{
 			//ctor
 		}
