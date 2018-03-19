@@ -1,6 +1,5 @@
 #ifndef GAMEUTILITIES_PLAYSOUND_H
 #define GAMEUTILITIES_PLAYSOUND_H
-#include <string>
 #include "gameutilities_export.h"
 #include "GameUtilities/Event/Event.h"
 
@@ -12,8 +11,8 @@ namespace GU
 		class GAMEUTILITIES_EXPORT PlaySound: public Event
 		{
 			public:
-				PlaySound(const std::string &newId, const int newLine = 0, const std::string newFile = "");
-				std::string soundId;
+				PlaySound(const int &newId, const int newLine = 0, const std::string newFile = "");
+				int soundId;
 				virtual ~PlaySound();
 			protected:
 			private:
