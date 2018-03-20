@@ -15,7 +15,7 @@ namespace GU
 				typedef GU::Engin::Engin::StatePtr StatePtr;
 				Impl(GU::Engin::Engin &newEngin);
 
-				Impl& Impl::operator=(const Engin::Impl& newStates);
+				Impl& operator=(const Engin::Impl& newStates);
 				void Push(StatePtr state);
 				void Pop();
 				void ChangeState(StatePtr state);
