@@ -10,7 +10,6 @@ namespace GU
     namespace FR
     {
 
-
         class GAMEUTILITIES_EXPORT FrameRate final
         {
             public:

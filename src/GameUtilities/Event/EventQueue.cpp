@@ -6,11 +6,64 @@
 
 #include "GameUtilities/Event/EventQueue.h"
 #include <cassert>
+#include <queue>
+#include <mutex>
 
 namespace GU
 {
     namespace Evt
     {
+
+		class EventQueue::impl
+		{
+			public:
+				impl();
+				void Post(EventPtr event);
+				bool empty() const;
+				bool Poll(EventPtr &event);
+				virtual ~impl();
+			private:
+				std::queue<EventPtr> eventQueue;
+
+				#ifdef MULTITHREAD
+					mutable std::mutex eventQueueLock;
+				#endif
+		};
+
+		EventQueue::impl::impl()
+		{
+
+		}
+
+		void EventQueue::impl::Post(EventPtr event)
+		{
+			assert(event != nullptr);
+			std::lock_guard<std::mutex> lock(eventQueueLock);
+			eventQueue.push(event);
+		}
+
+		bool EventQueue::impl::empty() const
+		{
+			return eventQueue.empty();
+		}
+
+		bool EventQueue::impl::Poll(EventPtr &event)
+		{
+			std::lock_guard<std::mutex> lock(eventQueueLock);
+			if (!eventQueue.empty())
+			{
+				event = eventQueue.front();
+				assert(event != nullptr);
+				eventQueue.pop();
+				return true;
+			}
+			return false;
+		}
+
+		EventQueue::impl::~impl()
+		{
+
+		}
         /***************************************************************************
         *   \brief	Constructor:
         ***************************************************************************/
@@ -26,9 +79,7 @@ namespace GU
         ***************************************************************************/
         void EventQueue::Post(EventPtr event)
         {
-            assert(event != nullptr);
-            std::lock_guard<std::mutex> lock(eventQueueLock);
-            eventQueue.push(event);
+			pimpl->Post(event);
         }
 
 
@@ -39,7 +90,7 @@ namespace GU
         ***************************************************************************/
         bool EventQueue::empty() const
         {
-            return eventQueue.empty();
+			return pimpl->empty();
         }
 
 
@@ -53,15 +104,7 @@ namespace GU
         ***************************************************************************/
         bool EventQueue::Poll(EventPtr &event)
         {
-            std::lock_guard<std::mutex> lock(eventQueueLock);
-            if(!eventQueue.empty())
-            {
-                event = eventQueue.front();
-                assert(event != nullptr);
-                eventQueue.pop();
-                return true;
-            }
-            return false;
+			return pimpl->Poll(event);
         }
 
 
@@ -71,6 +114,9 @@ namespace GU
         EventQueue::~EventQueue()
         {
             //dtor
+			if (pimpl)
+				delete pimpl;
         }
+
     }
 }
