@@ -6,11 +6,9 @@
 *   @file
 *******************************************************************************************/
 
-#include <vector>
-#include <map>
-#include <memory>
+
 #include "GameUtilities/Event/Event.h"
-#include <mutex>
+
 #include "gameutilities_export.h"
 
 namespace GU
@@ -31,7 +29,6 @@ namespace GU
         {
             public:
                 typedef Evt::Listener* ListenerPtr;
-                typedef std::vector<ListenerPtr> listenerVecPtr;
 
                 /***************************************************************************************//**
                 *   @param Constructor
@@ -205,8 +202,8 @@ namespace GU
                 *******************************************************************************************/
                 virtual ~Dispatcher();
             private:
-                std::map<int, listenerVecPtr> listenerMap;
-                std::mutex listenerMapGuard;
+				class Impl;
+				Impl* pimpl = nullptr;
         };
 
 

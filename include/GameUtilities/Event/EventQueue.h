@@ -22,16 +22,13 @@ namespace GU
 			***************************************************************************/
 			EventQueue();
 
-			//EventQueue(EventQueue&&)
-			//{
+			EventQueue(const EventQueue &queue);
 
-			//}
+			EventQueue(EventQueue&& param);
 
-			//EventQueue& operator=(EventQueue&&)
-			//{
+			EventQueue& operator=(EventQueue&& param);
 
-			//}
-
+			
 			/***************************************************************************
 			*   Purpose:    This method adds an event to the event queue.
 			*   Input:      EventPtr a pointer to an event to be added.

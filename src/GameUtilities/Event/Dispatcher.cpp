@@ -2,12 +2,141 @@
 #include "GameUtilities/Event/Listener.h"
 #include <cassert>
 #include <algorithm>
-#include <iostream>
+#include <map>
+#include <mutex>
+#include <vector>
 
 namespace GU
 {
     namespace Evt
     {
+		class Dispatcher::Impl
+		{
+			public:
+				typedef std::vector<ListenerPtr> listenerVecPtr;
+				Impl();
+
+				void RegisterListener(ListenerPtr listener, const int id = ALL);
+				void RegisterListener(ListenerPtr listener, EventPtr event);
+				void RegisterListener(Evt::Listener &listener, const int id = ALL);
+				void RegisterListener(Evt::Listener &listener, EventPtr event); 
+				void UnRegisterListener(ListenerPtr listener, const int id = ALL);
+				void UnRegisterListener(ListenerPtr listener, EventPtr event);
+				void UnRegisterListener(Evt::Listener &listener, const int id = ALL);
+				void UnRegisterListener(Evt::Listener &listener, EventPtr event);
+				bool IsRegistered(ListenerPtr listener, const int id = ALL);
+				bool IsRegistered(ListenerPtr listener, EventPtr event);
+				bool IsRegistered(Evt::Listener &listener, const int id = ALL);
+				bool IsRegistered(Evt::Listener &listener, EventPtr event);
+				void Dispatch(EventPtr event);
+				virtual ~Impl();
+			private:
+				std::map<int, listenerVecPtr> listenerMap;
+				std::mutex listenerMapGuard;
+
+		};
+
+		Dispatcher::Impl::Impl()
+		{
+
+		}
+		void Dispatcher::Impl::RegisterListener(ListenerPtr listener, const int id)
+		{
+			#ifdef MULTITHREAD
+				std::lock_guard<std::mutex> listenersMapLock(listenerMapGuard);
+			#endif
+
+			//Add a vector to the map with the correct key if one does not exist
+			if (listenerMap.find(id) == listenerMap.end())
+				listenerMap.emplace(id, listenerVecPtr());
+
+			auto iter = listenerMap.find(id);
+
+			//Make sure the listener has not already been added to the map
+			assert(!IsRegistered(listener, ALL));
+			assert(!IsRegistered(listener, id));
+
+			//Add element to vector at key id
+			iter->second.push_back(listener);
+		}
+		void Dispatcher::Impl::RegisterListener(ListenerPtr listener, EventPtr event)
+		{
+			assert(event != nullptr);
+			RegisterListener(listener, event->id);
+		}
+		void Dispatcher::Impl::RegisterListener(Evt::Listener &listener, const int id)
+		{
+			RegisterListener(&listener, id);
+		}
+		void Dispatcher::Impl::RegisterListener(Evt::Listener &listener, EventPtr event)
+		{
+			RegisterListener(&listener, event);
+		}
+		void Dispatcher::Impl::UnRegisterListener(ListenerPtr listener, const int id)
+		{
+			#ifdef MULTITHREAD
+				std::lock_guard<std::mutex> listenersMapLock(listenerMapGuard);
+			#endif
+
+			assert(IsRegistered(listener, id));
+			listenerVecPtr &vec = listenerMap.find(id)->second;
+			vec.erase(std::find(vec.begin(), vec.end(), listener));
+		}
+		void Dispatcher::Impl::UnRegisterListener(ListenerPtr listener, EventPtr event)
+		{
+			assert(event != nullptr);
+			UnRegisterListener(listener, event->id);
+		}
+		void Dispatcher::Impl::UnRegisterListener(Evt::Listener &listener, const int id)
+		{
+			UnRegisterListener(&listener, id);
+		}
+		void Dispatcher::Impl::UnRegisterListener(Evt::Listener &listener, EventPtr event)
+		{
+			UnRegisterListener(&listener, event);
+		}
+		bool Dispatcher::Impl::IsRegistered(ListenerPtr listener, const int id)
+		{
+			auto iter = listenerMap.find(id);
+			if (iter == listenerMap.end())
+				return false;
+
+			return std::find(iter->second.begin(), iter->second.end(), listener) != iter->second.end();
+		}
+		bool Dispatcher::Impl::IsRegistered(ListenerPtr listener, EventPtr event)
+		{
+			return IsRegistered(listener, event->id);
+		}
+		bool Dispatcher::Impl::IsRegistered(Evt::Listener &listener, const int id)
+		{
+			return IsRegistered(&listener, id);
+		}
+		bool Dispatcher::Impl::IsRegistered(Evt::Listener &listener, EventPtr event)
+		{
+			return IsRegistered(&listener, event);
+		}
+		void Dispatcher::Impl::Dispatch(EventPtr event)
+		{
+			assert(event != nullptr);
+			if (listenerMap.find(ALL) != listenerMap.end())
+			{
+				listenerVecPtr &vec = listenerMap.find(ALL)->second;
+				for (auto element : vec)
+					element->OnEvent(event);
+			}
+
+
+			if (listenerMap.find(event->id) != listenerMap.end())
+			{
+				listenerVecPtr &vec2 = listenerMap.find(event->id)->second;
+				for (auto element : vec2)
+					element->OnEvent(event);
+			}
+		}
+		Dispatcher::Impl::~Impl()
+		{
+
+		}
 
         /********************************************************************************************
         *   Constructor
@@ -25,20 +154,7 @@ namespace GU
         *******************************************************************************************/
         void Dispatcher::RegisterListener(ListenerPtr listener, const int id)
         {
-            std::lock_guard<std::mutex> listenersMapLock(listenerMapGuard);
-
-            //Add a vector to the map with the correct key if one does not exist
-            if(listenerMap.find(id) == listenerMap.end())
-                listenerMap.emplace(id, listenerVecPtr());
-
-            auto iter = listenerMap.find(id);
-
-            //Make sure the listener has not already been added to the map
-            assert(!IsRegistered(listener, ALL));
-            assert(!IsRegistered(listener, id));
-
-            //Add element to vector at key id
-            iter->second.push_back(listener);
+			pimpl->RegisterListener(listener, id);
         }
 
 
@@ -50,8 +166,7 @@ namespace GU
         *******************************************************************************************/
         void Dispatcher::RegisterListener(ListenerPtr listener, EventPtr event)
         {
-            assert(event != nullptr);
-            RegisterListener(listener, event->id);
+			pimpl->RegisterListener(listener, event);
         }
 
 
@@ -63,7 +178,7 @@ namespace GU
         *******************************************************************************************/
         void Dispatcher::RegisterListener(Evt::Listener &listener, const int id)
         {
-            RegisterListener(&listener, id);
+			pimpl->RegisterListener(listener, id);
         }
 
 
@@ -75,7 +190,7 @@ namespace GU
         *******************************************************************************************/
         void Dispatcher::RegisterListener(Evt::Listener &listener, EventPtr event)
         {
-            RegisterListener(&listener, event);
+			pimpl->RegisterListener(listener, event);
         }
 
 
@@ -87,10 +202,7 @@ namespace GU
         *******************************************************************************************/
         void Dispatcher::UnRegisterListener(ListenerPtr listener, const int id)
         {
-            std::lock_guard<std::mutex> listenersMapLock(listenerMapGuard);
-            assert(IsRegistered(listener, id));
-            listenerVecPtr &vec = listenerMap.find(id)->second;
-            vec.erase(std::find(vec.begin(), vec.end(), listener));
+			pimpl->UnRegisterListener(listener, id);
         }
 
 
@@ -103,8 +215,7 @@ namespace GU
         *******************************************************************************************/
         void Dispatcher::UnRegisterListener(ListenerPtr listener, EventPtr event)
         {
-            assert(event != nullptr);
-            UnRegisterListener(listener, event->id);
+			pimpl->UnRegisterListener(listener, event);
         }
 
 
@@ -116,7 +227,7 @@ namespace GU
         *******************************************************************************************/
         void Dispatcher::UnRegisterListener(Evt::Listener &listener, const int id)
         {
-            UnRegisterListener(&listener, id);
+			pimpl->UnRegisterListener(listener, id);
         }
 
 
@@ -129,7 +240,7 @@ namespace GU
         *******************************************************************************************/
         void Dispatcher::UnRegisterListener(Evt::Listener &listener, EventPtr event)
         {
-            UnRegisterListener(&listener, event);
+			pimpl->UnRegisterListener(listener, event);
         }
 
 
@@ -146,11 +257,7 @@ namespace GU
         *******************************************************************************************/
         bool Dispatcher::IsRegistered(ListenerPtr listener, const int id)
         {
-            auto iter = listenerMap.find(id);
-            if(iter == listenerMap.end())
-                return false;
-
-            return std::find(iter->second.begin(), iter->second.end(), listener) != iter->second.end();
+			return pimpl->IsRegistered(listener, id);
         }
 
 
@@ -165,7 +272,7 @@ namespace GU
         *******************************************************************************************/
         bool Dispatcher::IsRegistered(ListenerPtr listener, EventPtr event)
         {
-            return IsRegistered(listener, event->id);
+			return pimpl->IsRegistered(listener, event);
         }
 
 
@@ -180,7 +287,7 @@ namespace GU
         *******************************************************************************************/
         bool Dispatcher::IsRegistered(Evt::Listener &listener, const int id)
         {
-            return IsRegistered(&listener, id);
+			return pimpl->IsRegistered(listener, id);
         }
 
 
@@ -195,7 +302,7 @@ namespace GU
         *******************************************************************************************/
         bool Dispatcher::IsRegistered(Evt::Listener &listener, EventPtr event)
         {
-            return IsRegistered(&listener, event);
+			return pimpl->IsRegistered(listener, event);
         }
 
 
@@ -206,21 +313,7 @@ namespace GU
         *******************************************************************************************/
         void Dispatcher::Dispatch(EventPtr event)
         {
-            assert(event != nullptr);
-            if(listenerMap.find(ALL) != listenerMap.end())
-            {
-                listenerVecPtr &vec = listenerMap.find(ALL)->second;
-                for(auto element: vec)
-                    element->OnEvent(event);
-            }
-
-
-            if(listenerMap.find(event->id) != listenerMap.end())
-            {
-                listenerVecPtr &vec2 = listenerMap.find(event->id)->second;
-                for(auto element: vec2)
-                    element->OnEvent(event);
-            }
+			pimpl->Dispatch(event);
         }
 
 

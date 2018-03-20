@@ -30,11 +30,13 @@ namespace GU
 				#endif
 		};
 
+		//EventQueue constructor
 		EventQueue::impl::impl()
 		{
 
 		}
 
+		//Post implimentation
 		void EventQueue::impl::Post(EventPtr event)
 		{
 			assert(event != nullptr);
@@ -45,11 +47,13 @@ namespace GU
 			eventQueue.push(event);
 		}
 
+		//empty implimentation
 		bool EventQueue::impl::empty() const
 		{
 			return eventQueue.empty();
 		}
 
+		//Poll Implimentation
 		bool EventQueue::impl::Poll(EventPtr &event)
 		{
 			#ifdef MULTITHREAD
@@ -66,6 +70,7 @@ namespace GU
 			return false;
 		}
 
+		//Destructor
 		EventQueue::impl::~impl()
 		{
 
@@ -78,6 +83,22 @@ namespace GU
             //ctor
         }
 
+		EventQueue::EventQueue(const EventQueue &queue)
+		{
+			pimpl = queue.pimpl;
+		}
+
+		EventQueue::EventQueue(EventQueue&& param)
+		{
+			pimpl = param.pimpl;
+		}
+
+		EventQueue& EventQueue::operator=(EventQueue&& param)
+		{
+			pimpl = param.pimpl;
+
+			return *this;
+		}
 
         /***************************************************************************
         *   \brief	This method adds an event to the event queue.

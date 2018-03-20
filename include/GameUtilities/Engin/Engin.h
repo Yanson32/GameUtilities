@@ -140,6 +140,8 @@ namespace GU
                 *************************************************************************************/
                 virtual ~Engin();
             private:
+
+				
                 ///stack of states the state on the top of the stack is the current state
                 std::stack<StatePtr> states;
 
