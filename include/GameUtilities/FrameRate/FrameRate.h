@@ -1,8 +1,7 @@
 #ifndef GAMEUTILITIES_FRAMERATE_H
 #define GAMEUTILITIES_FRAMERATE_H
-#include <deque>
-#include <cstddef> //std::size_t
 #include "gameutilities_export.h"
+#include <cstddef> //std::size_t
 
 namespace GU
 {
@@ -18,9 +17,8 @@ namespace GU
                 double getFrameRate();
                 ~FrameRate();
             private:
-                const std::size_t maxQueueSize;
-                std::deque<unsigned int> timeQue;
-                unsigned int prevTime = 0;
+				class Impl;
+				Impl* pimpl = nullptr;
         };
     }
 }

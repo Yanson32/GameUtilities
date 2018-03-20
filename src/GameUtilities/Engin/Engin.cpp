@@ -8,12 +8,11 @@ namespace GU
 
     namespace Engin
     {
-		typedef std::unique_ptr<GameState> StatePtr;
 
 		class Engin::Impl
 		{
 			public:
-				typedef std::unique_ptr<GameState> StatePtr;
+				typedef GU::Engin::Engin::StatePtr StatePtr;
 				Impl(GU::Engin::Engin &newEngin);
 
 				Impl& Impl::operator=(const Engin::Impl& newStates);
