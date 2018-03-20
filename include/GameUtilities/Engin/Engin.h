@@ -30,22 +30,6 @@ namespace GU
 
 
                 /*********************************************************************************//**
-                *   \brief		Copy constructor
-                *	\warning 	The copy constructor is not complete
-                *	\param		newStates an Engin object to be copied
-                *************************************************************************************/
-                Engin(const Engin&);
-
-
-                /*********************************************************************************//**
-                *   \brief		Assignment operator
-                *	\warning 	assignment operator is not complete
-                *	\param		newStates an Engin object to be copied
-                *************************************************************************************/
-                Engin& operator=(const Engin& param);
-
-
-                /*********************************************************************************//**
                 *	\brief	Push a new state onto the stack
                 *   \param	state a pointer to a GameState object.
                 *************************************************************************************/

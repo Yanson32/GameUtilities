@@ -13,9 +13,6 @@ namespace GU
 		{
 			public:
 				typedef GU::Engin::Engin::StatePtr StatePtr;
-				Impl(GU::Engin::Engin &newEngin);
-
-				Impl& operator=(const Engin::Impl& newStates);
 				void Push(StatePtr state);
 				void Pop();
 				void ChangeState(StatePtr state);
@@ -35,17 +32,7 @@ namespace GU
 				GU::Engin::Engin &engin;
 		};
 
-		Engin::Impl::Impl(GU::Engin::Engin &newEngin): engin(newEngin)
-		{
 
-		}
-
-		Engin::Impl& Engin::Impl::operator=(const Engin::Impl& newStates)
-		{
-			assert(true && "Assignment operator not complete");
-			_running = newStates._running;
-			return *this;
-		}
 
 		void Engin::Impl::Push(StatePtr state)
 		{
@@ -127,29 +114,7 @@ namespace GU
         }
 
 
-        /*********************************************************************************//**
-        *   \brief		Copy constructor
-        *	\warning 	The copy constructor is not complete
-        *	\param		newStates an Engin object to be copied
-        *************************************************************************************/
-        Engin::Engin(const Engin& newStates)
-        {
-            assert(true && "Copy constructor not complete");
-			pimpl = newStates.pimpl;
-        }
 
-
-        /*********************************************************************************//**
-        *   \brief		Assignment operator
-        *	\warning 	assignment operator is not complete
-        *	\param		newStates an Engin object to be copied
-        *************************************************************************************/
-        Engin& Engin::operator=(const Engin& newStates)
-        {
-            assert(true && "Assignment operator not complete");
-			pimpl = newStates.pimpl;
-            return *this;
-        }
 
 
         /*********************************************************************************//**
@@ -246,6 +211,8 @@ namespace GU
         Engin::~Engin()
         {
             //dtor
+            if(pimpl)
+                delete pimpl;
         }
     }
 

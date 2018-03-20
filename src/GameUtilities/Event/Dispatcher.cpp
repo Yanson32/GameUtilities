@@ -19,7 +19,7 @@ namespace GU
 				void RegisterListener(ListenerPtr listener, const int id = ALL);
 				void RegisterListener(ListenerPtr listener, EventPtr event);
 				void RegisterListener(Evt::Listener &listener, const int id = ALL);
-				void RegisterListener(Evt::Listener &listener, EventPtr event); 
+				void RegisterListener(Evt::Listener &listener, EventPtr event);
 				void UnRegisterListener(ListenerPtr listener, const int id = ALL);
 				void UnRegisterListener(ListenerPtr listener, EventPtr event);
 				void UnRegisterListener(Evt::Listener &listener, const int id = ALL);
@@ -323,6 +323,8 @@ namespace GU
         Dispatcher::~Dispatcher()
         {
             //dtor
+            if(pimpl)
+                delete pimpl;
         }
     }
 }

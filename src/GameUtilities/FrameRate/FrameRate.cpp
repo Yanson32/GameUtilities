@@ -65,11 +65,11 @@ namespace GU
 		{
 
 		}
-		FrameRate::FrameRate(const std::size_t newMaxQueueSize): 
+		FrameRate::FrameRate(const std::size_t newMaxQueueSize):
 		pimpl(new FrameRate::Impl(newMaxQueueSize))
 		{
 			//ctor
-        
+
 		}
 
 
@@ -89,6 +89,8 @@ namespace GU
 		FrameRate::~FrameRate()
 		{
 			//dtor
+			if(pimpl)
+                delete pimpl;
 		}
 
     }

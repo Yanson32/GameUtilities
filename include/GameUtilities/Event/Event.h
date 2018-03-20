@@ -27,7 +27,8 @@ namespace GU
                 **************************************************************************/
                 virtual ~Event();
 
-
+				const char* file;
+				int line = 0;
             protected:
 
                 /**************************************************************************
@@ -36,10 +37,7 @@ namespace GU
                 *   \param 	newId the id of the event.
                 **************************************************************************/
                 Event(const int newId = ALL, const int newLine = 0, const char* newFile = "");
-				const char* file;
-				int line = 0;
 
-				
         };
 
         typedef std::shared_ptr<Event> EventPtr;
