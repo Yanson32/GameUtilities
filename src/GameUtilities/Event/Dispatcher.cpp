@@ -10,7 +10,7 @@ namespace GU
 {
     namespace Evt
     {
-		class Dispatcher::Impl
+		class GAMEUTILITIES_EXPORT Dispatcher::Impl
 		{
 			public:
 				typedef std::vector<ListenerPtr> listenerVecPtr;
@@ -154,6 +154,7 @@ namespace GU
         *******************************************************************************************/
         void Dispatcher::RegisterListener(ListenerPtr listener, const int id)
         {
+            assert(pimpl != nullptr);
 			pimpl->RegisterListener(listener, id);
         }
 
@@ -166,6 +167,7 @@ namespace GU
         *******************************************************************************************/
         void Dispatcher::RegisterListener(ListenerPtr listener, EventPtr event)
         {
+            assert(pimpl != nullptr);
 			pimpl->RegisterListener(listener, event);
         }
 
@@ -178,6 +180,7 @@ namespace GU
         *******************************************************************************************/
         void Dispatcher::RegisterListener(Evt::Listener &listener, const int id)
         {
+            assert(pimpl != nullptr);
 			pimpl->RegisterListener(listener, id);
         }
 
@@ -190,6 +193,7 @@ namespace GU
         *******************************************************************************************/
         void Dispatcher::RegisterListener(Evt::Listener &listener, EventPtr event)
         {
+            assert(pimpl != nullptr);
 			pimpl->RegisterListener(listener, event);
         }
 
@@ -202,6 +206,7 @@ namespace GU
         *******************************************************************************************/
         void Dispatcher::UnRegisterListener(ListenerPtr listener, const int id)
         {
+            assert(pimpl != nullptr);
 			pimpl->UnRegisterListener(listener, id);
         }
 
@@ -215,6 +220,7 @@ namespace GU
         *******************************************************************************************/
         void Dispatcher::UnRegisterListener(ListenerPtr listener, EventPtr event)
         {
+            assert(pimpl != nullptr);
 			pimpl->UnRegisterListener(listener, event);
         }
 
@@ -227,6 +233,7 @@ namespace GU
         *******************************************************************************************/
         void Dispatcher::UnRegisterListener(Evt::Listener &listener, const int id)
         {
+            assert(pimpl != nullptr);
 			pimpl->UnRegisterListener(listener, id);
         }
 
@@ -240,6 +247,7 @@ namespace GU
         *******************************************************************************************/
         void Dispatcher::UnRegisterListener(Evt::Listener &listener, EventPtr event)
         {
+            assert(pimpl != nullptr);
 			pimpl->UnRegisterListener(listener, event);
         }
 
@@ -257,6 +265,7 @@ namespace GU
         *******************************************************************************************/
         bool Dispatcher::IsRegistered(ListenerPtr listener, const int id)
         {
+            assert(pimpl != nullptr);
 			return pimpl->IsRegistered(listener, id);
         }
 
@@ -272,6 +281,7 @@ namespace GU
         *******************************************************************************************/
         bool Dispatcher::IsRegistered(ListenerPtr listener, EventPtr event)
         {
+            assert(pimpl != nullptr);
 			return pimpl->IsRegistered(listener, event);
         }
 
@@ -287,6 +297,7 @@ namespace GU
         *******************************************************************************************/
         bool Dispatcher::IsRegistered(Evt::Listener &listener, const int id)
         {
+            assert(pimpl != nullptr);
 			return pimpl->IsRegistered(listener, id);
         }
 
@@ -302,6 +313,7 @@ namespace GU
         *******************************************************************************************/
         bool Dispatcher::IsRegistered(Evt::Listener &listener, EventPtr event)
         {
+            assert(pimpl != nullptr);
 			return pimpl->IsRegistered(listener, event);
         }
 
@@ -313,6 +325,7 @@ namespace GU
         *******************************************************************************************/
         void Dispatcher::Dispatch(EventPtr event)
         {
+            assert(pimpl != nullptr);
 			pimpl->Dispatch(event);
         }
 

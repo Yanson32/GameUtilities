@@ -13,7 +13,7 @@ namespace GU
 {
     namespace FR
     {
-		class FrameRate::Impl
+		class GAMEUTILITIES_EXPORT FrameRate::Impl
 		{
 			public:
 				Impl(const std::size_t newMaxQueueSize = 0);

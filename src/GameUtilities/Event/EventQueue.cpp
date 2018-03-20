@@ -14,7 +14,7 @@ namespace GU
     namespace Evt
     {
 
-		class EventQueue::impl
+		class GAMEUTILITIES_EXPORT EventQueue::impl
 		{
 			public:
 				impl();
@@ -85,16 +85,19 @@ namespace GU
 
 		EventQueue::EventQueue(const EventQueue &queue)
 		{
+            assert(pimpl != nullptr);
 			pimpl = queue.pimpl;
 		}
 
 		EventQueue::EventQueue(EventQueue&& param)
 		{
+            assert(pimpl != nullptr);
 			pimpl = param.pimpl;
 		}
 
 		EventQueue& EventQueue::operator=(EventQueue&& param)
 		{
+            assert(pimpl != nullptr);
 			pimpl = param.pimpl;
 
 			return *this;
@@ -106,6 +109,7 @@ namespace GU
         ***************************************************************************/
         void EventQueue::Post(EventPtr event)
         {
+            assert(pimpl != nullptr);
 			pimpl->Post(event);
         }
 
@@ -117,6 +121,7 @@ namespace GU
         ***************************************************************************/
         bool EventQueue::empty() const
         {
+            assert(pimpl != nullptr);
 			return pimpl->empty();
         }
 
@@ -131,6 +136,7 @@ namespace GU
         ***************************************************************************/
         bool EventQueue::Poll(EventPtr &event)
         {
+            assert(pimpl != nullptr);
 			return pimpl->Poll(event);
         }
 
