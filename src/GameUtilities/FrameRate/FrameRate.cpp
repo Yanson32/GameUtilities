@@ -65,31 +65,31 @@ namespace GU
 		{
 
 		}
-    FrameRate::FrameRate(const std::size_t newMaxQueueSize): 
-	pimpl(new FrameRate::Impl(newMaxQueueSize))
-    {
-        //ctor
+		FrameRate::FrameRate(const std::size_t newMaxQueueSize): 
+		pimpl(new FrameRate::Impl(newMaxQueueSize))
+		{
+			//ctor
         
-    }
+		}
 
 
-    void FrameRate::update()
-    {
-		pimpl->update();
-    }
+		void FrameRate::update()
+		{
+			pimpl->update();
+		}
 
 
-    //calculate the number of frames per seconds
-    double FrameRate::getFrameRate()
-    {
-		return pimpl->getFrameRate();
-    }
+		//calculate the number of frames per seconds
+		double FrameRate::getFrameRate()
+		{
+			return pimpl->getFrameRate();
+		}
 
 
-    FrameRate::~FrameRate()
-    {
-        //dtor
-    }
+		FrameRate::~FrameRate()
+		{
+			//dtor
+		}
 
     }
 
