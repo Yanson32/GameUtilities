@@ -1,12 +1,123 @@
 #include "GameUtilities/Engin/Engin.h"
+
 #include <cassert>
+#include <stack>
 
 namespace GU
 {
 
     namespace Engin
     {
+		typedef std::unique_ptr<GameState> StatePtr;
 
+		class Engin::Impl
+		{
+			public:
+				typedef std::unique_ptr<GameState> StatePtr;
+				Impl(GU::Engin::Engin &newEngin);
+
+				Impl& Impl::operator=(const Engin::Impl& newStates);
+				void Push(StatePtr state);
+				void Pop();
+				void ChangeState(StatePtr state);
+				bool IsRunning() const;
+				void Quit();
+				void HandleEvents(const int &deltaTime);
+				void Update(const int &deltaTime);
+				void Draw(const int &deltaTime);
+				virtual ~Impl();
+			private:
+				///stack of states the state on the top of the stack is the current state
+				std::stack<StatePtr> states;
+
+				///true while the game is running and false otherwise
+				bool _running = true;
+
+				GU::Engin::Engin &engin;
+		};
+
+		Engin::Impl::Impl(GU::Engin::Engin &newEngin): engin(newEngin)
+		{
+
+		}
+
+		Engin::Impl& Engin::Impl::operator=(const Engin::Impl& newStates)
+		{
+			assert(true && "Assignment operator not complete");
+			_running = newStates._running;
+			return *this;
+		}
+
+		void Engin::Impl::Push(StatePtr state)
+		{
+			assert(state != nullptr);
+
+			if (!states.empty())
+			{
+				states.top()->Pause();
+				states.top()->Clean();
+			}
+
+			states.push(std::move(state));
+			states.top()->Init();
+		}
+		void Engin::Impl::Pop()
+		{
+			assert(!states.empty());
+
+			states.top()->Clean();
+			states.pop();
+
+			if (!states.empty())
+			{
+				states.top()->Init();
+				states.top()->Pause(false);
+			}
+		}
+		void Engin::Impl::ChangeState(StatePtr state)
+		{
+			assert(state != nullptr);
+
+			///Remove any existing states
+			while (!states.empty())
+				this->Pop();
+
+			///Push the state onto the now empty stack
+			this->Push(std::move(state));
+		}
+		bool Engin::Impl::IsRunning() const
+		{
+			return _running;
+		}
+		void Engin::Impl::Quit()
+		{
+			_running = false;
+		}
+		void Engin::Impl::HandleEvents(const int &deltaTime)
+		{
+			assert(!states.empty());
+
+			///Call the current states HandleEvents method.
+			states.top()->HandleEvents(engin, deltaTime);
+		}
+		void Engin::Impl::Update(const int &deltaTime)
+		{
+			assert(!states.empty());
+
+			///Call the current states Update method.
+			states.top()->Update(engin, deltaTime);
+		}
+		void Engin::Impl::Draw(const int &deltaTime)
+		{
+			assert(!states.empty());
+
+			///Call the current states Draw method.
+			states.top()->Draw(engin, deltaTime);
+		}
+		Engin::Impl::~Impl()
+		{
+
+		}
         /*********************************************************************************//**
         *   \brief	Default constructor
         *************************************************************************************/
@@ -25,7 +136,7 @@ namespace GU
         Engin::Engin(const Engin& newStates)
         {
             assert(true && "Copy constructor not complete");
-            _running = newStates._running;
+			pimpl = newStates.pimpl;
         }
 
 
@@ -37,7 +148,7 @@ namespace GU
         Engin& Engin::operator=(const Engin& newStates)
         {
             assert(true && "Assignment operator not complete");
-            _running = newStates._running;
+			pimpl = newStates.pimpl;
             return *this;
         }
 
@@ -48,16 +159,7 @@ namespace GU
         *************************************************************************************/
         void Engin::Push(StatePtr state)
         {
-            assert(state != nullptr);
-
-            if(!states.empty())
-            {
-                states.top()->Pause();
-                states.top()->Clean();
-            }
-
-            states.push(std::move(state));
-            states.top()->Init();
+			pimpl->Push(std::move(state));
         }
 
 
@@ -66,16 +168,7 @@ namespace GU
         *************************************************************************************/
         void Engin::Pop()
         {
-            assert(!states.empty());
-
-            states.top()->Clean();
-            states.pop();
-
-            if(!states.empty())
-            {
-                states.top()->Init();
-                states.top()->Pause(false);
-            }
+			pimpl->Pop();
         }
 
 
@@ -86,14 +179,7 @@ namespace GU
         *************************************************************************************/
         void Engin::ChangeState(StatePtr state)
         {
-            assert(state != nullptr);
-
-            ///Remove any existing states
-            while(!states.empty())
-                this->Pop();
-
-            ///Push the state onto the now empty stack
-            this->Push(std::move(state));
+			pimpl->ChangeState(std::move(state));
         }
 
 
@@ -103,7 +189,7 @@ namespace GU
         *************************************************************************************/
         bool Engin::IsRunning() const
         {
-            return _running;
+			return pimpl->IsRunning();
         }
 
 
@@ -114,7 +200,7 @@ namespace GU
         *************************************************************************************/
         void Engin::Quit()
         {
-            _running = false;
+			return pimpl->Quit();
         }
 
 
@@ -126,10 +212,7 @@ namespace GU
         *************************************************************************************/
         void Engin::HandleEvents(const int &deltaTime)
         {
-            assert(!states.empty());
-
-            ///Call the current states HandleEvents method.
-            states.top()->HandleEvents(*this, deltaTime);
+			pimpl->HandleEvents(deltaTime);
         }
 
 
@@ -140,10 +223,7 @@ namespace GU
         *************************************************************************************/
         void Engin::Update(const int &deltaTime)
         {
-            assert(!states.empty());
-
-            ///Call the current states Update method.
-            states.top()->Update(*this, deltaTime);
+			pimpl->Update(deltaTime);
         }
 
 
@@ -157,10 +237,7 @@ namespace GU
         *************************************************************************************/
         void Engin::Draw(const int &deltaTime)
         {
-            assert(!states.empty());
-
-            ///Call the current states Draw method.
-            states.top()->Draw(*this, deltaTime);
+			pimpl->Draw(deltaTime);
         }
 
 

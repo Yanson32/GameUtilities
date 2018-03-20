@@ -7,7 +7,6 @@
 #define GAMEUTILITIES_ENGIN_ENGIN_H
 
 #include <memory>
-#include <stack>
 #include "GameUtilities/Engin/GameState.h"
 #include "gameutilities_export.h"
 namespace GU
@@ -22,8 +21,7 @@ namespace GU
         class GAMEUTILITIES_EXPORT Engin
         {
             public:
-                typedef std::unique_ptr<GameState> StatePtr;
-
+				typedef std::unique_ptr<GameState> StatePtr;
                 /*********************************************************************************//**
                 *   \brief	Default constructor
                 *************************************************************************************/
@@ -140,13 +138,8 @@ namespace GU
                 *************************************************************************************/
                 virtual ~Engin();
             private:
-
-				
-                ///stack of states the state on the top of the stack is the current state
-                std::stack<StatePtr> states;
-
-                ///true while the game is running and false otherwise
-                bool _running = true;
+				class Impl;
+				Impl* pimpl = nullptr;
         };
 
 
