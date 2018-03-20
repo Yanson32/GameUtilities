@@ -38,7 +38,10 @@ namespace GU
 		void EventQueue::impl::Post(EventPtr event)
 		{
 			assert(event != nullptr);
-			std::lock_guard<std::mutex> lock(eventQueueLock);
+			#ifdef MULTITHREAD
+				std::lock_guard<std::mutex> lock(eventQueueLock);
+			#endif
+
 			eventQueue.push(event);
 		}
 
@@ -49,7 +52,10 @@ namespace GU
 
 		bool EventQueue::impl::Poll(EventPtr &event)
 		{
-			std::lock_guard<std::mutex> lock(eventQueueLock);
+			#ifdef MULTITHREAD
+				std::lock_guard<std::mutex> lock(eventQueueLock);
+			#endif
+
 			if (!eventQueue.empty())
 			{
 				event = eventQueue.front();
@@ -67,7 +73,7 @@ namespace GU
         /***************************************************************************
         *   \brief	Constructor:
         ***************************************************************************/
-        EventQueue::EventQueue()
+        EventQueue::EventQueue(): pimpl(new EventQueue::impl)
         {
             //ctor
         }
