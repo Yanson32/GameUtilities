@@ -14,7 +14,7 @@ namespace GU
     namespace Evt
     {
 
-		class GAMEUTILITIES_EXPORT EventQueue::impl
+		class EventQueue::impl
 		{
 			public:
 				impl();

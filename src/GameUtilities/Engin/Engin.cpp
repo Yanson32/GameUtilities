@@ -15,7 +15,7 @@ namespace GU
         *   @brief  Implimentation of the Engin class.
         *   @date   3/20/18
         *************************************************************************/
-		class GAMEUTILITIES_EXPORT Engin::Impl
+		class Engin::Impl
 		{
 			public:
 				typedef GU::Engin::Engin::StatePtr StatePtr; //pointer to gamestate
