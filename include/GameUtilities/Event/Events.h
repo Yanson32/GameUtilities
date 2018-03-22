@@ -8,5 +8,6 @@
 #include "GameUtilities/Event/Pop.h"
 #include "GameUtilities/Event/PushState.h"
 #include "GameUtilities/Event/SoundVolumeChanged.h"
+#include "GameUtilities/Event/Id.h"
 
 #endif // EVENTS_H_INCLUDED

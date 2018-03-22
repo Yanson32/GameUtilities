@@ -1,4 +1,5 @@
 #include "GameUtilities/Event/PushState.h"
+#include "GameUtilities/Event/Id.h"
 
 namespace GU
 {
@@ -6,7 +7,7 @@ namespace GU
     {
 
 		PushState::PushState(const int newStateId, const int newLine, const char* newFile):
-		Event(1, newLine, newFile),
+		Event(GU::Evt::Id::PUSH_STATE, newLine, newFile),
 		id(newStateId)
 		{
 			//ctor

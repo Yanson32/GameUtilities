@@ -1,0 +1,22 @@
+#ifndef ID_H_INCLUDED
+#define ID_H_INCLUDED
+
+namespace GU
+{
+    namespace Evt
+    {
+        namespace Id
+        {
+            const int CHANGE_STATE = 0;
+            const int POP_STATE = 1;
+            const int PUSH_STATE = 2;
+            const int MUSIC_VOLUME_CHANGED = 3;
+            const int PLAY_MUSIC = 4;
+            const int PLAY_SOUND = 5;
+            const int SOUND_EFFECTS_VOLUME_CHANGED = 4;
+        }
+
+    }
+}
+
+#endif // ID_H_INCLUDED
