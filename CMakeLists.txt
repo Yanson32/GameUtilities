@@ -1,6 +1,10 @@
 #for backwards compatibility
 cmake_minimum_required(VERSION 3.5.1)
 
+#Compile Features
+set(GU_PRIVATE_COMPILE_FEATURES "cxx_nullptr" "cxx_right_angle_brackets")
+set(GU_PUBLIC_COMPILE_FEATURES "")
+
 #Give the project a name
 project("GameUtilities" VERSION "0.0.0.0")
 string(TOUPPER ${PROJECT_NAME} PROJECT_NAME_UPPER)
@@ -28,12 +32,10 @@ set_target_properties( "${PROJECT_NAME}"
 #Define compiler features
 target_compile_features("${PROJECT_NAME}" 
 			PRIVATE 
-			cxx_nullptr
-			cxx_right_angle_brackets
+				${GU_PRIVATE_COMPILE_FEATURES}
+			PUBLIC
+				${GU_PUBLIC_COMPILE_FEATURES}
 			)
-
-#Set the c++ standard
-set_property(TARGET "${PROJECT_NAME}" PROPERTY CXX_STANDARD 11)
 
 #Add includes to target
 target_include_directories("${PROJECT_NAME}" PUBLIC
@@ -112,6 +114,13 @@ if(BUILD_TESTING)
 	find_package(Boost 1.60.0 COMPONENTS system unit_test_framework REQUIRED)
 
 	include(CTest)
+
+	set(TEST_INCLUDES "${Boost_INCLUDE_DIRS}")
+	list(APPEND TEST_INCLUDES "${CMAKE_CURRENT_SOURCE_DIR}/include")
+	set(TEST_LIBRARIES "${Boost_LIBRARIES}")
+	list(APPEND TEST_LIBRARIES "GameUtilities")
+	set(TEST_PRIVATE_COMPILE_FEATURES ${GU_PRIVATE_COMPILE_FEATURES})
+	
 	add_subdirectory("test")
 	add_definitions("-DBUILD_TESTING")
 endif()
@@ -124,8 +133,7 @@ if(GAMEUTILITIES_BUILD_DOC)
 endif()
 
 include(InstallRequiredSystemLibraries)
-set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Basic math library")
-set(CPACK_PACKAGE_VENDOR "Wayne J Larson Jr.")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "This library contains code for making 2d video games")
 set(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_CURRENT_SOURCE_DIR}/README.md")
 set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/COPYING.txt")
 set(CPACK_PACKAGE_INSTALL_DIRECTORY "${PROJECT_NAME}_${${PROJECT_NAME}_VERSION_MAJOR}_${${PROJECT_NAME}_VERSION_MINOR}_${${PROJECT_NAME}_VERSION_PATCH}")

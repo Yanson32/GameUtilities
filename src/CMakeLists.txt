@@ -1,4 +1,6 @@
-set(FILES "")
+set(FILES ""
+)
+
 set(SUB_DIRECTORIES "GameUtilities")
 
 #Add subdirectories

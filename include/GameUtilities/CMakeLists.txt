@@ -1,4 +1,6 @@
-set(FILES "")
+set(FILES "${CMAKE_CURRENT_SOURCE_DIR}/ThreadPool.h"
+)
+
 set(SUB_DIRECTORIES
 "Event"
 "Engin"
