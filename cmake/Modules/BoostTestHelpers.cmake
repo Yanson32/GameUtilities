@@ -1,17 +1,24 @@
-function(boost_test_add BTA_TEST_FILE BTA_INCLUDE_DIRECTORIES BTA_LINK_LIBRARIES BTA_PRIVATE_COMPILE_FEATURES)
-	if(${VERBOSE})
+#create a test runner from a file
+function(boost_test_runner BTR_TEST_FILE BTR_INCLUDE_DIRECTORIES BTR_LINK_LIBRARIES BTR_PRIVATE_COMPILE_FEATURES BTR_PUBLIC_COMPILE_FEATURES)
+	if(VERBOSE)
+		message("boost_test_runner BTR_TEST_FILE ${BTR_TEST_FILE}")
 		message("boost_test_add BTA_INCLUDE_DIRECTORIES ${BTA_INCLUDE_DIRECTORIES}")
 		message("boost_test_add BTA_LINK_LIBRARIES ${BTA_LINK_LIBRARIES}")
+		message("boost_test_runner BTR_PRIVATE_COMPILE_FEATURES ${BTR_PRIVATE_COMPILE_FEATURES}")
+		message("boost_test_runner BTR_PUBLIC_COMPILE_FEATURES ${BTR_PUBLIC_COMPILE_FEATURES}")
 	endif()
-	get_filename_component(BTA_TEST_NAME ${BTA_TEST_FILE} NAME_WE)
-	add_executable(${BTA_TEST_NAME} ${BTA_TEST_FILE})
-	target_include_directories("${BTA_TEST_NAME}" PRIVATE ${BTA_INCLUDE_DIRECTORIES})
-	target_link_libraries(${BTA_TEST_NAME} ${BTA_LINK_LIBRARIES})
-	set(BTA_TEST_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/bin")
-    set_target_properties("${BTA_TEST_NAME}" PROPERTIES RUNTIME_OUTPUT_DIRECTORY  "${BTA_TEST_DIRECTORY}")
-	target_compile_features("${BTA_TEST_NAME}" 
-			PRIVATE 
-				${BTA_PRIVATE_COMPILE_FEATURES}
-			)
-    add_test(NAME ${BTA_TEST_NAME} WORKING_DIRECTORY "${BTA_TEST_DIRECTORY}" COMMAND "${BTA_TEST_NAME}" )
+	get_filename_component(BTR_TEST_NAME ${BTR_TEST_FILE} NAME_WE)
+	add_executable(${BTR_TEST_NAME} ${BTR_TEST_FILE})
+	target_include_directories("${BTR_TEST_NAME}" PRIVATE ${BTR_INCLUDE_DIRECTORIES})
+	target_link_libraries(${BTR_TEST_NAME} ${BTR_LINK_LIBRARIES})
+	#set(BTR_TEST_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/bin")
+    #set_target_properties("${BTR_TEST_NAME}" PROPERTIES RUNTIME_OUTPUT_DIRECTORY  "${BTR_TEST_DIRECTORY}")
+	target_compile_features("${BTR_TEST_NAME}" PRIVATE ${BTR_PRIVATE_COMPILE_FEATURES} PUBLIC ${BTR_PUBLIC_COMPILE_FEATURES})
+endfunction()
+
+#Run a list of tests
+function(add_boost_test BINARY_NAME TEST_LIST)
+	foreach(LOOP_VAR ${TEST_LIST})
+		add_test(NAME "${LOOP_VAR}" WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}" COMMAND "${BINARY_NAME}" "${LOOP_VAR}")
+	endforeach()
 endfunction()

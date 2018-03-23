@@ -41,7 +41,7 @@ namespace GU
                 *           states.
                 *           See Engin::Pop();
                 ********************************************************************/
-                void Pop();
+                bool Pop();
 
 
                 /********************************************************************
@@ -94,7 +94,10 @@ namespace GU
                 ********************************************************************/
                 void Draw(const int &deltaTime);
 
-
+                int Size() const
+                {
+                    return states.size();
+                }
                 /********************************************************************
                 *   @brief  Destructor
                 ********************************************************************/
@@ -147,10 +150,16 @@ namespace GU
         *   @brief  Implimentation for removing a state from the stack of
         *           states.
         *           See Engin::Pop();
+        *   @return boolean true when the state is successfully removed
+        *           from the stack.
         ********************************************************************/
-		void Engin::Impl::Pop()
+		bool Engin::Impl::Pop()
 		{
-			assert(!states.empty());
+			if(states.empty())
+			{
+				return false;
+			}
+
 
 			states.top()->Clean();
 			states.pop();
@@ -160,6 +169,8 @@ namespace GU
 				states.top()->Init();
 				states.top()->Pause(false);
 			}
+
+			return true;
 		}
 
 
@@ -173,6 +184,7 @@ namespace GU
 		void Engin::Impl::ChangeState(StatePtr state)
 		{
 			assert(state != nullptr);
+
 
 			///Remove any existing states
 			while (!states.empty())
@@ -280,8 +292,10 @@ namespace GU
 
         /*********************************************************************************//**
         *   @brief Remove a state from the stack
+        *   @return boolean true when the state is successfully removed
+        *           from the stack.
         *************************************************************************************/
-        void Engin::Pop()
+        bool Engin::Pop()
         {
             assert(pimpl != nullptr);
 			pimpl->Pop();
@@ -362,6 +376,11 @@ namespace GU
 			pimpl->Draw(deltaTime);
         }
 
+        int Engin::Size() const
+        {
+            assert(pimpl != nullptr);
+            return pimpl->Size();
+        }
 
         /*********************************************************************************//**
         *   @brief	Destructor:

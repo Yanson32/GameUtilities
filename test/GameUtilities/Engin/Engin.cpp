@@ -1,12 +1,82 @@
 #define BOOST_TEST_DYN_LINK
 #define BOOST_TEST_MAIN
 #include <GameUtilities/Engin/Engin.h>
-
+#include <GameUtilities/Engin/GameState.h>
 #include <boost/test/unit_test.hpp>
+#include <memory>
 
-BOOST_AUTO_TEST_CASE( free_test_function )
+class TestState: public GU::Engin::GameState
+{
+	public:
+		TestState(){}
+		        /*********************************************************************************//**
+                *   \brief	Initialize the game state.
+                *************************************************************************************/
+                virtual void Init() {};
+
+                /*********************************************************************************//**
+                *   \brief	Clean any resource the state uses
+                *************************************************************************************/
+                virtual void Clean(){};
+
+                /*********************************************************************************//**
+                *   \brief	This method handles input such as user input and events
+                *	\param	engin is a reference to the game's Engin object.
+                *************************************************************************************/
+                virtual void HandleEvents(GU::Engin::Engin& engin, const int &deltaTime) {};
+
+
+                /*********************************************************************************//**
+                *   \brief	This method handles input such as user input and events
+                *	\param	engin is a reference to the game's Engin object.
+                *************************************************************************************/
+                virtual void Update(GU::Engin::Engin& engin, const int &deltaTime) {};
+
+
+                /*********************************************************************************//**
+                *   \brief	This method draws the current game state.
+                *	\param	engin is a reference to the game's Engin object.
+                *************************************************************************************/
+                virtual void Draw(GU::Engin::Engin& engin, const int &deltaTime) {};
+};
+
+BOOST_AUTO_TEST_CASE( Engin_Constructors )
 {
 	GU::Engin::Engin engin;
-    BOOST_CHECK( true /* test assertion */ );
+
+	//There should not be any states on the stack when 
+	BOOST_CHECK(engin.Size() == 0);
 }
+
+BOOST_AUTO_TEST_CASE( Engin_Stack_Methods )
+{
+    GU::Engin::Engin engin;
+	
+	//After pushing there should be a single state on the stack
+	engin.Push<TestState>();
+	BOOST_CHECK(engin.Size() == 1);
+
+	//After pushing for a second time there should be two states on the stack
+	engin.Push<TestState>();
+	BOOST_CHECK(engin.Size() == 2);
+
+	//After changing state there should be a single state on the stack
+	engin.ChangeState<TestState>();
+	BOOST_CHECK(engin.Size() == 1);
+
+	//After Poping a state from the stack there should be zero states
+	BOOST_CHECK(engin.Pop());	 	//We sould be able to pop a state off stack
+	BOOST_CHECK(engin.Size() == 0);
+
+	//Popping a second time should still result in zero states on the stack
+	BOOST_CHECK(engin.Pop() == false);  //We sould not be able to pop a state off the stack
+	BOOST_CHECK(engin.Size() == 0);
+
+	//After pushing a state on the stack there should be a single state on the stack
+	std::unique_ptr<TestState> test1(new TestState());
+	engin.Push(std::move(test1));
+	BOOST_CHECK(engin.Size() == 1);
+
+}
+
 

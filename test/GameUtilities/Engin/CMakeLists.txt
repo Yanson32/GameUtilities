@@ -9,9 +9,19 @@ foreach(LOOP_VAR ${SUB_DIRECTORIES})
     add_subdirectory("${LOOP_VAR}")
 endforeach()
 
-#Create tests
+
+#Create test runners
 foreach(LOOP_VAR ${FILES})
-	boost_test_add(${LOOP_VAR} "${TEST_SOURCES}" "${TEST_LIBRARIES}" "${TEST_PRIVATE_COMPILE_FEATURES}")
+	boost_test_runner(${LOOP_VAR} "${TEST_SOURCES}" "${TEST_LIBRARIES}" "${TEST_PRIVATE_COMPILE_FEATURES}" "${TEST_PUBLIC_COMPILE_FEATURES}")
 endforeach()
+
+
+set(ENGIN_TESTS 
+"Engin_Constructors"
+"Engin_Stack_Methods"
+)
+
+add_boost_test("Engin" "${ENGIN_TESTS}")
+
 
 
