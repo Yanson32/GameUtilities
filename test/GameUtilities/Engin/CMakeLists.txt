@@ -18,6 +18,7 @@ endforeach()
 
 set(ENGIN_TESTS 
 "Engin_Constructors"
+"Engin_Push"
 "Engin_Stack_Methods"
 )
 

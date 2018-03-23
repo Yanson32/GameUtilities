@@ -48,6 +48,27 @@ BOOST_AUTO_TEST_CASE( Engin_Constructors )
 	BOOST_CHECK(engin.Size() == 0);
 }
 
+BOOST_AUTO_TEST_CASE( Engin_Push )
+{
+    GU::Engin::Engin engin;
+	
+	//After pushing there should be a single state on the stack
+	engin.Push<TestState>();
+	BOOST_CHECK(engin.Size() == 1);
+
+	//After pushing for a second time there should be two states on the stack
+	engin.Push<TestState>();
+	BOOST_CHECK(engin.Size() == 2);
+
+	engin.Pop();
+	engin.Pop();
+
+	//After pushing a state on the stack there should be a single state on the stack
+	std::unique_ptr<TestState> test1(new TestState());
+	engin.Push(std::move(test1));
+	BOOST_CHECK(engin.Size() == 1);
+}
+
 BOOST_AUTO_TEST_CASE( Engin_Stack_Methods )
 {
     GU::Engin::Engin engin;
@@ -72,10 +93,7 @@ BOOST_AUTO_TEST_CASE( Engin_Stack_Methods )
 	BOOST_CHECK(engin.Pop() == false);  //We sould not be able to pop a state off the stack
 	BOOST_CHECK(engin.Size() == 0);
 
-	//After pushing a state on the stack there should be a single state on the stack
-	std::unique_ptr<TestState> test1(new TestState());
-	engin.Push(std::move(test1));
-	BOOST_CHECK(engin.Size() == 1);
+
 
 }
 
