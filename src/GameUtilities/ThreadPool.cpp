@@ -8,8 +8,4 @@ namespace GU
         //ctor
     }
 
-    ThreadPool::~ThreadPool()
-    {
-        //dtor
-    }
 }

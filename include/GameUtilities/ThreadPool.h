@@ -9,13 +9,12 @@
 namespace GU
 {
 
-    class GAMEUTILITIES_EXPORT ThreadPool
+    class GAMEUTILITIES_EXPORT ThreadPool final
     {
         public:
             ThreadPool(const int newMaxThreads = std::thread::hardware_concurrency());
             template<typename Type, typename... Args>
             std::future<Type> push(Args&&... args);
-            virtual ~ThreadPool();
         private:
             const int maxThreads;
             std::vector<std::thread> threads;
