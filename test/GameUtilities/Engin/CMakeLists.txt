@@ -19,6 +19,13 @@ endforeach()
 set(ENGIN_TESTS 
 "Engin_Constructors"
 "Engin_Push"
+"Engin_Pop"
+"Engin_ChangeState"
+"Engin_IsRunning"
+"Engin_Quit"
+"Engin_HandleEvents"
+"Engin_Update"
+"Engin_Draw"
 "Engin_Stack_Methods"
 )
 

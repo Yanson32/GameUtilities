@@ -69,6 +69,53 @@ BOOST_AUTO_TEST_CASE( Engin_Push )
 	BOOST_CHECK(engin.Size() == 1);
 }
 
+BOOST_AUTO_TEST_CASE( Engin_Pop )
+{
+
+}
+
+BOOST_AUTO_TEST_CASE( Engin_ChangeState )
+{
+
+}
+
+BOOST_AUTO_TEST_CASE( Engin_IsRunning )
+{
+
+}
+
+
+BOOST_AUTO_TEST_CASE( Engin_Quit )
+{
+
+
+}
+
+
+BOOST_AUTO_TEST_CASE( Engin_HandleEvents )
+{
+
+}
+
+
+BOOST_AUTO_TEST_CASE( Engin_Update )
+{
+
+}
+
+
+BOOST_AUTO_TEST_CASE( Engin_Draw )
+{
+
+}
+
+
+BOOST_AUTO_TEST_CASE( Engin_Size )
+{
+
+
+}
+
 BOOST_AUTO_TEST_CASE( Engin_Stack_Methods )
 {
     GU::Engin::Engin engin;
