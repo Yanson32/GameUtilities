@@ -28,6 +28,19 @@ namespace GU
                 Impl(GU::Engin::Engin &engin);
 
 
+                Impl(Impl&& param):
+                engin(param.engin),
+                _running(param._running)
+                {
+                    states = std::move(param.states);
+                    _running = param._running;
+                }
+
+                Impl& operator=(Impl&& param)
+                {
+                    states = std::move(param.states);
+                    _running = param._running;
+                }
                 /********************************************************************
                 *   @brief  Implimentation for adding another state to the stack of
                 *           states. See Engin::Push(StatePtr state);
@@ -70,7 +83,10 @@ namespace GU
                 ********************************************************************/
                 void Quit();
 
-
+                bool empty() const
+                {
+                    return states.empty();
+                }
                 /********************************************************************
                 *   @brief  This method handles all types of input.
                 *   @param  deltaTime is the time the previous frame took
@@ -120,9 +136,9 @@ namespace GU
         *           class.
         ********************************************************************/
         Engin::Impl::Impl(GU::Engin::Engin &engin):
-        engin(engin)
+        engin(engin),
+        _running(true)
         {
-
         }
 
 
@@ -279,6 +295,24 @@ namespace GU
         }
 
 
+
+        Engin::Engin(Engin&& param)
+        {
+            if(pimpl)
+                delete pimpl;
+
+            pimpl = param.pimpl;
+            param.pimpl = nullptr;
+        }
+
+
+        Engin& Engin::operator=(Engin&& param)
+        {
+            assert(pimpl != nullptr);
+            assert(param.pimpl != nullptr);
+            pimpl = param.pimpl;
+        }
+
         /*********************************************************************************//**
         *	@brief	Push a new state onto the stack.
         *   @param	state a pointer to a GameState object.
@@ -336,7 +370,11 @@ namespace GU
 			return pimpl->Quit();
         }
 
-
+        bool Engin::empty() const
+        {
+            assert(pimpl != nullptr);
+            return pimpl->empty();
+        }
         /*********************************************************************************//**
         *   @brief	This method is used to call an equivalent method in a GameState
         *           class. Which will have code for handling all kinds of input

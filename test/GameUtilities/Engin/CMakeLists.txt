@@ -1,4 +1,6 @@
-set(FILES "${CMAKE_CURRENT_SOURCE_DIR}/Engin.cpp"
+set(FILES
+"${CMAKE_CURRENT_SOURCE_DIR}/Engin.cpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/GameState.cpp"
 
 )
 
@@ -16,8 +18,10 @@ foreach(LOOP_VAR ${FILES})
 endforeach()
 
 
-set(ENGIN_TESTS 
-"Engin_Constructors"
+set(ENGIN_TESTS
+"Engin_Default_Constructors"
+"Engin_Move_Constructor"
+"Engin_Move_Assignment_operator"
 "Engin_Push"
 "Engin_Pop"
 "Engin_ChangeState"
@@ -32,4 +36,11 @@ set(ENGIN_TESTS
 add_boost_test("Engin" "${ENGIN_TESTS}")
 
 
+set(GAMESTATE_TESTS
+"GameState_Constructors"
+"GameState_HandleEvents"
+"GameState_Update"
+"GameState_Draw"
+)
+add_boost_test("GameState" "${GAMESTATE_TESTS}")
 

@@ -28,7 +28,11 @@ namespace GU
                 *************************************************************************************/
                 Engin();
 
+                Engin(const Engin& other) = delete;
+                Engin(Engin&& param);
 
+                Engin& operator=(const Engin& param) = delete;
+                Engin& operator=(Engin&& param);
                 /*********************************************************************************//**
                 *	@brief	Push a new state onto the stack
                 *   @param	state a pointer to a GameState object.
@@ -92,6 +96,7 @@ namespace GU
                 void Quit();
 
 
+                bool empty() const;
                 /*********************************************************************************//**
                 *   @brief	This method is used to call an equivalent method in a GameState
                 *           class. Which will have code for handling all kinds of input
