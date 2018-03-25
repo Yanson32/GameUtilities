@@ -64,7 +64,7 @@ BOOST_AUTO_TEST_CASE( Engin_Move_Constructor )
 
 BOOST_AUTO_TEST_CASE( Engin_Move_Assignment_operator )
 {
-    BOOST_CHECK(true);
+
 }
 
 

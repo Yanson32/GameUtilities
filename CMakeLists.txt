@@ -2,8 +2,15 @@
 cmake_minimum_required(VERSION 3.5.1)
 
 #Compile Features
-set(GU_PRIVATE_COMPILE_FEATURES "cxx_nullptr" "cxx_right_angle_brackets")
-set(GU_PUBLIC_COMPILE_FEATURES "")
+set(GU_PRIVATE_COMPILE_FEATURES "cxx_range_for" "cxx_right_angle_brackets" "cxx_auto_type")
+set(GU_PUBLIC_COMPILE_FEATURES 
+"cxx_nullptr" 
+"cxx_defaulted_functions" 
+"cxx_deleted_functions" 
+"cxx_final" 
+"cxx_noexcept"
+"cxx_override"
+)
 
 #Give the project a name
 project("GameUtilities" VERSION "0.0.0.0")
