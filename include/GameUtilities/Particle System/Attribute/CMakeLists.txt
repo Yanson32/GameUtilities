@@ -1,7 +1,12 @@
-set(FILES "${CMAKE_CURRENT_SOURCE_DIR}/Container.h"
-"${CMAKE_CURRENT_SOURCE_DIR}/Particle.h"
+set(FILES "${CMAKE_CURRENT_SOURCE_DIR}/Id.h"
+"${CMAKE_CURRENT_SOURCE_DIR}/Acceleration.h"
+"${CMAKE_CURRENT_SOURCE_DIR}/LifeSpan.h"
+"${CMAKE_CURRENT_SOURCE_DIR}/Position.h"
+"${CMAKE_CURRENT_SOURCE_DIR}/Attribute.h"
+"${CMAKE_CURRENT_SOURCE_DIR}/Velocity.h"
+"${CMAKE_CURRENT_SOURCE_DIR}/Color.h"
 )
-set(SUB_DIRECTORIES "Attribute"
+set(SUB_DIRECTORIES ""
 )
 
 #Add subdirectories

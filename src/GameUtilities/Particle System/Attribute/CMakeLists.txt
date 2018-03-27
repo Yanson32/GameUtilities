@@ -1,5 +1,5 @@
-set(FILES "")
-set(SUB_DIRECTORIES "Attribute"
+set(FILES "${CMAKE_CURRENT_SOURCE_DIR}/Attribute.cpp")
+set(SUB_DIRECTORIES ""
 )
 
 #Add subdirectories

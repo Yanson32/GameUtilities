@@ -2,7 +2,11 @@
 cmake_minimum_required(VERSION 3.5.1)
 
 #Compile Features
-set(GU_PRIVATE_COMPILE_FEATURES "cxx_range_for" "cxx_right_angle_brackets" "cxx_auto_type")
+set(GU_PRIVATE_COMPILE_FEATURES 
+"cxx_range_for" 
+"cxx_right_angle_brackets" 
+"cxx_auto_type"
+)
 set(GU_PUBLIC_COMPILE_FEATURES 
 "cxx_nullptr" 
 "cxx_defaulted_functions" 
@@ -71,7 +75,7 @@ install(FILES
 
 #Install Source Files
 install(TARGETS "${PROJECT_NAME}" DESTINATION ${CMAKE_INSTALL_PREFIX}/lib EXPORT "${PROJECT_NAME}-Exports")
-install(EXPORT "${PROJECT_NAME}-Exports" DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/${PROJECT_NAME}")
+install(EXPORT "${PROJECT_NAME}-Exports" DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/${PROJECT_NAME}"  NAMESPACE GU)
 
 include(CMakePackageConfigHelpers)
 
