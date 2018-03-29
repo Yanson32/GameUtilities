@@ -13,9 +13,9 @@ namespace GU
             {
                 public:
                     Velocity();
-                    virtual ~Velocity();
-                protected:
-                private:
+                    ~Velocity();
+                    float degree = 0;
+                    float magnitude = 0;
             };
         }
     }

@@ -19,6 +19,7 @@ set(GU_PUBLIC_COMPILE_FEATURES
 #Give the project a name
 project("GameUtilities" VERSION "0.0.0.0")
 string(TOUPPER ${PROJECT_NAME} PROJECT_NAME_UPPER)
+string(TOLOWER ${PROJECT_NAME} PROJECT_NAME_LOWER)
 
 include("${CMAKE_CURRENT_SOURCE_DIR}/cmake/Modules/Depricated.cmake")
 #Build shared library by default
@@ -63,11 +64,11 @@ include(GenerateExportHeader)
 generate_export_header("${PROJECT_NAME}")
 
 if(WIN32)
-	target_compile_definitions("${PROJECT_NAME}" PRIVATE "GameUtilities_EXPORTS")
+	target_compile_definitions("${PROJECT_NAME}" PRIVATE "${PROJECT_NAME}_EXPORTS")
 endif()
 
 install(FILES
-	"${CMAKE_CURRENT_BINARY_DIR}/gameutilities_export.h"
+	"${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME_LOWER}_export.h"
 	DESTINATION
 	"${CMAKE_INSTALL_PREFIX}/include")
 

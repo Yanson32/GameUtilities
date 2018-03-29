@@ -9,7 +9,7 @@ namespace GU
     namespace PS
     {
 
-        template <class T>
+        template <class T class U = Updater<T>()>
         class Container final
         {
             public:
