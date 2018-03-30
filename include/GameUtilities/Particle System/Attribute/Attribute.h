@@ -1,7 +1,7 @@
 #ifndef GU_ATTRIBUTE_H
 #define GU_ATTRIBUTE_H
 #include "GameUtilities/Particle System/Container.h"
-#include "GameUtilities/Particle System/Updater/Updater.h"
+
 namespace GU
 {
     namespace PS
@@ -28,19 +28,19 @@ namespace GU
             }
 
 
-			template<class T>
-			class Updater
-			{
-				public:
-					void Update();
-			};
-
-
-			template<class T>
-			void Updater<T>::Updater()
-			{
-
-			}
+//			template<class T>
+//			class Updater
+//			{
+//				public:
+//					void Update();
+//			};
+//
+//
+//			template<class T>
+//			void Updater<T>::Updater()
+//			{
+//
+//			}
         }
     }
 }

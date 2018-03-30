@@ -1,8 +1,7 @@
-set(FILES "${CMAKE_CURRENT_SOURCE_DIR}/Container.h"
-"${CMAKE_CURRENT_SOURCE_DIR}/Particle.h"
+set(FILES "${CMAKE_CURRENT_SOURCE_DIR}/Starburst.h"
+"${CMAKE_CURRENT_SOURCE_DIR}/ParticleSystem.h"
 )
-set(SUB_DIRECTORIES "Attribute"
-"Systems"
+set(SUB_DIRECTORIES ""
 )
 
 #Add subdirectories

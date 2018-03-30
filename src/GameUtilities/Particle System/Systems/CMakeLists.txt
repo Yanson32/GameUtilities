@@ -1,6 +1,8 @@
-set(FILES "")
-set(SUB_DIRECTORIES "Attribute"
-"Systems"
+set(FILES "${CMAKE_CURRENT_SOURCE_DIR}/Starburst.cpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/ParticleSystem.cpp"
+)
+
+set(SUB_DIRECTORIES ""
 )
 
 #Add subdirectories
