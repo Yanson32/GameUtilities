@@ -1,6 +1,7 @@
 set(FILES "")
 set(SUB_DIRECTORIES "Attribute"
 "Systems"
+"Emitters"
 )
 
 #Add subdirectories

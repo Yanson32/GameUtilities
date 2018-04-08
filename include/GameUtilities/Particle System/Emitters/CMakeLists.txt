@@ -1,9 +1,8 @@
-set(FILES "${CMAKE_CURRENT_SOURCE_DIR}/Container.h"
-"${CMAKE_CURRENT_SOURCE_DIR}/Particle.h"
+set(FILES "${CMAKE_CURRENT_SOURCE_DIR}/Emitter.h"
+"${CMAKE_CURRENT_SOURCE_DIR}/PointEmitter.h"
+"${CMAKE_CURRENT_SOURCE_DIR}/Line.h"
 )
-set(SUB_DIRECTORIES "Attribute"
-"Systems"
-"Emitters"
+set(SUB_DIRECTORIES ""
 )
 
 #Add subdirectories

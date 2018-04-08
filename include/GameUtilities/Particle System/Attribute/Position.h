@@ -1,7 +1,7 @@
 #ifndef GU_POSITION_H
 #define GU_POSITION_H
 #include "GameUtilities/Particle System/Attribute/Attribute.h"
-
+#include "Math/Point.h"
 
 namespace GU
 {
@@ -9,7 +9,7 @@ namespace GU
     {
         namespace AT
         {
-            class Position: public Attribute
+            class Position: public GU::PS::AT::Attribute<Math::Point>
             {
                 public:
                     Position();

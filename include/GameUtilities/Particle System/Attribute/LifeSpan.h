@@ -9,7 +9,7 @@ namespace GU
     {
         namespace AT
         {
-            class LifeSpan: public Attribute
+            class LifeSpan: public Attribute<unsigned>
             {
                 public:
                     LifeSpan();

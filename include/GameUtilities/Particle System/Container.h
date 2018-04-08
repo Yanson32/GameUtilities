@@ -16,7 +16,7 @@ namespace GU
                 Container(const std::size_t size);
                 Container(const Container&)                 = delete;
                 Container& operator = (const Container&)    = delete;
-                T operator[](const std::size_t index);
+                T& operator[](const std::size_t index);
                 std::size_t Size() const;
                 void recycle(const std::size_t index);
             private:
@@ -48,7 +48,7 @@ namespace GU
         }
 
         template <class T>
-        T Container<T>::operator[](const std::size_t index)
+        T& Container<T>::operator[](const std::size_t index)
         {
             assert(index < m_Size);
             assert(m_Container != nullptr);

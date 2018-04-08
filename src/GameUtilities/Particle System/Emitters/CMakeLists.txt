@@ -1,12 +1,8 @@
-set(FILES "${CMAKE_CURRENT_SOURCE_DIR}/ThreadPool.h"
-"${CMAKE_CURRENT_SOURCE_DIR}/RGBA.h"
+set(FILES "${CMAKE_CURRENT_SOURCE_DIR}/Emitter.cpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/PointEmitter.cpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/Line.cpp"
 )
-
-set(SUB_DIRECTORIES
-"Event"
-"Engin"
-"FrameRate"
-"Particle System"
+set(SUB_DIRECTORIES ""
 )
 
 #Add subdirectories
@@ -20,5 +16,5 @@ if(FILES)
 	target_sources(	"${PROJECT_NAME}" PRIVATE ${FILES})
 
 	#Install source files
-	install(FILES ${FILES} DESTINATION "${RELATIVE_PATH}")
+	install(FILES ${FILES} DESTINATION "${CMAKE_INSTALL_PREFIX}/${RELATIVE_PATH}")
 endif()

@@ -1,7 +1,7 @@
 #ifndef GU_VELOCITY_H
 #define GU_VELOCITY_H
 #include "GameUtilities/Particle System/Attribute/Attribute.h"
-
+#include "Math/Vector.h"
 
 namespace GU
 {
@@ -9,7 +9,7 @@ namespace GU
     {
         namespace AT
         {
-            class Velocity: public Attribute
+            class Velocity: public Attribute<Math::Vector>
             {
                 public:
                     Velocity();
