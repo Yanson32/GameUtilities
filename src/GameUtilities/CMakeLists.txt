@@ -4,7 +4,6 @@ set(FILES "${CMAKE_CURRENT_SOURCE_DIR}/ThreadPool.cpp"
 set(SUB_DIRECTORIES "Event"
 "Engin"
 "FrameRate"
-"Particle System"
 )
 
 #Add subdirectories
