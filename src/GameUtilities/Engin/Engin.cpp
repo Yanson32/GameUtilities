@@ -311,6 +311,8 @@ namespace GU
             assert(pimpl != nullptr);
             assert(param.pimpl != nullptr);
             pimpl = param.pimpl;
+
+			return *this;
         }
 
         /*********************************************************************************//**
@@ -332,7 +334,7 @@ namespace GU
         bool Engin::Pop()
         {
             assert(pimpl != nullptr);
-			pimpl->Pop();
+			return pimpl->Pop();
         }
 
 
