@@ -27,7 +27,7 @@ option(BUILD_SHARED_LIBS "True for shared libraries" TRUE)
 
 #Create our target
 add_library("${PROJECT_NAME}" "")
-
+add_library(GU::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 #add subdirectories
 add_subdirectory("include")
 add_subdirectory("src")
