@@ -1,4 +1,4 @@
-set(FILES "${CMAKE_CURRENT_SOURCE_DIR}/ThreadPool.cpp"
+set(FILES ""
 )
 
 set(SUB_DIRECTORIES "Event"
