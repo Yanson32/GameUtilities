@@ -1,11 +1,8 @@
-set(FILES "${CMAKE_CURRENT_SOURCE_DIR}/RGBA.h"
+set(FILES ""
 )
 
-set(SUB_DIRECTORIES
-"Event"
-"Engin"
-"FrameRate"
-"Collision"
+set(SUB_DIRECTORIES ""
+
 )
 
 #Add subdirectories

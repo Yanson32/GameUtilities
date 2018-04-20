@@ -1,10 +1,8 @@
 set(FILES ""
 )
 
-set(SUB_DIRECTORIES "Event"
-"Engin"
-"FrameRate"
-"Collision"
+set(SUB_DIRECTORIES ""
+
 )
 
 #Add subdirectories
