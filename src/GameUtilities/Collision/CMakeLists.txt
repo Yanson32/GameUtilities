@@ -1,4 +1,4 @@
-set(FILES ""
+set(FILES "${CMAKE_CURRENT_SOURCE_DIR}/AABB.cpp"
 )
 
 set(SUB_DIRECTORIES ""
