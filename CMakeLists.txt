@@ -2,16 +2,16 @@
 cmake_minimum_required(VERSION 3.5.1)
 
 #Compile Features
-set(GU_PRIVATE_COMPILE_FEATURES 
-"cxx_range_for" 
-"cxx_right_angle_brackets" 
+set(GU_PRIVATE_COMPILE_FEATURES
+"cxx_range_for"
+"cxx_right_angle_brackets"
 "cxx_auto_type"
 )
-set(GU_PUBLIC_COMPILE_FEATURES 
-"cxx_nullptr" 
-"cxx_defaulted_functions" 
-"cxx_deleted_functions" 
-"cxx_final" 
+set(GU_PUBLIC_COMPILE_FEATURES
+"cxx_nullptr"
+"cxx_defaulted_functions"
+"cxx_deleted_functions"
+"cxx_final"
 "cxx_noexcept"
 "cxx_override"
 )
@@ -21,7 +21,7 @@ project("GameUtilities" VERSION "0.0.0.0")
 string(TOUPPER ${PROJECT_NAME} PROJECT_NAME_UPPER)
 string(TOLOWER ${PROJECT_NAME} PROJECT_NAME_LOWER)
 
-include("${CMAKE_CURRENT_SOURCE_DIR}/cmake/Modules/Depricated.cmake")
+include("${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/Depricated.cmake")
 #Build shared library by default
 option(BUILD_SHARED_LIBS "True for shared libraries" TRUE)
 
@@ -42,8 +42,8 @@ set_target_properties( "${PROJECT_NAME}"
 )
 
 #Define compiler features
-target_compile_features("${PROJECT_NAME}" 
-			PRIVATE 
+target_compile_features("${PROJECT_NAME}"
+			PRIVATE
 				${GU_PRIVATE_COMPILE_FEATURES}
 			PUBLIC
 				${GU_PUBLIC_COMPILE_FEATURES}
@@ -82,17 +82,17 @@ include(CMakePackageConfigHelpers)
 
 #Create package version file
 write_basic_package_version_file(	"${CMAKE_CURRENT_BINARY_DIR}/lib/cmake/${PROJECT_NAME}/${PROJECT_NAME}ConfigVersion.cmake"
-  									VERSION 
+  									VERSION
 										${${PROJECT_NAME}_VERSION}
-  									COMPATIBILITY 
+  									COMPATIBILITY
 										AnyNewerVersion
 )
 
 #Create package config file
 
-configure_package_config_file(	"${CMAKE_CURRENT_SOURCE_DIR}/cmake/${PROJECT_NAME}Config.cmake.in" 
+configure_package_config_file(	"${CMAKE_CURRENT_SOURCE_DIR}/cmake/${PROJECT_NAME}Config.cmake.in"
 								"${CMAKE_CURRENT_BINARY_DIR}/lib/cmake/${PROJECT_NAME}/${PROJECT_NAME}Config.cmake"
-                              	INSTALL_DESTINATION 
+                              	INSTALL_DESTINATION
 									lib/cmake/${PROJECT_NAME}
 )
 
@@ -100,10 +100,10 @@ configure_package_config_file(	"${CMAKE_CURRENT_SOURCE_DIR}/cmake/${PROJECT_NAME
 
 
 install(
-	FILES 	
-	"${CMAKE_CURRENT_BINARY_DIR}/lib/cmake/${PROJECT_NAME}/${PROJECT_NAME}Config.cmake" 
+	FILES
+	"${CMAKE_CURRENT_BINARY_DIR}/lib/cmake/${PROJECT_NAME}/${PROJECT_NAME}Config.cmake"
 	"${CMAKE_CURRENT_BINARY_DIR}/lib/cmake/${PROJECT_NAME}/${PROJECT_NAME}ConfigVersion.cmake"
-    DESTINATION 
+    DESTINATION
 	"${CMAKE_INSTALL_PREFIX}/lib/cmake/${PROJECT_NAME}"
 )
 
@@ -119,8 +119,8 @@ export(TARGETS "${PROJECT_NAME}" FILE "${CMAKE_CURRENT_BINARY_DIR}/lib/cmake/${P
 option(BUILD_TESTING "Set to TRUE if you want to build unit tests" FALSE)
 
 if(BUILD_TESTING)
-	
-	include("${CMAKE_CURRENT_SOURCE_DIR}/cmake/Modules/BoostTestHelpers.cmake")
+
+	include("${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/BoostTestHelpers.cmake")
 
 	#Find boost
 	find_package(Boost 1.60.0 COMPONENTS system unit_test_framework REQUIRED)
@@ -132,16 +132,32 @@ if(BUILD_TESTING)
 	set(TEST_LIBRARIES "${Boost_LIBRARIES}")
 	list(APPEND TEST_LIBRARIES "GameUtilities")
 	set(TEST_PRIVATE_COMPILE_FEATURES ${GU_PRIVATE_COMPILE_FEATURES})
-	
+
 	add_subdirectory("test")
 	add_definitions("-DBUILD_TESTING")
 endif()
 
 
 #Make the BUILD_TESTING variable show up in the cmake gui
-option(GAMEUTILITIES_BUILD_DOC "Set to TRUE if you want to build library documentation" FALSE)
-if(GAMEUTILITIES_BUILD_DOC)
+option(GU_BUILD_DOC "Set to TRUE if you want to build library documentation" FALSE)
+if(GU_BUILD_DOC)
 	add_subdirectory("doc")
+endif()
+
+
+#Build examples
+option(GU_BUILD_EXAMPLES "Set to TRUE if you want to build examples" FALSE)
+if(GU_BUILD_EXAMPLES)
+    set(GU_EXAMPLE_INCLUDES "${Boost_INCLUDE_DIRS}")
+	list(APPEND GU_EXAMPLE_INCLUDES "${CMAKE_CURRENT_SOURCE_DIR}/include")
+	list(APPEND GU_EXAMPLE_INCLUDES "${SFML_INCLUDE_DIR}")
+	set(GU_EXAMPLE_LIBRARIES "${Boost_LIBRARIES}")
+	list(APPEND GU_EXAMPLE_LIBRARIES "GameUtilities")
+	list(APPEND GU_EXAMPLE_LIBRARIES "${SFML_LIBRARIES}")
+	set(GU_EXAMPLES_PRIVATE_COMPILE_FEATURES ${GU_PRIVATE_COMPILE_FEATURES})
+	set(GU_EXAMPLES_PUBLIC_COMPILE_FEATURES ${GU_PUBLIC_COMPILE_FEATURES})
+
+    add_subdirectory("examples")
 endif()
 
 include(InstallRequiredSystemLibraries)
