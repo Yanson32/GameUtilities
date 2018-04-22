@@ -8,7 +8,7 @@
 *
 *	@section build_sec CMake
 *	The GameUtilities library is a CMake project. The project has been tested
-*	on Windows, Linux, Mac, and Unix.
+*	on Windows, Linux.
 *	
 *
 *	@subsection step1 Step 1: Opening the box
