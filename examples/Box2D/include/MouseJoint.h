@@ -6,10 +6,13 @@
 class MouseJoint: public sf::Drawable
 {
 	public:
-		MouseJoint(b2MouseJoint* mouseJoint);
+		MouseJoint(b2MouseJoint* joint, b2World* world);
 		virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+		void setMousePos(sf::Vector2f &mousePos);
+		virtual ~MouseJoint();
     private:
         b2MouseJoint* m_MouseJoint = nullptr;
+        b2World* m_World = nullptr;
 };
 
 

@@ -13,14 +13,14 @@ const std::size_t WALL_THICKNESS = 10;
 TestState::TestState(GU::Engin::Engin& engin):
 m_Window(sf::VideoMode({WINDOW_WIDTH, WINDOW_HEIGHT}), "Box2D Example"),
 m_Engin(engin),
-m_World(b2Vec2(0, toMeters(9.8))),
+m_World(b2Vec2(0, (-9.8))),
 m_DebugDraw(m_World, 40)
 {
     //Create ground
     b2BodyDef groundBodyDef;
     groundBodyDef.type = b2_staticBody;
     groundBodyDef.position.Set(toMeters(WINDOW_WIDTH / 2), toMeters(WINDOW_HEIGHT));
-    b2Body* groundBody = m_World.CreateBody(&groundBodyDef);
+    groundBody = m_World.CreateBody(&groundBodyDef);
     assert(groundBody);
 
     b2PolygonShape groundShape;
@@ -50,13 +50,34 @@ m_DebugDraw(m_World, 40)
     dynamicFixtureDef.shape = &dynamicShape;
     dynamicFixtureDef.density = 1;
     dynamicFixtureDef.restitution = 0;
-    b2Fixture* dynamicFixture = groundBody->CreateFixture(&dynamicFixtureDef);
+    b2Fixture* dynamicFixture = dynamicBody->CreateFixture(&dynamicFixtureDef);
     assert(dynamicFixture);
 
     m_Objects.emplace_back<ObjectBase>(dynamicBody);
     m_Objects.back().setFillColor(sf::Color::Red);
 
-    m_DebugDraw.SetFlags(b2Draw::e_shapeBit || b2Draw::e_centerOfMassBit);
+    //Create dynamic circle
+    b2BodyDef circleBodyDef;
+    circleBodyDef.type = b2BodyType::b2_dynamicBody;
+    circleBodyDef.position.Set(toMeters(200), toMeters(100));
+    b2Body* circleDynamicBody = m_World.CreateBody(&circleBodyDef);
+    assert(circleDynamicBody);
+    assert(circleDynamicBody->GetType() == b2BodyType::b2_dynamicBody);
+
+    b2CircleShape dynamicCircleShape;
+    dynamicCircleShape.m_radius = toMeters(30);
+
+    b2FixtureDef dynamicCircleFixtureDef;
+    dynamicCircleFixtureDef.shape = &dynamicCircleShape;
+    dynamicCircleFixtureDef.density = 1;
+    dynamicCircleFixtureDef.restitution = 0;
+    b2Fixture* dynamicCircleFixture = circleDynamicBody->CreateFixture(&dynamicCircleFixtureDef);
+    assert(dynamicCircleFixture);
+
+    m_Objects.emplace_back<ObjectBase>(circleDynamicBody);
+    m_Objects.back().setFillColor(sf::Color::Red);
+
+    m_DebugDraw.SetFlags(b2Draw::e_shapeBit || b2Draw::e_centerOfMassBit || b2Draw::e_jointBit || b2Draw::e_aabbBit || b2Draw::e_pairBit);
     m_World.SetDebugDraw(&m_DebugDraw);
 }
 
@@ -104,7 +125,7 @@ void TestState::Update(GU::Engin::Engin& engin, const int &deltaTime)
     if(!IsPaused())
     {
         //Do game logic
-        m_World.Step(deltaTime, m_VelocityIterations, m_PositionIterations);
+        m_World.Step(1/20, 8, 3);
         for(auto& element : m_Objects)
             element.update();
 
@@ -123,10 +144,11 @@ void TestState::Update(GU::Engin::Engin& engin, const int &deltaTime)
 void TestState::Draw(GU::Engin::Engin& engin, const int &deltaTime)
 {
     m_Window.clear();
+    m_Window.draw(m_DebugDraw);
+
     for(auto& element: m_Objects)
         m_Window.draw(element);
 
-    m_Window.draw(m_DebugDraw);
     m_Window.display();
 }
 
@@ -148,17 +170,36 @@ void TestState::handleSFEvent(GU::Engin::Engin& engin, sf::Event event)
                 box.upperBound.Set(mPos.x +  0.000001, mPos.y + 0.000001);
                 MouseJointCallback callback;
                 m_World.QueryAABB(&callback, box);
-                if(callback.m_Fixture)
+                if(callback.m_Fixture && callback.m_Fixture->GetBody()->GetType() == b2BodyType::b2_dynamicBody)
                 {
                     if(m_MouseJoint == nullptr)
                     {
-                        //b2MouseJointDef jointDef;
-                        //m_MouseJoint = new MouseJoint(m_World.CreateJoint(&jointDef));
+                        b2MouseJointDef jointDef;
+                        jointDef.bodyA = groundBody;
+                        jointDef.bodyB = callback.m_Fixture->GetBody();
+                        jointDef.target = mPos;
+                        b2MouseJoint* joint = dynamic_cast<b2MouseJoint*>(m_World.CreateJoint(&jointDef));
+
+                        if(joint)
+                            m_MouseJoint = new MouseJoint(joint, &m_World);
                     }
-                    std::cout << "fixture is not null" << std::endl;
                 }
             }
-            std::cout << "left mouse clicked " << std::endl;
+        break;
+        case sf::Event::MouseMoved:
+            if(m_MouseJoint)
+            {
+                sf::Vector2f mousePos = getMousePosition(m_Window);
+                m_MouseJoint->setMousePos(mousePos);
+            }
+        break;
+        case sf::Event::MouseButtonReleased:
+            if(m_MouseJoint)
+            {
+                delete m_MouseJoint;
+                m_MouseJoint = nullptr;
+            }
+
         break;
     }
 }

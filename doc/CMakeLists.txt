@@ -1,8 +1,8 @@
 
 find_package(Doxygen REQUIRED)
 
-#set(DOXYGEN_INPUT_DIR ${PROJECT_SOURCE_DIR})
-#set(DOXYGEN_OUTPUT_DIR ${PROJECT_BINARY_DIR}/doc)
+set(DOXYGEN_INPUT_DIR "${${PROJECT_NAME}_SOURCE_DIR}/include ${CMAKE_CURRENT_SOURCE_DIR}/MainPage.h")
+set(DOXYGEN_OUTPUT_DIR ${PROJECT_BINARY_DIR}/doc)
 set(DOXYGEN_RECURSIVE true)
 
 configure_file("${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in" "${CMAKE_CURRENT_BINARY_DIR}/Doxyfile")
@@ -13,4 +13,4 @@ add_custom_target(doc ALL
                   COMMENT "Generating API documentation with Doxygen"
                   VERBATIM)
 
-
+file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/MainPage.h" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}")

@@ -47,12 +47,13 @@ class TestState: public GU::Engin::GameState
     b2World m_World;
     DebugDraw m_DebugDraw;
     MouseJoint *m_MouseJoint = nullptr;
-    int32 m_VelocityIterations = 4;
-    int32 m_PositionIterations = 10;
+    int32 m_VelocityIterations = 8;
+    int32 m_PositionIterations = 3;
     GU::Engin::Engin &m_Engin;
     sf::RenderWindow m_Window;
     std::vector<ObjectBase> m_Objects;
     b2Body* dynamicBody = nullptr;
+    b2Body* groundBody = nullptr;
 
 };
 #endif
