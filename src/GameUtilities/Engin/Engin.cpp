@@ -92,7 +92,7 @@ namespace GU
                 *   @param  deltaTime is the time the previous frame took
                 *           See Engin::HendleEvents
                 ********************************************************************/
-                void HandleEvents(const int &deltaTime);
+                void HandleEvents(const float &deltaTime);
 
 
                 /********************************************************************
@@ -100,7 +100,7 @@ namespace GU
                 *   @param  deltaTime is the time the previous frame took
                 *           See Engin::Update
                 ********************************************************************/
-                void Update(const int &deltaTime);
+                void Update(const float &deltaTime);
 
 
                 /********************************************************************
@@ -108,7 +108,7 @@ namespace GU
                 *   @param  deltaTime is the time the previous frame took
                 *           See Engin::Draw
                 ********************************************************************/
-                void Draw(const int &deltaTime);
+                void Draw(const float &deltaTime);
 
                 int Size() const
                 {
@@ -239,7 +239,7 @@ namespace GU
         *   @param  deltaTime is the time the previous frame took
         *           See Engin::HendleEvents
         ********************************************************************/
-		void Engin::Impl::HandleEvents(const int &deltaTime)
+		void Engin::Impl::HandleEvents(const float &deltaTime)
 		{
 			assert(!states.empty());
 
@@ -253,7 +253,7 @@ namespace GU
         *   @param  deltaTime is the time the previous frame took
         *           See Engin::Update
         ********************************************************************/
-		void Engin::Impl::Update(const int &deltaTime)
+		void Engin::Impl::Update(const float &deltaTime)
 		{
 			assert(!states.empty());
 
@@ -267,7 +267,7 @@ namespace GU
         *   @param  deltaTime is the time the previous frame took
         *           See Engin::Draw
         ********************************************************************/
-		void Engin::Impl::Draw(const int &deltaTime)
+		void Engin::Impl::Draw(const float &deltaTime)
 		{
 			assert(!states.empty());
 
@@ -383,7 +383,7 @@ namespace GU
         *           include events and user input.
         *   @param  deltaTime is the time the previous frame took
         *************************************************************************************/
-        void Engin::HandleEvents(const int &deltaTime)
+        void Engin::HandleEvents(const float &deltaTime)
         {
             assert(pimpl != nullptr);
 			pimpl->HandleEvents(deltaTime);
@@ -395,7 +395,7 @@ namespace GU
         *            class. Which will have code for handling game logic.
         *   @param  deltaTime is the time the previous frame took
         *************************************************************************************/
-        void Engin::Update(const int &deltaTime)
+        void Engin::Update(const float &deltaTime)
         {
             assert(pimpl != nullptr);
 			pimpl->Update(deltaTime);
@@ -410,7 +410,7 @@ namespace GU
         *   @param  StatePtr a pointer to a GameState object.
         *   @param  deltaTime is the time the previous frame took
         *************************************************************************************/
-        void Engin::Draw(const int &deltaTime)
+        void Engin::Draw(const float &deltaTime)
         {
             assert(pimpl != nullptr);
 			pimpl->Draw(deltaTime);

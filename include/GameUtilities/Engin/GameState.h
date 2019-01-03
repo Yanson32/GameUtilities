@@ -42,21 +42,21 @@ namespace GU
                 *   \brief	This method handles input such as user input and events
                 *	\param	engin is a reference to the game's Engin object.
                 *************************************************************************************/
-                virtual void HandleEvents(Engin& engin, const int &deltaTime) = 0;
+                virtual void HandleEvents(Engin& engin, const float &deltaTime) = 0;
 
 
                 /*********************************************************************************//**
                 *   \brief	This method handles input such as user input and events
                 *	\param	engin is a reference to the game's Engin object.
                 *************************************************************************************/
-                virtual void Update(Engin& engin, const int &deltaTime) = 0;
+                virtual void Update(Engin& engin, const float &deltaTime) = 0;
 
 
                 /*********************************************************************************//**
                 *   \brief	This method draws the current game state.
                 *	\param	engin is a reference to the game's Engin object.
                 *************************************************************************************/
-                virtual void Draw(Engin& engin, const int &deltaTime) = 0;
+                virtual void Draw(Engin& engin, const float &deltaTime) = 0;
 
 
                 /*********************************************************************************//**

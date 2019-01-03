@@ -103,7 +103,7 @@ namespace GU
                 *           include events and user input.
                 *   @param  deltaTime is the time the previous frame took
                 *************************************************************************************/
-                void HandleEvents(const int &deltaTime);
+                void HandleEvents(const float &deltaTime);
 
 
                 /*********************************************************************************//**
@@ -111,7 +111,7 @@ namespace GU
                 *            class. Which will have code for handling game logic.
                 *   @param  deltaTime is the time the previous frame took
                 *************************************************************************************/
-                void Update(const int &deltaTime);
+                void Update(const float &deltaTime);
 
 
                 /*********************************************************************************//**
@@ -122,7 +122,7 @@ namespace GU
                 *   @param  StatePtr a pointer to a GameState object.
                 *   @param  deltaTime is the time the previous frame took
                 *************************************************************************************/
-                void Draw(const int &deltaTime);
+                void Draw(const float &deltaTime);
 
                 int Size() const;
                 /*********************************************************************************//**
