@@ -16,6 +16,16 @@ set(GU_PUBLIC_COMPILE_FEATURES
 "cxx_override"
 )
 
+
+#make sure we are using a single configuration generator
+if(CMAKE_BUILD_TYPE)
+    #set CMAKE_BUILD_TYPE as a dropdown list in cmake gui
+    set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Release" "Debug" "RelWithDebInfo" "MinRizeRel")
+else()
+    #set default value for CMAKE_BUILD_TYPE in multi-configuration generators.
+    set(CMAKE_BUILD_TYPE CACHE STRING "Release")
+endif()
+
 #Give the project a name
 project("GameUtilities" VERSION "0.0.0.0")
 string(TOUPPER ${PROJECT_NAME} PROJECT_NAME_UPPER)
