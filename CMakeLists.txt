@@ -23,7 +23,7 @@ if(CMAKE_BUILD_TYPE)
     set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Release" "Debug" "RelWithDebInfo" "MinRizeRel")
 else()
     #set default value for CMAKE_BUILD_TYPE in multi-configuration generators.
-    set(CMAKE_BUILD_TYPE CACHE STRING "Release")
+    set(CMAKE_BUILD_TYPE CACHE STRING "Build configuration" "Release")
 endif()
 
 #Give the project a name
