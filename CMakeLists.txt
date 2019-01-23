@@ -16,14 +16,33 @@ set(GU_PUBLIC_COMPILE_FEATURES
 "cxx_override"
 )
 
+#determine if we are using a multi config generator
+set(IS_MULTI_CONFIG_GENERATOR False)
+if(CMAKE_CONFIGURATION_TYPES)
+	set(IS_MULTI_CONFIG_GENERATOR True)
+	
+	#cmake version 3.9 or higher
+	#get_property(IS_MULTI_CONFIG_GENERATOR GLOBAL PROPERTY GENERATOR_IS_MULTI_CONFIG)
+endif()
 
-#make sure we are using a single configuration generator
-if(CMAKE_BUILD_TYPE)
-    #set CMAKE_BUILD_TYPE as a dropdown list in cmake gui
-    set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Release" "Debug" "RelWithDebInfo" "MinRizeRel")
-else()
-    #set default value for CMAKE_BUILD_TYPE in multi-configuration generators.
-    set(CMAKE_BUILD_TYPE CACHE STRING "Build configuration" "Release")
+#set default build type
+if(NOT IS_MULTI_CONFIG_GENERATOR)
+	if(CMAKE_BUILD_TYPE STREQUAL "")
+		set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Select build type [${VALID_BUILD_TYPES}]" FORCE)
+	endif()
+endif()
+
+#set dropdown list in cmake gui
+if(NOT IS_MULTI_CONFIG_GENERATOR)
+	set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS ${VALID_BUILD_TYPES})
+endif()
+
+#Make sure the build type is valid
+if(NOT IS_MULTI_CONFIG_GENERATOR)
+	list(FIND VALID_BUILD_TYPES "${CMAKE_BUILD_TYPE}" INDEX)
+	if(${INDEX} MATCHES -1)
+		message(FATAL_ERROR "Invalid build type <${CMAKE_BUILD_TYPE}>. Valid types are [${VALID_BUILD_TYPES}]")
+	endif()
 endif()
 
 #Give the project a name
@@ -38,6 +57,7 @@ option(BUILD_SHARED_LIBS "True for shared libraries" TRUE)
 #Create our target
 add_library("${PROJECT_NAME}" "")
 add_library(GU::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
+
 #add subdirectories
 add_subdirectory("include")
 add_subdirectory("src")
@@ -77,6 +97,7 @@ if(WIN32)
 	target_compile_definitions("${PROJECT_NAME}" PRIVATE "${PROJECT_NAME}_EXPORTS")
 endif()
 
+#install export file
 install(FILES
 	"${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME_LOWER}_export.h"
 	DESTINATION
