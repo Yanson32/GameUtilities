@@ -16,6 +16,15 @@ set(GU_PUBLIC_COMPILE_FEATURES
 "cxx_override"
 )
 
+set(CMAKE_ARCHIVE_OUPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/lib")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/lib")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
+set(VALID_BUILD_TYPES "Release" "Debug" "MinSizeRel" "RelWithDebInfo")
+option(BUILD_SHARED_LIBS "True when building shared libraries" True)
+
+#Give the project a name
+project("GameUtilities" VERSION "0.0.0.0")
+
 #determine if we are using a multi config generator
 set(IS_MULTI_CONFIG_GENERATOR False)
 if(CMAKE_CONFIGURATION_TYPES)
@@ -45,8 +54,11 @@ if(NOT IS_MULTI_CONFIG_GENERATOR)
 	endif()
 endif()
 
-#Give the project a name
-project("GameUtilities" VERSION "0.0.0.0")
+#create a postfix for static libraries
+if(NOT BUILD_SHARED_LIBS)
+	set(STATIC_NAME_POSTFIX "-s")
+endif()
+
 string(TOUPPER ${PROJECT_NAME} PROJECT_NAME_UPPER)
 string(TOLOWER ${PROJECT_NAME} PROJECT_NAME_LOWER)
 
@@ -57,6 +69,11 @@ option(BUILD_SHARED_LIBS "True for shared libraries" TRUE)
 #Create our target
 add_library("${PROJECT_NAME}" "")
 add_library(GU::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
+
+set_target_properties("${PROJECT_NAME}" PROPERTIES
+						DEBUG_POSTFIX "-d"
+						OUTPUT_NAME "${PROJECT_NAME}${STATIC_NAME_POSTFIX}"
+)
 
 #add subdirectories
 add_subdirectory("include")
