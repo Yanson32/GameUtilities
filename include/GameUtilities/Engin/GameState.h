@@ -76,7 +76,7 @@ namespace GU
                 /*********************************************************************************//**
                 *   \brief	Destructor
                 *************************************************************************************/
-                virtual ~GameState();
+                //virtual ~GameState();
             private:
                 ///true when the game is paused and false otherwise
                 bool paused = false;

@@ -16,11 +16,12 @@ set(GU_PUBLIC_COMPILE_FEATURES
 "cxx_override"
 )
 
-set(CMAKE_ARCHIVE_OUPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/lib")
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/lib")
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
+set(CMAKE_ARCHIVE_OUPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/lib")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/lib")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/bin")
 set(VALID_BUILD_TYPES "Release" "Debug" "MinSizeRel" "RelWithDebInfo")
 option(BUILD_SHARED_LIBS "True when building shared libraries" True)
+set(GU_TARGETS "GameUtilities" "Event")
 
 #Give the project a name
 project("GameUtilities" VERSION "0.0.0.0")
@@ -29,9 +30,6 @@ project("GameUtilities" VERSION "0.0.0.0")
 set(IS_MULTI_CONFIG_GENERATOR False)
 if(CMAKE_CONFIGURATION_TYPES)
 	set(IS_MULTI_CONFIG_GENERATOR True)
-	
-	#cmake version 3.9 or higher
-	#get_property(IS_MULTI_CONFIG_GENERATOR GLOBAL PROPERTY GENERATOR_IS_MULTI_CONFIG)
 endif()
 
 #set default build type
@@ -59,34 +57,74 @@ if(NOT BUILD_SHARED_LIBS)
 	set(STATIC_NAME_POSTFIX "-s")
 endif()
 
-string(TOUPPER ${PROJECT_NAME} PROJECT_NAME_UPPER)
-string(TOLOWER ${PROJECT_NAME} PROJECT_NAME_LOWER)
-
 include("${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/Depricated.cmake")
+
 #Build shared library by default
 option(BUILD_SHARED_LIBS "True for shared libraries" TRUE)
 
-#Create our target
-add_library("${PROJECT_NAME}" "")
-add_library(GU::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
-
-set_target_properties("${PROJECT_NAME}" PROPERTIES
+#Create targets
+foreach(VAR ${GU_TARGETS})
+	
+	string(TOLOWER "${VAR}" LOWERCASE_TARGET_NAME)
+	add_library("${VAR}" "")
+	
+	#set targets output name
+	set_target_properties("${VAR}" PROPERTIES
 						DEBUG_POSTFIX "-d"
-						OUTPUT_NAME "${PROJECT_NAME}${STATIC_NAME_POSTFIX}"
-)
+						OUTPUT_NAME "${VAR}${STATIC_NAME_POSTFIX}"
+	)
+
+	#Add includes to target
+	target_include_directories("${VAR}" PUBLIC
+	  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+	  $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
+	  $<INSTALL_INTERFACE:include>
+		)
+		
+		
+	#definition is necessary on windows for export header
+	if(WIN32)
+		target_compile_definitions("${VAR}" PRIVATE "${PROJECT_NAME}_EXPORTS")
+	endif()
+
+	#install targets
+	if("${VAR}" STREQUAL "Event")
+		install(TARGETS 
+				"${VAR}" 
+			DESTINATION 
+				${CMAKE_INSTALL_PREFIX}/lib 
+			EXPORT 
+				"${PROJECT_NAME}-Exports" 
+			INCLUDES DESTINATION 
+				"include"
+			NAMESPACE "GU::"
+			
+			COMPONENT
+				"gu-${LOWERCASE_TARGET_NAME}"
+		)
+	endif()
+	
+	#install export file
+	install(FILES
+			"${CMAKE_CURRENT_BINARY_DIR}/${LOWERCASE_TARGET_NAME}_export.h"
+		DESTINATION
+			"${CMAKE_INSTALL_PREFIX}/include"
+		COMPONENT
+			"gu-${LOWERCASE_TARGET_NAME}"
+	)
+	
+endforeach()
+
+#Export package to the user package registry
+export(PACKAGE "${PROJECT_NAME}")
+	
+include(GenerateExportHeader)
+generate_export_header("${PROJECT_NAME}")
 
 #add subdirectories
 add_subdirectory("include")
 add_subdirectory("src")
 
-
-#Change the library output path
-set_target_properties( "${PROJECT_NAME}"
-    PROPERTIES
-    ARCHIVE_OUTPUT_DIRECTORY lib
-    LIBRARY_OUTPUT_DIRECTORY lib
-    RUNTIME_OUTPUT_DIRECTORY bin
-)
 
 #Define compiler features
 target_compile_features("${PROJECT_NAME}"
@@ -96,35 +134,20 @@ target_compile_features("${PROJECT_NAME}"
 				${GU_PUBLIC_COMPILE_FEATURES}
 			)
 
-#Add includes to target
-target_include_directories("${PROJECT_NAME}" PUBLIC
-  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-  $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
-  $<INSTALL_INTERFACE:include>
-	)
+target_compile_features("Event"
+			PRIVATE
+				${GU_PRIVATE_COMPILE_FEATURES}
+			PUBLIC
+				${GU_PUBLIC_COMPILE_FEATURES}
+			)
 
 
 
+#Export to the install tree
+install(EXPORT "${PROJECT_NAME}-Exports" DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/${PROJECT_NAME}"  NAMESPACE "GU::")
 
-#Create export header for GameUtilities
-include(GenerateExportHeader)
-generate_export_header("${PROJECT_NAME}")
-
-if(WIN32)
-	target_compile_definitions("${PROJECT_NAME}" PRIVATE "${PROJECT_NAME}_EXPORTS")
-endif()
-
-#install export file
-install(FILES
-	"${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME_LOWER}_export.h"
-	DESTINATION
-	"${CMAKE_INSTALL_PREFIX}/include")
-
-
-
-#Install Source Files
-install(TARGETS "${PROJECT_NAME}" DESTINATION ${CMAKE_INSTALL_PREFIX}/lib EXPORT "${PROJECT_NAME}-Exports" INCLUDES DESTINATION "include")
-install(EXPORT "${PROJECT_NAME}-Exports" DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/${PROJECT_NAME}"  NAMESPACE GU)
+#Export targets to the build tree
+export(TARGETS ${GU_TARGETS} FILE "${CMAKE_CURRENT_BINARY_DIR}/lib/cmake/${PROJECT_NAME}/${PROJECT_NAME}-Exports.cmake" NAMESPACE "GU::")
 
 include(CMakePackageConfigHelpers)
 
@@ -154,14 +177,6 @@ install(
     DESTINATION
 	"${CMAKE_INSTALL_PREFIX}/lib/cmake/${PROJECT_NAME}"
 )
-
-
-#Export package to the user package registry
-export(PACKAGE "${PROJECT_NAME}")
-
-#Export targets to the build tree
-export(TARGETS "${PROJECT_NAME}" FILE "${CMAKE_CURRENT_BINARY_DIR}/lib/cmake/${PROJECT_NAME}/${PROJECT_NAME}-Exports.cmake")
-
 
 #Make the BUILD_TESTING variable show up in the cmake gui
 option(BUILD_TESTING "Set to TRUE if you want to build unit tests" FALSE)
