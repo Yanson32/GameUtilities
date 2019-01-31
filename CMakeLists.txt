@@ -21,7 +21,7 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/lib")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/bin")
 set(VALID_BUILD_TYPES "Release" "Debug" "MinSizeRel" "RelWithDebInfo")
 option(BUILD_SHARED_LIBS "True when building shared libraries" True)
-set(GU_TARGETS "GameUtilities" "Event")
+set(GU_TARGETS "GameUtilities" "Event" "Engin")
 
 #Give the project a name
 project("GameUtilities" VERSION "0.0.0.0")
@@ -64,10 +64,10 @@ option(BUILD_SHARED_LIBS "True for shared libraries" TRUE)
 
 #Create targets
 foreach(VAR ${GU_TARGETS})
-	
+
 	string(TOLOWER "${VAR}" LOWERCASE_TARGET_NAME)
 	add_library("${VAR}" "")
-	
+
 	#set targets output name
 	set_target_properties("${VAR}" PROPERTIES
 						DEBUG_POSTFIX "-d"
@@ -80,8 +80,8 @@ foreach(VAR ${GU_TARGETS})
 	  $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
 	  $<INSTALL_INTERFACE:include>
 		)
-		
-		
+
+
 	#definition is necessary on windows for export header
 	if(WIN32)
 		target_compile_definitions("${VAR}" PRIVATE "${PROJECT_NAME}_EXPORTS")
@@ -89,21 +89,21 @@ foreach(VAR ${GU_TARGETS})
 
 	#install targets
 	if("${VAR}" STREQUAL "Event")
-		install(TARGETS 
-				"${VAR}" 
-			DESTINATION 
-				${CMAKE_INSTALL_PREFIX}/lib 
-			EXPORT 
-				"${PROJECT_NAME}-Exports" 
-			INCLUDES DESTINATION 
+		install(TARGETS
+				"${VAR}"
+			DESTINATION
+				${CMAKE_INSTALL_PREFIX}/lib
+			EXPORT
+				"${PROJECT_NAME}-Exports"
+			INCLUDES DESTINATION
 				"include"
 			NAMESPACE "GU::"
-			
+
 			COMPONENT
 				"gu-${LOWERCASE_TARGET_NAME}"
 		)
 	endif()
-	
+
 	#install export file
 	install(FILES
 			"${CMAKE_CURRENT_BINARY_DIR}/${LOWERCASE_TARGET_NAME}_export.h"
@@ -112,12 +112,12 @@ foreach(VAR ${GU_TARGETS})
 		COMPONENT
 			"gu-${LOWERCASE_TARGET_NAME}"
 	)
-	
+
 endforeach()
 
 #Export package to the user package registry
 export(PACKAGE "${PROJECT_NAME}")
-	
+
 include(GenerateExportHeader)
 generate_export_header("${PROJECT_NAME}")
 
@@ -141,7 +141,13 @@ target_compile_features("Event"
 				${GU_PUBLIC_COMPILE_FEATURES}
 			)
 
-
+#Define compiler features
+target_compile_features("Engin"
+			PRIVATE
+				${GU_PRIVATE_COMPILE_FEATURES}
+			PUBLIC
+				${GU_PUBLIC_COMPILE_FEATURES}
+			)
 
 #Export to the install tree
 install(EXPORT "${PROJECT_NAME}-Exports" DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/${PROJECT_NAME}"  NAMESPACE "GU::")
