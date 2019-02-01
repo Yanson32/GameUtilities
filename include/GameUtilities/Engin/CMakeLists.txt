@@ -16,5 +16,5 @@ if(FILES)
 
 	message("Relative path ${RELATIVE_PATH}")
 	#Install source files
-	install(FILES ${FILES} DESTINATION "${CMAKE_INSTALL_PREFIX}/${RELATIVE_PATH}" COMPONENT "gu-engin")
+	install(FILES ${FILES} DESTINATION "${CMAKE_INSTALL_PREFIX}/${RELATIVE_PATH}" COMPONENT "libs")
 endif()

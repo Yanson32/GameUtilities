@@ -65,7 +65,6 @@ option(BUILD_SHARED_LIBS "True for shared libraries" TRUE)
 #Create targets
 foreach(VAR ${GU_TARGETS})
 
-	string(TOLOWER "${VAR}" LOWERCASE_TARGET_NAME)
 	add_library("${VAR}" "")
 
 	#set targets output name
@@ -87,39 +86,23 @@ foreach(VAR ${GU_TARGETS})
 		target_compile_definitions("${VAR}" PRIVATE "${PROJECT_NAME}_EXPORTS")
 	endif()
 
-	#install targets
-	if("${VAR}" STREQUAL "Event")
-		install(TARGETS
-				"${VAR}"
-			DESTINATION
-				${CMAKE_INSTALL_PREFIX}/lib
-			EXPORT
-				"${PROJECT_NAME}-Exports"
-			INCLUDES DESTINATION
-				"include"
-			NAMESPACE "GU::"
-
-			COMPONENT
-				"gu-${LOWERCASE_TARGET_NAME}"
-		)
-	endif()
-
-	#install export file
-	install(FILES
-			"${CMAKE_CURRENT_BINARY_DIR}/${LOWERCASE_TARGET_NAME}_export.h"
-		DESTINATION
-			"${CMAKE_INSTALL_PREFIX}/include"
-		COMPONENT
-			"gu-${LOWERCASE_TARGET_NAME}"
-	)
 
 endforeach()
 
-#Export package to the user package registry
-export(PACKAGE "${PROJECT_NAME}")
-
 include(GenerateExportHeader)
 generate_export_header("${PROJECT_NAME}")
+
+#install export file
+install(FILES
+        "${CMAKE_CURRENT_BINARY_DIR}/gameutilities_export.h"
+    DESTINATION
+        "${CMAKE_INSTALL_PREFIX}/include"
+    COMPONENT
+        "libs"
+)
+
+
+
 
 #add subdirectories
 add_subdirectory("include")
@@ -149,11 +132,16 @@ target_compile_features("Engin"
 				${GU_PUBLIC_COMPILE_FEATURES}
 			)
 
+	install(TARGETS ${GU_TARGETS} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib EXPORT "${PROJECT_NAME}-Exports" INCLUDES DESTINATION "include" NAMESPACE "GU::" COMPONENT "libs")
+
 #Export to the install tree
 install(EXPORT "${PROJECT_NAME}-Exports" DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/${PROJECT_NAME}"  NAMESPACE "GU::")
 
 #Export targets to the build tree
-export(TARGETS ${GU_TARGETS} FILE "${CMAKE_CURRENT_BINARY_DIR}/lib/cmake/${PROJECT_NAME}/${PROJECT_NAME}-Exports.cmake" NAMESPACE "GU::")
+export(EXPORT "${PROJECT_NAME}-Exports" FILE "${CMAKE_CURRENT_BINARY_DIR}/lib/cmake/${PROJECT_NAME}/${PROJECT_NAME}-Exports.cmake" NAMESPACE "GU::")
+
+#Export package to the user package registry
+export(PACKAGE "${PROJECT_NAME}")
 
 include(CMakePackageConfigHelpers)
 
@@ -178,10 +166,10 @@ configure_package_config_file(	"${CMAKE_CURRENT_SOURCE_DIR}/cmake/${PROJECT_NAME
 
 install(
 	FILES
-	"${CMAKE_CURRENT_BINARY_DIR}/lib/cmake/${PROJECT_NAME}/${PROJECT_NAME}Config.cmake"
-	"${CMAKE_CURRENT_BINARY_DIR}/lib/cmake/${PROJECT_NAME}/${PROJECT_NAME}ConfigVersion.cmake"
+		"${CMAKE_CURRENT_BINARY_DIR}/lib/cmake/${PROJECT_NAME}/${PROJECT_NAME}Config.cmake"
+		"${CMAKE_CURRENT_BINARY_DIR}/lib/cmake/${PROJECT_NAME}/${PROJECT_NAME}ConfigVersion.cmake"
     DESTINATION
-	"${CMAKE_INSTALL_PREFIX}/lib/cmake/${PROJECT_NAME}"
+		"${CMAKE_INSTALL_PREFIX}/lib/cmake/${PROJECT_NAME}"
 )
 
 #Make the BUILD_TESTING variable show up in the cmake gui
@@ -230,6 +218,7 @@ if(GU_BUILD_EXAMPLES)
 endif()
 
 include(InstallRequiredSystemLibraries)
+set(CPACK_COMPONENTS_ALL "GameUtilities" "libs")
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "This library contains code for making 2d video games")
 set(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_CURRENT_SOURCE_DIR}/README.md")
 set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/COPYING.txt")

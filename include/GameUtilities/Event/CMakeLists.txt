@@ -29,5 +29,5 @@ if(FILES)
 	target_sources(	"Event" PRIVATE ${FILES})
 
 	#Install source files
-	install(FILES ${FILES} DESTINATION "${CMAKE_INSTALL_PREFIX}/${RELATIVE_PATH}" COMPONENT "gu-event")
+	install(FILES ${FILES} DESTINATION "${CMAKE_INSTALL_PREFIX}/${RELATIVE_PATH}" COMPONENT "libs")
 endif()

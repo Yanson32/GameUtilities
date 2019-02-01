@@ -18,5 +18,5 @@ if(FILES)
 	target_sources(	"${PROJECT_NAME}" PRIVATE ${FILES})
 
 	#Install source files
-	install(FILES ${FILES} DESTINATION "${RELATIVE_PATH}")
+	install(FILES ${FILES} DESTINATION "${RELATIVE_PATH}" COMPONENT "libs")
 endif()
