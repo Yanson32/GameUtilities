@@ -2,7 +2,7 @@ set(FILES ""
 
 )
 
-set(SUB_DIRECTORIES "Engin")
+set(SUB_DIRECTORIES "EnginTests")
 
 #Add subdirectories
 foreach(LOOP_VAR ${SUB_DIRECTORIES})

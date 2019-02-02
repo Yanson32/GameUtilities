@@ -1,27 +1,13 @@
 #for backwards compatibility
 cmake_minimum_required(VERSION 3.5.1)
 
-#Compile Features
-set(GU_PRIVATE_COMPILE_FEATURES
-"cxx_range_for"
-"cxx_right_angle_brackets"
-"cxx_auto_type"
-)
-set(GU_PUBLIC_COMPILE_FEATURES
-"cxx_nullptr"
-"cxx_defaulted_functions"
-"cxx_deleted_functions"
-"cxx_final"
-"cxx_noexcept"
-"cxx_override"
-)
-
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules")
 set(CMAKE_ARCHIVE_OUPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/lib")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/lib")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/bin")
 set(VALID_BUILD_TYPES "Release" "Debug" "MinSizeRel" "RelWithDebInfo")
 option(BUILD_SHARED_LIBS "True when building shared libraries" True)
-set(GU_TARGETS "GameUtilities" "Event" "Engin")
+set(GU_LIBS "GameUtilities" "Event" "Engin")
 
 #Give the project a name
 project("GameUtilities" VERSION "0.0.0.0")
@@ -52,170 +38,18 @@ if(NOT IS_MULTI_CONFIG_GENERATOR)
 	endif()
 endif()
 
-#create a postfix for static libraries
-if(NOT BUILD_SHARED_LIBS)
-	set(STATIC_NAME_POSTFIX "-s")
-endif()
 
-include("${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/Depricated.cmake")
-
-#Build shared library by default
-option(BUILD_SHARED_LIBS "True for shared libraries" TRUE)
-
-#Create targets
-foreach(VAR ${GU_TARGETS})
-
-	add_library("${VAR}" "")
-
-	#set targets output name
-	set_target_properties("${VAR}" PROPERTIES
-						DEBUG_POSTFIX "-d"
-						OUTPUT_NAME "${VAR}${STATIC_NAME_POSTFIX}"
-	)
-
-	#Add includes to target
-	target_include_directories("${VAR}" PUBLIC
-	  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-	  $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
-	  $<INSTALL_INTERFACE:include>
-		)
-
-
-	#definition is necessary on windows for export header
-	if(WIN32)
-		target_compile_definitions("${VAR}" PRIVATE "${PROJECT_NAME}_EXPORTS")
-	endif()
-
-
-endforeach()
-
-include(GenerateExportHeader)
-generate_export_header("${PROJECT_NAME}")
-
-#install export file
-install(FILES
-        "${CMAKE_CURRENT_BINARY_DIR}/gameutilities_export.h"
-    DESTINATION
-        "${CMAKE_INSTALL_PREFIX}/include"
-    COMPONENT
-        "libs"
-)
-
-
-
-
-#add subdirectories
-add_subdirectory("include")
+#create libraries
 add_subdirectory("src")
 
+#add unit tests
+add_subdirectory("test")
 
-#Define compiler features
-target_compile_features("${PROJECT_NAME}"
-			PRIVATE
-				${GU_PRIVATE_COMPILE_FEATURES}
-			PUBLIC
-				${GU_PUBLIC_COMPILE_FEATURES}
-			)
+#create documentation
+add_subdirectory("doc")
 
-target_compile_features("Event"
-			PRIVATE
-				${GU_PRIVATE_COMPILE_FEATURES}
-			PUBLIC
-				${GU_PUBLIC_COMPILE_FEATURES}
-			)
-
-#Define compiler features
-target_compile_features("Engin"
-			PRIVATE
-				${GU_PRIVATE_COMPILE_FEATURES}
-			PUBLIC
-				${GU_PUBLIC_COMPILE_FEATURES}
-			)
-
-install(TARGETS ${GU_TARGETS} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib EXPORT "${PROJECT_NAME}-Exports" INCLUDES DESTINATION "include" NAMESPACE "GU::" COMPONENT "libs")
-
-#Export to the install tree
-install(EXPORT "${PROJECT_NAME}-Exports" DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/${PROJECT_NAME}"  NAMESPACE "GU::")
-
-#Export targets to the build tree
-export(EXPORT "${PROJECT_NAME}-Exports" FILE "${CMAKE_CURRENT_BINARY_DIR}/lib/cmake/${PROJECT_NAME}/${PROJECT_NAME}-Exports.cmake" NAMESPACE "GU::")
-
-#Export package to the user package registry
-export(PACKAGE "${PROJECT_NAME}")
-
-include(CMakePackageConfigHelpers)
-
-#Create package version file
-write_basic_package_version_file(	"${CMAKE_CURRENT_BINARY_DIR}/lib/cmake/${PROJECT_NAME}/${PROJECT_NAME}ConfigVersion.cmake"
-  									VERSION
-										${${PROJECT_NAME}_VERSION}
-  									COMPATIBILITY
-										AnyNewerVersion
-)
-
-#Create package config file
-
-configure_package_config_file(	"${CMAKE_CURRENT_SOURCE_DIR}/cmake/${PROJECT_NAME}Config.cmake.in"
-								"${CMAKE_CURRENT_BINARY_DIR}/lib/cmake/${PROJECT_NAME}/${PROJECT_NAME}Config.cmake"
-                              	INSTALL_DESTINATION
-									lib/cmake/${PROJECT_NAME}
-)
-
-
-
-
-install(
-	FILES
-		"${CMAKE_CURRENT_BINARY_DIR}/lib/cmake/${PROJECT_NAME}/${PROJECT_NAME}Config.cmake"
-		"${CMAKE_CURRENT_BINARY_DIR}/lib/cmake/${PROJECT_NAME}/${PROJECT_NAME}ConfigVersion.cmake"
-    DESTINATION
-		"${CMAKE_INSTALL_PREFIX}/lib/cmake/${PROJECT_NAME}"
-)
-
-#Make the BUILD_TESTING variable show up in the cmake gui
-option(BUILD_TESTING "Set to TRUE if you want to build unit tests" FALSE)
-
-if(BUILD_TESTING)
-
-	include("${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/BoostTestHelpers.cmake")
-
-	#Find boost
-	find_package(Boost 1.60.0 COMPONENTS system unit_test_framework REQUIRED)
-
-	include(CTest)
-
-	set(TEST_INCLUDES "${Boost_INCLUDE_DIRS}")
-	list(APPEND TEST_INCLUDES "${CMAKE_CURRENT_SOURCE_DIR}/include")
-	set(TEST_LIBRARIES "${Boost_LIBRARIES}")
-	list(APPEND TEST_LIBRARIES "GameUtilities")
-	set(TEST_PRIVATE_COMPILE_FEATURES ${GU_PRIVATE_COMPILE_FEATURES})
-
-	add_subdirectory("test")
-	add_definitions("-DBUILD_TESTING")
-endif()
-
-
-#Make the BUILD_TESTING variable show up in the cmake gui
-option(GU_BUILD_DOC "Set to TRUE if you want to build library documentation" FALSE)
-if(GU_BUILD_DOC)
-	add_subdirectory("doc")
-endif()
-
-
-#Build examples
-option(GU_BUILD_EXAMPLES "Set to TRUE if you want to build examples" FALSE)
-if(GU_BUILD_EXAMPLES)
-    set(GU_EXAMPLE_INCLUDES "${Boost_INCLUDE_DIRS}")
-	list(APPEND GU_EXAMPLE_INCLUDES "${CMAKE_CURRENT_SOURCE_DIR}/include")
-	list(APPEND GU_EXAMPLE_INCLUDES "${SFML_INCLUDE_DIR}")
-	set(GU_EXAMPLE_LIBRARIES "${Boost_LIBRARIES}")
-	list(APPEND GU_EXAMPLE_LIBRARIES "GameUtilities")
-	list(APPEND GU_EXAMPLE_LIBRARIES "${SFML_LIBRARIES}")
-	set(GU_EXAMPLES_PRIVATE_COMPILE_FEATURES ${GU_PRIVATE_COMPILE_FEATURES})
-	set(GU_EXAMPLES_PUBLIC_COMPILE_FEATURES ${GU_PUBLIC_COMPILE_FEATURES})
-
-    add_subdirectory("examples")
-endif()
+#create examples
+add_subdirectory("examples")
 
 include(InstallRequiredSystemLibraries)
 set(CPACK_COMPONENTS_ALL "GameUtilities" "libs")

@@ -1,6 +1,6 @@
 set(FILES
-"${CMAKE_CURRENT_SOURCE_DIR}/Engin.cpp"
-"${CMAKE_CURRENT_SOURCE_DIR}/GameState.cpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/EnginTests.cpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/GameStateTests.cpp"
 
 )
 
