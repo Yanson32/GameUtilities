@@ -49,7 +49,7 @@ endif()
 
 
 #create libraries
-add_subdirectory("src")
+add_subdirectory("libraries")
 
 #add unit tests
 add_subdirectory("test")
