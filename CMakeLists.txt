@@ -51,7 +51,7 @@ add_subdirectory("doc")
 add_subdirectory("examples")
 
 include(InstallRequiredSystemLibraries)
-set(CPACK_COMPONENTS_ALL "GameUtilities" "libs")
+set(CPACK_COMPONENTS_ALL "${GU_LIBS}")
 
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "This library contains code for making 2d video games")
 set(CPACK_RESOURCE_FILE_README "${CMAKE_CURRENT_SOURCE_DIR}/README.md")
