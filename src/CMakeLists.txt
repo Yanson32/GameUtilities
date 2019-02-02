@@ -35,6 +35,10 @@ foreach(VAR ${GU_LIBS})
 						RELWITHDEBINFO_POSTFIX "${STATIC_NAME_POSTFIX}-d"
 						RELEASE_POSTFIX "${STATIC_NAME_POSTFIX}"
                         MINSIZEREL_POSTFIX "${STATIC_NAME_POSTFIX}"
+
+                        CMAKE_ARCHIVE_OUPUT_DIRECTORY lib
+                        CMAKE_LIBRARY_OUTPUT_DIRECTORY lib
+                        CMAKE_RUNTIME_OUTPUT_DIRECTORY bin
 	)
 
 	#Add includes to target
