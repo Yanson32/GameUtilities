@@ -6,8 +6,7 @@ set(CMAKE_ARCHIVE_OUPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/lib")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/lib")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/bin")
 set(VALID_BUILD_TYPES "Release" "Debug" "MinSizeRel" "RelWithDebInfo")
-option(BUILD_SHARED_LIBS "True when building shared libraries" True)
-set(GU_LIBS "GameUtilities" "Event" "Engin")
+set(GU_LIBS "Core" "Event" "Engin")
 
 #Give the project a name
 project("GameUtilities" VERSION "0.0.0.0")
@@ -53,8 +52,9 @@ add_subdirectory("examples")
 
 include(InstallRequiredSystemLibraries)
 set(CPACK_COMPONENTS_ALL "GameUtilities" "libs")
+
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "This library contains code for making 2d video games")
-set(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_CURRENT_SOURCE_DIR}/README.md")
+set(CPACK_RESOURCE_FILE_README "${CMAKE_CURRENT_SOURCE_DIR}/README.md")
 set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/COPYING.txt")
 set(CPACK_PACKAGE_INSTALL_DIRECTORY "${PROJECT_NAME}_${${PROJECT_NAME}_VERSION_MAJOR}_${${PROJECT_NAME}_VERSION_MINOR}_${${PROJECT_NAME}_VERSION_PATCH}")
 set(CPACK_PACKAGE_VERSION_MAJOR "${${PROJECT_NAME}_VERSION_MAJOR}")

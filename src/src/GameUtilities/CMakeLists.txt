@@ -1,4 +1,4 @@
-set(FILES ""
+set(FILES "${CMAKE_CURRENT_SOURCE_DIR}/RGBA.cpp"
 )
 
 set(RELATIVE_PATH "src/GameUtilities")
@@ -15,7 +15,7 @@ endforeach()
 
 if(FILES)
 	#Add source file to target
-	target_sources(	"${PROJECT_NAME}" PRIVATE ${FILES})
+	target_sources(	"Core" PRIVATE ${FILES})
 
 	#Install source files
 	install(FILES ${FILES} DESTINATION "${RELATIVE_PATH}")

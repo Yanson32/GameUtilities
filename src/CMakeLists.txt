@@ -13,15 +13,16 @@ set(GU_PUBLIC_COMPILE_FEATURES
 "cxx_override"
 )
 
+#Build shared library by default
+option(BUILD_SHARED_LIBS "True when building shared libraries" True)
+
 #create a postfix for static libraries
 if(NOT BUILD_SHARED_LIBS)
 	set(STATIC_NAME_POSTFIX "-s")
 endif()
 
 include("Depricated")
-
-#Build shared library by default
-option(BUILD_SHARED_LIBS "True for shared libraries" TRUE)
+include(GenerateExportHeader)
 
 #Create targets
 foreach(VAR ${GU_LIBS})
@@ -30,8 +31,10 @@ foreach(VAR ${GU_LIBS})
 
 	#set targets output name
 	set_target_properties("${VAR}" PROPERTIES
-						DEBUG_POSTFIX "-d"
-						OUTPUT_NAME "${VAR}${STATIC_NAME_POSTFIX}"
+						DEBUG_POSTFIX "${STATIC_NAME_POSTFIX}-d"
+						RELWITHDEBINFO_POSTFIX "${STATIC_NAME_POSTFIX}-d"
+						RELEASE_POSTFIX "${STATIC_NAME_POSTFIX}"
+                        MINSIZEREL_POSTFIX "${STATIC_NAME_POSTFIX}"
 	)
 
 	#Add includes to target
@@ -47,13 +50,13 @@ foreach(VAR ${GU_LIBS})
 		target_compile_definitions("${VAR}" PRIVATE "${PROJECT_NAME}_EXPORTS")
 	endif()
 
+    generate_export_header("${VAR}" BASE_NAME "${PROJECT_NAME}")
 
 endforeach()
 
 add_subdirectory("include")
 add_subdirectory("src")
-include(GenerateExportHeader)
-generate_export_header("${PROJECT_NAME}")
+
 
 #install export file
 install(FILES
@@ -65,7 +68,7 @@ install(FILES
 )
 
 #Define compiler features
-target_compile_features("${PROJECT_NAME}"
+target_compile_features("Core"
 			PRIVATE
 				${GU_PRIVATE_COMPILE_FEATURES}
 			PUBLIC

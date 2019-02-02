@@ -18,7 +18,7 @@ namespace GU
         *	\brief	This is the main game engin class
         *	\class Engin
         *************************************************************************************/
-        class Engin
+        class GAMEUTILITIES_EXPORT Engin
         {
             public:
 				typedef std::unique_ptr<GameState> StatePtr;
