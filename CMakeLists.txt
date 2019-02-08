@@ -1,6 +1,10 @@
 #for backwards compatibility
 cmake_minimum_required(VERSION 3.5.1)
 
+option(GU_BUILD_EXAMPLES "Set to TRUE if you want to build examples" FALSE)
+option(GU_BUILD_DOC "Set to TRUE if you want to build library documentation" FALSE)
+option(GU_BUILD_TESTING "Set to TRUE if you want to build unit tests" FALSE)
+
 #set custom module path
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules")
 
@@ -52,14 +56,18 @@ endif()
 add_subdirectory("libraries")
 
 #add unit tests
-add_subdirectory("test")
+if(GU_BUILD_TESTING)
+    add_subdirectory("test")
+endif()
 
 #create documentation
-add_subdirectory("doc")
+if(GU_BUILD_DOC)
+    add_subdirectory("doc")
+endif()
 
 #create examples
-add_subdirectory("examples")
-
-include(InstallRequiredSystemLibraries)
+if(GU_BUILD_EXAMPLES)
+    add_subdirectory("examples")
+endif()
 
 include(CPack)
