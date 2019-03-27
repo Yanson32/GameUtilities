@@ -36,9 +36,6 @@ foreach(VAR ${GU_LIBS})
 						RELEASE_POSTFIX "${STATIC_NAME_POSTFIX}"
                         MINSIZEREL_POSTFIX "${STATIC_NAME_POSTFIX}"
 
-                        ARCHIVE_OUTPUT_DIRECTORY lib
-                        LIBRARY_OUTPUT_DIRECTORY lib
-                        RUNTIME_OUTPUT_DIRECTORY bin
 	)
 
 	#Add includes to target
@@ -49,12 +46,7 @@ foreach(VAR ${GU_LIBS})
 		)
 
 
-	#definition is necessary on windows for export header
-	if(WIN32)
-		target_compile_definitions("${VAR}" PRIVATE "${PROJECT_NAME}_EXPORTS")
-	endif()
-
-    generate_export_header("${VAR}" BASE_NAME "${PROJECT_NAME}")
+    generate_export_header("${VAR}")
 
 endforeach()
 

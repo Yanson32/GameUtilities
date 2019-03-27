@@ -1,6 +1,6 @@
 #ifndef GAMEUTILITIES_EVENT_LISTENER_H
 #define GAMEUTILITIES_EVENT_LISTENER_H
-#include "gameutilities_export.h"
+#include "event_export.h"
 #include <memory>
 #include "GameUtilities/Event/Event.h"
 
@@ -15,7 +15,7 @@ namespace GU
         *   Purpose:    This is an abstract base class used to define a listener
         *               object. Which can then be registered to receive events.
         **************************************************************************/
-        class GAMEUTILITIES_EXPORT Listener
+        class EVENT_EXPORT Listener
         {
             public:
                 /**************************************************************************

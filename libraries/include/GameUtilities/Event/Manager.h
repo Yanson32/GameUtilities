@@ -5,7 +5,7 @@
 
 #ifndef GAMEUTILITIES_EVENT_MANAGER_H
 #define GAMEUTILITIES_EVENT_MANAGER_H
-#include "gameutilities_export.h"
+#include "event_export.h"
 #include "GameUtilities/Event/EventQueue.h"
 #include "GameUtilities/Event/Dispatcher.h"
 
@@ -19,7 +19,7 @@ namespace GU
         *			are managed.
         *	\class 	Manager
         *************************************************************************************/
-        class GAMEUTILITIES_EXPORT Manager: public Evt::EventQueue, public Evt::Dispatcher
+        class EVENT_EXPORT Manager: public Evt::EventQueue, public Evt::Dispatcher
         {
             public:
 

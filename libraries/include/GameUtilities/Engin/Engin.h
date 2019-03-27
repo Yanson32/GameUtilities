@@ -8,7 +8,7 @@
 
 #include <memory>
 #include "GameUtilities/Engin/GameState.h"
-#include "gameutilities_export.h"
+#include "engin_export.h"
 namespace GU
 {
     namespace Engin
@@ -18,7 +18,7 @@ namespace GU
         *	\brief	This is the main game engin class
         *	\class Engin
         *************************************************************************************/
-        class GAMEUTILITIES_EXPORT Engin
+        class ENGIN_EXPORT Engin
         {
             public:
 				typedef std::unique_ptr<GameState> StatePtr;

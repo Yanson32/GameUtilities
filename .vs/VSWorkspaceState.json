@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\libraries",
+    "\\libraries\\include",
+    "\\libraries\\include\\GameUtilities",
+    "\\libraries\\include\\GameUtilities\\Event"
+  ],
+  "SelectedNode": "\\libraries\\include\\GameUtilities\\Event\\ChangeState.h",
+  "PreviewInSolutionExplorer": false
+}

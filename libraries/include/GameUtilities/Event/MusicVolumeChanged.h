@@ -1,6 +1,6 @@
 #ifndef GAMEUTILITIES_MUSICVOLUMECHANGED_H
 #define GAMEUTILITIES_MUSICVOLUMECHANGED_H
-#include "gameutilities_export.h"
+#include "event_export.h"
 #include "GameUtilities/Event/Event.h"
 
 namespace GU
@@ -8,7 +8,7 @@ namespace GU
     namespace Evt
     {
 
-		class GAMEUTILITIES_EXPORT MusicVolumeChanged: public Event
+		class EVENT_EXPORT MusicVolumeChanged: public Event
 		{
 			public:
 				MusicVolumeChanged(const int newLine = 0, const char* newFile = "");

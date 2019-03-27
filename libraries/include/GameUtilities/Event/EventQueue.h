@@ -1,7 +1,7 @@
 #ifndef GAMEUTILITIES_EVENT_EVENTQUEUE_H
 #define GAMEUTILITIES_EVENT_EVENTQUEUE_H
 #include "GameUtilities/Event/Event.h"
-#include "gameutilities_export.h"
+#include "event_export.h"
 
 namespace GU
 {
@@ -14,7 +14,7 @@ namespace GU
 		*   Date:       2/8/17
 		*   Purpose:    This class provides a queue for events.
 		***************************************************************************/
-		class GAMEUTILITIES_EXPORT EventQueue
+		class EVENT_EXPORT EventQueue
 		{
 		public:
 			/***************************************************************************

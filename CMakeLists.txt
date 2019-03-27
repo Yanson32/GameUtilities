@@ -1,6 +1,11 @@
 #for backwards compatibility
 cmake_minimum_required(VERSION 3.5.1)
 
+#set output directory for binaries
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
+
 option(GU_BUILD_EXAMPLES "Set to TRUE if you want to build examples" FALSE)
 option(GU_BUILD_DOC "Set to TRUE if you want to build library documentation" FALSE)
 option(GU_BUILD_TESTING "Set to TRUE if you want to build unit tests" FALSE)

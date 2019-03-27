@@ -5,7 +5,7 @@
 
 #ifndef GAMEUTILITIES_ENGIN_GAMESTATE_H
 #define GAMEUTILITIES_ENGIN_GAMESTATE_H
-#include "gameutilities_export.h"
+#include "engin_export.h"
 
 namespace GU
 {
@@ -18,7 +18,7 @@ namespace GU
         *	\brief	This is the base class used by all game states.
         *	\class GameState
         *************************************************************************************/
-        class GAMEUTILITIES_EXPORT GameState
+        class ENGIN_EXPORT GameState
         {
             public:
 
