@@ -1,0 +1,4 @@
+#ifndef MATH_SCALAR_QUANTITY_H
+#define MATH_SCALAR_QUANTITY_H
+
+#endif

@@ -52,7 +52,8 @@ endforeach()
 
 add_subdirectory("include")
 add_subdirectory("src")
-
+add_subdirectory("Math")
+target_link_libraries("ParticleSystem" PUBLIC "Math")
 
 #install export file
 install(FILES
