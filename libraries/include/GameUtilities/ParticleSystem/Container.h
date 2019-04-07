@@ -210,7 +210,7 @@ namespace GU
         template <class T>
         Container<T>::Container(const std::size_t size):
         m_Container(new T[size]),
-        m_Size(0),
+        m_Size(size),
         m_Capacity(size)
         {
         }

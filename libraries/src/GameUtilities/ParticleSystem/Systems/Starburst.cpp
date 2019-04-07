@@ -6,9 +6,9 @@
 #include "GameUtilities/ParticleSystem/Attributes/Manager.h"
 
 #include "GameUtilities/ParticleSystem/Updaters/Position.h"
+//#include "GameUtilities/ParticleSystem/Updaters/LifeSpan.h"
 #include "Math/Degree.h"
 #include <cmath>
-#include <iostream>
 #include <cassert>
 namespace GU
 {
@@ -49,10 +49,12 @@ namespace GU
 				assert(pos != nullptr);
 				this->addAttribute(std::static_pointer_cast<GU::PS::AT::Base>(pos));
 
-				for(size_t i = 0; i < size; ++i)
-					pos->data.emplace_back<std::pair<float, float>>(std::pair<float, float>(position.m_x, position.m_y));
+				for (size_t i = 0; i < size; ++i)
+				{
+					pos->data[i].first = position.m_x;
+					pos->data[i].second = position.m_y;
+				}
 
-                std::cout << "position added" << std::endl;
 
 				std::shared_ptr<GU::PS::AT::Velocity> vel(new GU::PS::AT::Velocity(*this, size));
 				assert(vel != nullptr);
@@ -61,15 +63,15 @@ namespace GU
 				for(size_t i = 0; i < size; ++i)
 				{
 					float angle = degree * i;
-
-					vel->data.emplace_back<std::pair<float, float>>(std::pair<float, float>(std::sin(angle), std::cos(angle)));
+					vel->data[i].first = std::sin(angle);
+					vel->data[i].second = std::cos(angle);
 				}
 
-//				std::shared_ptr<GU::PS::CP::LifeSpan> life(new GU::PS::CP::LifeSpan(*this, size));
-//				assert(life != nullptr);
-//				this->add(std::static_pointer_cast<GU::PS::CP::Base>(life));
-//				for(size_t i = 0; i  < size; ++i)
-//					life->data.emplace_back(1);
+				//std::shared_ptr<GU::PS::CP::LifeSpan> life(new GU::PS::UP::LifeSpan(*this, size));
+				//assert(life != nullptr);
+				//this->addUpdater(std::static_pointer_cast<GU::PS::UP::Base>(life));
+				//for(size_t i = 0; i  < size; ++i)
+				//	life->data.emplace_back(1);
 
                 //Add updaters to class
                 std::shared_ptr<GU::PS::UP::Base> up(new GU::PS::UP::Position());
