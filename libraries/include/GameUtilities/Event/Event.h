@@ -5,7 +5,7 @@
 
 #ifndef GAMEUTILITIES_EVENT_EVENT_H
 #define GAMEUTILITIES_EVENT_EVENT_H
-#include "gameutilities_export.h"
+#include "event_export.h"
 #include <memory>
 
 namespace GU
@@ -18,7 +18,7 @@ namespace GU
         *	\brief	This class is a base class for all events and should not be instantiated.
         *	\class 	Event
         *************************************************************************************/
-        struct GAMEUTILITIES_EXPORT Event
+        struct EVENT_EXPORT Event
         {
                 const int id = 0;
 

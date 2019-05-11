@@ -1,6 +1,6 @@
 #ifndef GAMEUTILITIES_CHANGESTATE_H
 #define GAMEUTILITIES_CHANGESTATE_H
-#include "gameutilities_export.h"
+#include "event_export.h"
 #include "GameUtilities/Event/Event.h"
 
 namespace GU
@@ -8,7 +8,7 @@ namespace GU
     namespace Evt
     {
 
-		class GAMEUTILITIES_EXPORT ChangeState: public Event
+		class EVENT_EXPORT ChangeState: public Event
 		{
 			public:
 				ChangeState(const int newStateId, const int newLine = 0, const char* newFile = "");

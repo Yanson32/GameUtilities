@@ -9,7 +9,7 @@
 
 #include "GameUtilities/Event/Event.h"
 
-#include "gameutilities_export.h"
+#include "event_export.h"
 
 namespace GU
 {
@@ -25,7 +25,7 @@ namespace GU
         *   @class  Dispatcher
         *   @brief  This class distributes events to the appropriate listeners.
         *******************************************************************************************/
-        class GAMEUTILITIES_EXPORT Dispatcher
+        class EVENT_EXPORT Dispatcher
         {
             public:
                 typedef Evt::Listener* ListenerPtr;

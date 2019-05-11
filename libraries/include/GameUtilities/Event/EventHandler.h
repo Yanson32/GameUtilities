@@ -3,7 +3,7 @@
 
 #include "GameUtilities/Event/Event.h"
 #include "GameUtilities/Engin/Engin.h"
-#include "gameutilities_export.h"
+#include "event_export.h"
 #include <memory>
 
 namespace GU
@@ -12,7 +12,7 @@ namespace GU
     namespace Evt
     {
 
-        class GAMEUTILITIES_EXPORT EventHandler
+        class EVENT_EXPORT EventHandler
         {
             public:
                 EventHandler();
