@@ -57,7 +57,7 @@ target_link_libraries("ParticleSystem" PUBLIC "Math")
 
 #install export file
 install(FILES
-        "${CMAKE_CURRENT_BINARY_DIR}/gameutilities_export.h"
+        #"${CMAKE_CURRENT_BINARY_DIR}/gameutilities_export.h"
     DESTINATION
         "${CMAKE_INSTALL_PREFIX}/include"
     COMPONENT
@@ -122,8 +122,8 @@ configure_package_config_file(	"${GameUtilities_SOURCE_DIR}/cmake/${PROJECT_NAME
 
 install(
 	FILES
-		"${CMAKE_CURRENT_BINARY_DIR}/lib/cmake/${PROJECT_NAME}/${PROJECT_NAME}Config.cmake"
-		"${CMAKE_CURRENT_BINARY_DIR}/lib/cmake/${PROJECT_NAME}/${PROJECT_NAME}ConfigVersion.cmake"
+		"${GameUtilities_BINARY_DIR}/lib/cmake/${PROJECT_NAME}/${PROJECT_NAME}Config.cmake"
+		"${GameUtilities_BINARY_DIR}/lib/cmake/${PROJECT_NAME}/${PROJECT_NAME}ConfigVersion.cmake"
     DESTINATION
 		"${CMAKE_INSTALL_PREFIX}/lib/cmake/${PROJECT_NAME}"
 )
