@@ -1,4 +1,0 @@
-#ifndef MATH_VECTOR_QUANTITY_H
-#define MATH_VECTOR_QUANTITY_H
-
-#endif
