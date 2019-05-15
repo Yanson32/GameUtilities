@@ -5,7 +5,6 @@ set(RELATIVE_PATH "include/GameUtilities")
 
 set(SUB_DIRECTORIES
 "Event"
-"Engin"
 "FrameRate"
 "ParticleSystem"
 )

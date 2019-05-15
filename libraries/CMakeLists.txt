@@ -13,6 +13,9 @@ set(GU_PUBLIC_COMPILE_FEATURES
 "cxx_override"
 )
 
+set(GU_CONFIG_BUILD_DIR "${GameUtilities_BINARY_DIR}/lib/cmake/${PROJECT_NAME}")
+set(GU_CONFIG_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/lib/cmake/${PROJECT_NAME}")
+
 #Build shared library by default
 option(BUILD_SHARED_LIBS "True when building shared libraries" True)
 
@@ -20,6 +23,8 @@ option(BUILD_SHARED_LIBS "True when building shared libraries" True)
 if(NOT BUILD_SHARED_LIBS)
 	set(STATIC_NAME_POSTFIX "-s")
 endif()
+
+add_subdirectory("Engin")
 
 include("Depricated")
 include(GenerateExportHeader)
@@ -88,13 +93,13 @@ target_compile_features("Engin"
 			)
 
 
-install(TARGETS ${GU_LIBS} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib EXPORT "${PROJECT_NAME}-Exports" INCLUDES DESTINATION "include" NAMESPACE "GU::" COMPONENT "libs")
+install(TARGETS ${GU_LIBS} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib EXPORT "${PROJECT_NAME}-Exports" INCLUDES DESTINATION "include")
 
 #Export to the install tree
-install(EXPORT "${PROJECT_NAME}-Exports" DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/${PROJECT_NAME}"  NAMESPACE "GU::" COMPONENT "libs")
+install(EXPORT "${PROJECT_NAME}-Exports" DESTINATION "${GU_CONFIG_INSTALL_DIR}"  NAMESPACE "GU::" COMPONENT "libs")
 
 #Export targets to the build tree
-export(EXPORT "${PROJECT_NAME}-Exports" FILE "${GameUtilities_BINARY_DIR}/lib/cmake/${PROJECT_NAME}/${PROJECT_NAME}-Exports.cmake" NAMESPACE "GU::")
+export(EXPORT "${PROJECT_NAME}-Exports" FILE "${GU_CONFIG_BUILD_DIR}/${PROJECT_NAME}-Exports.cmake" NAMESPACE "GU::")
 
 #Export package to the user package registry
 export(PACKAGE "${PROJECT_NAME}")
@@ -102,7 +107,7 @@ export(PACKAGE "${PROJECT_NAME}")
 include(CMakePackageConfigHelpers)
 
 #Create package version file
-write_basic_package_version_file(	"${GameUtilities_BINARY_DIR}/lib/cmake/${PROJECT_NAME}/${PROJECT_NAME}ConfigVersion.cmake"
+write_basic_package_version_file(	"${GU_CONFIG_BUILD_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
   									VERSION
 										${${PROJECT_NAME}_VERSION}
   									COMPATIBILITY
@@ -110,11 +115,10 @@ write_basic_package_version_file(	"${GameUtilities_BINARY_DIR}/lib/cmake/${PROJE
 )
 
 #Create package config file
-
 configure_package_config_file(	"${GameUtilities_SOURCE_DIR}/cmake/${PROJECT_NAME}Config.cmake.in"
-								"${GameUtilities_BINARY_DIR}/lib/cmake/${PROJECT_NAME}/${PROJECT_NAME}Config.cmake"
+								"${GU_CONFIG_BUILD_DIR}/${PROJECT_NAME}Config.cmake"
                               	INSTALL_DESTINATION
-									lib/cmake/${PROJECT_NAME}
+									"lib/cmake/GameUtilities"
 )
 
 
@@ -122,9 +126,9 @@ configure_package_config_file(	"${GameUtilities_SOURCE_DIR}/cmake/${PROJECT_NAME
 
 install(
 	FILES
-		"${GameUtilities_BINARY_DIR}/lib/cmake/${PROJECT_NAME}/${PROJECT_NAME}Config.cmake"
-		"${GameUtilities_BINARY_DIR}/lib/cmake/${PROJECT_NAME}/${PROJECT_NAME}ConfigVersion.cmake"
+		"${GU_CONFIG_BUILD_DIR}/${PROJECT_NAME}Config.cmake"
+		"${GU_CONFIG_BUILD_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
     DESTINATION
-		"${CMAKE_INSTALL_PREFIX}/lib/cmake/${PROJECT_NAME}"
+		"${GU_CONFIG_INSTALL_DIR}"
 )
 

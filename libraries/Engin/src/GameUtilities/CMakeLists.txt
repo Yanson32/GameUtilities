@@ -1,11 +1,9 @@
-set(FILES "${CMAKE_CURRENT_SOURCE_DIR}/RGBA.cpp"
+set(FILES ""
 )
 
-set(RELATIVE_PATH "src/GameUtilities")
+set(RELATIVE_PATH "include/GameUtilities")
 
-set(SUB_DIRECTORIES "Event"
-"FrameRate"
-"ParticleSystem"
+set(SUB_DIRECTORIES "Engin"
 )
 
 #Add subdirectories
