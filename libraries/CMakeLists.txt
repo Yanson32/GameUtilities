@@ -48,6 +48,7 @@ foreach(VAR ${GU_LIBS})
 
     generate_export_header("${VAR}")
 
+	set_property(TARGET "${VAR}" PROPERTY CXX_STANDARD 11)
 endforeach()
 
 add_subdirectory("include")
