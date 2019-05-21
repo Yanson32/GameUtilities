@@ -8,7 +8,6 @@
 #include <GameUtilities/ParticleSystem/Attributes/Base.h>
 #include <GameUtilities/ParticleSystem/Container.h>
 #include <SFML/Graphics.hpp>
-#include <windows.h>
 #include <cassert>
 #include <iostream>
 
