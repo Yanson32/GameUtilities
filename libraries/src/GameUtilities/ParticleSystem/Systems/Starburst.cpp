@@ -51,8 +51,8 @@ namespace GU
 
 				for (size_t i = 0; i < size; ++i)
 				{
-					pos->data[i].first = position.m_x;
-					pos->data[i].second = position.m_y;
+					pos->data[i].first = position.x;
+					pos->data[i].second = position.y;
 				}
 
 

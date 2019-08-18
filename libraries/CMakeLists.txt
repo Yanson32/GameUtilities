@@ -33,7 +33,7 @@ include(GenerateExportHeader)
 foreach(VAR ${GU_LIBS})
 
 	add_library("${VAR}" "")
-
+    target_link_libraries("${VAR}" PUBLIC "Engin")
 	#set targets output name
 	set_target_properties("${VAR}" PROPERTIES
 						DEBUG_POSTFIX "${STATIC_NAME_POSTFIX}-d"
