@@ -1,35 +1,26 @@
-<h1>GameUtilities</h1>
+# GameUtilities
 
-<p>
-	The GameUtilities library provides a basic 2d game framework.
-</p>
+    The GameUtilities library provides a basic 2d game framework.
 
-<h2>Features</h2>
-<ul>
-	<li>Basic Game Engin</li>
-	<li>Event System</li>
-	<li>Particle System</li>
-</ul>
+## Features
 
-<h2>Dependencies</h2>
-<ul>
-	<li>SFML</li>
-	<li>Math</li>
-	<li>Box2D</li>
-</ul>
+1. Basic Game Engin
+2. Event System
+3. Particle System
 
-<h2>How to compile</h2>
+## Dependencies
 
-<p>
+1. SFML
+2. Math
+3. Box2D
+
+## How to compile
+
 	To build Multitheaded applications MULTITHREAD should be defined
-</p>
 
-<p>
-	To build examples just set the cmake cache variable GU_BUILD_EXAMPLES to true. Remember that building the examples will add some 	additional dependancies to the build.
-</p>
+    To build examples just set the cmake cache variable GU_BUILD_EXAMPLES to true. Remember that building the examples will add some additional dependancies to the build.
 
-<h2>To Do List</h2>
-<ul>
-	<li>Change Events newLine default parameter from 0 to -1</li>
-	<li>Add Job Queue (thread pool) to the library</li>
-</ul>
+## To Do List
+
+1. Change Events newLine default parameter from 0 to -1
+2. Add Job Queue (thread pool) to the library
