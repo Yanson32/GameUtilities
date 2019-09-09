@@ -10,9 +10,9 @@
 
 ## Dependencies
 
-1. SFML
-2. Math
-3. Box2D
+1. [SFML](https://www.sfml-dev.org/)
+2. [Math](https://github.com/Yanson32/Math)
+3. [Box2D](https://github.com/erincatto/Box2D)
 
 ## How to compile
 
