@@ -1,5 +1,5 @@
 @PACKAGE_INIT@
-c heck_required_components(${PROJECT_NAME})
+check_required_components(${PROJECT_NAME})
 set(VALID_COMPONENTS "Core" "Event" "ParticleSystem" "Engin")
 if(GameUtilities_FIND_COMPONENTS STREQUAL "")
 	set(GameUtilities_FIND_COMPONENTS ${VALID_COMPONENTS})
