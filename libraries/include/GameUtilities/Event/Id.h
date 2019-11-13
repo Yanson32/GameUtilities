@@ -14,6 +14,7 @@ namespace GU
             const int PLAY_MUSIC = 4;
             const int PLAY_SOUND = 5;
             const int SOUND_EFFECTS_VOLUME_CHANGED = 6;
+            const int CLICK = 7;
         }
 
     }

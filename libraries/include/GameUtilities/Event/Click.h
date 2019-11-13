@@ -1,16 +1,20 @@
 #ifndef CLICK_H
 #define CLICK_H
-
-
-class Click
+#include "GameUtilities/Event/Event.h"
+namespace GU
 {
-    public:
-        Click(const int newId);
-        virtual ~Click();
-        const int id;
-    protected:
+    namespace Evt
+    {
+        class Click: public Event
+        {
+            public:
+                Click(const int newId);
+                virtual ~Click();
+                const int id;
+            protected:
 
-    private:
-};
-
+            private:
+        };
+    }
+}
 #endif // CLICK_H

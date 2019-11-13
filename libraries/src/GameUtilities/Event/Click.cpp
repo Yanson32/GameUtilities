@@ -1,12 +1,19 @@
 #include "GameUtilities/Event/Click.h"
-
-Click::Click(const int newId):
-id(newId)
+#include "GameUtilities/Event/Id.h"
+namespace GU
 {
-    //ctor
-}
+    namespace Evt
+    {
+        Click::Click(const int newId):
+        Event(GU::Evt::Id::CLICK),
+        id(newId)
+        {
+            //ctor
+        }
 
-Click::~Click()
-{
-    //dtor
+        Click::~Click()
+        {
+            //dtor
+        }
+    }
 }
