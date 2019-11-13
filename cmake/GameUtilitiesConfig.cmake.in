@@ -1,6 +1,9 @@
 @PACKAGE_INIT@
 check_required_components(${PROJECT_NAME})
-message("Path to gameutilities ${CMAKE_CURRENT_LIST_DIR}")
+set(VALID_COMPONENTS "Core" "Event" "ParticleSystem" "Engin")
+if(GameUtilities_FIND_COMPONENTS STREQUAL "")
+	set(GameUtilities_FIND_COMPONENTS ${VALID_COMPONENTS})
+endif()
+
 include("${CMAKE_CURRENT_LIST_DIR}/GameUtilities-Exports.cmake")
-include("${CMAKE_CURRENT_LIST_DIR}/Engin-Exports.cmake")
 

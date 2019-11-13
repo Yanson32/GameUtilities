@@ -24,8 +24,6 @@ if(NOT BUILD_SHARED_LIBS)
 	set(STATIC_NAME_POSTFIX "-s")
 endif()
 
-add_subdirectory("Engin")
-
 include("Depricated")
 include(GenerateExportHeader)
 
@@ -33,7 +31,7 @@ include(GenerateExportHeader)
 foreach(VAR ${GU_LIBS})
 
 	add_library("${VAR}" "")
-    target_link_libraries("${VAR}" PUBLIC "Engin")
+    
 	#set targets output name
 	set_target_properties("${VAR}" PROPERTIES
 						DEBUG_POSTFIX "${STATIC_NAME_POSTFIX}-d"
@@ -51,7 +49,9 @@ foreach(VAR ${GU_LIBS})
 		)
 
 
-    generate_export_header("${VAR}")
+    	generate_export_header("${VAR}")
+	string(TOLOWER "${VAR}" LOWER_COMPONENT)
+	install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${LOWER_COMPONENT}_export.h" DESTINATION "include" COMPONENT "libs")
 
 	set_property(TARGET "${VAR}" PROPERTY CXX_STANDARD 11)
 endforeach()
