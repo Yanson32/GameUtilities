@@ -6,7 +6,7 @@ namespace GU
     {
         Click::Click(const int newId):
         Event(GU::Evt::Id::CLICK),
-        id(newId)
+        buttonId(newId)
         {
             //ctor
         }

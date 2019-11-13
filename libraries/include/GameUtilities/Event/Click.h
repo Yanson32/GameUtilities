@@ -10,7 +10,7 @@ namespace GU
             public:
                 Click(const int newId);
                 virtual ~Click();
-                const int id;
+                const int buttonId;
             protected:
 
             private:
