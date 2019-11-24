@@ -7,6 +7,7 @@ set(SUB_DIRECTORIES "Event"
 "FrameRate"
 "ParticleSystem"
 "Engin"
+"TP"
 )
 
 #Add subdirectories

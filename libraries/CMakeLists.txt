@@ -31,7 +31,7 @@ include(GenerateExportHeader)
 foreach(VAR ${GU_LIBS})
 
 	add_library("${VAR}" "")
-    
+
 	#set targets output name
 	set_target_properties("${VAR}" PROPERTIES
 						DEBUG_POSTFIX "${STATIC_NAME_POSTFIX}-d"
@@ -92,7 +92,13 @@ target_compile_features("Engin"
 				${GU_PUBLIC_COMPILE_FEATURES}
 			)
 
-
+#Define compiler features
+target_compile_features("ThreadPool"
+			PRIVATE
+				${GU_PRIVATE_COMPILE_FEATURES}
+			PUBLIC
+				${GU_PUBLIC_COMPILE_FEATURES}
+			)
 install(TARGETS ${GU_LIBS} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib EXPORT "${PROJECT_NAME}-Exports" INCLUDES DESTINATION "include")
 
 #Export to the install tree

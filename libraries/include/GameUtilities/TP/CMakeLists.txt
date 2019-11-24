@@ -1,14 +1,12 @@
-set(FILES "${CMAKE_CURRENT_SOURCE_DIR}/RGBA.h"
+set(FILES 	"${CMAKE_CURRENT_SOURCE_DIR}/ThreadPool.h"
+		"${CMAKE_CURRENT_SOURCE_DIR}/ThreadQueue.h"
+		"${CMAKE_CURRENT_SOURCE_DIR}/ThreadTask.h"
 )
 
-set(RELATIVE_PATH "include/GameUtilities")
+set(RELATIVE_PATH "include/GameUtilities/TP")
 
 set(SUB_DIRECTORIES
-"Event"
-"FrameRate"
-"ParticleSystem"
-"Engin"
-"TP"
+""
 )
 
 #Add subdirectories
@@ -18,7 +16,7 @@ endforeach()
 
 if(FILES)
 	#Add source file to target
-	target_sources(	"Core" PRIVATE ${FILES})
+	target_sources(	"ThreadPool" PRIVATE ${FILES})
 
 	#Install source files
 	install(FILES ${FILES} DESTINATION "${RELATIVE_PATH}" COMPONENT "libs")
