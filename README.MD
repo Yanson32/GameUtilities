@@ -4,15 +4,16 @@
 
 ## Features
 
-1. Basic Game Engin
-2. Event System
-3. Particle System
+- Basic Game Engin
+- Event System
+- Particle System
+- Thread Pool
 
 ## Dependencies
 
-1. [SFML](https://www.sfml-dev.org/)
-2. [Math](https://github.com/Yanson32/Math)
-3. [Box2D](https://github.com/erincatto/Box2D)
+- [SFML](https://www.sfml-dev.org/)
+- [Math](https://github.com/Yanson32/Math)
+- [Box2D](https://github.com/erincatto/Box2D)
 
 ## How to compile
 
