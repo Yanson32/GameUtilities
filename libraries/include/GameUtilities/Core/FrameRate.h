@@ -6,7 +6,7 @@
 namespace GU
 {
 
-    namespace FR
+    namespace Core
     {
 
         class CORE_EXPORT FrameRate final

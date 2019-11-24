@@ -4,14 +4,14 @@
 *	\date 12/10/17
 */
 
-#include "GameUtilities/FrameRate/FrameRate.h"
+#include "GameUtilities/Core/FrameRate.h"
 #include <iomanip>
 #include <ctime>
 #include <deque>
 
 namespace GU
 {
-    namespace FR
+    namespace Core
     {
 		class FrameRate::Impl
 		{

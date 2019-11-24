@@ -1,6 +1,9 @@
-set(FILES "${CMAKE_CURRENT_SOURCE_DIR}/FrameRate.h")
+set(FILES	"${CMAKE_CURRENT_SOURCE_DIR}/FrameRate.h"
+		"${CMAKE_CURRENT_SOURCE_DIR}/Resource Holder.h"
+		"${CMAKE_CURRENT_SOURCE_DIR}/NonCopyable.h"
+)
 
-set(RELATIVE_PATH "include/GameUtilities/FrameRate")
+set(RELATIVE_PATH "include/GameUtilities/Core")
 
 set(SUB_DIRECTORIES "")
 

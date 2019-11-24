@@ -4,7 +4,7 @@ set(FILES "${CMAKE_CURRENT_SOURCE_DIR}/RGBA.cpp"
 set(RELATIVE_PATH "src/GameUtilities")
 
 set(SUB_DIRECTORIES "Event"
-"FrameRate"
+"Core"
 "ParticleSystem"
 "Engin"
 "TP"
