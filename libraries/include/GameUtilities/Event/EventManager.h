@@ -19,20 +19,25 @@ namespace GU
         *			are managed.
         *	\class 	Manager
         *************************************************************************************/
-        class EVENT_EXPORT Manager: public Evt::EventQueue, public Evt::Dispatcher
+        class EVENT_EXPORT EventManager: public Evt::EventQueue, public Evt::Dispatcher
         {
             public:
 
                 /**************************************************************************
                 *	\brief	Constructor
                 **************************************************************************/
-                Manager();
+                EventManager();
 
 
                 /**************************************************************************
                 *	\brief	Destructor
                 **************************************************************************/
-                virtual ~Manager();
+                virtual ~EventManager();
+
+                static EventManager& inst();
+
+                EventManager operator = (const EventManager eventManager) = delete;
+                EventManager(const EventManager &EventManager) = delete;
         };
 
     }

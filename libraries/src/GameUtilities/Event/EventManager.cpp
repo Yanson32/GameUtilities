@@ -1,4 +1,4 @@
-#include "GameUtilities/Event/Manager.h"
+#include "GameUtilities/Event/EventManager.h"
 #include <cassert>
 
 namespace GU
@@ -10,9 +10,15 @@ namespace GU
         /**************************************************************************
         *	\brief	Constructor
         **************************************************************************/
-        Manager::Manager()
+        EventManager::EventManager()
         {
             //ctor
+        }
+
+        EventManager& EventManager::inst()
+        {
+	        static EventManager eventManager;
+	        return eventManager;
         }
 
     //    bool Manager::RegisterListener(Evt::Listener *listener)
@@ -41,7 +47,7 @@ namespace GU
         /**************************************************************************
         *	\brief	Destructor
         **************************************************************************/
-        Manager::~Manager()
+        EventManager::~EventManager()
         {
             //dtor
         }

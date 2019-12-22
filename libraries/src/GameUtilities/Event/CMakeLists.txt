@@ -1,6 +1,6 @@
 set(FILES
 "${CMAKE_CURRENT_SOURCE_DIR}/Event.cpp"
-"${CMAKE_CURRENT_SOURCE_DIR}/Manager.cpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/EventManager.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/Dispatcher.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/EventQueue.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/Listener.cpp"
