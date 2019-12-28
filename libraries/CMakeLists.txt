@@ -58,7 +58,9 @@ endforeach()
 
 add_subdirectory("include")
 add_subdirectory("src")
-target_link_libraries("ParticleSystem" PUBLIC "Math")
+
+find_package("Math" REQUIRED)
+target_link_libraries("ParticleSystem" PUBLIC Math::Math)
 
 #install export file
 install(FILES
