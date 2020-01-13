@@ -5,5 +5,10 @@ if(GameUtilities_FIND_COMPONENTS STREQUAL "")
 	set(GameUtilities_FIND_COMPONENTS ${VALID_COMPONENTS})
 endif()
 
-include("${CMAKE_CURRENT_LIST_DIR}/GameUtilities-Exports.cmake")
+if(GameUtilities_STATIC_LIBS)
+	include("${CMAKE_CURRENT_LIST_DIR}/GameUtilitiesStatc-Exports.cmake")
+else()
+	include("${CMAKE_CURRENT_LIST_DIR}/GameUtilities-Exports.cmake")
+endif()
+
 

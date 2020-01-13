@@ -19,10 +19,12 @@ set(GU_CONFIG_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/lib/cmake/${PROJECT_NAME}")
 #Build shared library by default
 option(BUILD_SHARED_LIBS "True when building shared libraries" True)
 
+
 #create a postfix for static libraries
 if(NOT BUILD_SHARED_LIBS)
 	set(STATIC_NAME_POSTFIX "-s")
 endif()
+
 
 include("Depricated")
 include(GenerateExportHeader)
@@ -101,13 +103,20 @@ target_compile_features("ThreadPool"
 			PUBLIC
 				${GU_PUBLIC_COMPILE_FEATURES}
 			)
-install(TARGETS ${GU_LIBS} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib EXPORT "${PROJECT_NAME}-Exports" INCLUDES DESTINATION "include")
+
+#create a name for our exprot file
+set(EXPORT_FILE_NAME "${PROJECT_NAME}-Exports")
+if(NOT BUILD_SHARED_LIBS)
+	set(EXPORT_FILE_NAME "${PROJECT_NAME}Static-Exports")
+endif()
+
+install(TARGETS ${GU_LIBS} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib EXPORT "${EXPORT_FILE_NAME}" INCLUDES DESTINATION "include")
 
 #Export to the install tree
-install(EXPORT "${PROJECT_NAME}-Exports" DESTINATION "${GU_CONFIG_INSTALL_DIR}"  NAMESPACE "GU::" COMPONENT "libs")
+install(EXPORT "${EXPORT_FILE_NAME}" DESTINATION "${GU_CONFIG_INSTALL_DIR}"  NAMESPACE "GU::" COMPONENT "libs")
 
 #Export targets to the build tree
-export(EXPORT "${PROJECT_NAME}-Exports" FILE "${GU_CONFIG_BUILD_DIR}/${PROJECT_NAME}-Exports.cmake" NAMESPACE "GU::")
+export(EXPORT "${EXPORT_FILE_NAME}" FILE "${GU_CONFIG_BUILD_DIR}/${EXPORT_FILE_NAME}.cmake" NAMESPACE "GU::")
 
 #Export package to the user package registry
 export(PACKAGE "${PROJECT_NAME}")
