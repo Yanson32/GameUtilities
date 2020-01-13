@@ -15,7 +15,10 @@ set(GU_PUBLIC_COMPILE_FEATURES
 
 set(GU_CONFIG_BUILD_DIR "${GameUtilities_BINARY_DIR}/lib/cmake/${PROJECT_NAME}")
 set(GU_CONFIG_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/lib/cmake/${PROJECT_NAME}")
-
+set(INCLUDE_DIRECTORIES "include")
+set(LIBRARY_DIRECTORIES "lib")
+					
+					
 #Build shared library by default
 option(BUILD_SHARED_LIBS "True when building shared libraries" True)
 
@@ -136,6 +139,9 @@ configure_package_config_file(	"${GameUtilities_SOURCE_DIR}/cmake/${PROJECT_NAME
 								"${GU_CONFIG_BUILD_DIR}/${PROJECT_NAME}Config.cmake"
                               	INSTALL_DESTINATION
 									"lib/cmake/GameUtilities"
+				PATH_VARS
+					INCLUDE_DIRECTORIES
+					LIBRARY_DIRECTORIES
 )
 
 

@@ -1,9 +1,20 @@
 @PACKAGE_INIT@
 check_required_components(${PROJECT_NAME})
 set(VALID_COMPONENTS "Core" "Event" "ParticleSystem" "Engin")
+
+#If no components are supplied to find_package we will assume all components should be found.
 if(GameUtilities_FIND_COMPONENTS STREQUAL "")
 	set(GameUtilities_FIND_COMPONENTS ${VALID_COMPONENTS})
 endif()
+
+#Package version
+set_and_check(GameUtilities_VERSION @GameUtilities_VERSION@)
+
+#List of include directories for the package
+set_and_check(GameUtilities_INCLUDE_DIRECTORIES @PACKAGE_INCLUDE_DIRECTORIES@)
+
+#List of library direcotries
+set_and_check(GameUtilities_LIBRARY_DIRECTORIES @PACKAGE_LIBRARY_DIRECTORIES@)
 
 if(GameUtilities_STATIC_LIBS)
 	include("${CMAKE_CURRENT_LIST_DIR}/GameUtilitiesStatc-Exports.cmake")
