@@ -1,11 +1,23 @@
 @PACKAGE_INIT@
 check_required_components(${PROJECT_NAME})
-set(VALID_COMPONENTS "Core" "Event" "ParticleSystem" "Engin")
+set(VALID_COMPONENTS @GU_LIBS@)
+
+#Validate components
+foreach(VAR ${GameUtilities_FIND_COMPONENTS})
+	list(FIND ${VALID_COMPONENTS} ${VAR} INDEX)
+	if(${INDEX} MATCHES -1)
+		if(NOT GameUtilities_FIND_QUIETLY)
+			message(FATAL_ERROR "Invalid component ${VAR} valid components are ${VALID_COMPONENTS}")
+		endif()	
+	endif()
+endforeach()
 
 #If no components are supplied to find_package we will assume all components should be found.
 if(GameUtilities_FIND_COMPONENTS STREQUAL "")
 	set(GameUtilities_FIND_COMPONENTS ${VALID_COMPONENTS})
 endif()
+
+unset(VALID_COMPONENTS)
 
 #Package version
 set_and_check(GameUtilities_VERSION @GameUtilities_VERSION@)
