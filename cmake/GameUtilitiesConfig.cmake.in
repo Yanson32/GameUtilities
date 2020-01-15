@@ -19,6 +19,10 @@ endif()
 
 unset(VALID_COMPONENTS)
 
+#Define package root
+if(NOT DEFINED GameUtilities_ROOT)
+	set_and_check(GameUtilities_ROOT ${PACKAGE_PREFIX_DIR})
+endif()
 
 #Package version
 set_and_check(GameUtilities_VERSION @GameUtilities_VERSION@)
