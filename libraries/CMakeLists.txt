@@ -105,48 +105,54 @@ target_compile_features("ThreadPool"
 				${GU_PUBLIC_COMPILE_FEATURES}
 			)
 
-#create a name for our exprot file
-set(EXPORT_FILE_NAME "${PROJECT_NAME}-Exports")
-if(NOT BUILD_SHARED_LIBS)
-	set(EXPORT_FILE_NAME "${PROJECT_NAME}Static-Exports")
-endif()
 
-install(TARGETS ${GU_LIBS} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib EXPORT "${EXPORT_FILE_NAME}" INCLUDES DESTINATION "include")
 
-#Export to the install tree
-install(EXPORT "${EXPORT_FILE_NAME}" DESTINATION "${GU_CONFIG_INSTALL_DIR}"  NAMESPACE "GU::" COMPONENT "libs")
+#Generate export files for each component
+foreach(VAR ${GU_LIBS})
+	#create a name for our exprot file
+	set(EXPORT_FILE_NAME "${PROJECT_NAME}${VAR}-Exports")
+	if(NOT BUILD_SHARED_LIBS)
+		set(EXPORT_FILE_NAME "${PROJECT_NAME}${VAR}Static-Exports")
+	endif()
 
-#Export targets to the build tree
-export(EXPORT "${EXPORT_FILE_NAME}" FILE "${GU_CONFIG_BUILD_DIR}/${EXPORT_FILE_NAME}.cmake" NAMESPACE "GU::")
+	install(TARGETS ${VAR} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib EXPORT "${EXPORT_FILE_NAME}" INCLUDES DESTINATION "include")
+
+	#Export to the install tree
+	install(EXPORT "${EXPORT_FILE_NAME}" DESTINATION "${GU_CONFIG_INSTALL_DIR}"  NAMESPACE "GU::" COMPONENT "libs")
+
+	#Export targets to the build tree
+	export(EXPORT "${EXPORT_FILE_NAME}" FILE "${GU_CONFIG_BUILD_DIR}/${EXPORT_FILE_NAME}.cmake" NAMESPACE "GU::")
+
+	unset(EXPROT_FILE_NAME)
+endforeach()
 
 #Export package to the user package registry
 export(PACKAGE "${PROJECT_NAME}")
 
+#Include helper functions for config file
 include(CMakePackageConfigHelpers)
 
 #Create package version file
-write_basic_package_version_file(	"${GU_CONFIG_BUILD_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
-  									VERSION
-										${${PROJECT_NAME}_VERSION}
-  									COMPATIBILITY
-										AnyNewerVersion
+write_basic_package_version_file("${GU_CONFIG_BUILD_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
+VERSION
+	${${PROJECT_NAME}_VERSION}
+COMPATIBILITY
+	AnyNewerVersion
 )
 
 #Create package config file
-configure_package_config_file(	"${GameUtilities_SOURCE_DIR}/cmake/${PROJECT_NAME}Config.cmake.in"
-								"${GU_CONFIG_BUILD_DIR}/${PROJECT_NAME}Config.cmake"
-                              	INSTALL_DESTINATION
-									"lib/cmake/GameUtilities"
+configure_package_config_file("${GameUtilities_SOURCE_DIR}/cmake/${PROJECT_NAME}Config.cmake.in"
+	"${GU_CONFIG_BUILD_DIR}/${PROJECT_NAME}Config.cmake"
+INSTALL_DESTINATION
+	"lib/cmake/GameUtilities"
 )
 
 
 
 
-install(
-	FILES
-		"${GU_CONFIG_BUILD_DIR}/${PROJECT_NAME}Config.cmake"
-		"${GU_CONFIG_BUILD_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
-    DESTINATION
-		"${GU_CONFIG_INSTALL_DIR}"
+install(FILES
+	"${GU_CONFIG_BUILD_DIR}/${PROJECT_NAME}Config.cmake"
+	"${GU_CONFIG_BUILD_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
+DESTINATION
+	"${GU_CONFIG_INSTALL_DIR}"
 )
-

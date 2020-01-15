@@ -19,6 +19,7 @@ endif()
 
 unset(VALID_COMPONENTS)
 
+
 #Package version
 set_and_check(GameUtilities_VERSION @GameUtilities_VERSION@)
 
