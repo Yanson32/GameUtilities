@@ -29,7 +29,7 @@ endif()
 set(GameUtilities_VERSION @GameUtilities_VERSION@)
 
 #List of include directories for the package
-set_and_check(GameUtilities_INCLUDE_DIRECTORIES ${PACKAGE_PREFIX_DIR}/include)
+set(GameUtilities_INCLUDE_DIRECTORIES ${PACKAGE_PREFIX_DIR}$<BUILD_INTERFACE:/libraries>/include)
 
 #List of library direcotries
 set_and_check(GameUtilities_LIBRARY_DIRECTORIES ${PACKAGE_PREFIX_DIR}/lib)
