@@ -28,11 +28,15 @@ endif()
 #Package version
 set(GameUtilities_VERSION @GameUtilities_VERSION@)
 
-#List of include directories for the package
-set(GameUtilities_INCLUDE_DIRECTORIES ${PACKAGE_PREFIX_DIR}$<BUILD_INTERFACE:/libraries>/include)
-
 #List of library direcotries
-set_and_check(GameUtilities_LIBRARY_DIRECTORIES ${PACKAGE_PREFIX_DIR}/lib)
+set_and_check(GameUtilities_LIB_DIR ${PACKAGE_PREFIX_DIR}/lib)
+
+#List on binary directories
+set_and_check(GameUtilities_BIN_DIR ${PACKAGE_PREFIX_DIR}/bin)
+
+
+#List of include directories for the package
+set(GameUtilities_INCLUDE_DIR ${PACKAGE_PREFIX_DIR}$<BUILD_INTERFACE:/libraries>/include)
 
 #When the static version of the library is requested
 #We define a variable to make locating the static version esyer
