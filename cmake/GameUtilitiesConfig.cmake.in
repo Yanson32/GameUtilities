@@ -4,12 +4,13 @@ set(VALID_COMPONENTS @GU_LIBS@)
 
 #Validate components
 foreach(VAR ${GameUtilities_FIND_COMPONENTS})
-	list(FIND ${VALID_COMPONENTS} ${VAR} INDEX)
+	list(FIND VALID_COMPONENTS ${VAR} INDEX)
 	if(${INDEX} MATCHES -1)
 		if(NOT GameUtilities_FIND_QUIETLY)
 			message(FATAL_ERROR "Invalid component ${VAR} valid components are ${VALID_COMPONENTS}")
 		endif()	
 	endif()
+	unset(INDEX)
 endforeach()
 
 #If no components are supplied to find_package we will assume all components should be found.
@@ -25,7 +26,7 @@ if(NOT DEFINED GameUtilities_ROOT)
 endif()
 
 #Package version
-set_and_check(GameUtilities_VERSION @GameUtilities_VERSION@)
+set(GameUtilities_VERSION @GameUtilities_VERSION@)
 
 #List of include directories for the package
 set_and_check(GameUtilities_INCLUDE_DIRECTORIES ${PACKAGE_PREFIX_DIR}/include)
