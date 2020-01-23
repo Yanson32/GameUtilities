@@ -26,11 +26,11 @@ namespace GU
                 *   \brief	Destructor
                 **************************************************************************/
                 virtual ~Event();
-
+                int line = 0;
 				const char* file;
-				int line = 0;
             protected:
-
+                Event(const Event&) = delete;
+                Event& operator = (const Event& ) = delete;
                 /**************************************************************************
                 *	\brief	Event class constructor is not public to prevent it from
                 *         	being instantiated accidentally.

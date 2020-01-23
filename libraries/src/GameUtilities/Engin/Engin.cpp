@@ -38,9 +38,14 @@ namespace GU
 
                 Impl& operator=(Impl&& param)
                 {
-                    states = std::move(param.states);
-                    _running = param._running;
+                    if (this != &param)
+                    {
+                        states = std::move(param.states);
+                        _running = param._running;
+                    }
+                    return *this;
                 }
+
                 /********************************************************************
                 *   @brief  Implimentation for adding another state to the stack of
                 *           states. See Engin::Push(StatePtr state);
@@ -122,11 +127,11 @@ namespace GU
 				//stack of states the state on the top of the stack is the current state
 				std::stack<StatePtr> states;
 
-				//true while the game is running and false otherwise
-				bool _running = true;
-
                 //Referece to an Engin object
 				GU::Engin::Engin &engin;
+
+				//true while the game is running and false otherwise
+				bool _running = true;
 		};
 
 

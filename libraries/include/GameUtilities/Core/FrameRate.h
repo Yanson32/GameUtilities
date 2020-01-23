@@ -17,6 +17,8 @@ namespace GU
                 double getFrameRate();
                 ~FrameRate();
             private:
+                FrameRate(const FrameRate&) = delete;
+                FrameRate& operator = (const FrameRate&) = delete;
 				class Impl;
 				Impl* pimpl = nullptr;
         };
