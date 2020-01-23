@@ -1,13 +1,13 @@
 @PACKAGE_INIT@
 
-set(VALID_COMPONENTS @GU_LIBS@)
+set(GameUtilities_VALID_COMPONENTS @GU_LIBS@)
 
 #Validate components
 foreach(VAR ${GameUtilities_FIND_COMPONENTS})
-	list(FIND VALID_COMPONENTS ${VAR} INDEX)
+	list(FIND GameUtilities_VALID_COMPONENTS ${VAR} INDEX)
 	if(${INDEX} MATCHES -1)
 		if(NOT GameUtilities_FIND_QUIETLY)
-			message(FATAL_ERROR "Invalid component ${VAR} valid components are ${VALID_COMPONENTS}")
+			message(FATAL_ERROR "Invalid component ${VAR} valid components are ${GameUtilities_FIND_COMPONENTS}")
 		endif()	
 	endif()
 	unset(INDEX)
@@ -15,10 +15,10 @@ endforeach()
 
 #If no components are supplied to find_package we will assume all components should be found.
 if(GameUtilities_FIND_COMPONENTS STREQUAL "")
-	set(GameUtilities_FIND_COMPONENTS ${VALID_COMPONENTS})
+	set(GameUtilities_FIND_COMPONENTS ${GameUtilities_VALID_COMPONENTS})
 endif()
 
-unset(VALID_COMPONENTS)
+unset(GameUtilities_VALID_COMPONENTS)
 
 #Define package root
 if(NOT DEFINED GameUtilities_ROOT)
@@ -31,36 +31,39 @@ set(GameUtilities_VERSION @GameUtilities_VERSION@)
 #List of library direcotries
 set_and_check(GameUtilities_LIB_DIR ${PACKAGE_PREFIX_DIR}/lib)
 
-#List on binary directories
-set_and_check(GameUtilities_BIN_DIR ${PACKAGE_PREFIX_DIR}/bin)
-
 
 #List of include directories for the package
 set(GameUtilities_INCLUDE_DIR ${PACKAGE_PREFIX_DIR}$<BUILD_INTERFACE:/libraries>/include)
 
+
+#Make sure the variable was not defined by the calling project.
+if(DEFINED GameUtilities_STATIC_LIB_POSTFIX)
+	message(FATAL_ERROR "GameUtilities_STATIC_LIB_POSTFIX variable is used internally and should not be defined by calling project")
+endif()
+
 #When the static version of the library is requested
 #We define a variable to make locating the static version esyer
 if(GameUtilites_STATIC_LIBS)
-	set(STATIC_LIB_POSTFIX "Static")
+	set(GameUtilities_STATIC_LIB_POSTFIX "Static")
 endif()
 
 #Find all components
 foreach(VAR ${GameUtilities_FIND_COMPONENTS})
-	set_and_check(EXPORT_PATH "${CMAKE_CURRENT_LIST_DIR}/GameUtilities${VAR}${STATIC_LIB_POSTFIX}-Exports.cmake")	
+	set(EXPORT_PATH "${CMAKE_CURRENT_LIST_DIR}/GameUtilities${VAR}${GameUtilities_STATIC_LIB_POSTFIX}-Exports.cmake")	
 	if(EXISTS "${EXPORT_PATH}")
 		include("${EXPORT_PATH}")		
 		set(GameUtilities_${VAR}_FOUND True)
 
 		#Print message that component was found
 		if(NOT GameUtilities_FIND_QUIETLY)
-			message("Found component GameUtilities-${VAR}")
+			message("${PROJECT_NAME} found component GameUtilities-${VAR}")
 		endif()
 	else()
 		set(GameUtilities_${VAR}_FOUND False)
 
 		#Print message that component was found
 		if(NOT GameUtilities_FIND_QUIETLY)
-			message(FATAL_ERROR "Component not found GameUtilities-${VAR}")
+			message(FATAL_ERROR "${PROJECT_NAME} cannot find GameUtilities-${VAR}")
 		endif()
 		
 	endif()
