@@ -629,10 +629,10 @@ namespace GU
             public:
                 ContainerReverseIterator() = delete;
                 ContainerReverseIterator(T *element);
-                void operator ++();
-                void operator ++(int);
-                void operator --();
-                void operator --(int);
+                ContainerReverseIterator<T> operator ++();
+                ContainerReverseIterator<T> operator ++(int);
+                ContainerReverseIterator<T> operator --();
+                ContainerReverseIterator<T> operator --(int);
             private:
                 T *m_Element = nullptr;
         };
@@ -647,7 +647,7 @@ namespace GU
 
 
         template <class T>
-        void ContainerReverseIterator<T>::operator ++()
+        ContainerReverseIterator<T> ContainerReverseIterator<T>::operator ++()
         {
             --m_Element;
             return *this;
@@ -655,7 +655,7 @@ namespace GU
 
 
         template <class T>
-        void ContainerReverseIterator<T>::operator ++(int)
+        ContainerReverseIterator<T> ContainerReverseIterator<T>::operator ++(int)
         {
             T *temp(m_Element);
             this->operator++();
@@ -665,7 +665,7 @@ namespace GU
 
 
         template <class T>
-        void ContainerReverseIterator<T>::operator --()
+        ContainerReverseIterator<T> ContainerReverseIterator<T>::operator --()
         {
             ++m_Element;
             return *this;
@@ -673,7 +673,7 @@ namespace GU
 
 
         template <class T>
-        void ContainerReverseIterator<T>::operator --(int)
+        ContainerReverseIterator<T> ContainerReverseIterator<T>::operator --(int)
         {
             T *temp(m_Element);
             this->operator --();
