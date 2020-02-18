@@ -1,9 +1,11 @@
 include("BoostTestHelpers")
+find_package(Catch2 REQUIRED)
 
 #Find boost
 find_package(Boost 1.60.0 COMPONENTS system unit_test_framework REQUIRED)
 
 include(CTest)
+include(Catch)
 
 set(TEST_INCLUDES "${Boost_INCLUDE_DIRS}")
 list(APPEND TEST_INCLUDES "${CMAKE_CURRENT_SOURCE_DIR}/include")

@@ -2,7 +2,8 @@ set(FILES ""
 
 )
 
-set(SUB_DIRECTORIES "EnginTests")
+set(SUB_DIRECTORIES 	#"EnginTests"
+			"ParticleSystem")
 
 #Add subdirectories
 foreach(LOOP_VAR ${SUB_DIRECTORIES})
