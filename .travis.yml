@@ -17,6 +17,13 @@ install:
   - wget "https://github.com/Kitware/CMake/releases/download/v3.17.0-rc1/cmake-3.17.0-rc1-Linux-x86_64.tar.gz"
   - tar xf cmake-3.17.0-rc1-Linux-x86_64.tar.gz
   - ls
+  - wget "https://github.com/Yanson32/Math/archive/master.zip"
+  - unzip master.zip
+  - cd Math-master
+  - cmake . 
+  - make
+  - sudo make install
+  - cd ..
 
 script:
   - cd cmake-3.17.0-rc1-Linux-x86_64
