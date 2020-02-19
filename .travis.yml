@@ -11,7 +11,12 @@ install:
   - make
   - sudo make install
   - cd ..
+  - wget "https://github.com/Kitware/CMake/releases/download/v3.17.0-rc1/cmake-3.17.0-rc1-Linux-x86_64.tar.gz"
+  - ls
+
 script:
-  - cmake . -GU_BUILD_TESTING=ON
+  - cd cmake-3.17.0-rc1-Linux-x86_64
+  - cd bin
+  - cmake ../../ -GU_BUILD_TESTING=ON
   - make
   - ctest
