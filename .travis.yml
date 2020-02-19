@@ -2,6 +2,8 @@ language: cpp
 compiler: gcc
 sudo: true
 install:
+  - gcc --version
+  - cmake --version
   - wget https://github.com/catchorg/Catch2/archive/v2.11.1.tar.gz
   - tar xf v2.11.1.tar.gz
   - cd Catch2-2.11.1
