@@ -6,7 +6,7 @@ sudo: true
 before_install:
     - sudo apt-get update
     - gcc --version
-    - cmake -- version
+    - cmake --version
     - clang --version
 install:
     catch:
@@ -35,7 +35,7 @@ install:
 
 after_install:
     - gcc --version
-    - cmake -- version
+    - cmake --version
     - clang --version
 script:
   - cd cmake-3.17.0-rc1-Linux-x86_64
