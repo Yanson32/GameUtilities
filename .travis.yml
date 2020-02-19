@@ -23,4 +23,3 @@ script:
   - cmake ../../ -GU_BUILD_TESTING=ON
   - make
   - ctest
-
