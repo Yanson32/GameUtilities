@@ -13,7 +13,8 @@ install:
     - tar xf v2.11.1.tar.gz
     - cd Catch2-2.11.1
     - mkdir build
-    - cd build     - cmake ../ -DBUILD_SHARED_LIBS=ON
+    - cd build     
+    - cmake ../ -DBUILD_SHARED_LIBS=ON
     - make
     - sudo make install
     - cd ..
