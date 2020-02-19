@@ -3,7 +3,7 @@ compiler: gcc
 sudo: true
 install:
   - wget https://github.com/catchorg/Catch2/archive/v2.11.1.tar.gz
-  - tar xf Catch2-2.11.1
+  - tar xf Catch2-2.11.1.tar.gz
   - cd Catch2-2.11.1
   - cmake . -DBUILD_SHARED_LIBS=ON
   - make
