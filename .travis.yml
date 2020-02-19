@@ -20,6 +20,6 @@ install:
 script:
   - cd cmake-3.17.0-rc1-Linux-x86_64
   - cd bin
-  - cmake ../../ -GU_BUILD_TESTING=ON
+  - cmake ../../ -DGU_BUILD_TESTING=ON
   - make
   - ctest
