@@ -1,30 +1,42 @@
 language: cpp
-compiler: gcc
+compiler: 
+    - gcc
+    - clang
 sudo: true
+before_install:
+    - sudo apt-get update
+    - gcc --version
+    - cmake -- version
+    - clang --version
 install:
-  - gcc --version
-  - cmake --version
-  - wget https://github.com/catchorg/Catch2/archive/v2.11.1.tar.gz
-  - tar xf v2.11.1.tar.gz
-  - cd Catch2-2.11.1
-  - mkdir build
-  - cd build
-  - cmake ../ -DBUILD_SHARED_LIBS=ON
-  - make
-  - sudo make install
-  - cd ..
-  - cd ..
-  - wget "https://github.com/Kitware/CMake/releases/download/v3.17.0-rc1/cmake-3.17.0-rc1-Linux-x86_64.tar.gz"
-  - tar xf cmake-3.17.0-rc1-Linux-x86_64.tar.gz
-  - ls
-  - wget "https://github.com/Yanson32/Math/archive/master.zip"
-  - unzip master.zip
-  - cd Math-master
-  - cmake . 
-  - make
-  - sudo make install
-  - cd ..
+    catch:
+      - wget https://github.com/catchorg/Catch2/archive/v2.11.1.tar.gz
+      - tar xf v2.11.1.tar.gz
+      - cd Catch2-2.11.1
+      - mkdir build
+      - cd build
+      - cmake ../ -DBUILD_SHARED_LIBS=ON
+      - make
+      - sudo make install
+      - cd ..
+      - cd ..
+    math:
+      - wget "https://github.com/Yanson32/Math/archive/master.zip"
+      - unzip master.zip
+      - cd Math-master
+      - cmake . 
+      - make 
+      - sudo make install
+      - cd ..
+    cmake:
+      - wget "https://github.com/Kitware/CMake/releases/download/v3.17.0-rc1/cmake-3.17.0-rc1-Linux-x86_64.tar.gz"
+      - tar xf cmake-3.17.0-rc1-Linux-x86_64.tar.gz
+      - ls
 
+after_install:
+    - gcc --version
+    - cmake -- version
+    - clang --version
 script:
   - cd cmake-3.17.0-rc1-Linux-x86_64
   - cd bin
