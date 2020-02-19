@@ -1,70 +1,46 @@
-#define BOOST_TEST_DYN_LINK
-#define BOOST_TEST_MAIN
-#include <GameUtilities/Engin/Engin.h>
-#include <GameUtilities/Engin/GameState.h>
-#include <boost/test/unit_test.hpp>
-#include <memory>
+#define CATCH_CONFIG_MAIN
+#include <catch2/catch.hpp>
+#include <GameUtilities/ParticleSystem/Container.h>
 
-class TestState: public GU::Engin::GameState
-{
-	public:
-		TestState(){}
-		        /*********************************************************************************//**
-                *   \brief	Initialize the game state.
-                *************************************************************************************/
-                virtual void Init() {};
-
-                /*********************************************************************************//**
-                *   \brief	Clean any resource the state uses
-                *************************************************************************************/
-                virtual void Clean(){};
-
-                /*********************************************************************************//**
-                *   \brief	This method handles input such as user input and events
-                *	\param	engin is a reference to the game's Engin object.
-                *************************************************************************************/
-                virtual void HandleEvents(GU::Engin::Engin& engin, const int &deltaTime) {};
-
-
-                /*********************************************************************************//**
-                *   \brief	This method handles input such as user input and events
-                *	\param	engin is a reference to the game's Engin object.
-                *************************************************************************************/
-                virtual void Update(GU::Engin::Engin& engin, const int &deltaTime) {};
-
-
-                /*********************************************************************************//**
-                *   \brief	This method draws the current game state.
-                *	\param	engin is a reference to the game's Engin object.
-                *************************************************************************************/
-                virtual void Draw(GU::Engin::Engin& engin, const int &deltaTime) {};
-};
-
-BOOST_AUTO_TEST_CASE( GameState_Constructors )
-{
-	GU::Engin::Engin engin;
-
-	//There should not be any states on the stack when 
-	BOOST_CHECK(engin.Size() == 0);
+TEST_CASE( "Single argument constructor", "[Constructor]" ) {
+    GU::PS::Container<float> cont(10);
+    REQUIRE( cont.size() == 10 );
 }
 
-
-BOOST_AUTO_TEST_CASE( GameState_HandleEvents )
+TEST_CASE("Bracket operator", "[Bracket]")
 {
-
+    GU::PS::Container<int> cont(10);
+    cont[5] = 5;
+    REQUIRE(cont[5] == 5);
 }
 
-
-BOOST_AUTO_TEST_CASE( GameState_Update )
+TEST_CASE("emplace_back method", "[EmplaceBack]")
 {
+    GU::PS::Container<int> cont(10);
+    cont.emplace_back<int>(6);
 
+    REQUIRE(cont[10] == 6);
 }
 
-
-BOOST_AUTO_TEST_CASE( GameState_Draw )
+TEST_CASE("size method", "[Size]")
 {
+    GU::PS::Container<int> cont(10);
 
+    REQUIRE(cont.size() == 10);
 }
 
+TEST_CASE("remove method", "[Remove]")
+{
+    GU::PS::Container<int> cont(10);
+    cont.remove(3);
+    REQUIRE(cont.size() == 9);
+    REQUIRE(cont.capacity() == 10);
+}
 
-
+TEST_CASE("capacity method", "[Capacity]")
+{
+    GU::PS::Container<int> cont(10);
+    REQUIRE(cont.capacity() == 10);
+    cont.remove(3);
+    REQUIRE(cont.capacity() == 10);
+}
