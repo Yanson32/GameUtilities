@@ -43,3 +43,29 @@ TEST_CASE( "GameState class default constructor", "[Default Constructor]" ) {
     TestState state;
     REQUIRE( state.IsPaused() == false);
 }
+
+TEST_CASE( "GameState class copy constructor", "[Copy Constructor]" ) {
+    TestState state;
+    state.Pause(true);
+    TestState state2(state);
+    REQUIRE( state2.IsPaused() == true);
+}
+
+TEST_CASE( "GameState class assignment operator", "[Assignment]" ) {
+    TestState state;
+    state.Pause(true);
+    TestState state2;
+    state2 = state;
+    REQUIRE( state2.IsPaused() == true);
+}
+
+TEST_CASE( "GameState class IsPaused", "[IsPaused]" ) {
+    TestState state;
+    REQUIRE( state.IsPaused() == false);
+}
+
+TEST_CASE( "GameState class Pause", "[Pause]" ) {
+    TestState state;
+    state.Pause(true);
+    REQUIRE( state.IsPaused() == true);
+}
