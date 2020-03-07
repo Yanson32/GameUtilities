@@ -42,7 +42,7 @@ namespace GU
                 *   @param  size the number of objects the container
                 *           should hold.
                 ********************************************************/
-                Container(const std::size_t size);
+                Container(const std::size_t capacity);
 
 
                 /****************************************************//**
@@ -208,10 +208,10 @@ namespace GU
         *           should hold.
         ********************************************************/
         template <class T>
-        Container<T>::Container(const std::size_t size):
-        m_Container(new T[size]),
-        m_Size(size),
-        m_Capacity(size)
+        Container<T>::Container(const std::size_t capacity):
+        m_Container(new T[capacity]),
+        m_Size(0),
+        m_Capacity(capacity)
         {
         }
 
@@ -248,7 +248,7 @@ namespace GU
         {
             assert(index < m_Size);
             assert(m_Container != nullptr);
-            std::swap(*(m_Container.get() + m_Capacity),
+            std::swap(*(m_Container.get() + m_Size - 1),
                       *(m_Container.get() + index));
             --m_Size;
         }
