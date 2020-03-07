@@ -40,7 +40,7 @@ TEST_CASE("ParticleSystem::Container remove method", "[Remove]")
     REQUIRE(cont.capacity() == 10);
     REQUIRE(cont[0] == 0);
     REQUIRE(cont[1] == 2);
-    
+
 }
 
 TEST_CASE("ParticleSystem::Container capacity method", "[Capacity]")

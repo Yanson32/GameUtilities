@@ -80,10 +80,9 @@ namespace GU
                 *           it back to the pool of available objects.
                 *   @param  index the index of the object to be recycled
                 ********************************************************/
-                void recycle(const std::size_t index);
-
-
                 void remove(const std::size_t index);
+
+
                 /****************************************************//**
                 *   @brief  Returns the total size of the container.
                 *           This number represents all of the active
@@ -233,16 +232,6 @@ namespace GU
         *           it back to the pool of available objects.
         *   @param  index the index of the object to be recycled
         ********************************************************/
-        template <class T>
-        void Container<T>::recycle(const std::size_t index)
-        {
-            assert(index < m_Size);
-            assert(m_Container != nullptr);
-            std::swap(*(m_Container.get() + m_Capacity),
-                      *(m_Container.get() + index));
-        }
-
-
         template <class T>
         void Container<T>::remove(const std::size_t index)
         {
