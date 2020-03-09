@@ -1,11 +1,8 @@
-set(FILES ""
+set(FILES "ThreadPoolTest"
 
 )
 
-set(SUB_DIRECTORIES 	"EnginTests"
-			"ParticleSystem"
-			"TP"
-)
+set(SUB_DIRECTORIES 	"")
 
 #Add subdirectories
 foreach(LOOP_VAR ${SUB_DIRECTORIES})
@@ -17,6 +14,7 @@ endforeach()
 foreach(LOOP_VAR ${FILES})
 	add_executable("${LOOP_VAR}" "${LOOP_VAR}.cpp" )
 	set_target_properties("${LOOP_VAR}" PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}")
-	target_link_libraries("${LOOP_VAR}" PRIVATE ParticleSystem Catch2::Catch2)
+	target_link_libraries("${LOOP_VAR}" PRIVATE ThreadPool -lpthread Catch2::Catch2)
 	catch_discover_tests("${LOOP_VAR}")
 endforeach()
+

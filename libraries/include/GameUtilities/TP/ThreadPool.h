@@ -40,6 +40,12 @@ namespace GU
 
 
                 /************************************************************************//**
+                *   @brief  Returns the total number of threads available in the pool
+                *   @return The total number of threads available in the pool
+                ****************************************************************************/
+                std::size_t size() const;
+
+                /************************************************************************//**
                 *   @brief  Destructor.
                 ****************************************************************************/
                 virtual ~ThreadPool();
@@ -52,7 +58,6 @@ namespace GU
                 void waitForTask();
                 std::vector<std::thread> threads;
                 std::condition_variable cv;
-                const unsigned numThreads = 0;
                 Thread::ThreadPoolQueue queue;
                 bool wait = true;
         };

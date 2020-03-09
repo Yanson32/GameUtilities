@@ -12,12 +12,11 @@ namespace GU
         *   @param  The number of threads to be alloted. This must be less than
         *           std::thread::hardware_cuncurrency
         ****************************************************************************/
-        ThreadPool::ThreadPool(const unsigned &newNumThreads):
-        numThreads(newNumThreads)
+        ThreadPool::ThreadPool(const unsigned &newNumThreads)
         {
-            assert(numThreads < std::thread::hardware_concurrency());
-            assert(numThreads > 0);
-            for(std::size_t i = 0; i < numThreads; ++i)
+            assert(newNumThreads < std::thread::hardware_concurrency());
+            assert(newNumThreads > 0);
+            for(std::size_t i = 0; i < newNumThreads; ++i)
             {
                 threads.emplace_back(&ThreadPool::waitForTask, this);
             }
@@ -33,6 +32,16 @@ namespace GU
         {
             assert(newTask != nullptr);
             queue.add(std::move(newTask));
+        }
+
+
+        /************************************************************************//**
+        *   @brief  Returns the total number of threads available in the pool
+        *   @return The total number of threads available in the pool
+        ****************************************************************************/
+        std::size_t ThreadPool::size() const
+        {
+            return threads.size();
         }
 
 
