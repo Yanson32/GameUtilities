@@ -5,7 +5,7 @@
 //#include "GameUtilities/ParticleSystem/Systems/ParticleSystem.h"
 #include "GameUtilities/ParticleSystem/Attributes/Manager.h"
 #include "GameUtilities/ParticleSystem/Updaters/Manager.h"
-#include "Math/Point.h"
+#include "Math/Point2.h"
 
 namespace GU
 {
@@ -23,7 +23,7 @@ namespace GU
                     *   @param  position the base position of the particle system
                     *   @param  size the number of particles in the system.
                     ****************************************************************/
-                    Starburst(const Math::Point &newPosition, const std::size_t newSize);
+                    Starburst(const Math::Point2<float> &newPosition, const std::size_t newSize);
 
 
                     /************************************************************//**
@@ -40,7 +40,7 @@ namespace GU
                     ****************************************************************/
                     void setMagnitude(const unsigned magnitude);
 
-                    Math::Point position;
+                    Math::Point2<float> position;
 					std::size_t size = 10;
             };
         }

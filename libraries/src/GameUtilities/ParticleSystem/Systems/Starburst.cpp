@@ -21,7 +21,7 @@ namespace GU
             *   @param  position the base position of the particle system
             *   @param  size the number of particles in the system.
             ****************************************************************/
-            Starburst::Starburst(const Math::Point &newPosition, const std::size_t newSize):
+            Starburst::Starburst(const Math::Point2<float> &newPosition, const std::size_t newSize):
 			size(newSize),
 			position(newPosition)
 
