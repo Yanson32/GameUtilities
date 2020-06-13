@@ -2,4 +2,12 @@ build/
 BUILD/
 Build/
 bUILD/
-.vs/
+
+#Linux
+*.
+
+#Ignore vim files 
+*.swp
+*.swo
+*.swn
+
