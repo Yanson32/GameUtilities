@@ -7,6 +7,7 @@ namespace GU
     {
         namespace Id
         {
+            const int LOWEST = -1;
             const int CHANGE_STATE = 0;
             const int PUSH_STATE = 1;
 			const int POP_STATE = 2;
@@ -15,6 +16,7 @@ namespace GU
             const int PLAY_SOUND = 5;
             const int SOUND_EFFECTS_VOLUME_CHANGED = 6;
             const int CLICK = 7;
+            const int HIGHEST = 8;
         }
 
     }
