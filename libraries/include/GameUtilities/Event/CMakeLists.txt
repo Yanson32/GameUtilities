@@ -15,6 +15,9 @@ set(FILES
 "${CMAKE_CURRENT_SOURCE_DIR}/EventHandler.h"
 "${CMAKE_CURRENT_SOURCE_DIR}/Click.h"
 "${CMAKE_CURRENT_SOURCE_DIR}/Id.h"
+"${CMAKE_CURRENT_SOURCE_DIR}/Click.h"
+"${CMAKE_CURRENT_SOURCE_DIR}/LogEvent.h"
+
 )
 
 set(RELATIVE_PATH "include/GameUtilities/Event")
