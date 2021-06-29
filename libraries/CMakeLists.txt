@@ -13,8 +13,8 @@ set(GU_PUBLIC_COMPILE_FEATURES
 "cxx_override"
 )
 
-set(GU_CONFIG_BUILD_DIR "${GameUtilities_BINARY_DIR}/lib/cmake/${PROJECT_NAME}")
-set(GU_CONFIG_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/lib/cmake/${PROJECT_NAME}")
+set(GU_CONFIG_BUILD_DIR "${GameUtilities_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}")
+set(GU_CONFIG_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}")
 					
 					
 #Build shared library by default
@@ -115,7 +115,7 @@ foreach(VAR ${GU_LIBS})
 		set(EXPORT_FILE_NAME "${PROJECT_NAME}${VAR}Static-Exports")
 	endif()
 
-	install(TARGETS ${VAR} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib EXPORT "${EXPORT_FILE_NAME}" INCLUDES DESTINATION "include")
+    install(TARGETS ${VAR} DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR} EXPORT "${EXPORT_FILE_NAME}" INCLUDES DESTINATION "include")
 
 	#Export to the install tree
 	install(EXPORT "${EXPORT_FILE_NAME}" DESTINATION "${GU_CONFIG_INSTALL_DIR}"  NAMESPACE "GU::" COMPONENT "libs")
@@ -144,7 +144,7 @@ COMPATIBILITY
 configure_package_config_file("${GameUtilities_SOURCE_DIR}/cmake/${PROJECT_NAME}Config.cmake.in"
 	"${GU_CONFIG_BUILD_DIR}/${PROJECT_NAME}Config.cmake"
 INSTALL_DESTINATION
-	"lib/cmake/GameUtilities"
+"${CMAKE_INSTALL_DIR}/cmake/GameUtilities"
 )
 
 
