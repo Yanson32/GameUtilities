@@ -1,6 +1,7 @@
 #for backwards compatibility
 cmake_minimum_required(VERSION 3.5.1)
 
+include ("${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/defaults.cmake")
 include ("GNUInstallDirs")
 
 #set output directory for binaries
