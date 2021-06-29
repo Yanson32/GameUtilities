@@ -7,7 +7,4 @@ bUILD/
 *.
 
 #Ignore vim files 
-*.swp
-*.swo
-*.swn
-
+*.sw*
