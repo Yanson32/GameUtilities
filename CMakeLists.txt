@@ -5,9 +5,9 @@ include ("${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/defaults.cmake")
 include ("GNUInstallDirs")
 
 #set output directory for binaries
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR}")
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR}")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin" CACHE STRING "Runtime output directory")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR}" CACHE STRING "Archive ouput directory")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR}" CACHE STRING "Library output directory")
 
 option(GU_BUILD_EXAMPLES "Set to TRUE if you want to build examples" FALSE)
 option(GU_BUILD_DOC "Set to TRUE if you want to build library documentation" FALSE)
