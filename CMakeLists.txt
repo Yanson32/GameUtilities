@@ -1,15 +1,12 @@
 #for backwards compatibility
 cmake_minimum_required(VERSION 3.5.1)
 
-set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules" CACHE PATH "All cmake modules can be found in this path")
-
 include ("GNUInstallDirs")
 
-
 #set output directory for binaries
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin" CACHE STRING "Runtime output directory")
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR}" CACHE STRING "Archive ouput directory")
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR}" CACHE STRING "Library output directory")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin" CACHE PATH "Runtime output directory")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR}" CACHE PATH "Archive ouput directory")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR}" CACHE PATH "Library output directory")
 
 option(GU_BUILD_EXAMPLES "Set to TRUE if you want to build examples" FALSE)
 option(GU_BUILD_DOC "Set to TRUE if you want to build library documentation" FALSE)
@@ -20,7 +17,7 @@ set(GU_VALID_BUILD_TYPES "Release" "Debug" "MinSizeRel" "RelWithDebInfo")
 set(GU_LIBS "Core" "Event" "ParticleSystem" "Engin" "ThreadPool")
 
 #set custom module path
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules")
+set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules" CACHE PATH "All cmake modules can be found in this path")
 
 #set cpack variables
 include ("CPackConfig")
