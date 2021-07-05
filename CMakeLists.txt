@@ -1,8 +1,10 @@
 #for backwards compatibility
 cmake_minimum_required(VERSION 3.5.1)
 
-include ("${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/defaults.cmake")
+set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules" CACHE PATH "All cmake modules can be found in this path")
+
 include ("GNUInstallDirs")
+
 
 #set output directory for binaries
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin" CACHE STRING "Runtime output directory")
@@ -80,6 +82,10 @@ if(NOT TARGET uninstall)
 
   add_custom_target(uninstall
     COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake)
+endif()
+
+if(UNIX)
+    install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/man/" DESTINATION "${CMAKE_INSTALL_FULL_MANDIR}/")
 endif()
 
 include(CPack)
