@@ -39,7 +39,7 @@ namespace GU
             std::unique_ptr<ThreadPoolTask> task = std::move(taskQueue.front());
             assert(task != nullptr);
             taskQueue.pop();
-            return std::move(task);
+            return task;
         }
 
 
