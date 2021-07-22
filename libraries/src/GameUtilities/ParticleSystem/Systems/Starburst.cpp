@@ -7,6 +7,8 @@
 
 #include "GameUtilities/ParticleSystem/Updaters/Position.h"
 //#include "GameUtilities/ParticleSystem/Updaters/LifeSpan.h"
+#include "GameUtilities/Core/Macros.h"
+
 #include "Math/Degree.h"
 #include <cmath>
 #include <cassert>
@@ -83,6 +85,7 @@ namespace GU
             ****************************************************************/
             void Starburst::setMagnitude(const unsigned magnitude)
             {
+                UNUSED(magnitude);
 /*                 for(int i = 0; i < particles.velocity.size(); ++i)
                 {
                     particles.velocity[i].magnitude = magnitude;

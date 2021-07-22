@@ -1,6 +1,7 @@
 set(FILES	"${CMAKE_CURRENT_SOURCE_DIR}/FrameRate.h"
 		"${CMAKE_CURRENT_SOURCE_DIR}/Resource Holder.h"
 		"${CMAKE_CURRENT_SOURCE_DIR}/NonCopyable.h"
+        "${CMAKE_CURRENT_SOURCE_DIR}/Macros.h"
 )
 
 set(RELATIVE_PATH "include/GameUtilities/Core")

@@ -1,5 +1,6 @@
 #include "GameUtilities/ParticleSystem/Attributes/Base.h"
 #include "GameUtilities/ParticleSystem/Attributes/Manager.h"
+#include "GameUtilities/Core/Macros.h"
 namespace GU
 {
 	namespace PS
@@ -10,7 +11,7 @@ namespace GU
             manager(newManager),
             id(newId)
 			{
-
+                UNUSED(newSize);
 			}
 
 			Base::~Base()

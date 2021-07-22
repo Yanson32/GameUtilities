@@ -1,4 +1,5 @@
 #include "GameUtilities/Event/MessageEvent.h"
+#include "GameUtilities/Core/Macros.h"
 
 namespace GU
 {
@@ -7,6 +8,7 @@ namespace GU
         MessageEvent::MessageEvent(const std::string &msg, const int messageType):
         m_messageType(messageType)
         {
+            UNUSED(msg);
             //ctor
         }
 

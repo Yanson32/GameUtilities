@@ -1,5 +1,5 @@
 #include "GameUtilities/Event/LogEvent.h"
-
+#include "GameUtilities/Core/Macros.h"
 namespace GU
 {
     namespace Evt
@@ -7,8 +7,8 @@ namespace GU
         LogEvent::LogEvent(const std::string &msg, const int newSeverity):
         m_severity(newSeverity)
         {
-            //ctor
-        }
+            UNUSED(msg);
+        } 
 
         int LogEvent::getSeverity() const
         {
