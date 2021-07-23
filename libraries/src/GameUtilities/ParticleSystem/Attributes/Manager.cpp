@@ -29,7 +29,7 @@ namespace GU
                     components[i]->remove(index);
 				}
 			}
-            std::shared_ptr<GU::PS::AT::Base> Manager::getComponent(const std::size_t &id) const
+            std::shared_ptr<GU::PS::AT::Base> Manager::getComponent(const int &id) const
             {
 
                 for(std::size_t i = 0; i < components.size(); ++i)

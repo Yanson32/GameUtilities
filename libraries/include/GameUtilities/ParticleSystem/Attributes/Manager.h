@@ -45,7 +45,7 @@ namespace GU
                     void sendMessage(const Message &message);
                     bool hasComponent(const int &id) const;
                     void addAttribute(std::shared_ptr<GU::PS::AT::Base> comp);
-                    std::shared_ptr<GU::PS::AT::Base> getComponent(const std::size_t &id) const;
+                    std::shared_ptr<GU::PS::AT::Base> getComponent(const int &id) const;
 					void remove(const std::size_t &index);
 					virtual ~Manager();
 				private:
