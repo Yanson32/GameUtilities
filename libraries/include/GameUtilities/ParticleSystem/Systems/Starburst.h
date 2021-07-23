@@ -40,8 +40,8 @@ namespace GU
                     ****************************************************************/
                     void setMagnitude(const unsigned magnitude);
 
-                    Math::Vector2<float> position;
 					std::size_t size = 10;
+                    Math::Vector2<float> position;
             };
         }
     }

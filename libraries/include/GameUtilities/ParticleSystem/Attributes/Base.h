@@ -16,10 +16,11 @@ namespace GU
 					Base(GU::PS::AT::Manager& newManager, const std::size_t &newSize, const int &newId = -1);
 					virtual void remove(const std::size_t &index) = 0;
 					virtual ~Base();
-					const int id = -1;
 				protected:
 
                     GU::PS::AT::Manager &manager;
+			    public:	
+                    const int id = -1;
 			};
 		}
 	}
