@@ -10,9 +10,10 @@
 - Thread Pool
 
 ## Dependencies
-
-- [SFML](https://www.sfml-dev.org/)
 - [Math](https://github.com/Yanson32/Math)
+
+## Optional Dependencies
+- [SFML](https://www.sfml-dev.org/)
 
 ## How to compile
 
