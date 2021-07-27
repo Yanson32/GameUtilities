@@ -13,7 +13,6 @@
 
 - [SFML](https://www.sfml-dev.org/)
 - [Math](https://github.com/Yanson32/Math)
-- [Box2D](https://github.com/erincatto/Box2D)
 
 ## How to compile
 
