@@ -21,19 +21,19 @@ endif()
 unset(GameUtilities_VALID_COMPONENTS)
 
 #Define package root
-if(NOT DEFINED GameUtilities_ROOT)
-	set_and_check(GameUtilities_ROOT ${PACKAGE_PREFIX_DIR})
-endif()
+#if(NOT DEFINED GameUtilities_ROOT)
+#	set_and_check(GameUtilities_ROOT ${PACKAGE_PREFIX_DIR})
+#endif()
 
 #Package version
-set(GameUtilities_VERSION @GameUtilities_VERSION@)
+#set(GameUtilities_VERSION @GameUtilities_VERSION@)
 
 #List of library direcotries
-set_and_check(GameUtilities_LIB_DIR ${PACKAGE_PREFIX_DIR}/lib)
+#set_and_check(GameUtilities_LIB_DIR ${PACKAGE_PREFIX_DIR}/lib)
 
 
 #List of include directories for the package
-set(GameUtilities_INCLUDE_DIR ${PACKAGE_PREFIX_DIR}$<BUILD_INTERFACE:/libraries>/include)
+#set(GameUtilities_INCLUDE_DIR ${PACKAGE_PREFIX_DIR}$<BUILD_INTERFACE:/libraries>/include)
 
 
 #Make sure the variable was not defined by the calling project.
