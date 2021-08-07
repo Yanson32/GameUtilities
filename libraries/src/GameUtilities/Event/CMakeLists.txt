@@ -16,6 +16,7 @@ set(FILES
 "${CMAKE_CURRENT_SOURCE_DIR}/LogEvent.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/MessageEvent.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/OnSliderChanged.cpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/OnCheck.cpp"
 
 )
 

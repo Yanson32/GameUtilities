@@ -18,6 +18,7 @@ namespace GU
             const int CLICK = 7;
             const int HIGHEST = 8;
             const int SLIDER_CHANGED = 9;
+            const int ON_CHECK= 10;
         }
 
     }

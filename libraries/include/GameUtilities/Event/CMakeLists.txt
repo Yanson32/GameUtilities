@@ -18,6 +18,7 @@ set(FILES
 "${CMAKE_CURRENT_SOURCE_DIR}/Click.h"
 "${CMAKE_CURRENT_SOURCE_DIR}/LogEvent.h"
 "${CMAKE_CURRENT_SOURCE_DIR}/OnSliderChanged.h"
+"${CMAKE_CURRENT_SOURCE_DIR}/OnCheck.h"
 
 )
 
