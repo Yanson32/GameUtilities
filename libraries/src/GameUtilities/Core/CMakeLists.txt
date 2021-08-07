@@ -1,5 +1,6 @@
 set(FILES
-"${CMAKE_CURRENT_SOURCE_DIR}/FrameRate.cpp")
+"${CMAKE_CURRENT_SOURCE_DIR}/FrameRate.cpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/String.cpp")
 
 set(RELATIVE_PATH "src/GameUtilities/Core")
 
