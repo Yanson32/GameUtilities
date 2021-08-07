@@ -16,9 +16,9 @@ namespace GU
             const int PLAY_SOUND = 5;
             const int SOUND_EFFECTS_VOLUME_CHANGED = 6;
             const int CLICK = 7;
-            const int HIGHEST = 8;
-            const int SLIDER_CHANGED = 9;
-            const int ON_CHECK= 10;
+            const int SLIDER_CHANGED = 8;
+            const int ON_CHECK= 9;
+            const int HIGHEST = 10;
         }
 
     }
