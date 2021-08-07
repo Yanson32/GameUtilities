@@ -1,5 +1,5 @@
-#ifndef CLICK_H
-#define CLICK_H
+#ifndef GAMEUTILITIES_CLICK_H
+#define GAMEUTILITIES_CLICK_H
 #include "event_export.h"
 #include "GameUtilities/Event/Event.h"
 namespace GU
