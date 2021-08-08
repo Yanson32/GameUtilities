@@ -1,5 +1,5 @@
-#ifndef GAMEUTILITIES_ID_H
-#define GAMEUTILITIES_ID_H
+#ifndef GAMEUTILITIES_EVENT_ID_H
+#define GAMEUTILITIES_EVENT_ID_H
 
 namespace GU
 {
@@ -15,13 +15,14 @@ namespace GU
             PLAY_MUSIC = 4,
             PLAY_SOUND = 5,
             SOUND_EFFECTS_VOLUME_CHANGED = 6,
+            CLICK = 7,
             SLIDER_CHANGED = 8,
             ON_CHECK= 9,
-            CLICK = 7,
-            HIGHEST = 10
+            ON_COMBO_CHANGED = 10,
+            HIGHEST = 11
         };
 
     }
 }
 
-#endif // ID_H_INCLUDED
+#endif 
