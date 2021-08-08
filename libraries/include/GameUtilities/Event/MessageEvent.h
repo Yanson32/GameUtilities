@@ -16,7 +16,7 @@ namespace GU
         *               object. Which can then be registered to receive events.
         **************************************************************************/
 
-        class EVENT_EXPORT MessageEvent 
+        class EVENT_EXPORT MessageEvent: public Event 
         {
             public:
                 /**************************************************************************

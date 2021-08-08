@@ -9,5 +9,6 @@
 #include "GameUtilities/Event/PushState.h"
 #include "GameUtilities/Event/SoundVolumeChanged.h"
 #include "GameUtilities/Event/Id.h"
-
+#include "GameUtilities/Event/OnCheck.h"
+#include "GameUtilities/Event/OnComboChanged.h"
 #endif // EVENTS_H_INCLUDED
