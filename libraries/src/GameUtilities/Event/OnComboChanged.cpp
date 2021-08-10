@@ -5,7 +5,7 @@ namespace GU
     namespace Evt
     {
         OnComboChanged::OnComboChanged(const int newComboId, const int newIndex):
-        Event(static_cast<int>(GU::Evt::EventId::ON_CHECK)),
+        Event(static_cast<int>(GU::Evt::EventId::ON_COMBO_CHANGED)),
         comboId(newComboId),
         index(newIndex)
         {

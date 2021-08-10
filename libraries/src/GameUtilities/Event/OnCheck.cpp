@@ -1,11 +1,11 @@
 #include "GameUtilities/Event/OnCheck.h"
-#include "GameUtilities/Event/Id.h"
+#include "GameUtilities/Event/EventId.h"
 namespace GU
 {
     namespace Evt
     {
         OnCheck::OnCheck(const int newCheckBoxId, const bool newChecked):
-        Event(GU::Evt::Id::ON_CHECK),
+        Event(static_cast<int>(GU::Evt::EventId::ON_CHECK)),
         checkboxId(newCheckBoxId),
         checked(newChecked)
         {
