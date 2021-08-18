@@ -4,7 +4,7 @@ namespace GU
 {
     namespace Evt
     {
-        LogEvent::LogEvent(const std::string &msg, const int newSeverity):
+        LogEvent::LogEvent(const std::string &msg, const LogType newSeverity):
         m_severity(newSeverity)
         {
             UNUSED(msg);
