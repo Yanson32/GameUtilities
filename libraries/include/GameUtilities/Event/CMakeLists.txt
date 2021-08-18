@@ -20,7 +20,7 @@ set(FILES
 "${CMAKE_CURRENT_SOURCE_DIR}/OnSliderChanged.h"
 "${CMAKE_CURRENT_SOURCE_DIR}/OnCheck.h"
 "${CMAKE_CURRENT_SOURCE_DIR}/OnComboChanged.h"
-"${CMAKE_CURRENT_SOURCE_DIR}/EventType.h"
+"${CMAKE_CURRENT_SOURCE_DIR}/LogType.h"
 
 )
 

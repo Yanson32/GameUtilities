@@ -1,17 +1,23 @@
 #ifndef GAMEUTILITIES_LOG_TYPE
 #define GAMEUTILITIES_LOG_TYPE
-
-enum  class LogType
+namespace GU
 {
-    FATAL_ERROR, 
-    ERROR,
-    WARNING,
-    MESSAGE, 
-    VERBOSE, 
-    STATUS, 
-    SYSTEM_ERROR,
-    DEBUG,
-    TRACE
-};
+    namespace Evt
+    { 
+        enum  class LogType
+        {
+            FATAL_ERROR, 
+            ERROR,
+            WARNING,
+            MESSAGE, 
+            VERBOSE, 
+            STATUS, 
+            SYSTEM_ERROR,
+            DEBUG,
+            TRACE
+        };
+    }
+}
+
 #endif
 

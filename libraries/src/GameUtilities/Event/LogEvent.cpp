@@ -10,7 +10,7 @@ namespace GU
             UNUSED(msg);
         } 
 
-        int LogEvent::getSeverity() const
+        LogType LogEvent::getSeverity() const
         {
             return m_severity;
         }
