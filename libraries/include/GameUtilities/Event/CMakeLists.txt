@@ -26,7 +26,7 @@ set(FILES
 
 set(RELATIVE_PATH "include/GameUtilities/Event")
 
-set(SUB_DIRECTORIES "")
+set(SUB_DIRECTORIES "Frame")
 
 #Add subdirectories
 foreach(LOOP_VAR ${SUB_DIRECTORIES})

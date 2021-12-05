@@ -3,6 +3,7 @@
 
 #include "GameUtilities/Event/Event.h"
 #include "GameUtilities/Engin/Engin.h"
+
 #include "event_export.h"
 #include <memory>
 
@@ -15,11 +16,7 @@ namespace GU
         class EVENT_EXPORT EventHandler
         {
             public:
-                EventHandler();
-                virtual void handleGUEvent(GU::Engin::Engin& engin, GU::Evt::EventPtr event) = 0;
-                virtual ~EventHandler();
-            protected:
-            private:
+                virtual void handleGUEvent(GU::Engin::Engin& engin, GU::Evt::EventPtr event, std::shared_ptr<GU::Engin::Frame> frame) = 0;
         };
     }
 }

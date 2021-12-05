@@ -23,16 +23,6 @@ namespace GU
                 *   Constructor
                 **************************************************************************/
                 LogEvent(const std::string &msg, const LogType  newSeverity = LogType::MESSAGE);
-
-
-                /**************************************************************************
-                *   Purpose:    Method called when an event is sent
-                *   Input:      EventPtr a pointer to an event this can be a nullptr.
-                *               the pointer will be overwritten so the event should not
-                *               still be useful
-                **************************************************************************/
-                virtual void OnEvent(EventPtr event) = 0;
-
                 
                 LogType getSeverity() const;
 

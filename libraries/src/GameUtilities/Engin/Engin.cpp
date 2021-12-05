@@ -51,7 +51,7 @@ namespace GU
                 *           states. See Engin::Push(StatePtr state);
                 *   @param  state is a pointer to a GameState.
                 ********************************************************************/
-                void Push(StatePtr state);
+                void Push(StatePtr state, std::shared_ptr<Frame> frame);
 
 
                 /********************************************************************
@@ -59,7 +59,7 @@ namespace GU
                 *           states.
                 *           See Engin::Pop();
                 ********************************************************************/
-                bool Pop();
+                bool Pop(std::shared_ptr<Frame> frame);
 
 
                 /********************************************************************
@@ -69,7 +69,7 @@ namespace GU
                 *           See Engin::ChangeState
                 *   @param  state is a pointer to a GameState.
                 ********************************************************************/
-                void ChangeState(StatePtr state);
+                void ChangeState(StatePtr state, std::shared_ptr<Frame> frame);
 
 
                 /********************************************************************
@@ -97,7 +97,7 @@ namespace GU
                 *   @param  deltaTime is the time the previous frame took
                 *           See Engin::HendleEvents
                 ********************************************************************/
-                void HandleEvents(const float &deltaTime);
+                void HandleEvents(const float &deltaTime, std::shared_ptr<Frame> frame);
 
 
                 /********************************************************************
@@ -105,20 +105,22 @@ namespace GU
                 *   @param  deltaTime is the time the previous frame took
                 *           See Engin::Update
                 ********************************************************************/
-                void Update(const float &deltaTime);
-
+                void Update(const float &deltaTime, std::shared_ptr<Frame> frame);
+                
 
                 /********************************************************************
                 *   @brief  This method draws the current frame.
                 *   @param  deltaTime is the time the previous frame took
                 *           See Engin::Draw
                 ********************************************************************/
-                void Draw(const float &deltaTime);
+                void Draw(const float &deltaTime, std::shared_ptr<Frame> frame);
 
                 int Size() const
                 {
                     return states.size();
                 }
+                
+
                 /********************************************************************
                 *   @brief  Destructor
                 ********************************************************************/
@@ -152,47 +154,47 @@ namespace GU
         *           states. See Engin::Push(StatePtr state);
         *   @param  state is a pointer to a GameState.
         ********************************************************************/
-        void Engin::Impl::Push(StatePtr state)
+        void Engin::Impl::Push(StatePtr state, std::shared_ptr<Frame> frame)
 		{
 			assert(state != nullptr);
 
 			if (!states.empty())
 			{
 				states.top()->Pause();
-				states.top()->Clean();
+				states.top()->Clean(frame);
 			}
 
 			states.push(std::move(state));
-			states.top()->Init();
+			states.top()->Init(frame);
 		}
 
 
-        /********************************************************************
-        *   @brief  Implimentation for removing a state from the stack of
-        *           states.
-        *           See Engin::Pop();
-        *   @return boolean true when the state is successfully removed
-        *           from the stack.
-        ********************************************************************/
-		bool Engin::Impl::Pop()
-		{
-			if(states.empty())
-			{
-				return false;
-			}
+    /********************************************************************
+    *   @brief  Implimentation for removing a state from the stack of
+    *           states.
+    *           See Engin::Pop();
+    *   @return boolean true when the state is successfully removed
+    *           from the stack.
+    ********************************************************************/
+    bool Engin::Impl::Pop(std::shared_ptr<Frame> frame)
+    {
+      if(states.empty())
+      {
+        return false;
+      }
 
 
-			states.top()->Clean();
-			states.pop();
+      states.top()->Clean(frame);
+      states.pop();
 
-			if (!states.empty())
-			{
-				states.top()->Init();
-				states.top()->Pause(false);
-			}
+      if (!states.empty())
+      {
+        states.top()->Init(frame);
+        states.top()->Pause(false);
+      }
 
-			return true;
-		}
+      return true;
+    }
 
 
         /********************************************************************
@@ -202,19 +204,18 @@ namespace GU
         *           See Engin::ChangeState
         *   @param  state is a pointer to a GameState.
         ********************************************************************/
-		void Engin::Impl::ChangeState(StatePtr state)
+		void Engin::Impl::ChangeState(StatePtr state, std::shared_ptr<Frame> frame)
 		{
 			assert(state != nullptr);
 
 
 			///Remove any existing states
 			while (!states.empty())
-				this->Pop();
+				this->Pop(frame);
 
 			///Push the state onto the now empty stack
-			this->Push(std::move(state));
+			this->Push(std::move(state), frame);
 		}
-
 
         /********************************************************************
         *   @brief  Implimentation for Engin::IsRunning which returns a
@@ -244,12 +245,12 @@ namespace GU
         *   @param  deltaTime is the time the previous frame took
         *           See Engin::HendleEvents
         ********************************************************************/
-		void Engin::Impl::HandleEvents(const float &deltaTime)
+		void Engin::Impl::HandleEvents(const float &deltaTime, std::shared_ptr<Frame> frame)
 		{
 			assert(!states.empty());
 
 			///Call the current states HandleEvents method.
-			states.top()->HandleEvents(engin, deltaTime);
+			states.top()->HandleEvents(engin, deltaTime, frame);
 		}
 
 
@@ -258,12 +259,12 @@ namespace GU
         *   @param  deltaTime is the time the previous frame took
         *           See Engin::Update
         ********************************************************************/
-		void Engin::Impl::Update(const float &deltaTime)
+		void Engin::Impl::Update(const float &deltaTime, std::shared_ptr<Frame> frame)
 		{
 			assert(!states.empty());
 
 			///Call the current states Update method.
-			states.top()->Update(engin, deltaTime);
+			states.top()->Update(engin, deltaTime, frame);
 		}
 
 
@@ -272,12 +273,12 @@ namespace GU
         *   @param  deltaTime is the time the previous frame took
         *           See Engin::Draw
         ********************************************************************/
-		void Engin::Impl::Draw(const float &deltaTime)
+		void Engin::Impl::Draw(const float &deltaTime, std::shared_ptr<Frame> frame)
 		{
 			assert(!states.empty());
 
 			///Call the current states Draw method.
-			states.top()->Draw(engin, deltaTime);
+			states.top()->Draw(engin, deltaTime, frame);
 		}
 
 
@@ -290,6 +291,7 @@ namespace GU
 		}
 
 
+
         /*********************************************************************************//**
         *   @brief	Default constructor
         *************************************************************************************/
@@ -298,8 +300,6 @@ namespace GU
             //ctor
 
         }
-
-
 
         Engin::Engin(Engin&& param)
         {
@@ -320,14 +320,15 @@ namespace GU
 			return *this;
         }
 
+
         /*********************************************************************************//**
         *	@brief	Push a new state onto the stack.
         *   @param	state a pointer to a GameState object.
         *************************************************************************************/
-        void Engin::Push(StatePtr state)
+        void Engin::Push(StatePtr state, std::shared_ptr<Frame> frame)
         {
             assert(pimpl != nullptr);
-			pimpl->Push(std::move(state));
+			pimpl->Push(std::move(state), frame);
         }
 
 
@@ -336,10 +337,10 @@ namespace GU
         *   @return boolean true when the state is successfully removed
         *           from the stack.
         *************************************************************************************/
-        bool Engin::Pop()
+        bool Engin::Pop(std::shared_ptr<Frame> frame)
         {
             assert(pimpl != nullptr);
-			return pimpl->Pop();
+			      return pimpl->Pop(frame);
         }
 
 
@@ -348,10 +349,10 @@ namespace GU
         *           A new GameState object onto the stack.
         *   @param	state a pointer to a GameState object.
         *************************************************************************************/
-        void Engin::ChangeState(StatePtr state)
+        void Engin::ChangeState(StatePtr state, std::shared_ptr<Frame> frame)
         {
             assert(pimpl != nullptr);
-			pimpl->ChangeState(std::move(state));
+			pimpl->ChangeState(std::move(state), frame);
         }
 
 
@@ -382,16 +383,18 @@ namespace GU
             assert(pimpl != nullptr);
             return pimpl->empty();
         }
+
+
         /*********************************************************************************//**
         *   @brief	This method is used to call an equivalent method in a GameState
         *           class. Which will have code for handling all kinds of input
         *           include events and user input.
         *   @param  deltaTime is the time the previous frame took
         *************************************************************************************/
-        void Engin::HandleEvents(const float &deltaTime)
+        void Engin::HandleEvents(const float &deltaTime, std::shared_ptr<Frame> frame)
         {
             assert(pimpl != nullptr);
-			pimpl->HandleEvents(deltaTime);
+			pimpl->HandleEvents(deltaTime, frame);
         }
 
 
@@ -400,10 +403,10 @@ namespace GU
         *            class. Which will have code for handling game logic.
         *   @param  deltaTime is the time the previous frame took
         *************************************************************************************/
-        void Engin::Update(const float &deltaTime)
+        void Engin::Update(const float &deltaTime, std::shared_ptr<Frame> frame)
         {
             assert(pimpl != nullptr);
-			pimpl->Update(deltaTime);
+			pimpl->Update(deltaTime, frame);
         }
 
 
@@ -415,17 +418,19 @@ namespace GU
         *   @param  StatePtr a pointer to a GameState object.
         *   @param  deltaTime is the time the previous frame took
         *************************************************************************************/
-        void Engin::Draw(const float &deltaTime)
+        void Engin::Draw(const float &deltaTime, std::shared_ptr<Frame> frame)
         {
             assert(pimpl != nullptr);
-			pimpl->Draw(deltaTime);
+			pimpl->Draw(deltaTime, frame);
         }
+
 
         int Engin::Size() const
         {
             assert(pimpl != nullptr);
             return pimpl->Size();
         }
+
 
         /*********************************************************************************//**
         *   @brief	Destructor:

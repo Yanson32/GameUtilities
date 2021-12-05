@@ -1,6 +1,8 @@
 set(FILES
 "${CMAKE_CURRENT_SOURCE_DIR}/Engin.h"
-"${CMAKE_CURRENT_SOURCE_DIR}/GameState.h")
+"${CMAKE_CURRENT_SOURCE_DIR}/GameState.h"
+"${CMAKE_CURRENT_SOURCE_DIR}/Frame.h"
+)
 
 set(RELATIVE_PATH "include/GameUtilities/Engin")
 

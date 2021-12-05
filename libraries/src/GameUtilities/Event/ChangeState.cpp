@@ -1,5 +1,5 @@
 #include "GameUtilities/Event/ChangeState.h"
-#include "GameUtilities/Event/Id.h"
+#include "GameUtilities/Event/EventId.h"
 namespace GU
 {
     namespace Evt
@@ -12,7 +12,7 @@ namespace GU
         *   @param  newFile the file where the event originates from
         ***********************************************************/
 		ChangeState::ChangeState(const int newStateId, const int newLine, const char* newFile):
-		Event(GU::Evt::Id::CHANGE_STATE, newLine, newFile),
+		Event(static_cast<int>(GU::Evt::EventId::CHANGE_STATE), newLine, newFile),
 		stateId(newStateId)
 		{
 			//ctor

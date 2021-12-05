@@ -6,6 +6,8 @@
 #ifndef GAMEUTILITIES_ENGIN_GAMESTATE_H
 #define GAMEUTILITIES_ENGIN_GAMESTATE_H
 #include "engin_export.h"
+#include "GameUtilities/Engin/Frame.h"
+#include <memory>
 
 namespace GU
 {
@@ -31,32 +33,34 @@ namespace GU
                 /*********************************************************************************//**
                 *   \brief	Initialize the game state.
                 *************************************************************************************/
-                virtual void Init() = 0;
+                virtual void Init(std::shared_ptr<Frame> frame) = 0;
+
 
                 /*********************************************************************************//**
                 *   \brief	Clean any resource the state uses
                 *************************************************************************************/
-                virtual void Clean() = 0;
-
-                /*********************************************************************************//**
-                *   \brief	This method handles input such as user input and events
-                *	\param	engin is a reference to the game's Engin object.
-                *************************************************************************************/
-                virtual void HandleEvents(Engin& engin, const float &deltaTime) = 0;
+                virtual void Clean(std::shared_ptr<Frame> frame) = 0;
 
 
                 /*********************************************************************************//**
                 *   \brief	This method handles input such as user input and events
                 *	\param	engin is a reference to the game's Engin object.
                 *************************************************************************************/
-                virtual void Update(Engin& engin, const float &deltaTime) = 0;
+                virtual void HandleEvents(Engin& engin, const float &deltaTime, std::shared_ptr<Frame> frame) = 0;
+
+
+                /*********************************************************************************//**
+                *   \brief	This method handles input such as user input and events
+                *	\param	engin is a reference to the game's Engin object.
+                *************************************************************************************/
+                virtual void Update(Engin& engin, const float &deltaTime, std::shared_ptr<Frame> frame) = 0;
 
 
                 /*********************************************************************************//**
                 *   \brief	This method draws the current game state.
                 *	\param	engin is a reference to the game's Engin object.
                 *************************************************************************************/
-                virtual void Draw(Engin& engin, const float &deltaTime) = 0;
+                virtual void Draw(Engin& engin, const float &deltaTime, std::shared_ptr<Frame> frame) = 0;
 
 
                 /*********************************************************************************//**
