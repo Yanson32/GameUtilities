@@ -1,14 +1,20 @@
 @PACKAGE_INIT@
 
+
+set(PACKAGE_NAME "GameUtilities")
+
+#Warn the user of invalid package name 
+if(NOT "${CMAKE_FIND_PACKAGE_NAME}" STREQUAL "${PACKAGE_NAME}")
+	message(WARNING "The package name is ${PACKAGE_NAME} not ${CMAKE_FIND_PACKAGE_NAME}")
+endif()
+
 set(GameUtilities_VALID_COMPONENTS @GU_LIBS@)
 
-#Validate components
+#Warn the user  of invalid components
 foreach(VAR ${${CMAKE_FIND_PACKAGE_NAME}_FIND_COMPONENTS})
 	list(FIND GameUtilities_VALID_COMPONENTS ${VAR} INDEX)
 	if(${INDEX} MATCHES -1)
-		if(NOT ${CMAKE_FIND_PACKAGE_NAME}_FIND_QUIETLY)
-			message(FATAL_ERROR "Invalid component ${VAR} valid components are ${${CMAKE_FIND_PACKAGE_NAME}_FIND_COMPONENTS}")
-		endif()	
+		message(WARNING "Invalid component ${VAR} valid components are ${GameUtilities_VALID_COMPONENTS}")
 	endif()
 	unset(INDEX)
 endforeach()
@@ -19,22 +25,6 @@ if(${CMAKE_FIND_PACKAGE_NAME}_FIND_COMPONENTS STREQUAL "")
 endif()
 
 unset(GameUtilities_VALID_COMPONENTS)
-
-#Define package root
-#if(NOT DEFINED GameUtilities_ROOT)
-#	set_and_check(GameUtilities_ROOT ${PACKAGE_PREFIX_DIR})
-#endif()
-
-#Package version
-#set(GameUtilities_VERSION @GameUtilities_VERSION@)
-
-#List of library direcotries
-#set_and_check(GameUtilities_LIB_DIR ${PACKAGE_PREFIX_DIR}/lib)
-
-
-#List of include directories for the package
-#set(GameUtilities_INCLUDE_DIR ${PACKAGE_PREFIX_DIR}$<BUILD_INTERFACE:/libraries>/include)
-
 
 #Make sure the variable was not defined by the calling project.
 if(DEFINED GameUtilities_STATIC_LIB_POSTFIX)
@@ -56,16 +46,11 @@ foreach(VAR ${${CMAKE_FIND_PACKAGE_NAME}_FIND_COMPONENTS})
 
 		#Print message that component was found
 		if(NOT ${CMAKE_FIND_PACKAGE_NAME}_FIND_QUIETLY)
-			message("${PROJECT_NAME} found component GameUtilities-${VAR}")
+			message("${PACKAGE_NAME} found component GameUtilities-${VAR}")
 		endif()
 	else()
 		set(${CMAKE_FIND_PACKAGE_NAME}_${VAR}_FOUND False)
-
-		#Print message that component was found
-		if(NOT ${CMAKE_FIND_PACKAGE_NAME}_FIND_QUIETLY)
-			message(FATAL_ERROR "${PROJECT_NAME} cannot find GameUtilities-${VAR}")
-		endif()
-		
+		set("${CMAKE_FIND_PACKAGE_NAME}_NOT_FOUND_MESSAGE" "Unable to find the export file")
 	endif()
 	unset(EXPORT_PATH)
 endforeach()
@@ -73,4 +58,6 @@ endforeach()
 unset(STATIC_LIB_POSTFIX)
 
 #Set GameUtilities_FOUND to true if all components were found and false otherwise
-check_required_components(${PROJECT_NAME})
+check_required_components(${PACKAGE_NAME})
+
+unset(PACKAGE_NAME)
