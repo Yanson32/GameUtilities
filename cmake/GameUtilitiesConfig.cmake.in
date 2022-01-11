@@ -1,5 +1,13 @@
 @PACKAGE_INIT@
 
+
+set(PACKAGE_NAME "GameUtilities")
+
+#Warn the user of invalid package name 
+if(NOT "${CMAKE_FIND_PACKAGE_NAME}" STREQUAL "${PACKAGE_NAME}")
+	message(WARNING "The package name is ${PACKAGE_NAME} not ${CMAKE_FIND_PACKAGE_NAME}")
+endif()
+
 set(GameUtilities_VALID_COMPONENTS @GU_LIBS@)
 
 #Validate components
@@ -74,3 +82,5 @@ unset(STATIC_LIB_POSTFIX)
 
 #Set GameUtilities_FOUND to true if all components were found and false otherwise
 check_required_components(${PROJECT_NAME})
+
+unset(PACKAGE_NAME)
