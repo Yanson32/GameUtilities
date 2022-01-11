@@ -10,13 +10,11 @@ endif()
 
 set(GameUtilities_VALID_COMPONENTS @GU_LIBS@)
 
-#Validate components
+#Warn the user  of invalid components
 foreach(VAR ${${CMAKE_FIND_PACKAGE_NAME}_FIND_COMPONENTS})
 	list(FIND GameUtilities_VALID_COMPONENTS ${VAR} INDEX)
 	if(${INDEX} MATCHES -1)
-		if(NOT ${CMAKE_FIND_PACKAGE_NAME}_FIND_QUIETLY)
-			message(FATAL_ERROR "Invalid component ${VAR} valid components are ${${CMAKE_FIND_PACKAGE_NAME}_FIND_COMPONENTS}")
-		endif()	
+		message(WARNING "Invalid component ${VAR} valid components are ${${CMAKE_FIND_PACKAGE_NAME}_FIND_COMPONENTS}")
 	endif()
 	unset(INDEX)
 endforeach()
