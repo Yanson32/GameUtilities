@@ -68,12 +68,7 @@ foreach(VAR ${${CMAKE_FIND_PACKAGE_NAME}_FIND_COMPONENTS})
 		endif()
 	else()
 		set(${CMAKE_FIND_PACKAGE_NAME}_${VAR}_FOUND False)
-
-		#Print message that component was found
-		if(NOT ${CMAKE_FIND_PACKAGE_NAME}_FIND_QUIETLY)
-			message(FATAL_ERROR "${PROJECT_NAME} cannot find GameUtilities-${VAR}")
-		endif()
-		
+		set("${CMAKE_FIND_PACKAGE_NAME}_NOT_FOUND_MESSAGE" "Unable to find the export file")
 	endif()
 	unset(EXPORT_PATH)
 endforeach()
