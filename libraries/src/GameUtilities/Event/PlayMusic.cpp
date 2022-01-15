@@ -1,12 +1,12 @@
 #include "GameUtilities/Event/PlayMusic.h"
-#include "GameUtilities/Event/Id.h"
+#include "GameUtilities/Event/EventId.h"
 
 namespace GU
 {
     namespace Evt
     {
 		PlayMusic::PlayMusic(const char* newMusicFile, const int newLine, const char* newFile):
-		Event(GU::Evt::Id::PLAY_MUSIC, newLine, newFile),
+		Event(static_cast<int>(GU::Evt::EventId::PLAY_MUSIC), newLine, newFile),
 		musicFile(newMusicFile)
 		{
 			//ctor
