@@ -1,13 +1,6 @@
 #for backwards compatibility
 cmake_minimum_required(VERSION 3.5.1)
 
-include ("GNUInstallDirs")
-
-#set output directory for binaries
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin" CACHE PATH "Runtime output directory")
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR}" CACHE PATH "Archive ouput directory")
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR}" CACHE PATH "Library output directory")
-
 option(GU_BUILD_EXAMPLES "Set to TRUE if you want to build examples" FALSE)
 option(GU_BUILD_DOC "Set to TRUE if you want to build library documentation" FALSE)
 option(GU_BUILD_TESTING "Set to TRUE if you want to build unit tests" FALSE)
@@ -24,6 +17,13 @@ include ("CPackConfig")
 
 #Give the project a name
 project("GameUtilities" VERSION "0.0.0.0")
+
+include ("GNUInstallDirs")
+
+#set output directory for binaries
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin" CACHE PATH "Runtime output directory")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR}" CACHE PATH "Archive ouput directory")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR}" CACHE PATH "Library output directory")
 
 #Set cmake version
 set(CMAKE_CXX_STANDARD 11)
@@ -84,6 +84,7 @@ if(NOT TARGET uninstall)
     COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake)
 endif()
 
+#Install man pages on unix systems
 if(UNIX)
     install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/man/" DESTINATION "${CMAKE_INSTALL_FULL_MANDIR}/")
 endif()
