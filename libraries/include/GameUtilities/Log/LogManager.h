@@ -9,7 +9,7 @@ namespace GU
     { 
 		class LOG_EXPORT LogManager
 		{
-			public
+			public:
 				LogManager();
 				virtual ~LogManager();
 		};
