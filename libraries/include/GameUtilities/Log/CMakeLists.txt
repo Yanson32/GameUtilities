@@ -1,15 +1,10 @@
-set(FILES "${CMAKE_CURRENT_SOURCE_DIR}/RGBA.h"
+set(FILES 	"${CMAKE_CURRENT_SOURCE_DIR}/LogType.h"
+			"${CMAKE_CURRENT_SOURCE_DIR}/LogManager.h"
 )
 
-set(RELATIVE_PATH "include/GameUtilities")
+set(RELATIVE_PATH "include/GameUtilities/Log")
 
-set(SUB_DIRECTORIES
-"Event"
-"Core"
-"ParticleSystem"
-"Engin"
-"TP"
-"Log"
+set(SUB_DIRECTORIES ""
 )
 
 #Add subdirectories
@@ -19,7 +14,7 @@ endforeach()
 
 if(FILES)
 	#Add source file to target
-	target_sources(	"Core" PRIVATE ${FILES})
+	target_sources(	"Log" PRIVATE ${FILES})
 
 	#Install source files
 	install(FILES ${FILES} DESTINATION "${RELATIVE_PATH}" COMPONENT "libs")
