@@ -14,7 +14,7 @@ option(GU_BUILD_TESTING "Set to TRUE if you want to build unit tests" FALSE)
 
 #custom variables
 set(GU_VALID_BUILD_TYPES "Release" "Debug" "MinSizeRel" "RelWithDebInfo")
-set(GU_LIBS "Core" "Event" "ParticleSystem" "Engin" "ThreadPool")
+set(GU_LIBS "Core" "Event" "ParticleSystem" "Engin" "ThreadPool" "Log")
 
 #set custom module path
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules" CACHE PATH "All cmake modules can be found in this path")
