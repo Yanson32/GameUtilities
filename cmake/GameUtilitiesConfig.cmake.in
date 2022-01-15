@@ -1,14 +1,67 @@
+#Description
+#
+#	This file is the config file for the GameUtilities library
+#
+#Linkage
+#
+#	By default the package will link against the shared version of the library.
+#	If you want to link against the static version of the library then you need to 
+#	define a variable GameUtilites_STATIC_LIBS and set it to true before calling find_package
+#
+#
+#Usage
+#
+#	For shared libraries
+#	find_package("GameUtilities" REQUIRED COMPONENTS Core Event Engin)
+#	target_link_libraries("MyApp" PUBLIC GU::Core GU::Event GU::Engin)
+#
+#	For static libraries
+#	set(GameUtilites_STATIC_LIBS True)
+#	find_package("GameUtilities" REQUIRED COMPONENTS Core Event Engin)
+#	target_link_libraries("MyApp" PUBLIC GU::Core GU::Event GU::Engin)
+#
+#
+#Variables
+#
+#	The following variables will be defined by the config file
+#	GameUtilities_FOUND					Set to true if the package and all components are found.
+#
+#	The following variables will be defined if the user requests the component
+#	GameUtilities_Core_FOUND			Set to true if the Core component is found
+#	GameUtilities_Event_FOUND			Set to true if the Event component is found
+#	GameUtilities_ParticleSystem_FOUND	Set to true if the ParticleSystem component is found
+#	GameUtilities_Engin_FOUND			Set to true if the Engin component is found
+#	GameUtilities_ThreadPool_FOUND		Set to true if the ThreadPool component is found
+#
+#
+#Targets
+#
+#	The following targets will be created if the user requests for the corresponding component 
+#	GU::Core
+#	GU::Event
+#	GU::ParticleSystem
+#	GU::Engin
+#	GU::ThreadPool
+#
+#
+
 @PACKAGE_INIT@
+
+
+set(PACKAGE_NAME "GameUtilities")
+
+#Warn the user of invalid package name 
+if(NOT "${CMAKE_FIND_PACKAGE_NAME}" STREQUAL "${PACKAGE_NAME}")
+	message(WARNING "The package name is ${PACKAGE_NAME} not ${CMAKE_FIND_PACKAGE_NAME}")
+endif()
 
 set(GameUtilities_VALID_COMPONENTS @GU_LIBS@)
 
-#Validate components
+#Warn the user  of invalid components
 foreach(VAR ${${CMAKE_FIND_PACKAGE_NAME}_FIND_COMPONENTS})
 	list(FIND GameUtilities_VALID_COMPONENTS ${VAR} INDEX)
 	if(${INDEX} MATCHES -1)
-		if(NOT ${CMAKE_FIND_PACKAGE_NAME}_FIND_QUIETLY)
-			message(FATAL_ERROR "Invalid component ${VAR} valid components are ${${CMAKE_FIND_PACKAGE_NAME}_FIND_COMPONENTS}")
-		endif()	
+		message(WARNING "Invalid component ${VAR} valid components are ${GameUtilities_VALID_COMPONENTS}")
 	endif()
 	unset(INDEX)
 endforeach()
@@ -19,22 +72,6 @@ if(${CMAKE_FIND_PACKAGE_NAME}_FIND_COMPONENTS STREQUAL "")
 endif()
 
 unset(GameUtilities_VALID_COMPONENTS)
-
-#Define package root
-#if(NOT DEFINED GameUtilities_ROOT)
-#	set_and_check(GameUtilities_ROOT ${PACKAGE_PREFIX_DIR})
-#endif()
-
-#Package version
-#set(GameUtilities_VERSION @GameUtilities_VERSION@)
-
-#List of library direcotries
-#set_and_check(GameUtilities_LIB_DIR ${PACKAGE_PREFIX_DIR}/lib)
-
-
-#List of include directories for the package
-#set(GameUtilities_INCLUDE_DIR ${PACKAGE_PREFIX_DIR}$<BUILD_INTERFACE:/libraries>/include)
-
 
 #Make sure the variable was not defined by the calling project.
 if(DEFINED GameUtilities_STATIC_LIB_POSTFIX)
@@ -53,19 +90,10 @@ foreach(VAR ${${CMAKE_FIND_PACKAGE_NAME}_FIND_COMPONENTS})
 	if(EXISTS "${EXPORT_PATH}")
 		include("${EXPORT_PATH}")		
 		set(${CMAKE_FIND_PACKAGE_NAME}_${VAR}_FOUND True)
-
-		#Print message that component was found
-		if(NOT ${CMAKE_FIND_PACKAGE_NAME}_FIND_QUIETLY)
-			message("${PROJECT_NAME} found component GameUtilities-${VAR}")
-		endif()
+		message("${PACKAGE_NAME} found component GameUtilities-${VAR}")
 	else()
 		set(${CMAKE_FIND_PACKAGE_NAME}_${VAR}_FOUND False)
-
-		#Print message that component was found
-		if(NOT ${CMAKE_FIND_PACKAGE_NAME}_FIND_QUIETLY)
-			message(FATAL_ERROR "${PROJECT_NAME} cannot find GameUtilities-${VAR}")
-		endif()
-		
+		set("${CMAKE_FIND_PACKAGE_NAME}_NOT_FOUND_MESSAGE" "Unable to find the export file")
 	endif()
 	unset(EXPORT_PATH)
 endforeach()
@@ -73,4 +101,6 @@ endforeach()
 unset(STATIC_LIB_POSTFIX)
 
 #Set GameUtilities_FOUND to true if all components were found and false otherwise
-check_required_components(${PROJECT_NAME})
+check_required_components(${PACKAGE_NAME})
+
+unset(PACKAGE_NAME)
