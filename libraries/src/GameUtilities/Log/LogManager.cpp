@@ -1,4 +1,4 @@
-#include "GameUtilities/LogManager.h"
+#include "GameUtilities/Log/LogManager.h"
 namespace GU
 {
     namespace Log
