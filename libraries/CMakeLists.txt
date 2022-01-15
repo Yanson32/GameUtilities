@@ -1,18 +1,3 @@
-#Compile Features
-set(GU_PRIVATE_COMPILE_FEATURES
-"cxx_range_for"
-"cxx_right_angle_brackets"
-"cxx_auto_type"
-)
-set(GU_PUBLIC_COMPILE_FEATURES
-"cxx_nullptr"
-"cxx_defaulted_functions"
-"cxx_deleted_functions"
-"cxx_final"
-"cxx_noexcept"
-"cxx_override"
-)
-
 set(GU_CONFIG_BUILD_DIR "${GameUtilities_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}")
 set(GU_CONFIG_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}")
 					
@@ -73,38 +58,6 @@ install(FILES
     COMPONENT
         "libs"
 )
-
-#Define compiler features
-target_compile_features("Core"
-			PRIVATE
-				${GU_PRIVATE_COMPILE_FEATURES}
-			PUBLIC
-				${GU_PUBLIC_COMPILE_FEATURES}
-			)
-
-target_compile_features("Event"
-			PRIVATE
-				${GU_PRIVATE_COMPILE_FEATURES}
-			PUBLIC
-				${GU_PUBLIC_COMPILE_FEATURES}
-			)
-
-#Define compiler features
-target_compile_features("Engin"
-			PRIVATE
-				${GU_PRIVATE_COMPILE_FEATURES}
-			PUBLIC
-				${GU_PUBLIC_COMPILE_FEATURES}
-			)
-
-#Define compiler features
-target_compile_features("ThreadPool"
-			PRIVATE
-				${GU_PRIVATE_COMPILE_FEATURES}
-			PUBLIC
-				${GU_PUBLIC_COMPILE_FEATURES}
-			)
-
 
 
 #Generate export files for each component

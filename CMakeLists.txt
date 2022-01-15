@@ -25,6 +25,9 @@ include ("CPackConfig")
 #Give the project a name
 project("GameUtilities" VERSION "0.0.0.0")
 
+#Set cmake version
+set(CMAKE_CXX_STANDARD 11)
+
 #determine if we are using a multi config generator
 set(IS_MULTI_CONFIG_GENERATOR False)
 if(CMAKE_CONFIGURATION_TYPES)
