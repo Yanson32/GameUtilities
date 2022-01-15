@@ -1,3 +1,50 @@
+#Description
+#
+#	This file is the config file for the GameUtilities library
+#
+#Linkage
+#
+#	By default the package will link against the shared version of the library.
+#	If you want to link against the static version of the library then you need to 
+#	define a variable GameUtilites_STATIC_LIBS and set it to true before calling find_package
+#
+#
+#Usage
+#
+#	For shared libraries
+#	find_package("GameUtilities" REQUIRED COMPONENTS Core Event Engin)
+#	target_link_libraries("MyApp" PUBLIC GU::Core GU::Event GU::Engin)
+#
+#	For static libraries
+#	set(GameUtilites_STATIC_LIBS True)
+#	find_package("GameUtilities" REQUIRED COMPONENTS Core Event Engin)
+#	target_link_libraries("MyApp" PUBLIC GU::Core GU::Event GU::Engin)
+#
+#
+#Variables
+#
+#	The following variables will be defined by the config file
+#	GameUtilities_FOUND					Set to true if the package and all components are found.
+#
+#	The following variables will be defined if the user requests the component
+#	GameUtilities_Core_FOUND			Set to true if the Core component is found
+#	GameUtilities_Event_FOUND			Set to true if the Event component is found
+#	GameUtilities_ParticleSystem_FOUND	Set to true if the ParticleSystem component is found
+#	GameUtilities_Engin_FOUND			Set to true if the Engin component is found
+#	GameUtilities_ThreadPool_FOUND		Set to true if the ThreadPool component is found
+#
+#
+#Targets
+#
+#	The following targets will be created if the user requests for the corresponding component 
+#	GU::Core
+#	GU::Event
+#	GU::ParticleSystem
+#	GU::Engin
+#	GU::ThreadPool
+#
+#
+
 @PACKAGE_INIT@
 
 
