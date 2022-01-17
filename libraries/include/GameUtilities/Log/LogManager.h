@@ -1,6 +1,7 @@
 #ifndef GAMEUTILITIES_LOG_LOGMANAGER_H
 #define GAMEUTILITIES_LOG_LOGMANAGER_H
 
+#include "GameUtilities/Log/LogTarget.h"
 #include "log_export.h"
 
 namespace GU
@@ -11,6 +12,8 @@ namespace GU
 		{
 			public:
 				static LogManager& inst();
+				void add(LogTarget &logTarget);
+				LogTarget& getTarget();
 				virtual ~LogManager();
 			private:
 				LogManager();

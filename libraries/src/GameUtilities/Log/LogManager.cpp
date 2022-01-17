@@ -8,15 +8,29 @@ namespace GU
 			
 		}
 
+
 		LogManager::~LogManager()
 		{
 			
 		}
 		
-		LogManager& inst()
+		
+		LogManager& LogManager::inst()
 		{
 			static LogManager manager;
 			return manager;
+		}
+		
+		
+		void LogManager::add(LogTarget &logTarget)
+		{
+			
+		}
+		
+		
+		LogTarget& LogManager::getTarget()
+		{
+			
 		}
 	}
 }
