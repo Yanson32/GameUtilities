@@ -10,8 +10,12 @@ namespace GU
 		class LOG_EXPORT LogManager
 		{
 			public:
-				LogManager();
+				static LogManager& inst();
 				virtual ~LogManager();
+			private:
+				LogManager();
+				LogManager operator = (const LogManager logManager) = delete;
+				LogManager(const LogManager &logManager) = delete;
 		};
 	}
 }
