@@ -1,4 +1,5 @@
-set(FILES "${CMAKE_CURRENT_SOURCE_DIR}/LogManager.cpp"
+set(FILES 	"${CMAKE_CURRENT_SOURCE_DIR}/LogManager.cpp"
+			"${CMAKE_CURRENT_SOURCE_DIR}/LogFormatter.cpp"
 )
 
 set(RELATIVE_PATH "src/GameUtilities/Log")

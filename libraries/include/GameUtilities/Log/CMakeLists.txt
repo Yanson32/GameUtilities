@@ -1,6 +1,7 @@
 set(FILES 	"${CMAKE_CURRENT_SOURCE_DIR}/LogType.h"
 			"${CMAKE_CURRENT_SOURCE_DIR}/LogManager.h"
 			"${CMAKE_CURRENT_SOURCE_DIR}/LogTarget.h"
+			"${CMAKE_CURRENT_SOURCE_DIR}/LogFormatter.h"
 )
 
 set(RELATIVE_PATH "include/GameUtilities/Log")

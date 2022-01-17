@@ -32,5 +32,17 @@ namespace GU
 		{
 			
 		}
+		
+		
+		void LogManager::add(LogFormatter &logFormatter)
+		{
+			
+		}
+		
+		
+		LogFormatter& LogManager::getFormatter()
+		{
+			
+		}
 	}
 }
