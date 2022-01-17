@@ -2,8 +2,7 @@
 namespace GU
 {
     namespace Log
-    { 
-	
+    { 		
 		LogManager::LogManager()
 		{
 			
@@ -12,6 +11,12 @@ namespace GU
 		LogManager::~LogManager()
 		{
 			
+		}
+		
+		LogManager& inst()
+		{
+			static LogManager manager;
+			return manager;
 		}
 	}
 }
