@@ -10,7 +10,7 @@ namespace GU
 		}
 		
 		
-		LogFormatter~LogFormatter()
+		LogFormatter::~LogFormatter()
 		{
 			
 		}

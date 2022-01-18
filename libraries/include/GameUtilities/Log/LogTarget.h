@@ -8,6 +8,7 @@ namespace GU
 		{
 			public:
 				LogTarget();
+				bool operator == (const LogTarget &logTarget) const;
 				virtual ~LogTarget();
 			
 		};

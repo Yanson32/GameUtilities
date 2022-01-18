@@ -9,6 +9,12 @@ namespace GU
 			
 		}
 		
+		bool LogTarget::operator == (const LogTarget &logTarget) const
+		{
+			return true;
+		}
+		
+		
 		LogTarget::~LogTarget()
 		{
 			
