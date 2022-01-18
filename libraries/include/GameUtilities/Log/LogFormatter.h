@@ -10,6 +10,6 @@ namespace GU
 			public:
 				LogFormatter();
 				virtual ~LogFormatter();
-		}
+		};
 	}
 }

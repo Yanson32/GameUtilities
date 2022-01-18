@@ -8,6 +8,7 @@
 - Event System
 - Particle System
 - Thread Pool
+- Log System
 
 ## Dependencies
 - [Math](https://github.com/Yanson32/Math)

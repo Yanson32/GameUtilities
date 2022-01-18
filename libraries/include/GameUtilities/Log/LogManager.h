@@ -5,6 +5,7 @@
 #include "GameUtilities/Log/LogFormatter.h"
 
 #include "log_export.h"
+#include <cstddef>
 
 namespace GU
 {
@@ -13,16 +14,16 @@ namespace GU
 		class LOG_EXPORT LogManager
 		{
 			public:
-				static LogManager& inst();
+				LogManager();
 				void add(LogTarget &logTarget);
-				LogTarget& getTarget();
+				LogTarget& getTarget(const std::size_t &index);
+				bool remove(const LogTarget &logTarget);
 				void add(LogFormatter &logFormatter);
 				LogFormatter& getFormatter();
 				virtual ~LogManager();
 			private:
-				LogManager();
-				LogManager operator = (const LogManager logManager) = delete;
-				LogManager(const LogManager &logManager) = delete;
+				class Impl;
+				Impl* pimpl = nullptr;
 		};
 	}
 }
