@@ -11,6 +11,7 @@ namespace GU
 		{
 			public:
 				LogTarget();
+				virtual bool write() const = 0;
 				bool operator == (const LogTarget &logTarget) const;
 				virtual ~LogTarget();
 			

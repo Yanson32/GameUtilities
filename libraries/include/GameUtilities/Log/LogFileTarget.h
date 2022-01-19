@@ -15,6 +15,7 @@ namespace GU
 		{
 			public:
 				LogFileTarget(const GU::Core::String path);
+				virtual bool write() const override;
 				virtual ~LogFileTarget();
 			private:
 				const GU::Core::String m_path;

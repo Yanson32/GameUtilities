@@ -11,6 +11,13 @@ namespace GU
 
 		}
 
+
+		bool LogFileTarget::write() const
+		{
+			
+		}
+		
+		
 		LogFileTarget::~LogFileTarget()
 		{
 			
