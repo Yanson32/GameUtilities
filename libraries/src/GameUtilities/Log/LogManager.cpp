@@ -1,4 +1,5 @@
 #include "GameUtilities/Log/LogManager.h"
+#include "GameUtilities/Log/LogFormatter.h"
 #include <vector>
 #include <stdexcept>
 namespace GU
