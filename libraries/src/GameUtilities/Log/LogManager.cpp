@@ -1,4 +1,5 @@
 #include "GameUtilities/Log/LogManager.h"
+#include "GameUtilities/Log/LogFormatter.h"
 #include <vector>
 #include <stdexcept>
 namespace GU
@@ -13,6 +14,7 @@ namespace GU
 				void add(LogTarget &logTarget);
 				LogTarget& getTarget(const std::size_t &index);
 				bool remove(const LogTarget &logTarget);
+				std::size_t getTargetCount() const;
 				void add(LogFormatter &logFormatter);
 				LogFormatter& getFormatter();
 				virtual ~Impl();
@@ -59,6 +61,12 @@ namespace GU
 			}
 			
 			return false;
+		}
+		
+		
+		std::size_t LogManager::Impl::getTargetCount() const
+		{
+			return m_targets.size();
 		}
 		
 		
@@ -117,6 +125,13 @@ namespace GU
 			throw
 				std::runtime_error("Cannot dereference nullptr");
 		}
+		
+		
+		std::size_t LogManager::getTargetCount() const
+		{
+			return pimpl->getTargetCount();
+		}
+		
 		
 		void LogManager::add(LogFormatter &logFormatter)
 		{

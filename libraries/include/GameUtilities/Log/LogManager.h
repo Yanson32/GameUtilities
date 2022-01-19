@@ -18,6 +18,7 @@ namespace GU
 				void add(LogTarget &logTarget);
 				LogTarget& getTarget(const std::size_t &index);
 				bool remove(const LogTarget &logTarget);
+				std::size_t getTargetCount() const;
 				void add(LogFormatter &logFormatter);
 				LogFormatter& getFormatter();
 				virtual ~LogManager();

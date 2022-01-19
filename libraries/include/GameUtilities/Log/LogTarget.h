@@ -1,3 +1,6 @@
+#ifndef GU_LOG_TARGET_H
+#define GU_LOG_TARGET_H
+
 #include "log_export.h"
 
 namespace GU
@@ -14,3 +17,5 @@ namespace GU
 		};
 	}
 }
+
+#endif
