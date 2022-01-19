@@ -5,11 +5,19 @@ namespace GU
 {
     namespace Log
     { 
-		LogFileTarget::LogFileTarget()
+		LogFileTarget::LogFileTarget(const GU::Core::String path):
+		m_path(path)
+		{
+
+		}
+
+
+		bool LogFileTarget::write() const
 		{
 			
 		}
-
+		
+		
 		LogFileTarget::~LogFileTarget()
 		{
 			

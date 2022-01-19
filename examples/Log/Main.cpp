@@ -8,7 +8,7 @@ int main()
 	GU::Log::LogManager manager;
 	
 	//Set log target
-	GU::Log::LogFileTarget target;
+	GU::Log::LogFileTarget target("C:/");
 	manager.add(target);
 	std::cout << "Target count " << manager.getTargetCount() << std::endl;
 	

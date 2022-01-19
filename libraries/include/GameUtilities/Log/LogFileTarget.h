@@ -3,6 +3,8 @@
 
 #include "log_export.h"
 #include "GameUtilities/Log/LogTarget.h"
+#include "GameUtilities/Core/String.h"
+
 
 namespace GU
 {
@@ -12,8 +14,11 @@ namespace GU
 		class LOG_EXPORT LogFileTarget: public LogTarget
 		{
 			public:
-				LogFileTarget();
+				LogFileTarget(const GU::Core::String path);
+				virtual bool write() const override;
 				virtual ~LogFileTarget();
+			private:
+				const GU::Core::String m_path;
 		};
 	}
 	
