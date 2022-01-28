@@ -50,6 +50,9 @@ add_subdirectory("src")
 find_package("Math" REQUIRED)
 target_link_libraries("ParticleSystem" PUBLIC Math::Math)
 
+#Link the log target against the Core target
+target_link_libraries("Log" PUBLIC "Core")
+
 #install export file
 install(FILES
         #"${CMAKE_CURRENT_BINARY_DIR}/gameutilities_export.h"
