@@ -9,9 +9,11 @@ int main()
 	GU::Log::LogManager manager;
 	
 	//Set log target
-	std::unique_ptr<GU::Log::LogFileTarget> target(new GU::Log::LogFileTarget("C:/"));
+	std::shared_ptr<GU::Log::LogFileTarget> target(new GU::Log::LogFileTarget("C:/"));
 	manager.add(std::move(target));
 	std::cout << "Target count " << manager.getTargetCount() << std::endl;
+	
+
 	
     return 0;
 }

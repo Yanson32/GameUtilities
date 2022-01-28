@@ -13,7 +13,7 @@ namespace GU
 		{
 			public:
 				Impl();
-				void add(std::unique_ptr<LogTarget> logTarget);
+				void add(std::shared_ptr<LogTarget> logTarget);
 				LogTarget& getTarget(const std::size_t &index);
 				bool remove(const LogTarget &logTarget);
 				std::size_t getTargetCount() const;
@@ -21,7 +21,7 @@ namespace GU
 				LogFormatter& getFormatter();
 				virtual ~Impl();
 			private:
-				std::vector<std::unique_ptr<LogTarget>> m_targets;
+				std::vector<std::shared_ptr<LogTarget>> m_targets;
 				LogFormatter m_logFormatter;
 		};
 		
@@ -31,7 +31,7 @@ namespace GU
 		}
 		
 		
-		void LogManager::Impl::add(std::unique_ptr<LogTarget> logTarget)
+		void LogManager::Impl::add(std::shared_ptr<LogTarget> logTarget)
 		{
 			m_targets.push_back(std::move(logTarget));
 		}
@@ -106,7 +106,7 @@ namespace GU
 		}
 		
 		
-		void LogManager::add(std::unique_ptr<LogTarget> logTarget)
+		void LogManager::add(std::shared_ptr<LogTarget> logTarget)
 		{
 			if(pimpl)
 				pimpl->add(std::move(logTarget));
