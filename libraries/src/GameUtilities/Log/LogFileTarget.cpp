@@ -14,7 +14,7 @@ namespace GU
 
 		bool LogFileTarget::write() const
 		{
-			
+			return true;
 		}
 		
 		
