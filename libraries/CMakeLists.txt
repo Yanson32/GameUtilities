@@ -40,8 +40,7 @@ foreach(VAR ${GU_LIBS})
     	generate_export_header("${VAR}")
 	string(TOLOWER "${VAR}" LOWER_COMPONENT)
 	install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${LOWER_COMPONENT}_export.h" DESTINATION "include" COMPONENT "libs")
-
-	set_property(TARGET "${VAR}" PROPERTY CXX_STANDARD 11)
+	target_compile_features("${VAR}" PUBLIC cxx_std_20)
 endforeach()
 
 add_subdirectory("include")
@@ -49,6 +48,9 @@ add_subdirectory("src")
 
 find_package("Math" REQUIRED)
 target_link_libraries("ParticleSystem" PUBLIC Math::Math)
+
+#Link the log target against the Core target
+target_link_libraries("Log" PUBLIC "Core")
 
 #install export file
 install(FILES

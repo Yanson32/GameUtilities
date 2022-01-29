@@ -2,6 +2,8 @@
 #include "GameUtilities/Log/LogFormatter.h"
 #include <vector>
 #include <stdexcept>
+#include <cassert>
+
 namespace GU
 {
     namespace Log
@@ -11,7 +13,7 @@ namespace GU
 		{
 			public:
 				Impl();
-				void add(LogTarget &logTarget);
+				void add(std::shared_ptr<LogTarget> logTarget);
 				LogTarget& getTarget(const std::size_t &index);
 				bool remove(const LogTarget &logTarget);
 				std::size_t getTargetCount() const;
@@ -19,7 +21,7 @@ namespace GU
 				LogFormatter& getFormatter();
 				virtual ~Impl();
 			private:
-				std::vector<LogTarget> m_targets;
+				std::vector<std::shared_ptr<LogTarget>> m_targets;
 				LogFormatter m_logFormatter;
 		};
 		
@@ -29,9 +31,9 @@ namespace GU
 		}
 		
 		
-		void LogManager::Impl::add(LogTarget &logTarget)
+		void LogManager::Impl::add(std::shared_ptr<LogTarget> logTarget)
 		{
-			m_targets.push_back(logTarget);
+			m_targets.push_back(std::move(logTarget));
 		}
 		
 		
@@ -39,7 +41,8 @@ namespace GU
 		{
 			if(index < m_targets.size())
 			{
-				return m_targets[index];
+				assert((m_targets[index]) != nullptr);
+				return *(m_targets[index]);
 			}
 			else
 			{
@@ -53,7 +56,9 @@ namespace GU
 		{
 			for(std::size_t i = 0; i < m_targets.size(); ++i)
 			{
-				if(m_targets[i] == logTarget)
+				assert(m_targets[i] != nullptr);
+				
+				if((*m_targets[i]) == logTarget)
 				{
 					m_targets.erase(m_targets.begin() + i);
 					return true;
@@ -101,10 +106,10 @@ namespace GU
 		}
 		
 		
-		void LogManager::add(LogTarget &logTarget)
+		void LogManager::add(std::shared_ptr<LogTarget> logTarget)
 		{
 			if(pimpl)
-				pimpl->add(logTarget);
+				pimpl->add(std::move(logTarget));
 		}
 		
 		

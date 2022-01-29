@@ -1,6 +1,7 @@
 #include <iostream>
 #include "GameUtilities/Log/LogManager.h"
 #include "GameUtilities/Log/LogFileTarget.h"
+#include <memory>
 
 int main()
 {
@@ -8,9 +9,11 @@ int main()
 	GU::Log::LogManager manager;
 	
 	//Set log target
-	GU::Log::LogFileTarget target("C:/");
-	manager.add(target);
+	std::shared_ptr<GU::Log::LogFileTarget> target(new GU::Log::LogFileTarget("C:/"));
+	manager.add(std::move(target));
 	std::cout << "Target count " << manager.getTargetCount() << std::endl;
+	
+
 	
     return 0;
 }

@@ -6,6 +6,7 @@
 
 #include "log_export.h"
 #include <cstddef>
+#include <memory>
 
 namespace GU
 {
@@ -15,7 +16,7 @@ namespace GU
 		{
 			public:
 				LogManager();
-				void add(LogTarget &logTarget);
+				void add(std::shared_ptr<LogTarget> logTarget);
 				LogTarget& getTarget(const std::size_t &index);
 				bool remove(const LogTarget &logTarget);
 				std::size_t getTargetCount() const;
