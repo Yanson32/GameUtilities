@@ -9,6 +9,7 @@ set(SUB_DIRECTORIES
 "ParticleSystem"
 "Engin"
 "TP"
+"Log"
 )
 
 #Add subdirectories

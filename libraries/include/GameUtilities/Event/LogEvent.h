@@ -3,7 +3,9 @@
 #include "event_export.h"
 #include <memory>
 #include "GameUtilities/Event/Event.h"
-#include "GameUtilities/Event/LogType.h"
+#include "GameUtilities/Log/LogType.h"
+#include <string>
+
 namespace GU
 {
 
