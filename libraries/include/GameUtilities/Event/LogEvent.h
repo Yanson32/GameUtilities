@@ -24,9 +24,9 @@ namespace GU
                 /**************************************************************************
                 *   Constructor
                 **************************************************************************/
-                LogEvent(const std::string &msg, const LogType  newSeverity = LogType::MESSAGE);
+                LogEvent(const std::string &msg, const GU::Log::LogType  newSeverity = GU::Log::LogType::MESSAGE);
                 
-                LogType getSeverity() const;
+		GU::Log::LogType getSeverity() const;
 
                 /**************************************************************************
                 *   Destructor
@@ -34,7 +34,7 @@ namespace GU
                 virtual ~LogEvent();
 
             private:
-                const LogType m_severity;
+                const GU::Log::LogType m_severity;
         };
 
     }

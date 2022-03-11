@@ -4,13 +4,13 @@ namespace GU
 {
     namespace Evt
     {
-        LogEvent::LogEvent(const std::string &msg, const LogType newSeverity):
+        LogEvent::LogEvent(const std::string &msg, const GU::Log::LogType newSeverity):
         m_severity(newSeverity)
         {
             UNUSED(msg);
         } 
 
-        LogType LogEvent::getSeverity() const
+	GU::Log::LogType LogEvent::getSeverity() const
         {
             return m_severity;
         }
