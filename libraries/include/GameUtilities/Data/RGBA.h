@@ -1,8 +1,10 @@
-#ifndef GU_RGBA_H
-#define GU_RGBA_H
+#ifndef GU_DATA_RGBA_H
+#define GU_DATA_RGBA_H
 
 namespace GU
 {
+  namespace Data
+  {
     class RGBA
     {
         unsigned red;
@@ -10,5 +12,6 @@ namespace GU
         unsigned green;
         unsigned alpha;
     };
+  }
 }
 #endif // GU_RGBA_H

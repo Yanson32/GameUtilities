@@ -1,17 +1,9 @@
-set(FILES ""
+set(FILES "${CMAKE_CURRENT_SOURCE_DIR}/RGBA.h"
 )
 
-set(RELATIVE_PATH "include/GameUtilities")
+set(RELATIVE_PATH "include/GameUtilities/Data")
 
-set(SUB_DIRECTORIES
-"Event"
-"Core"
-"ParticleSystem"
-"Engin"
-"TP"
-"Log"
-"Data"
-)
+set(SUB_DIRECTORIES "" )
 
 #Add subdirectories
 foreach(LOOP_VAR ${SUB_DIRECTORIES})
@@ -20,7 +12,7 @@ endforeach()
 
 if(FILES)
 	#Add source file to target
-	target_sources(	"Core" PRIVATE ${FILES})
+	target_sources(	"Data" PRIVATE ${FILES})
 
 	#Install source files
 	install(FILES ${FILES} DESTINATION "${RELATIVE_PATH}" COMPONENT "libs")
