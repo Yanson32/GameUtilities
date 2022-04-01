@@ -11,18 +11,19 @@ namespace GU
         class CORE_EXPORT String
         {
             public:
+                String();
                 /**************************************************************
                 * @brief: Constructor
                 * @param: data is a string of characters
                 **************************************************************/
                 String(const std::string &data);
 
-
+                operator const char*() const;
                 /**************************************************************
                 * @brief: Constructor
                 * @param: data is a string of characters
                 **************************************************************/
-                String(const char* data = nullptr);
+                String(const char* data);
 
 
                 /**************************************************************
@@ -38,6 +39,7 @@ namespace GU
                 **************************************************************/
                 String operator=(const String &data);
 
+                String operator=(const char* data);
 
                 /**************************************************************
                 * @brief: Equality operator
@@ -67,6 +69,8 @@ namespace GU
                 bool operator!=(const String &data);
 
 
+                GU::Core::String operator+(const String &data);
+                GU::Core::String operator+=(const String &data);
                 /**************************************************************
                 * @brief: This method returns the number of characters in the
                 *         string
@@ -755,13 +759,13 @@ namespace GU
                 /**************************************************************
                 * @brief: Destructor.
                 **************************************************************/
-                ~String();
+                virtual ~String();
 
                 static std::size_t npos;
             private:
                 typedef size_t size_type;
-                class impl;
-                impl* pimpl = nullptr;
+                class Impl;
+                Impl* pimpl = nullptr;
         };
 
     }

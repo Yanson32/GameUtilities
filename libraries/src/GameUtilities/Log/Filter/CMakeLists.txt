@@ -1,12 +1,10 @@
-set(FILES 	"${CMAKE_CURRENT_SOURCE_DIR}/LogManager.cpp"
-			"${CMAKE_CURRENT_SOURCE_DIR}/LogFormatter.cpp"
-			"${CMAKE_CURRENT_SOURCE_DIR}/LogEntry.cpp"
+set(FILES 	"${CMAKE_CURRENT_SOURCE_DIR}/LogFileTarget.cpp"
+			"${CMAKE_CURRENT_SOURCE_DIR}/LogTarget.cpp"
 )
 
-set(RELATIVE_PATH "src/GameUtilities/Log")
+set(RELATIVE_PATH "src/GameUtilities/Log/Filter")
 
-set(SUB_DIRECTORIES "Target"
-		     "Component"
+set(SUB_DIRECTORIES ""
 )
 
 #Add subdirectories

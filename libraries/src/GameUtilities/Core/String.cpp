@@ -1,17 +1,19 @@
 #include "GameUtilities/Core/String.h"
 #include <limits>
 #include <string>
+#include <iostream>
+#include <cassert>
 
 namespace GU
 {
     namespace Core
     {
 
-      class String::impl
+      class String::Impl
       {
         public:
-          impl();
-          virtual ~impl();
+          Impl(){}
+          virtual ~Impl(){};
           std::string m_data;
           #ifdef MULTITHREAD
             mutable std::mutex eventQueueLock;
@@ -21,13 +23,24 @@ namespace GU
 
         std::size_t String::npos = std::numeric_limits<std::size_t>::max();
 
+        String::String():
+        pimpl(new String::Impl())
+        {
+          assert(pimpl != nullptr);
+        }
 
+String::operator const char*() const
+{
+  return pimpl->m_data.c_str();
+}
         /**************************************************************
         * @brief: Constructor
         * @param: data is a string of characters
         **************************************************************/
-        String::String(const String &data)
+        String::String(const String &data):
+        pimpl(new String::Impl())
         {
+          assert(pimpl != nullptr);
           pimpl->m_data = data.pimpl->m_data;
         }
 
@@ -36,9 +49,12 @@ namespace GU
         * @brief: Constructor
         * @param: data is a string of characters
         **************************************************************/
-        String::String(const std::string &data)
+        String::String(const std::string &data):
+        pimpl(new String::Impl())
         {
-            pimpl->m_data.insert(0, data.c_str(), sizeof(data.c_str()));
+          assert(pimpl != nullptr);
+          std::string p = data;
+          pimpl->m_data = data;
         }
 
 
@@ -46,9 +62,12 @@ namespace GU
         * @brief: Constructor
         * @param: data is a string of characters
         **************************************************************/
-        String::String(const char* data)
+        String::String(const char* data):
+        pimpl(new String::Impl)
         {
-              pimpl->m_data.insert(0, data, sizeof(data));
+          assert(pimpl != nullptr);
+          std::cout << pimpl->m_data << std::endl;
+          pimpl->m_data = std::string(data);
         }
 
 
@@ -58,6 +77,7 @@ namespace GU
         **************************************************************/
         String String::operator=(const String &data)
         {
+          assert(pimpl != nullptr);
           pimpl->m_data.resize(0);
           for(std::size_t i = 0; i < data.pimpl->m_data.size(); ++i)
           {
@@ -67,13 +87,18 @@ namespace GU
           return pimpl->m_data;
         }
 
-
+        String String::operator=(const char* data)
+        {
+          assert(pimpl != nullptr);
+          pimpl->m_data = data;
+        }
         /**************************************************************
         * @brief: Equality operator
         * @param: data is a string of characters
         **************************************************************/
         bool String::operator==(const String &data)
         {
+          assert(pimpl != nullptr);
           return this->pimpl->m_data == data.pimpl->m_data;
         }
 
@@ -84,6 +109,7 @@ namespace GU
         **************************************************************/
         bool String::operator<=(const String &data)
         {
+          assert(pimpl != nullptr);
           return this->pimpl->m_data <= data.pimpl->m_data;
         }
 
@@ -94,6 +120,7 @@ namespace GU
         **************************************************************/
         bool String::operator>=(const String &data)
         {
+          assert(pimpl != nullptr);
           return this->pimpl->m_data >= data.pimpl->m_data;
         }
 
@@ -104,7 +131,22 @@ namespace GU
         **************************************************************/
         bool String::operator!=(const String &data)
         {
+          assert(pimpl != nullptr);
           return this->pimpl->m_data != data.pimpl->m_data;
+        }
+
+
+        GU::Core::String String::operator+(const String &data)
+        {
+          assert(pimpl != nullptr);
+          return this->pimpl->m_data + data.pimpl->m_data;
+        }
+
+
+        GU::Core::String String::operator+=(const String &data)
+        {
+          assert(pimpl != nullptr);
+          return this->pimpl->m_data += data.pimpl->m_data;
         }
 
 
@@ -115,7 +157,8 @@ namespace GU
         **************************************************************/
         std::size_t String::size() const
         {
-            return pimpl->m_data.size();
+          assert(pimpl != nullptr);
+          return pimpl->m_data.size();
         }
 
 
@@ -126,6 +169,7 @@ namespace GU
         **************************************************************/
         std::size_t String::length() const
         {
+          assert(pimpl != nullptr);
           return this->size();
         }
 
@@ -137,6 +181,7 @@ namespace GU
         **************************************************************/
         const char * String::c_str() const
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data.c_str();
         }
 
@@ -149,6 +194,7 @@ namespace GU
         **************************************************************/
         std::string String::toStdString() const
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data;
         }
 
@@ -158,6 +204,7 @@ namespace GU
         **************************************************************/
         void String::clear() noexcept
         {
+          assert(pimpl != nullptr);
           pimpl->m_data.clear();
         }
 
@@ -169,6 +216,7 @@ namespace GU
         **************************************************************/
         bool String::empty() const
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data.empty();
         }
 
@@ -179,6 +227,7 @@ namespace GU
         **************************************************************/
         void String::resize (size_t n)
         {
+          assert(pimpl != nullptr);
           pimpl->m_data.resize(n);
         }
 
@@ -191,6 +240,7 @@ namespace GU
         **************************************************************/
         void String::resize (size_t n, char c)
         {
+          assert(pimpl != nullptr);
           pimpl->m_data.resize(n, c);
         }
 
@@ -203,6 +253,7 @@ namespace GU
         **************************************************************/
         size_t String::capacity() const
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data.capacity();
         }
 
@@ -215,6 +266,7 @@ namespace GU
         **************************************************************/
         char& String::operator[] (size_t pos)
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data[pos];
         }
 
@@ -227,6 +279,7 @@ namespace GU
         **************************************************************/
         const char& String::operator[] (size_t pos) const
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data[pos];
         }
 
@@ -239,6 +292,7 @@ namespace GU
         **************************************************************/
         char& String::at (size_t pos)
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data.at(pos);
         }
 
@@ -251,6 +305,7 @@ namespace GU
         **************************************************************/
         const char& String::at (size_t pos) const
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data.at(pos);
         }
 
@@ -261,6 +316,7 @@ namespace GU
         **************************************************************/
         char& String::back()
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data.back();
         }
 
@@ -271,6 +327,7 @@ namespace GU
         **************************************************************/
         const char& String::back() const
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data.back();
         }
 
@@ -281,6 +338,7 @@ namespace GU
         **************************************************************/
         char& String::front()
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data.front();
         }
 
@@ -291,6 +349,7 @@ namespace GU
         **************************************************************/
         const char& String::front() const
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data.front();
         }
 
@@ -303,6 +362,7 @@ namespace GU
         **************************************************************/
         String& String::operator+= (const std::string& str)
         {
+          assert(pimpl != nullptr);
           pimpl->m_data += str;
           return *this;
         }
@@ -316,6 +376,7 @@ namespace GU
         **************************************************************/
         String& String::operator+= (const char* s)
         {
+          assert(pimpl != nullptr);
           pimpl->m_data += s;
           return *this;
         }
@@ -329,6 +390,7 @@ namespace GU
         **************************************************************/
         String& String::operator+= (char c)
         {
+          assert(pimpl != nullptr);
           pimpl->m_data += c;
           return *this;
         }
@@ -342,6 +404,7 @@ namespace GU
         **************************************************************/
         String& String::append (const std::string& str)
         {
+          assert(pimpl != nullptr);
           pimpl->m_data.append(str);
           return *this;
         }
@@ -357,6 +420,7 @@ namespace GU
         **************************************************************/
         String& String::append (const std::string& str, size_t subpos, size_t sublen)
         {
+          assert(pimpl != nullptr);
           pimpl->m_data.append(str, subpos, sublen);
           return *this;
         }
@@ -370,6 +434,7 @@ namespace GU
         **************************************************************/
         String& String::append (const char* s)
         {
+          assert(pimpl != nullptr);
           pimpl->m_data.append(s);
           return *this;
         }
@@ -384,6 +449,7 @@ namespace GU
         **************************************************************/
         String& String::append (const char* s, size_t n)
         {
+          assert(pimpl != nullptr);
           pimpl->m_data.append(s, n);
           return *this;
         }
@@ -398,6 +464,7 @@ namespace GU
         **************************************************************/
         String& String::append (size_t n, char c)
         {
+          assert(pimpl != nullptr);
           pimpl->m_data.append(n, c);
           return *this;
         }
@@ -415,6 +482,7 @@ namespace GU
         template <class InputIterator>
         String& String::append (InputIterator first, InputIterator last)
         {
+          assert(pimpl != nullptr);
           pimpl->m_data.append(first, last);
           return *this;
         }
@@ -427,6 +495,7 @@ namespace GU
         **************************************************************/
         void String::push_back (char c)
         {
+          assert(pimpl != nullptr);
           pimpl->m_data.push_back(c);
         }
 
@@ -438,6 +507,7 @@ namespace GU
         **************************************************************/
         String& String::assign (const std::string& str)
         {
+          assert(pimpl != nullptr);
           pimpl->m_data.assign(str);
           return *this;
         }
@@ -453,6 +523,7 @@ namespace GU
         **************************************************************/
         String& String::assign (const std::string& str, size_t subpos, size_t sublen)
         {
+          assert(pimpl != nullptr);
           pimpl->m_data.assign(str, subpos, sublen);
           return *this;
         }
@@ -465,6 +536,7 @@ namespace GU
         **************************************************************/
         String& String::assign (const char* s)
         {
+          assert(pimpl != nullptr);
           pimpl->m_data.assign(s);
           return *this;
         }
@@ -478,6 +550,7 @@ namespace GU
         **************************************************************/
         String& String::assign (const char* s, size_t n)
         {
+          assert(pimpl != nullptr);
           pimpl->m_data.assign(s, n);
           return *this;
         }
@@ -491,6 +564,7 @@ namespace GU
         **************************************************************/
         String& String::assign (size_t n, char c)
         {
+          assert(pimpl != nullptr);
           pimpl->m_data.assign(n, c);
           return *this;
         }
@@ -506,6 +580,7 @@ namespace GU
         template <class InputIterator>
         String& String::assign (InputIterator first, InputIterator last)
         {
+          assert(pimpl != nullptr);
           pimpl->m_data.assign(first, last);
           return *this;
         }
@@ -517,6 +592,7 @@ namespace GU
         **************************************************************/
         void String::reserve (size_t n)
         {
+          assert(pimpl != nullptr);
           pimpl->m_data.reserve(n);
         }
 
@@ -526,6 +602,7 @@ namespace GU
         **************************************************************/
         void String::shrink_to_fit()
         {
+          assert(pimpl != nullptr);
           pimpl->m_data.shrink_to_fit();
         }
 
@@ -538,6 +615,7 @@ namespace GU
         **************************************************************/
         String& String::erase (size_t pos, size_t len)
         {
+          assert(pimpl != nullptr);
           pimpl->m_data.erase(pos, len);
           return *this;
         }
@@ -564,6 +642,7 @@ namespace GU
         **************************************************************/
         String& String::replace (size_t pos, size_t len, const std::string& str)
         {
+          assert(pimpl != nullptr);
           pimpl->m_data.replace(pos, len, str);
           return *this;
         }
@@ -588,6 +667,7 @@ namespace GU
         **************************************************************/
         String& String::replace (size_t pos, size_t len, const std::string& str, size_t subpos, size_t sublen)
         {
+          assert(pimpl != nullptr);
           pimpl->m_data.replace(pos, len, str, subpos, sublen);
           return *this;
         }
@@ -602,6 +682,7 @@ namespace GU
         **************************************************************/
         String& String::replace (size_t pos, size_t len, const char* s)
         {
+          assert(pimpl != nullptr);
           pimpl->m_data.replace(pos, len, s);
           return *this;
         }
@@ -624,6 +705,7 @@ namespace GU
         **************************************************************/
         String& String::replace (size_t pos, size_t len, const char* s, size_t n)
         {
+          assert(pimpl != nullptr);
           pimpl->m_data.replace(pos, len, s, n);
           return *this;
         }
@@ -646,6 +728,7 @@ namespace GU
         **************************************************************/
         String& String::replace (size_t pos, size_t len, size_t n, char c)
         {
+          assert(pimpl != nullptr);
           pimpl->m_data.replace(pos, len, n, c);
           return *this;
         }
@@ -676,6 +759,7 @@ namespace GU
         **************************************************************/
         void String::swap (std::string& str)
         {
+          assert(pimpl != nullptr);
           pimpl->m_data.swap(str);
         }
 
@@ -685,6 +769,7 @@ namespace GU
         **************************************************************/
         void String::pop_back()
         {
+          assert(pimpl != nullptr);
           pimpl->m_data.pop_back();
         }
 
@@ -695,6 +780,7 @@ namespace GU
         **************************************************************/
         const char* String::data() const noexcept
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data.data();
         }
 
@@ -716,6 +802,7 @@ namespace GU
         **************************************************************/
         size_t String::copy (char* s, size_t len, size_t pos) const
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data.copy(s, len, pos);
         }
 
@@ -730,6 +817,7 @@ namespace GU
         **************************************************************/
         size_t String::find (const std::string& str, size_t pos) const noexcept
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data.find(str, pos);
         }
 
@@ -744,6 +832,7 @@ namespace GU
         **************************************************************/
         size_t String::find (const char* s, size_t pos) const
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data.find(s, pos);
         }
 
@@ -764,6 +853,7 @@ namespace GU
         **************************************************************/
         size_t String::find (char c, size_t pos) const noexcept
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data.find(c, pos);
         }
 
@@ -777,6 +867,7 @@ namespace GU
         **************************************************************/
         size_t String::rfind (const std::string& str, size_t pos) const noexcept
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data.rfind(str, pos);
         }
 
@@ -790,6 +881,7 @@ namespace GU
         **************************************************************/
         size_t String::rfind (const char* s, size_t pos) const
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data.find(s, pos);
         }
 
@@ -804,6 +896,7 @@ namespace GU
         **************************************************************/
         size_t String::rfind (const char* s, size_t pos, size_t n) const
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data.rfind(s, pos, n);
         }
 
@@ -817,6 +910,7 @@ namespace GU
         **************************************************************/
         size_t String::rfind (char c, size_t pos) const noexcept
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data.rfind(c, pos);
         }
 
@@ -831,6 +925,7 @@ namespace GU
         **************************************************************/
         size_t String::find_first_of (const std::string& str, size_t pos) const noexcept
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data.find_first_of(str, pos);
         }
 
@@ -845,6 +940,7 @@ namespace GU
         **************************************************************/
         size_t String::find_first_of (const char* s, size_t pos) const
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data.find_first_of(s, pos);
         }
 
@@ -861,6 +957,7 @@ namespace GU
         **************************************************************/
         size_t String::find_first_of (const char* s, size_t pos, size_t n) const
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data.find_first_of(s, pos, n);
         }
 
@@ -875,6 +972,7 @@ namespace GU
         **************************************************************/
         size_t String::find_first_of (char c, size_t pos) const noexcept
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data.find_first_of(c, pos);
         }
 
@@ -889,6 +987,7 @@ namespace GU
         **************************************************************/
         size_t String::find_last_of (const std::string& str, size_t pos) const noexcept
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data.find_last_of(str, pos);
         }
 
@@ -903,6 +1002,7 @@ namespace GU
         **************************************************************/
         size_t String::find_last_of (const char* s, size_t pos) const
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data.find_last_of(s, pos);
         }
 
@@ -919,6 +1019,7 @@ namespace GU
         **************************************************************/
         size_t String::find_last_of (const char* s, size_t pos, size_t n) const
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data.find_last_of(s, pos, n);
         }
 
@@ -933,6 +1034,7 @@ namespace GU
         **************************************************************/
         size_t String::find_last_of (char c, size_t pos) const noexcept
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data.find_last_of(c, pos);
         }
 
@@ -947,6 +1049,7 @@ namespace GU
         **************************************************************/
         size_t String::find_first_not_of (const std::string& str, size_t pos) const noexcept
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data.find_first_not_of(str, pos);
         }
 
@@ -961,6 +1064,7 @@ namespace GU
         **************************************************************/
         size_t String::find_first_not_of (const char* s, size_t pos) const
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data.find_first_not_of(s, pos);
         }
 
@@ -976,6 +1080,7 @@ namespace GU
         **************************************************************/
         size_t String::find_first_not_of (const char* s, size_t pos, size_t n) const
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data.find_first_not_of(s, pos, n);
         }
 
@@ -990,6 +1095,7 @@ namespace GU
         **************************************************************/
         size_t String::find_first_not_of (char c, size_t pos) const noexcept
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data.find_first_not_of(c, pos);
         }
 
@@ -1004,6 +1110,7 @@ namespace GU
         **************************************************************/
         size_t String::find_last_not_of (const std::string& str, size_t pos) const noexcept
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data.find_last_not_of(str, pos);
         }
 
@@ -1019,6 +1126,7 @@ namespace GU
         **************************************************************/
         size_t String::find_last_not_of (const char* s, size_t pos) const
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data.find_last_not_of(s, pos);
         }
 
@@ -1034,6 +1142,7 @@ namespace GU
         **************************************************************/
         size_t String::find_last_not_of (const char* s, size_t pos, size_t n) const
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data.find_last_not_of(s, pos, n);
         }
 
@@ -1048,6 +1157,7 @@ namespace GU
         **************************************************************/
         size_t String::find_last_not_of (char c, size_t pos) const noexcept
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data.find_last_not_of(c, pos);
         }
 
@@ -1061,41 +1171,48 @@ namespace GU
         **************************************************************/
         String String::substr (size_t pos, size_t len) const
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data.substr(pos, len);
         }
 
         int String::compare (const std::string& str) const noexcept
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data.compare(str);
         }
 
 
         int String::compare (size_t pos, size_t len, const std::string& str) const
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data.compare(pos, len, str);
         }
 
 
         int String::compare (size_t pos, size_t len, const std::string& str, size_t subpos, size_t sublen) const
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data.compare(pos, len, str, subpos, sublen);
         }
 
 
         int String::compare (const char* s) const
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data.compare(s);
         }
 
 
         int String::compare (size_t pos, size_t len, const char* s) const
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data.compare(pos, len, s);
         }
 
 
         int String::compare (size_t pos, size_t len, const char* s, size_t n) const
         {
+          assert(pimpl != nullptr);
           return pimpl->m_data.compare(pos, len, s, n);
         }
 
@@ -1105,7 +1222,8 @@ namespace GU
         **************************************************************/
         String::~String()
         {
-
+          if(pimpl)
+            delete pimpl;
         }
     }
 }
