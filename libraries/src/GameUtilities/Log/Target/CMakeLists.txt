@@ -4,9 +4,7 @@ set(FILES 	"${CMAKE_CURRENT_SOURCE_DIR}/LogFileTarget.cpp"
 
 set(RELATIVE_PATH "src/GameUtilities/Log/Target")
 
-set(SUB_DIRECTORIES "Component"
-										"Target"
-										"Filter"
+set(SUB_DIRECTORIES ""
 )
 
 #Add subdirectories
