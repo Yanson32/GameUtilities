@@ -53,7 +53,7 @@ target_link_libraries("ParticleSystem" PUBLIC Math::Math)
 target_link_libraries("Log" PUBLIC "Core")
 
 #Link the log target against the Core target
-target_link_libraries("Event" PUBLIC "Core" "Log")
+target_link_libraries("Event" PUBLIC "Core")
 
 #install export file
 install(FILES

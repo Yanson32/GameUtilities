@@ -3,7 +3,7 @@
 #include "event_export.h"
 #include <memory>
 #include "GameUtilities/Event/Event.h"
-#include "GameUtilities/Log/LogType.h"
+
 #include <string>
 
 namespace GU
@@ -24,9 +24,9 @@ namespace GU
                 /**************************************************************************
                 *   Constructor
                 **************************************************************************/
-                LogEvent(const std::string &msg, const GU::Log::LogType  newSeverity = GU::Log::LogType::MESSAGE);
+                LogEvent(const std::string &msg, const int  newSeverity);
                 
-		GU::Log::LogType getSeverity() const;
+		int getSeverity() const;
 
                 /**************************************************************************
                 *   Destructor
@@ -34,7 +34,7 @@ namespace GU
                 virtual ~LogEvent();
 
             private:
-                const GU::Log::LogType m_severity;
+                const int m_severity;
         };
 
     }
