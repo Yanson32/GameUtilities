@@ -3,6 +3,7 @@
 #include "event_export.h"
 #include <memory>
 #include "GameUtilities/Event/Event.h"
+#include "GameUtilities/Log/LogType.h"
 #include <string>
 
 namespace GU
@@ -23,16 +24,7 @@ namespace GU
                 /**************************************************************************
                 *   Constructor
                 **************************************************************************/
-                LogEvent(const std::string &msg, const int  newSeverity = -1);
-
-
-                /**************************************************************************
-                *   Purpose:    Method called when an event is sent
-                *   Input:      EventPtr a pointer to an event this can be a nullptr.
-                *               the pointer will be overwritten so the event should not
-                *               still be useful
-                **************************************************************************/
-                virtual void OnEvent(EventPtr event) = 0;
+                LogEvent(const std::string &msg, const int  &newSeverity);
 
                 
                 int getSeverity() const;

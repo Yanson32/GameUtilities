@@ -10,7 +10,7 @@ namespace GU
             LOWEST = -1,
             CHANGE_STATE = 0,
             PUSH_STATE = 1,
-			POP_STATE = 2,
+	     POP_STATE = 2,
             MUSIC_VOLUME_CHANGED = 3,
             PLAY_MUSIC = 4,
             PLAY_SOUND = 5,
@@ -19,6 +19,7 @@ namespace GU
             SLIDER_CHANGED = 8,
             ON_CHECK= 9,
             ON_COMBO_CHANGED = 10,
+            LOG,
             HIGHEST = 11
         };
 
