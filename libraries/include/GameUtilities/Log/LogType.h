@@ -6,15 +6,15 @@ namespace GU
     { 
         enum  class LogType
         {
-            FATAL_ERROR, 
-            ERROR,
-            WARNING,
-            MESSAGE, 
-            VERBOSE, 
-            STATUS, 
-            SYSTEM_ERROR,
-            DEBUG,
-            TRACE
+            GU_FATAL_ERROR, 
+            GU_ERROR,
+            GU_WARNING,
+            GU_MESSAGE, 
+            GU_VERBOSE, 
+            GU_STATUS, 
+            GU_SYSTEM_ERROR,
+            GU_DEBUG,
+            GU_TRACE
         };
     }
 }
