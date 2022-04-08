@@ -5,6 +5,7 @@ set(FILES 	"${CMAKE_CURRENT_SOURCE_DIR}/LogComponent.h"
 			"${CMAKE_CURRENT_SOURCE_DIR}/FileComponent.h"
 			"${CMAKE_CURRENT_SOURCE_DIR}/SeverityComponent.h"
 			"${CMAKE_CURRENT_SOURCE_DIR}/Components.h"
+			"${CMAKE_CURRENT_SOURCE_DIR}/ComponentId.h"
 )
 
 set(RELATIVE_PATH "include/GameUtilities/Log/Component")
