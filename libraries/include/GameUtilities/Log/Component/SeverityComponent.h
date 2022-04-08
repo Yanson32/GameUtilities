@@ -17,7 +17,7 @@ namespace GU
         SeverityComponent();
         SeverityComponent& operator = (const SeverityComponent &comp);
         GU::Core::String format();
-        LogType m_severity = LogType::MESSAGE;
+        LogType m_severity = LogType::GU_MESSAGE;
       };
     }
 }
