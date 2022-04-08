@@ -5,7 +5,7 @@ namespace GU
 {
     namespace Evt
     {
-        LogEvent::LogEvent(const std::string &msg, const int &newSeverity):
+        LogEvent::LogEvent(const GU::Core::String &msg, const int &newSeverity):
 	Event(static_cast<int>(GU::Evt::EventId::LOG)),
         m_severity(newSeverity)
         {
