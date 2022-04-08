@@ -7,9 +7,9 @@ namespace GU
     {
         LogEvent::LogEvent(const GU::Core::String &msg, const int &newSeverity):
 	Event(static_cast<int>(GU::Evt::EventId::LOG)),
-        m_severity(newSeverity)
+        m_severity(newSeverity),
+	m_msg(msg)
         {
-            UNUSED(msg);
         } 
 
         int LogEvent::getSeverity() const
