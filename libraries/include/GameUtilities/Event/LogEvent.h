@@ -5,7 +5,7 @@
 #include "GameUtilities/Event/Event.h"
 #include "GameUtilities/Log/LogType.h"
 #include "GameUtilities/Core/String.h"
-#include <string>
+
 
 namespace GU
 {
@@ -25,8 +25,7 @@ namespace GU
                 /**************************************************************************
                 *   Constructor
                 **************************************************************************/
-
-                LogEvent(const std::string &msg, const int  newSeverity);
+                LogEvent(const GU::Core::String &msg, const int  &newSeverity);
                 
 		int getSeverity() const;
 
