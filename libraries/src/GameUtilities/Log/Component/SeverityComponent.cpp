@@ -7,7 +7,7 @@ namespace GU
 
         SeverityComponent::SeverityComponent(const LogType &severity):
         LogComponent(componentId::SEVERITY),
-        m_severity(m_severity)
+        m_severity(severity)
         {
 
         }
