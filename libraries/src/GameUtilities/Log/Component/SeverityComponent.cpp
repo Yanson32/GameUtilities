@@ -4,7 +4,20 @@ namespace GU
 {
     namespace Log
     {
+        /*****************************************************************
+        * @brief: The constructor
+        *****************************************************************/
+        SeverityComponent::SeverityComponent():
+        LogComponent(componentId::SEVERITY)
+        {
 
+        }
+
+
+        /*****************************************************************
+        * @brief: The constructor
+        * @param: severity indicates how important the log is.
+        *****************************************************************/
         SeverityComponent::SeverityComponent(const LogType &severity):
         LogComponent(componentId::SEVERITY),
         m_severity(severity)
@@ -13,13 +26,12 @@ namespace GU
         }
 
 
-        SeverityComponent::SeverityComponent():
-        LogComponent(componentId::SEVERITY)
-        {
-
-        }
-
-
+        /*****************************************************************
+        * @brief:  Assignment operator overload.
+        * @param:  comp contains the values to be assigned to the current
+        *          object.
+        * @return: A reference to the updated current object.
+        *****************************************************************/
         SeverityComponent& SeverityComponent::operator = (const SeverityComponent &comp)
         {
           m_severity = comp.m_severity;
@@ -27,6 +39,10 @@ namespace GU
         }
 
 
+        /*****************************************************************
+        * @brief:  This method creates a string from the current severity.
+        * @return: A string representing the current severity object.
+        *****************************************************************/
         GU::Core::String SeverityComponent::format()
         {
 
