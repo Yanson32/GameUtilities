@@ -27,7 +27,7 @@ int main()
 	//Create log entry
 	std::shared_ptr<GU::Log::LogEntry> entry(new GU::Log::LogEntry());
 	entry->add<GU::Log::MsgComponent>("This is a sample log message");
-	entry->add<GU::Log::SeverityComponent>(GU::Log::LogType::WARNING);
+	entry->add<GU::Log::SeverityComponent>(GU::Log::LogType::GU_WARNING);
 	entry->add<GU::Log::DateComponent>();
 
 	//Write log
