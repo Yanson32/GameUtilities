@@ -7,5 +7,6 @@
 #include "GameUtilities/Log/Component/SeverityComponent.h"
 #include "GameUtilities/Log/Component/TimeComponent.h"
 #include "GameUtilities/Log/Component/ComponentId.h"
+#include "GameUtilities/Log/Component/LineComponent.h"
 
 #endif
