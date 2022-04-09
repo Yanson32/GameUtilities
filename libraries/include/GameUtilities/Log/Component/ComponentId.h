@@ -11,7 +11,8 @@ namespace GU
           FILE,
           MSG,
           SEVERITY,
-          TIME
+          TIME,
+          LINE
       };
 
     }

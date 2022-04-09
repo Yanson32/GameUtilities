@@ -4,6 +4,8 @@ set(FILES 	"${CMAKE_CURRENT_SOURCE_DIR}/LogComponent.cpp"
 			"${CMAKE_CURRENT_SOURCE_DIR}/TimeComponent.cpp"
 			"${CMAKE_CURRENT_SOURCE_DIR}/FileComponent.cpp"
 			"${CMAKE_CURRENT_SOURCE_DIR}/SeverityComponent.cpp"
+			"${CMAKE_CURRENT_SOURCE_DIR}/LineComponent.cpp"
+
 )
 
 set(RELATIVE_PATH "include/GameUtilities/Log/Component")
