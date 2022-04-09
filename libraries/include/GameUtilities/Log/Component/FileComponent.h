@@ -48,7 +48,6 @@ namespace GU
 
 
         GU::Core::String m_file;                //The file where the log message originated from
-        int lineNumber = 0;
       };
     }
 }
