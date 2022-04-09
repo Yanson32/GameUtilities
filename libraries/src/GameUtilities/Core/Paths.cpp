@@ -18,7 +18,7 @@ GU::Core::String getConfigDir(const GU::Core::String &appName)
     GU::Core::String temp;
     temp = getenv("HOME");
     temp += "/";
-    temp += "/.config"; 
+    temp += ".config"; 
     temp += "/";
     temp += appName;
     return temp; 
