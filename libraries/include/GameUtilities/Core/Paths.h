@@ -4,6 +4,6 @@
 #include "core_export.h"
 #include "GameUtilities/Core/String.h"
 
-GU::Core::String CORE_EXPORT getConfigDir(const GU::Core::String &appName = "");
+GU::Core::String CORE_EXPORT getConfigDir(const GU::Core::String &appName);
 
 #endif
