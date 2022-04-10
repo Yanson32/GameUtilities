@@ -1,5 +1,5 @@
-#ifndef GU_LOG_SECURITYCOMPONENT_H
-#define GU_LOG_SECURITYCOMPONENT_H
+#ifndef GU_LOG_LINECOMPONENT_H
+#define GU_LOG_LINECOMPONENT_H
 /*********************************************************************************//**
 *	@author	Wayne J Larson Jr.
 * @date 4/8/2022
