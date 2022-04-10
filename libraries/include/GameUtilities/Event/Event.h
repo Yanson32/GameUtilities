@@ -7,6 +7,7 @@
 #define GAMEUTILITIES_EVENT_EVENT_H
 #include "event_export.h"
 #include <memory>
+#include "GameUtilities/Core/String.h"
 
 namespace GU
 {
@@ -36,7 +37,7 @@ namespace GU
                 *         	being instantiated accidentally.
                 *   \param 	newId the id of the event.
                 **************************************************************************/
-                Event(const int newId = ALL, const int newLine = 0, const char* newFile = "");
+                Event(const int newId = ALL, const int newLine = 0, const GU::Core::String &newFile = "");
 
         };
 
