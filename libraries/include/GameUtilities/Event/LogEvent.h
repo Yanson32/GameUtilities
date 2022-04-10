@@ -24,9 +24,9 @@ namespace GU
                 /**************************************************************************
                 *   Constructor
                 **************************************************************************/
-                LogEvent(const GU::Core::String &msg, const int  &newSeverity);
+                LogEvent(const GU::Core::String &msg, const int  &newSeverity, const int newLine, const GU::Core::String &newFile);
 
-                
+
                 int getSeverity() const;
 
                 /**************************************************************************
@@ -42,4 +42,3 @@ namespace GU
 
 }
 #endif // LISTENER_H
-

@@ -5,12 +5,12 @@ namespace GU
 {
     namespace Evt
     {
-        LogEvent::LogEvent(const GU::Core::String &msg, const int &newSeverity):
-	Event(static_cast<int>(GU::Evt::EventId::LOG)),
+        LogEvent::LogEvent(const GU::Core::String &msg, const int &newSeverity, const int newLine, const GU::Core::String &newFile):
+	      Event(static_cast<int>(GU::Evt::EventId::LOG), newLine, newFile),
         m_severity(newSeverity),
-	m_msg(msg)
+	      m_msg(msg)
         {
-        } 
+        }
 
         int LogEvent::getSeverity() const
         {
@@ -22,4 +22,3 @@ namespace GU
         }
     }
 }
-
