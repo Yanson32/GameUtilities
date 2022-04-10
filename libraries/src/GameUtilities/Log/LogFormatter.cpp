@@ -106,6 +106,11 @@ namespace GU
                 (*temp) = (*temp2);
               }
               break;
+              case GU::Log::componentId::LINE:
+                std::shared_ptr<GU::Log::LineComponent> temp = std::dynamic_pointer_cast<LineComponent>(pimpl->m_data[i]);
+                std::shared_ptr<GU::Log::LineComponent> temp2 = std::dynamic_pointer_cast<LineComponent>(component);
+                (*temp) = (*temp2);
+              break;
 
             }
           }
