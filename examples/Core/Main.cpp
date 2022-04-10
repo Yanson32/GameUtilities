@@ -7,26 +7,31 @@
 
 int main()
 {
+
+  //Create a config directory
   GU::Core::String path = GU::Core::getConfigDir("Test");
   if(!std::filesystem::exists(path.toStdString()))
     std::filesystem::create_directory(path.toStdString());
 
   path += "/config.txt";
-  std::cout << "File = " << path << std::endl;
+
+  //Create preferences manager
   GU::Core::PreferencesManager manager(path);
 
-  int test = 12;
-  std::stringstream inputMsg;
-  inputMsg << "The input test value is ";
-  inputMsg << test;
-  GU::Core::ts_iostream(std::cout, inputMsg.str());
-  manager.write("Test", test);
+  //Add some values to the preferences file
+  manager.write("GameUtilities", 55.8f);
+  manager.write("Skittles", "Taste the rainbow");
+  manager.write("Test", 12);
 
+  //Read a previously written value
   int defaultValue = 5;
-  std::stringstream outputMsg;
-  outputMsg << "The test value is ";
-  outputMsg << defaultValue;
   int value = manager.read("Test", defaultValue);
-  std::cout << "The test value is " << value << std::endl;
+  std::stringstream outputMsg;
+  outputMsg << "The value of Test is ";
+  outputMsg << value;
+  GU::Core::ts_iostream(std::cout, outputMsg.str());
+
+  //Replace the first entry with a new value
+  manager.write("GameUtilities", 14.40f);
 
 }
