@@ -1,6 +1,7 @@
 #include "GameUtilities/Log/Component/LineComponent.h"
 #include "GameUtilities/Log/Component/ComponentId.h"
 #include <sstream>
+#include <iostream>
 
 namespace GU
 {
@@ -38,6 +39,7 @@ namespace GU
         LineComponent& LineComponent::operator = (const LineComponent &comp)
         {
             m_line = comp.m_line;
+            return *this;
         }
 
 
@@ -49,6 +51,7 @@ namespace GU
         {
             std::stringstream ss;
             ss << m_line;
+            std::cout << "m_line " << m_line << std::endl;
             return ss.str();
         }
     }

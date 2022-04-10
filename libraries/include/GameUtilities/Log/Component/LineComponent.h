@@ -45,9 +45,10 @@ namespace GU
         * @brief:  This method creates a string from the current line number.
         * @return: A string representing the current line number.
         *****************************************************************/
-        GU::Core::String format();
+        virtual GU::Core::String format() override;
 
-        
+
+
         int m_line = -1;
       };
     }
