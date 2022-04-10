@@ -27,7 +27,7 @@ namespace GU
         * @brief: Constructor
         * @param: file is the location where the log originated from
         *****************************************************************/
-        FileComponent(GU::Core::String &file);
+        FileComponent(const GU::Core::String &file);
 
 
         /*****************************************************************
