@@ -28,7 +28,7 @@ namespace GU
                 **************************************************************************/
                 virtual ~Event();
                 int line = 0;
-				const char* file;
+				const GU::Core::String file;
             protected:
                 Event(const Event&) = delete;
                 Event& operator = (const Event& ) = delete;
