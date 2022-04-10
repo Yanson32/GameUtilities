@@ -8,6 +8,7 @@
 #include <iostream>
 #include <memory>
 #include <sstream>
+#include <filesystem>
 
 namespace GU
 {
@@ -17,17 +18,108 @@ namespace GU
     {
         public:
             Impl(const GU::Core::String &path);
-      //#ifdef MULTITHREAD
-    	std::mutex m_fileLock;
-      //#endif
-    	GU::Core::String m_path;
+
+            template <class T>
+            void copy(const GU::Core::String &name, const T &data);
+
+            template <class T>
+            T read(const GU::Core::String &name, const T &defaultValue);
+
+            GU::Core::String read(const GU::Core::String &name, const GU::Core::String &defaultValue);
+            //#ifdef MULTITHREAD
+          	std::mutex m_fileLock;
+            std::mutex m_tempLock;
+            //#endif
+          	GU::Core::String m_path;
+            GU::Core::String m_tempPath = "";
     };
+
+    template <class T>
+    void PreferencesManager::Impl::copy(const GU::Core::String &name, const T &data)
+    {
+        //Create temperary file
+        //Create filestream to read file
+        std::ifstream fileStream;
+        GU::Core::RAIIStream<std::ifstream> s(fileStream, m_path, m_fileLock);
+
+
+        //Create temp file
+        std::ofstream temp;
+        GU::Core::RAIIStream<std::ofstream> t(temp, m_tempPath, m_tempLock);
+
+        bool done = false;
+
+        //Get each line from fileStream
+        std::string line;
+        while(std::getline(fileStream, line))
+        {
+          std::stringstream ss(line);
+          std::string id;
+          getline(ss, id, ':');
+          if(id == name.toStdString())
+          {
+            temp << name << ":" << data << std::endl;
+            done = true;
+          }
+          else
+          {
+            temp << line << std::endl;
+          }
+        }
+
+        if(!done)
+          temp << name << ":" << data << std::endl;
+    }
+
+
+    template <class T>
+    T PreferencesManager::Impl::read(const GU::Core::String &name, const T &defaultValue)
+    {
+      std::ifstream fileStream;
+      GU::Core::RAIIStream<std::ifstream> s(fileStream, m_path, m_fileLock);
+      std::string line;
+      while(std::getline(fileStream, line))
+      {
+        std::stringstream ss(line);
+        std::string id;
+        getline(ss, id, ':');
+        if(id == name.toStdString())
+        {
+          T data;
+          ss >> data;
+          return data;
+        }
+      }
+      return defaultValue;
+    }
+
+
+    GU::Core::String PreferencesManager::Impl::read(const GU::Core::String &name, const GU::Core::String &defaultValue)
+    {
+      std::ifstream fileStream;
+      GU::Core::RAIIStream<std::ifstream> s(fileStream, m_path, m_fileLock);
+      std::string line;
+      while(std::getline(fileStream, line))
+      {
+        std::stringstream ss(line);
+        std::string id;
+        getline(ss, id, ':');
+        if(id == name.toStdString())
+        {
+          std::string data;
+          ss >> data;
+          return data;
+        }
+      }
+      return defaultValue;
+    }
 
 
     PreferencesManager::Impl::Impl(const GU::Core::String &path):
     m_path(path)
     {
-
+      m_tempPath = std::filesystem::temp_directory_path().string();
+      m_tempPath += "/temp.txt";
     }
 
 
@@ -49,10 +141,16 @@ namespace GU
     *************************************************************************************/
     void PreferencesManager::write(const GU::Core::String &name, const int &data)
     {
+        //Make sure the pimpl pointer is valid
         assert(pimpl != nullptr);
-        std::ofstream fileStream;
-        GU::Core::RAIIStream<std::ofstream> s(fileStream, pimpl->m_path, pimpl->m_fileLock);
-        fileStream << name << ":" << data << std::endl;
+
+        //Copy data to temp file
+        pimpl->copy(name, data);
+
+        //Copy temp file to preferences file
+        std::filesystem::remove(pimpl->m_path.toStdString());
+        std::filesystem::copy_file(pimpl->m_tempPath.toStdString(), pimpl->m_path.toStdString());
+        std::filesystem::remove(pimpl->m_tempPath.toStdString());
     }
 
 
@@ -63,10 +161,16 @@ namespace GU
     *************************************************************************************/
     void PreferencesManager::write(const GU::Core::String &name, const float &data)
     {
-        assert(pimpl != nullptr);
-        std::ofstream fileStream;
-        GU::Core::RAIIStream<std::ofstream> s(fileStream, pimpl->m_path, pimpl->m_fileLock);
-        fileStream << name << ":" << data << std::endl;
+      //Make sure the pimpl pointer is valid
+      assert(pimpl != nullptr);
+
+      //Copy data to temp file
+      pimpl->copy(name, data);
+
+      //Copy temp file to preferences file
+      std::filesystem::remove(pimpl->m_path.toStdString());
+      std::filesystem::copy_file(pimpl->m_tempPath.toStdString(), pimpl->m_path.toStdString());
+      std::filesystem::remove(pimpl->m_tempPath.toStdString());
     }
 
 
@@ -77,10 +181,16 @@ namespace GU
     *************************************************************************************/
     void PreferencesManager::write(const GU::Core::String &name, const GU::Core::String &data)
     {
-        assert(pimpl != nullptr);
-        std::ofstream fileStream;
-        GU::Core::RAIIStream<std::ofstream> s(fileStream, pimpl->m_path, pimpl->m_fileLock);
-        fileStream << name << ":" << data << std::endl;
+      //Make sure the pimpl pointer is valid
+      assert(pimpl != nullptr);
+
+      //Copy data to temp file
+      pimpl->copy(name, data);
+
+      //Copy temp file to preferences file
+      std::filesystem::remove(pimpl->m_path.toStdString());
+      std::filesystem::copy_file(pimpl->m_tempPath.toStdString(), pimpl->m_path.toStdString());
+      std::filesystem::remove(pimpl->m_tempPath.toStdString());
     }
 
 
@@ -95,22 +205,7 @@ namespace GU
     int PreferencesManager::read(const GU::Core::String &name, const int &defaultValue)
     {
       assert(pimpl != nullptr);
-      std::ifstream fileStream;
-      GU::Core::RAIIStream<std::ifstream> s(fileStream, pimpl->m_path, pimpl->m_fileLock);
-      std::string line;
-      while(std::getline(fileStream, line))
-      {
-        std::stringstream ss(line);
-        std::string id;
-        getline(fileStream, line, ':');
-        if(id == name.toStdString())
-        {
-          int data;
-          ss >> data;
-          return data;
-        }
-      }
-      return defaultValue;
+      pimpl->read(name, defaultValue);
     }
 
 
@@ -125,23 +220,7 @@ namespace GU
     float PreferencesManager::read(const GU::Core::String &name, const float &defaultValue)
     {
       assert(pimpl != nullptr);
-      std::ifstream fileStream;
-      GU::Core::RAIIStream<std::ifstream> s(fileStream, pimpl->m_path, pimpl->m_fileLock);
-      std::string line;
-      while(std::getline(fileStream, line))
-      {
-        std::stringstream ss(line);
-        std::string id;
-        getline(fileStream, line, ':');
-        if(id == name.toStdString())
-        {
-          float data;
-          ss >> data;
-          return data;
-        }
-
-      }
-      return defaultValue;
+      return pimpl->read(name, defaultValue);
     }
 
 
@@ -156,24 +235,7 @@ namespace GU
     GU::Core::String PreferencesManager::read(const GU::Core::String &name, const GU::Core::String &defaultValue)
     {
       assert(pimpl != nullptr);
-      std::ifstream fileStream;
-      GU::Core::RAIIStream<std::ifstream> s(fileStream, pimpl->m_path, pimpl->m_fileLock);
-
-      std::string line;
-      while(std::getline(fileStream, line))
-      {
-        std::stringstream ss(line);
-        std::string id;
-        getline(fileStream, line, ':');
-        if(id == name.toStdString())
-        {
-          std::string data;
-          ss >> data;
-          return data;
-        }
-
-      }
-      return defaultValue;
+      return pimpl->read(name, defaultValue);
     }
 
 
