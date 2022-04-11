@@ -207,7 +207,7 @@ namespace GU
     int PreferencesManager::read(const GU::Core::String &name, const int &defaultValue)
     {
       assert(pimpl != nullptr);
-      pimpl->read(name, defaultValue);
+      return pimpl->read(name, defaultValue);
     }
 
 

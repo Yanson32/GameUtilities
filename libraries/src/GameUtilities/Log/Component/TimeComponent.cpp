@@ -1,5 +1,6 @@
 
 #include "GameUtilities/Log/Component/TimeComponent.h"
+#include "GameUtilities/Core/Macros.h"
 
 namespace GU
 {
@@ -15,6 +16,7 @@ namespace GU
 
         TimeComponent& TimeComponent::operator = (const TimeComponent &comp)
         {
+          UNUSED(comp);
           return *this;
         }
 

@@ -1,5 +1,6 @@
 #include "GameUtilities/Log/LogManager.h"
 #include "GameUtilities/Log/LogFormatter.h"
+#include "GameUtilities/Core/Macros.h"
 #include <vector>
 #include <stdexcept>
 #include <cassert>
@@ -86,6 +87,7 @@ namespace GU
 
     void LogManager::Impl::write(const GU::Core::String &msg)
     {
+      UNUSED(msg);
       std::cout << "Impl write" << std::endl;
     }
 

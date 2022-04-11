@@ -90,7 +90,7 @@ String::operator const char*() const
         String String::operator=(const char* data)
         {
           assert(pimpl != nullptr);
-          pimpl->m_data = data;
+          return pimpl->m_data = data;
         }
         /**************************************************************
         * @brief: Equality operator

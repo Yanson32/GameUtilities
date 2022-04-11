@@ -1,4 +1,5 @@
 #include "GameUtilities/Log/Component/DateComponent.h"
+#include "GameUtilities/Core/Macros.h"
 namespace GU
 {
     namespace Log
@@ -14,6 +15,7 @@ namespace GU
 
         DateComponent& DateComponent::operator = (const DateComponent &comp)
         {
+          UNUSED(comp);
           return *this;
         }
 

@@ -1,6 +1,7 @@
 #include "GameUtilities/Log/LogFormatter.h"
 #include "GameUtilities/Log/Component/LogComponent.h"
 #include "GameUtilities/Log/Component/Components.h"
+#include "GameUtilities/Core/Macros.h"
 #include <vector>
 #include <cassert>
 
@@ -58,7 +59,9 @@ namespace GU
 
       GU::Core::String LogFormatter::format(std::shared_ptr<GU::Log::LogEntry> entry)
       {
+        UNUSED(entry);
         assert(pimpl != nullptr);
+        return GU::Core::String("");
       }
 
 
