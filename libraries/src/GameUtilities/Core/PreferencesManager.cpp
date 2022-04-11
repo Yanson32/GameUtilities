@@ -27,12 +27,14 @@ namespace GU
 
             GU::Core::String read(const GU::Core::String &name, const GU::Core::String &defaultValue);
             //#ifdef MULTITHREAD
-          	std::mutex m_fileLock;
-            std::mutex m_tempLock;
+          	static std::mutex m_fileLock;
+            static std::mutex m_tempLock;
             //#endif
           	GU::Core::String m_path;
             GU::Core::String m_tempPath = "";
     };
+    std::mutex PreferencesManager::Impl::m_fileLock;
+    std::mutex PreferencesManager::Impl::m_tempLock;
 
     template <class T>
     void PreferencesManager::Impl::copy(const GU::Core::String &name, const T &data)
