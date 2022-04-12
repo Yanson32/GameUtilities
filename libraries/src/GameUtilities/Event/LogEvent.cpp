@@ -12,7 +12,14 @@ namespace GU
         {
         }
 
-        int LogEvent::getSeverity() const
+
+        GU::Core::String LogEvent::getMessage() const
+        {
+          return m_msg;
+        }
+
+
+	      int LogEvent::getSeverity() const
         {
             return m_severity;
         }

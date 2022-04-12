@@ -26,7 +26,7 @@ namespace GU
                 **************************************************************************/
                 LogEvent(const GU::Core::String &msg, const int  &newSeverity, const int newLine, const GU::Core::String &newFile);
 
-
+                GU::Core::String getMessage() const;
                 int getSeverity() const;
 
                 /**************************************************************************

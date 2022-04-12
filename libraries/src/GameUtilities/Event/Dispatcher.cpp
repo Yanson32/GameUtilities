@@ -69,7 +69,7 @@ namespace GU
                 {
                     assert(event != nullptr);
                     assert(listener != nullptr);
-                    RegisterListener(listener, event->id);
+                    RegisterListener(listener, event->getId());
                 }
 
 
@@ -140,7 +140,7 @@ namespace GU
                 {
                     assert(listener != nullptr);
                     assert(event != nullptr);
-                    UnRegisterListener(listener, event->id);
+                    UnRegisterListener(listener, event->getId());
                 }
 
 
@@ -207,7 +207,7 @@ namespace GU
                     assert(listener != nullptr);
                     assert(event != nullptr);
 
-                    return IsRegistered(listener, event->id);
+                    return IsRegistered(listener, event->getId());
                 }
 
                 /***********************************************************
@@ -256,9 +256,9 @@ namespace GU
                     }
 
 
-                    if (listenerMap.find(event->id) != listenerMap.end())
+                    if (listenerMap.find(event->getId()) != listenerMap.end())
                     {
-                        listenerVecPtr &vec2 = listenerMap.find(event->id)->second;
+                        listenerVecPtr &vec2 = listenerMap.find(event->getId())->second;
                         for (auto element : vec2)
                             element->OnEvent(event);
                     }
