@@ -34,9 +34,14 @@ namespace GU
                 *   Destructor
                 **************************************************************************/
                 virtual ~LogEvent();
-		GU::Core::String m_msg;
+
             private:
+<<<<<<< HEAD
                 const int m_severity;
+=======
+                const int m_severity = -1;
+                GU::Core::String m_msg;
+>>>>>>> 437bc380e25ab9e529e4e16c58790e6130ff9bc3
         };
 
     }
