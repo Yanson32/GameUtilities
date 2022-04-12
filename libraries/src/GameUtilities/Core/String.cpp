@@ -66,7 +66,6 @@ String::operator const char*() const
         pimpl(new String::Impl)
         {
           assert(pimpl != nullptr);
-          std::cout << pimpl->m_data << std::endl;
           pimpl->m_data = std::string(data);
         }
 

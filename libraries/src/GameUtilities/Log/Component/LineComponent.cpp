@@ -51,7 +51,6 @@ namespace GU
         {
             std::stringstream ss;
             ss << m_line;
-            std::cout << "m_line " << m_line << std::endl;
             return ss.str();
         }
     }

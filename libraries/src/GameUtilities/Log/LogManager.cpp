@@ -88,7 +88,6 @@ namespace GU
     void LogManager::Impl::write(const GU::Core::String &msg)
     {
       UNUSED(msg);
-      std::cout << "Impl write" << std::endl;
     }
 
 
