@@ -17,11 +17,29 @@ namespace GU
         *   \brief 	param: const int the id of the event.
         **************************************************************************/
         Event::Event(const int newId, const int newLine, const GU::Core::String &newFile):
-		id(newId),
-		line(newLine),
-		file(newFile)
+		m_id(newId),
+		m_line(newLine),
+		m_file(newFile)
         {
 
+        }
+
+        
+        int Event::getId() const
+        {
+          return m_id;
+        }
+
+
+        int Event::getLine() const
+        {
+          return m_line;
+        }
+
+
+        GU::Core::String Event::getFile() const
+        {
+          return m_file;
         }
 
 

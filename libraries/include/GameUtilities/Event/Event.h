@@ -21,15 +21,17 @@ namespace GU
         *************************************************************************************/
         struct EVENT_EXPORT Event
         {
-                const int id = 0;
-
+                int getId() const; 
+                int getLine() const;
+                GU::Core::String getFile() const;
                 /**************************************************************************
                 *   \brief	Destructor
                 **************************************************************************/
                 virtual ~Event();
-                int line = 0;
-				const GU::Core::String file;
             protected:
+                const int m_id = 0;
+                int m_line = 0;
+                const GU::Core::String m_file;
                 Event(const Event&) = delete;
                 Event& operator = (const Event& ) = delete;
                 /**************************************************************************
