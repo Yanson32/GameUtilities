@@ -13,7 +13,8 @@ set(GU_EXAMPLES_PUBLIC_COMPILE_FEATURES ${GU_PUBLIC_COMPILE_FEATURES})
 set(SUBDIRECTORIES #"EnginExample"
 		   #"Particle System"
 		   "Log"
-			 "Core"
+		   "Core"
+           "Algorithm"
 )
 
 foreach(LOOP_VAR ${SUBDIRECTORIES})
