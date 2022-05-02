@@ -13,7 +13,7 @@ namespace GU
                 /********************************************************************//**
                 *   @brief  Constructor 
                 ************************************************************************/
-                SatObject(const unsigned &points);
+                SatObject(const unsigned &vertexCount);
                 
 
                 /********************************************************************//**
@@ -23,6 +23,24 @@ namespace GU
                 *           specified in the parameter list.
                 ************************************************************************/
                 Math::Vector2<float>& operator [] (const unsigned index); 
+               
+ 
+                Math::Vector2<float> operator [] (const unsigned index) const;
+                
+
+                /********************************************************************//**
+                *   @brief  This method returns the number of  vertices that make up the
+                *           SAT object. 
+                *   @return The number of vertices that make up the SAT object. 
+                ************************************************************************/
+                std::size_t getVertexCount() const;
+
+
+                /********************************************************************//**
+                *   @brief  This method determines if tow SatObjects are colliding.
+                *   @return True if the SatObjects are colliding. 
+                ************************************************************************/
+                bool intersects(const SatObject &object) const;
                 
 
                 /********************************************************************//**
