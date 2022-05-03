@@ -16,48 +16,24 @@ namespace GU
                 Impl(){};
                 ~Impl(){};
                 std::vector<Math::Vector2<float>> m_vertices;
+                Math::Vector2<float> m_position;
+                float m_angle = 0;
+                
         };
 
         
         /********************************************************************//**
         *   @brief  Constructor 
         ************************************************************************/
-        SatObject::SatObject(const unsigned &vertexCount):
+        SatObject::SatObject(const Math::Vector2<float> &position, const unsigned &vertexCount):
         m_pimpl(new SatObject::Impl())
         {
             assert(m_pimpl != nullptr);
+            m_pimpl->m_position = position;
             m_pimpl->m_vertices.resize(vertexCount);            
         }
-
-    
-        /********************************************************************//**
-        *   @brief  This method returns a reference to the point at index.
-        *   @param  index is the position of the element in the std::vector
-        *   @return This method retruns a reference to the point at the index
-        *           specified in the parameter list.
-        ************************************************************************/
-        Math::Vector2<float>& SatObject::operator [] (const unsigned index)
-        {
-            assert(m_pimpl != nullptr);
-            assert(m_pimpl->m_vertices.size() > index); 
-            return m_pimpl->m_vertices[index]; 
-        }
         
 
-        /********************************************************************//**
-        *   @brief  This method returns a reference to the point at index.
-        *   @param  index is the position of the element in the std::vector
-        *   @return This method retruns a reference to the point at the index
-        *           specified in the parameter list.
-        ************************************************************************/
-        Math::Vector2<float> SatObject::operator [] (const unsigned index) const
-        {
-            assert(m_pimpl != nullptr);
-            assert(m_pimpl->m_vertices.size() > index); 
-            return m_pimpl->m_vertices[index]; 
-        }
-        
-                
         /********************************************************************//**
         *   @brief  This method returns the number of  vertices that make up the
         *           SAT object. 
@@ -90,19 +66,81 @@ namespace GU
         Math::Line<float> SatObject::getEdge(const std::size_t &index) const
         {
             assert(m_pimpl != nullptr);
-            assert(index <= m_pimpl->m_vertices.size());
-            if(index < m_pimpl->m_vertices.size())
+            assert(index <= getVertexCount());
+            if(index < getVertexCount())
             {
-                Math::Vector2 start(m_pimpl->m_vertices[index].x, m_pimpl->m_vertices[index].y);
-                Math::Vector2 end(m_pimpl->m_vertices[index + 1].x, m_pimpl->m_vertices[index +1].y);
+                Math::Vector2 start(getGlobalCoordinate(index));
+                Math::Vector2 end(getGlobalCoordinate(index + 1));
                 return Math::Line<float>(start, end);
             }
             else
             {
-                Math::Vector2 start(m_pimpl->m_vertices[index].x, m_pimpl->m_vertices[index].y);
-                Math::Vector2 end(m_pimpl->m_vertices[0].x, m_pimpl->m_vertices[0].y);
+                Math::Vector2 start(getGlobalCoordinate(index));
+                Math::Vector2 end(getGlobalCoordinate(0));
                 return Math::Line<float>(start, end);
             }
+        }
+
+
+        /********************************************************************//**
+        *   @brief  This method sets a coordiante at the index specified in
+        *           global coordinates. The coordinate will be translated to 
+        *           local coordinates. 
+        *   @param  coordinate is the new coordinate value in global coordinates 
+        *   @param  index is the current index of the coordinate to be updated. 
+        ************************************************************************/
+        void  SatObject::setGlobalCoordinate(const Math::Vector2<float> &coordinate, const std::size_t &index) const
+        {
+            assert(m_pimpl != nullptr);
+            assert(index < getVertexCount());
+            Math::Vector2<float> temp = m_pimpl->m_position - coordinate;
+            temp.x = -temp.x;
+            temp.y = -temp.y; 
+            m_pimpl->m_vertices[index] = temp;
+        }
+
+
+        /********************************************************************//**
+        *   @brief  This method returns a coordinate at the index specified. In
+        *           global coordinates.  
+        *   @param  index The current index of the coordinated stored internally 
+        *           to the SatObject.  
+        *   @return A coordinate at the index specified in global coordinates.
+        ************************************************************************/
+        Math::Vector2<float> SatObject::getGlobalCoordinate(const std::size_t &index) const
+        {
+            assert(m_pimpl != nullptr);
+            assert(index < getVertexCount());
+            return getLocalCoordinate(index) + m_pimpl->m_position; 
+        }
+
+
+        /********************************************************************//**
+        *   @brief  This method sets a coordinate in local coordinates. The
+        *           coordinate will not be translated to local coordinates.
+        *   @param  coordinate The new value of coordinate at the index specified
+        *           in local coordinates 
+        *   @param  index is the index of the coordinate to be replaced.
+        ************************************************************************/
+        void  SatObject::setLocalCoordinate(const Math::Vector2<float> &coordinate, const std::size_t &index) const
+        {
+            assert(m_pimpl != nullptr);
+            assert(index < getVertexCount());
+            m_pimpl->m_vertices[index] = coordinate;
+        }
+
+
+        /********************************************************************//**
+        *   @brief  This method returns the coordinate at the specified index
+        *           In local coordinates.  
+        *   @param  index is the current index of the coordinate. 
+        *   @return The coordinate at the specified index in local coordinates.
+        ************************************************************************/
+        Math::Vector2<float>  SatObject::getLocalCoordinate(const std::size_t &index) const
+        {
+            assert(m_pimpl != nullptr);
+            assert(index < getVertexCount());
+            return m_pimpl->m_vertices[index];
         }
 
 
@@ -132,7 +170,7 @@ namespace GU
                 float mLess = 0;
                 for(std::size_t i = 0; i < less->getVertexCount(); ++i)
                 {
-                    float dotProduct = leftNormal.dot((*less)[i]);
+                    float dotProduct = leftNormal.dot(less->getGlobalCoordinate(i));
                     if(dotProduct < lLess)
                         lLess = dotProduct; 
 
@@ -146,7 +184,7 @@ namespace GU
                 float mMore = 0;
                 for(std::size_t i = 0; i < more->getVertexCount(); ++i)
                 {
-                    float dotProduct = leftNormal.dot((*less)[i]);
+                    float dotProduct = leftNormal.dot(less->getGlobalCoordinate(i));
                     if(dotProduct < lMore)
                         lMore= dotProduct; 
 
@@ -174,7 +212,7 @@ namespace GU
                 float mLess = 0;
                 for(std::size_t i = 0; i < less->getVertexCount(); ++i)
                 {
-                    float dotProduct = leftNormal.dot((*less)[i]);
+                    float dotProduct = leftNormal.dot(less->getGlobalCoordinate(i));
                     if(dotProduct < lLess)
                         lLess = dotProduct; 
 
@@ -188,7 +226,7 @@ namespace GU
                 float mMore = 0;
                 for(std::size_t i = 0; i < more->getVertexCount(); ++i)
                 {
-                    float dotProduct = leftNormal.dot((*less)[i]);
+                    float dotProduct = leftNormal.dot(less->getGlobalCoordinate(i));
                     if(dotProduct < lMore)
                         lMore= dotProduct; 
 

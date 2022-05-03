@@ -14,19 +14,7 @@ namespace GU
                 /********************************************************************//**
                 *   @brief  Constructor 
                 ************************************************************************/
-                SatObject(const unsigned &vertexCount);
-                
-
-                /********************************************************************//**
-                *   @brief  This method returns a reference to the point at index.
-                *   @param  index is the position of the element in the std::vector
-                *   @return This method retruns a reference to the point at the index
-                *           specified in the parameter list.
-                ************************************************************************/
-                Math::Vector2<float>& operator [] (const unsigned index); 
-               
- 
-                Math::Vector2<float> operator [] (const unsigned index) const;
+                SatObject(const Math::Vector2<float> &position, const unsigned &vertexCount);
                 
 
                 /********************************************************************//**
@@ -53,6 +41,45 @@ namespace GU
                 Math::Line<float> getEdge(const std::size_t &index) const;
                
  
+                /********************************************************************//**
+                *   @brief  This method sets a coordiante at the index specified in
+                *           global coordinates. The coordinate will be translated to 
+                *           local coordinates. 
+                *   @param  coordinate is the new coordinate value in global coordinates 
+                *   @param  index is the current index of the coordinate to be updated. 
+                ************************************************************************/
+                void  setGlobalCoordinate(const Math::Vector2<float> &coordinate, const std::size_t &index) const;
+                
+                
+                /********************************************************************//**
+                *   @brief  This method returns a coordinate at the index specified. In
+                *           global coordinates.  
+                *   @param  index The current index of the coordinated stored internally 
+                *           to the SatObject.  
+                *   @return A coordinate at the index specified in global coordinates.
+                ************************************************************************/
+                Math::Vector2<float> getGlobalCoordinate(const std::size_t &index) const;
+
+                
+                /********************************************************************//**
+                *   @brief  This method sets a coordinate in local coordinates. The
+                *           coordinate will not be translated to local coordinates.
+                *   @param  coordinate The new value of coordinate at the index specified
+                *           in local coordinates 
+                *   @param  index is the index of the coordinate to be replaced.
+                ************************************************************************/
+                void  setLocalCoordinate(const Math::Vector2<float> &coordinate, const std::size_t &index) const;
+                
+
+                /********************************************************************//**
+                *   @brief  This method returns the coordinate at the specified index
+                *           In local coordinates.  
+                *   @param  index is the current index of the coordinate. 
+                *   @return The coordinate at the specified index in local coordinates.
+                ************************************************************************/
+                Math::Vector2<float> getLocalCoordinate(const std::size_t &index) const;
+                
+
                 /********************************************************************//**
                 *   @brief  This method determines if tow SatObjects are colliding.
                 *   @return True if the SatObjects are colliding. 
