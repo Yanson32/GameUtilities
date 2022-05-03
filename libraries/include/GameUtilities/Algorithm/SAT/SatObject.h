@@ -2,6 +2,7 @@
 #define SAT_OBJECT_H
 #include "algorithm_export.h"
 #include <Math/Vector2.h>
+#include <Math/Line.h>
 
 namespace GU
 {
@@ -35,7 +36,23 @@ namespace GU
                 ************************************************************************/
                 std::size_t getVertexCount() const;
 
+                
+                /********************************************************************//**
+                *   @brief  This method returns the number of edges that make up the
+                *           SAT object.
+                *   @return The number of edges that make up the SAT object.
+                ************************************************************************/
+                std::size_t getEdgeCount() const;
 
+                
+                /********************************************************************//**
+                *   @brief  This method returns the edge at the given index.
+                *   @param  index The index of the edge to be returned. 
+                *   @return A Line object representing the edge at index. 
+                ************************************************************************/
+                Math::Line<float> getEdge(const std::size_t &index) const;
+               
+ 
                 /********************************************************************//**
                 *   @brief  This method determines if tow SatObjects are colliding.
                 *   @return True if the SatObjects are colliding. 
