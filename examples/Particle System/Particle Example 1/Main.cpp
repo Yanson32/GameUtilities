@@ -7,6 +7,7 @@
 #include <GameUtilities/ParticleSystem/Attributes/Id.h>
 #include <GameUtilities/ParticleSystem/Attributes/Base.h>
 #include <GameUtilities/ParticleSystem/Container.h>
+#include <Math/Vector2.h>
 #include <SFML/Graphics.hpp>
 #include <cassert>
 #include <iostream>
@@ -79,7 +80,7 @@ void CircleAtt::remove(const std::size_t &index)
 class sfStarburst: public GU::PS::SY::Starburst, public sf::Drawable
 {
     public:
-            sfStarburst(const Math::Point &pos, const std::size_t size);
+            sfStarburst(const Math::Vector2<float> &pos, const std::size_t size);
             virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
             virtual void update(const float &deltaTime) override;
 };
@@ -90,7 +91,7 @@ class sfStarburst: public GU::PS::SY::Starburst, public sf::Drawable
 *			sfml graphics library.
 *	@param	sfStarburst.
 **************************************************************************************/
-sfStarburst::sfStarburst(const Math::Point &pos, const std::size_t size):
+sfStarburst::sfStarburst(const Math::Vector2<float> &pos, const std::size_t size):
 GU::PS::SY::Starburst::Starburst(pos, size)
 {
     std::shared_ptr<CircleAtt> cAtt = std::shared_ptr<CircleAtt>(new CircleAtt(*this, size, CIRCLE_ATT));
@@ -154,7 +155,7 @@ int main()
             {
                 if(event.mouseButton.button == sf::Mouse::Left)
                 {
-                    Math::Point point(event.mouseButton.x, event.mouseButton.y);
+                    Math::Vector2<float> point(event.mouseButton.x, event.mouseButton.y);
                     sfStarburst temp(point, 100);
                     burst.push_back(temp);
                 }

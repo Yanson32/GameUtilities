@@ -11,7 +11,7 @@ set(GU_EXAMPLES_PUBLIC_COMPILE_FEATURES ${GU_PUBLIC_COMPILE_FEATURES})
 
 
 set(SUBDIRECTORIES #"EnginExample"
-		   #"Particle System"
+		   "Particle System"
 		   "Log"
 		   "Core"
            "Algorithm"
