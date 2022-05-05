@@ -22,7 +22,7 @@ namespace GU
 
   		LogFormatter::LogFormatter(): pimpl(new LogFormatter::Impl())
   		{
-
+            assert(pimpl != nullptr);
   		}
 
       void LogFormatter::add(std::shared_ptr<GU::Log::LogComponent> component)
@@ -124,7 +124,9 @@ namespace GU
 
   		LogFormatter::~LogFormatter()
   		{
-
+            assert(m_pimpl != nullptr);
+            if(m_pimpl != nullptr)
+                delete m_pimpl;
   		}
 	  }
 }
