@@ -27,7 +27,7 @@ namespace GU
   				virtual ~LogFormatter();
         private:
           class Impl;
-          Impl* pimpl = nullptr;
+          Impl* m_pimpl = nullptr;
   		};
 
 
