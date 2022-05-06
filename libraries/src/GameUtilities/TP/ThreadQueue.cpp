@@ -6,12 +6,20 @@ namespace GU
 {
     namespace Thread
     {
+        class ThreadPoolQueue::Impl
+        {
+            public:
+                std::queue<std::unique_ptr<ThreadPoolTask>> taskQueue;
+                std::mutex mutex;
+        };
+
         /********************************************************************//**
         *   @brief  Constructor
         ************************************************************************/
-        ThreadPoolQueue::ThreadPoolQueue()
+        ThreadPoolQueue::ThreadPoolQueue():
+        m_pimpl(new ThreadPoolQueue::Impl())
         {
-
+            assert(m_pimpl != nullptr);
         }
 
 
@@ -21,10 +29,10 @@ namespace GU
         ************************************************************************/
         void ThreadPoolQueue::add(std::unique_ptr<ThreadPoolTask> newTask)
         {
-
-            std::lock_guard<std::mutex> lock(mutex);
+            assert(m_pimpl != nullptr);
+            std::lock_guard<std::mutex> lock(m_pimpl->mutex);
             assert(newTask != nullptr);
-            taskQueue.push(std::move(newTask));
+            m_pimpl->taskQueue.push(std::move(newTask));
         }
 
 
@@ -34,11 +42,12 @@ namespace GU
         ************************************************************************/
         std::unique_ptr<ThreadPoolTask> ThreadPoolQueue::pop()
         {
-            std::lock_guard<std::mutex> lock(mutex);
-            assert(!taskQueue.empty());
-            std::unique_ptr<ThreadPoolTask> task = std::move(taskQueue.front());
+            assert(m_pimpl != nullptr);
+            assert(!m_pimpl->taskQueue.empty());
+            std::lock_guard<std::mutex> lock(m_pimpl->mutex);
+            std::unique_ptr<ThreadPoolTask> task = std::move(m_pimpl->taskQueue.front());
             assert(task != nullptr);
-            taskQueue.pop();
+            m_pimpl->taskQueue.pop();
             return task;
         }
 
@@ -49,8 +58,9 @@ namespace GU
         ************************************************************************/
         bool ThreadPoolQueue::empty()
         {
-            std::lock_guard<std::mutex> lock(mutex);
-            return taskQueue.empty();
+            assert(m_pimpl != nullptr);
+            std::lock_guard<std::mutex> lock(m_pimpl->mutex);
+            return m_pimpl->taskQueue.empty();
         }
 
 
@@ -60,8 +70,9 @@ namespace GU
         ************************************************************************/
         std::size_t ThreadPoolQueue::size()
         {
-            std::lock_guard<std::mutex> lock(mutex);
-            return taskQueue.size();
+            assert(m_pimpl != nullptr);
+            std::lock_guard<std::mutex> lock(m_pimpl->mutex);
+            return m_pimpl->taskQueue.size();
         }
 
 
@@ -70,7 +81,9 @@ namespace GU
         ************************************************************************/
         ThreadPoolQueue::~ThreadPoolQueue()
         {
-
+            assert(m_pimpl != nullptr);
+            if(m_pimpl)
+                delete m_pimpl;
         }
     }
 }
