@@ -19,10 +19,10 @@ namespace GU
                
                 /**************************************************************************
                 *   @brief  Constructor   
-                *   @param  newComboId is the id of the combo box
-                *   @param  newIndex is the index of the data element that has changed. 
+                *   @param  comboId is the id of the combo box
+                *   @param  index is the index of the data element that has changed. 
                 **************************************************************************/
-                OnComboChanged(const int newComboId, const int newIndex);
+                OnComboChanged(const int comboId, const int index);
                 
 
                 /**************************************************************************
@@ -31,8 +31,8 @@ namespace GU
                 virtual ~OnComboChanged();
                 
             public:
-                const int comboId = -1;                     //Id of the combo box
-                const int index;                            //Index of the data element
+                const int m_comboId = -1;                     //Id of the combo box
+                const int m_index;                            //Index of the data element
         };
     }
 }
