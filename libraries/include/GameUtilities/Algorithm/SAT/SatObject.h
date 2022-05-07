@@ -16,7 +16,8 @@ namespace GU
                 ************************************************************************/
                 SatObject(const Math::Vector2<float> &position, const unsigned &vertexCount);
                 
-
+                void setPosition(const Math::Vector2<float> &position);
+                Math::Vector2<float> getPosition() const;
                 /********************************************************************//**
                 *   @brief  This method returns the number of  vertices that make up the
                 *           SAT object. 

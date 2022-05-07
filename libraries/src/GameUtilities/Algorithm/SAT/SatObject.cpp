@@ -4,6 +4,8 @@
 #include <Math/Vector2.h>
 #include <Math/Line.h>
 #include <Math/Line.h>
+#include <limits>
+#include <iostream>
 
 namespace GU
 {
@@ -33,6 +35,17 @@ namespace GU
             m_pimpl->m_vertices.resize(vertexCount);            
         }
         
+        void SatObject::setPosition(const Math::Vector2<float> &position)
+        {
+            assert(m_pimpl != nullptr);
+            m_pimpl->m_position = position;
+        }
+        
+
+        Math::Vector2<float> SatObject::getPosition() const
+        {
+            return m_pimpl->m_position;
+        }
 
         /********************************************************************//**
         *   @brief  This method returns the number of  vertices that make up the
@@ -67,13 +80,13 @@ namespace GU
         {
             assert(m_pimpl != nullptr);
             assert(index <= getVertexCount());
-            if(index < getVertexCount())
+            if(index < getVertexCount() - 1)
             {
                 Math::Vector2 start(getGlobalCoordinate(index));
                 Math::Vector2 end(getGlobalCoordinate(index + 1));
                 return Math::Line<float>(start, end);
             }
-            else
+            else if(index == getVertexCount() - 1)
             {
                 Math::Vector2 start(getGlobalCoordinate(index));
                 Math::Vector2 end(getGlobalCoordinate(0));
@@ -150,27 +163,22 @@ namespace GU
         ************************************************************************/
         bool SatObject::intersects(const SatObject &object) const
         {
-            //Get the object with the least vetices.
-            const SatObject * less = &object;
-            const SatObject * more = this;
-            if(this->getVertexCount() < object.getVertexCount())
-            {
-                less = this; 
-                more = &object;           
-            } 
+            Math::Vector2<float> direction; //This vector represents the direction needed for collision resolution            
+            float magnitude = std::numeric_limits<float>::infinity(); //This is the distance the objects need to move for collision resolution
+            
 
-            //Loop through all the vertecies of less 
-            for(std::size_t i = 0; i < less->getEdgeCount(); ++i)
+            //Loop through all the edges of the current object 
+            for(std::size_t i = 0; i < getEdgeCount(); ++i)
             {
-                Math::Line<float> edge = less->getEdge(i);
+                Math::Line<float> edge = getEdge(i);
+
                 Math::Vector2<float> leftNormal = edge.LeftNormal();  
-                
                 //Find the least and greatest projections of less onto edge
                 float lLess = 0;
-                float mLess = 0;
-                for(std::size_t i = 0; i < less->getVertexCount(); ++i)
+                float mLess = std::numeric_limits<float>::infinity();
+                for(std::size_t i = 0; i < getVertexCount(); ++i)
                 {
-                    float dotProduct = leftNormal.dot(less->getGlobalCoordinate(i));
+                    float dotProduct = leftNormal.dot(getGlobalCoordinate(i));
                     if(dotProduct < lLess)
                         lLess = dotProduct; 
 
@@ -179,12 +187,12 @@ namespace GU
                 }
                 
 
-                //Find the least and greatest projections of more onto edge
+                //Find the least and greatest projections of the parameter onto edge
                 float lMore= 0;
-                float mMore = 0;
-                for(std::size_t i = 0; i < more->getVertexCount(); ++i)
+                float mMore = std::numeric_limits<float>::infinity();
+                for(std::size_t i = 0; i < object.getVertexCount(); ++i)
                 {
-                    float dotProduct = leftNormal.dot(less->getGlobalCoordinate(i));
+                    float dotProduct = leftNormal.dot(object.getGlobalCoordinate(i));
                     if(dotProduct < lMore)
                         lMore= dotProduct; 
 
@@ -201,18 +209,18 @@ namespace GU
             } 
             
 
-            //Loop through all the vertecies of more 
-            for(std::size_t i = 0; i < more->getEdgeCount(); ++i)
+            //Loop through all the edges of the parameter object 
+            for(std::size_t i = 0; i < object.getEdgeCount(); ++i)
             {
-                Math::Line<float> edge = more->getEdge(i);
+                Math::Line<float> edge = object.getEdge(i);
                 Math::Vector2<float> leftNormal = edge.LeftNormal();  
                 
-                //Find the least and greatest projections of less onto edge
+                //Find the least and greatest projections of the current object onto edge
                 float lLess = 0;
-                float mLess = 0;
-                for(std::size_t i = 0; i < less->getVertexCount(); ++i)
+                float mLess = std::numeric_limits<float>::infinity();
+                for(std::size_t i = 0; i < getVertexCount(); ++i)
                 {
-                    float dotProduct = leftNormal.dot(less->getGlobalCoordinate(i));
+                    float dotProduct = leftNormal.dot(getGlobalCoordinate(i));
                     if(dotProduct < lLess)
                         lLess = dotProduct; 
 
@@ -223,10 +231,10 @@ namespace GU
 
                 //Find the least and greatest projections of more onto edge
                 float lMore= 0;
-                float mMore = 0;
-                for(std::size_t i = 0; i < more->getVertexCount(); ++i)
+                float mMore = std::numeric_limits<float>::infinity();
+                for(std::size_t i = 0; i < object.getVertexCount(); ++i)
                 {
-                    float dotProduct = leftNormal.dot(less->getGlobalCoordinate(i));
+                    float dotProduct = leftNormal.dot(object.getGlobalCoordinate(i));
                     if(dotProduct < lMore)
                         lMore= dotProduct; 
 
