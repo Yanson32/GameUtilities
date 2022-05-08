@@ -1,14 +1,15 @@
 # GameUtilities
-
-    The GameUtilities library provides a basic 2d game framework.
+    The GameUtilities toolkit provides some commonly used data structures, and algorithms to make building your game faster, and esier.
+The goal of the GameUtiliites toolkit is to provide infrastructure for making 2d games, while having verry few dependancies. 
 
 ## Features
-
 - Basic Game Engin
 - Event System
 - Particle System
 - Thread Pool
 - Log System
+- Algorithms
+- Data Structures
 
 ## Dependencies
 - [Math](https://github.com/Yanson32/Math)
@@ -17,7 +18,6 @@
 - [SFML](https://www.sfml-dev.org/)
 
 ## How to compile
-
 	To build Multitheaded applications MULTITHREAD should be defined
 
     To build examples just set the cmake cache variable GU_BUILD_EXAMPLES to true. Remember that building the examples will add some additional dependancies to the build.
