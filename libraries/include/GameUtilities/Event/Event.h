@@ -1,10 +1,10 @@
+#ifndef GAMEUTILITIES_EVENT_EVENT_H
+#define GAMEUTILITIES_EVENT_EVENT_H
 /*********************************************************************************//**
 *	\author	Wayne J Larson Jr.
 *	\date 	12/10/17
 *************************************************************************************/
 
-#ifndef GAMEUTILITIES_EVENT_EVENT_H
-#define GAMEUTILITIES_EVENT_EVENT_H
 #include "event_export.h"
 #include <memory>
 #include "GameUtilities/Core/String.h"
@@ -21,7 +21,7 @@ namespace GU
         *************************************************************************************/
         struct EVENT_EXPORT Event
         {
-                int getId() const; 
+                int getId() const;
                 int getLine() const;
                 GU::Core::String getFile() const;
                 /**************************************************************************
@@ -39,7 +39,7 @@ namespace GU
                 *         	being instantiated accidentally.
                 *   \param 	newId the id of the event.
                 **************************************************************************/
-                Event(const int newId = ALL, const int newLine = 0, const GU::Core::String &newFile = "");
+                Event(const int id = ALL, const int line = 0, const GU::Core::String &file = "");
 
         };
 

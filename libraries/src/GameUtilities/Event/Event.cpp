@@ -16,10 +16,10 @@ namespace GU
         *         	being instantiated accidentally.
         *   \brief 	param: const int the id of the event.
         **************************************************************************/
-        Event::Event(const int newId, const int newLine, const GU::Core::String &newFile):
-		m_id(newId),
-		m_line(newLine),
-		m_file(newFile)
+        Event::Event(const int id, const int line, const GU::Core::String &file):
+		m_id(id),
+		m_line(line),
+		m_file(file)
         {
 
         }
