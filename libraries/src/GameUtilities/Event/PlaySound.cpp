@@ -5,12 +5,22 @@ namespace GU
 {
     namespace Evt
     {
-		PlaySound::PlaySound(const int &newId, const int newLine, const char* newFile):
-		Event(static_cast<int>(GU::Evt::EventId::PLAY_SOUND), newLine, newFile), soundId(newId)
+        /**************************************************************************
+        *   @brief  Constructor
+        *   @param  id is the unique identifier for the sound.
+        *   @param  line is the line number where the event originated from
+        *   @param  file is the file where the event originated from
+        **************************************************************************/
+		PlaySound::PlaySound(const int &id, const int line, const char* file):
+		Event(static_cast<int>(GU::Evt::EventId::PLAY_SOUND), line, file), m_soundId(id)
 		{
 			//ctor
 		}
 
+        
+        /**************************************************************************
+        *   @brief  Destructor 
+        **************************************************************************/
 		PlaySound::~PlaySound()
 		{
 			//dtor
