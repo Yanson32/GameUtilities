@@ -60,6 +60,7 @@ add_subdirectory("libraries")
 
 #add unit tests
 if(GU_BUILD_TESTING)
+    add_subdirectory("extlibs")
     add_subdirectory("test")
 endif()
 
