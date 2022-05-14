@@ -1,8 +1,8 @@
-set(FILES ""
+set(FILES "SatObjectTexts"
 
 )
 
-set(SUB_DIRECTORIES	    "SatObjectTexts.cpp"
+set(SUB_DIRECTORIES	    ""
 )
 
 #Add subdirectories
