@@ -2,10 +2,7 @@ set(FILES ""
 
 )
 
-set(SUB_DIRECTORIES	    "EnginTests"
-			            "ParticleSystem"
-			            "Algorithm"
-#			            "TP"
+set(SUB_DIRECTORIES	    "SAT"
 )
 
 #Add subdirectories
