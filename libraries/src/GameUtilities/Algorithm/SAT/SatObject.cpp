@@ -79,7 +79,9 @@ namespace GU
         Math::Line<float> SatObject::getEdge(const std::size_t &index) const
         {
             assert(m_pimpl != nullptr);
-            assert(index <= getVertexCount());
+            if(index >= getEdgeCount())
+                throw std::runtime_error("SatObject::getEdge index out of range");
+            
             if(index < getVertexCount() - 1)
             {
                 Math::Vector2 start(getGlobalCoordinate(index));
@@ -105,7 +107,8 @@ namespace GU
         void  SatObject::setGlobalCoordinate(const Math::Vector2<float> &coordinate, const std::size_t &index) const
         {
             assert(m_pimpl != nullptr);
-            assert(index < getVertexCount());
+            if(index >= getVertexCount())
+                throw std::runtime_error("SatObject::setGlobalCoordinate index out of range");
             Math::Vector2<float> temp = m_pimpl->m_position - coordinate;
             temp.x = -temp.x;
             temp.y = -temp.y; 
@@ -123,7 +126,9 @@ namespace GU
         Math::Vector2<float> SatObject::getGlobalCoordinate(const std::size_t &index) const
         {
             assert(m_pimpl != nullptr);
-            assert(index < getVertexCount());
+            if(index >= getVertexCount());
+                throw std::runtime_error("SatObject::getGlobalCoordinate index out of range");
+    
             return getLocalCoordinate(index) + m_pimpl->m_position; 
         }
 
@@ -138,7 +143,8 @@ namespace GU
         void  SatObject::setLocalCoordinate(const Math::Vector2<float> &coordinate, const std::size_t &index) const
         {
             assert(m_pimpl != nullptr);
-            assert(index < getVertexCount());
+            if(index >= getVertexCount());
+                std::runtime_error("Index out of range"); 
             m_pimpl->m_vertices[index] = coordinate;
         }
 
@@ -152,7 +158,8 @@ namespace GU
         Math::Vector2<float>  SatObject::getLocalCoordinate(const std::size_t &index) const
         {
             assert(m_pimpl != nullptr);
-            assert(index < getVertexCount());
+            if(index < 0 || index >= getVertexCount());
+                std::runtime_error("Index out of range"); 
             return m_pimpl->m_vertices[index];
         }
 

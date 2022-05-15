@@ -22,3 +22,4 @@ foreach(LOOP_VAR ${FILES})
     set_property(TARGET ${LOOP_VAR} PROPERTY CXX_EXTENSIONS OFF)
 	set_target_properties("${LOOP_VAR}" PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}")
 endforeach()
+
