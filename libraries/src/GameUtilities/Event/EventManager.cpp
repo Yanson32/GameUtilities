@@ -6,15 +6,18 @@ namespace GU
     namespace Evt
     {
 
-
         /**************************************************************************
-        *	\brief	Constructor
+        *	@brief	Constructor
         **************************************************************************/
         EventManager::EventManager()
         {
             //ctor
         }
 
+
+        /**************************************************************************
+        *	@brief  This method returns a static instance of the EventManager class.	
+        **************************************************************************/
         EventManager& EventManager::inst()
         {
 	        static EventManager eventManager;
@@ -45,7 +48,7 @@ namespace GU
 
 
         /**************************************************************************
-        *	\brief	Destructor
+        *	@brief	Destructor
         **************************************************************************/
         EventManager::~EventManager()
         {
