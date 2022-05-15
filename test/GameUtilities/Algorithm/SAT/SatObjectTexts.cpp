@@ -56,7 +56,7 @@ TEST_CASE( "SatObject::getEdge" )
 {
     const int SIZE = 3;
     GU::Al::SatObject sat(Math::Vector2<float>(100, 100), SIZE );
-    
+
     Math::Line<float> edge1 = sat.getEdge(0);
     REQUIRE(Catch::Approx(edge1.m_Start.x) == 100);
     REQUIRE(Catch::Approx(edge1.m_Start.y) == 100);

@@ -126,7 +126,7 @@ namespace GU
         Math::Vector2<float> SatObject::getGlobalCoordinate(const std::size_t &index) const
         {
             assert(m_pimpl != nullptr);
-            if(index >= getVertexCount());
+            if(index >= getVertexCount())
                 throw std::runtime_error("SatObject::getGlobalCoordinate index out of range");
     
             return getLocalCoordinate(index) + m_pimpl->m_position; 
