@@ -1,2 +1,2 @@
-add_executable("PreferencesExample" "Main.cpp")
+add_executable("PreferencesExample" "PreferencesExample.cpp")
 target_link_libraries("PreferencesExample" PUBLIC Core)
