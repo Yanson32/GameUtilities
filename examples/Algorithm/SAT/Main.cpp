@@ -30,6 +30,7 @@ class Shape : public GU::Al::SatObject, public sf::Drawable
         void move(const int &x, const int &y);
         
 
+        void setColor(const sf::Color &color);
         /***********************************************************************************//**
         *   @brief  This method does any per frame lagic. 
         ***************************************************************************************/
@@ -75,6 +76,11 @@ void Shape::move(const int &x, const int &y)
     setPosition(position);
 }
 
+
+void Shape::setColor(const sf::Color &color)
+{
+    m_shape.setFillColor(color);
+}
 
 /***********************************************************************************//**
 *   @brief  This method does any per frame lagic. 
@@ -216,13 +222,21 @@ int main()
         sf::ConvexShape line;
         
         if(triangle.intersects(square))
-            std::cout << "Collision detected" << std::endl;
-        
+        {
+            triangle.setColor(sf::Color::Red);
+            square.setColor(sf::Color::Red);
+        }
+        else
+        {
+            triangle.setColor(sf::Color::Yellow); 
+            square.setColor(sf::Color::Green);
+        }
+
         window.clear();
         for(std::size_t i = 0; i < triangle.getEdgeCount(); ++i)
         {
             Math::Line<float> edge = triangle.getEdge(i);
-            Math::Vector2<float> normal = edge.RightNormal(); 
+            Math::Vector2<float> normal = edge.LeftNormal(); 
             line.setPointCount(3); 
             line.setPoint(0, {edge.m_End.x, edge.m_End.y});
             line.setPoint(1, {edge.m_End.x + 1, edge.m_End.y});
@@ -235,7 +249,7 @@ int main()
         for(std::size_t i = 0; i < square.getEdgeCount(); ++i)
         {
             Math::Line<float> edge = square.getEdge(i);
-            Math::Vector2<float> normal = edge.RightNormal(); 
+            Math::Vector2<float> normal = edge.LeftNormal(); 
             line.setPointCount(3); 
             line.setPoint(0, {edge.m_End.x, edge.m_End.y});
             line.setPoint(1, {edge.m_End.x + 1, edge.m_End.y});

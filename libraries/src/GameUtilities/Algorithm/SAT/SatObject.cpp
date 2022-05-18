@@ -6,14 +6,14 @@
 #include <Math/Line.h>
 #include <limits>
 #include <iostream>
+#include <utility>
 
 namespace GU
 {
     namespace Al
     {
 
-        class SatObject::Impl
-        {
+        class SatObject::Impl {
             public:
                 Impl(){};
                 ~Impl(){};
@@ -23,7 +23,7 @@ namespace GU
                 
         };
 
-        
+        std::pair<float, float> project(const SatObject &first, Math::Vector2<float> normal);        
         /********************************************************************//**
         *   @brief  Constructor 
         ************************************************************************/
@@ -163,7 +163,7 @@ namespace GU
             return m_pimpl->m_vertices[index];
         }
 
-
+        
         /********************************************************************//**
         *   @brief  This method determines if tow SatObjects are colliding.
         *   @return True if the SatObjects are colliding. 
@@ -178,41 +178,20 @@ namespace GU
             for(std::size_t i = 0; i < getEdgeCount(); ++i)
             {
                 Math::Line<float> edge = getEdge(i);
-
                 Math::Vector2<float> leftNormal = edge.LeftNormal();  
-                //Find the least and greatest projections of less onto edge
-                float lLess = 0;
-                float mLess = std::numeric_limits<float>::infinity();
-                for(std::size_t i = 0; i < getVertexCount(); ++i)
+        
+                std::pair<float, float> thisResult = project(*this, leftNormal);
+                std::pair<float, float> objectResult = project(object, leftNormal);
+                if(thisResult.first < objectResult.first && thisResult.first<  objectResult.second &&
+                    thisResult.second < objectResult.first && thisResult.second < objectResult.second)
                 {
-                    float dotProduct = leftNormal.dot(getGlobalCoordinate(i));
-                    if(dotProduct < lLess)
-                        lLess = dotProduct; 
-
-                    if(dotProduct > mLess)
-                        mLess = dotProduct;
+                    return false;
                 }
-                
-
-                //Find the least and greatest projections of the parameter onto edge
-                float lMore= 0;
-                float mMore = std::numeric_limits<float>::infinity();
-                for(std::size_t i = 0; i < object.getVertexCount(); ++i)
+                else if(thisResult.first > objectResult.first && thisResult.first > objectResult.second &&
+                    thisResult.second > objectResult.first && thisResult.second > objectResult.second)
                 {
-                    float dotProduct = leftNormal.dot(object.getGlobalCoordinate(i));
-                    if(dotProduct < lMore)
-                        lMore= dotProduct; 
-
-                    if(dotProduct > mMore)
-                        mMore = dotProduct;
+                    return false;
                 }
-
-                
-                //Return true if either polygon is overlapping the other
-                if(lMore > mLess)
-                    return true;
-                else if(mMore > mLess)
-                    return true; 
             } 
             
 
@@ -222,41 +201,20 @@ namespace GU
                 Math::Line<float> edge = object.getEdge(i);
                 Math::Vector2<float> leftNormal = edge.LeftNormal();  
                 
-                //Find the least and greatest projections of the current object onto edge
-                float lLess = 0;
-                float mLess = std::numeric_limits<float>::infinity();
-                for(std::size_t i = 0; i < getVertexCount(); ++i)
+                std::pair<float, float> thisResult = project(*this, leftNormal);
+                std::pair<float, float> objectResult = project(object, leftNormal);
+                if(thisResult.first < objectResult.first && thisResult.first<  objectResult.second &&
+                    thisResult.second < objectResult.first && thisResult.second < objectResult.second)
                 {
-                    float dotProduct = leftNormal.dot(getGlobalCoordinate(i));
-                    if(dotProduct < lLess)
-                        lLess = dotProduct; 
-
-                    if(dotProduct > mLess)
-                        mLess = dotProduct;
+                    return false;
                 }
-                
-
-                //Find the least and greatest projections of more onto edge
-                float lMore= 0;
-                float mMore = std::numeric_limits<float>::infinity();
-                for(std::size_t i = 0; i < object.getVertexCount(); ++i)
+                else if(thisResult.first > objectResult.first && thisResult.first > objectResult.second &&
+                    thisResult.second > objectResult.first && thisResult.second > objectResult.second)
                 {
-                    float dotProduct = leftNormal.dot(object.getGlobalCoordinate(i));
-                    if(dotProduct < lMore)
-                        lMore= dotProduct; 
-
-                    if(dotProduct > mMore)
-                        mMore = dotProduct;
+                    return false;
                 }
-
-                
-                //Return true if either polygon is overlapping the other
-                if(lMore > mLess)
-                    return true;
-                else if(mMore > mLess)
-                    return true; 
             } 
-            return false;
+            return true;
         }
 
         
@@ -267,6 +225,23 @@ namespace GU
         {
             if(m_pimpl)
                 delete m_pimpl;
+        }
+        
+        std::pair<float, float> project(const SatObject &first, Math::Vector2<float> normal)
+        {
+            std::pair<float, float> result(std::numeric_limits<float>::infinity(), -std::numeric_limits<float>::infinity());
+            //Find the least and greatest projections of first onto edge
+            for(std::size_t i = 0; i < first.getVertexCount(); ++i)
+            {
+                float dotProduct = normal.dot(first.getGlobalCoordinate(i));
+                
+                if(dotProduct < result.first)
+                    result.first = dotProduct; 
+
+                if(dotProduct > result.second)
+                    result.second = dotProduct;
+            }
+            return result; 
         }
     }
 }
