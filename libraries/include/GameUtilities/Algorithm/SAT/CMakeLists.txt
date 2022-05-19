@@ -1,4 +1,5 @@
-set(FILES "${CMAKE_CURRENT_SOURCE_DIR}/SatObject.h")
+set(FILES   "${CMAKE_CURRENT_SOURCE_DIR}/SatObject.h"
+            "${CMAKE_CURRENT_SOURCE_DIR}/SAT.h")
 
 set(RELATIVE_PATH "include/GameUtilities/Algorithm/SAT")
 
