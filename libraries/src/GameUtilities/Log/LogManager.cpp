@@ -10,31 +10,96 @@ namespace GU
 {
     namespace Log
     {
-
+        
 		class LogManager::Impl
 		{
 			public:
+                /*********************************************************************************//**
+                *	@brief  Impl Constructor 
+                *************************************************************************************/
 				Impl();
+                
+
+                /*********************************************************************************//**
+                *	@brief  This  method adds a log target to the Impl log manager. 
+                *   @param  logTarget is the log target to be added to the Impl log manager.
+                *************************************************************************************/
 				void add(std::shared_ptr<GU::Log::LogTarget> logTarget);
+                
+
+                /*********************************************************************************//**
+                *	@brief  This method returns the log target at the given index. 
+                *   @param  index is the current position of the log target to be returned. 
+                *************************************************************************************/
 				LogTarget& getTarget(const std::size_t &index);
+                
+
+                /*********************************************************************************//**
+                *	@brief  This method removes the log target. 
+                *   @param  logTarget The log target to be removed. 
+                *************************************************************************************/
 				bool remove(const GU::Log::LogTarget &logTarget);
+                
+
+                /*********************************************************************************//**
+                *	@brief  This method returns the number of log targets currently stored in the 
+                *           Impl log manager. 
+                *   @return The number of log targets currently stored in the Impl log manager. 
+                *************************************************************************************/
 				std::size_t getTargetCount() const;
+                
+
+                /*********************************************************************************//**
+                *	@brief  This method sets the log formatter for the Impl log manager.  
+                *   @param  logFormatter is the log formatter to be used by the Impl log manager. 
+                *************************************************************************************/
 				void set(LogFormatter &logFormatter);
-        void write(const GU::Core::String &msg);
-        void write(std::shared_ptr<GU::Log::LogEntry> entry);
+                
+
+                /*********************************************************************************//**
+                *	@brief  This method writes a string to the log file.
+                *   @param  msg is the string to be written to the log file. 
+                *************************************************************************************/
+                void write(const GU::Core::String &msg);
+                
+
+                /*********************************************************************************//**
+                *	@brief  This method writes a log entry to the log file. 
+                *   @param  entry is the log entry to be written to the log file. 
+                *************************************************************************************/
+                void write(std::shared_ptr<GU::Log::LogEntry> entry);
+                
+
+                /*********************************************************************************//**
+                *	@brief  This method returns the log formatter currently being used by the Impl log 
+                *           manager. 
+                *************************************************************************************/
 				LogFormatter& getFormatter();
+                
+
+                /*********************************************************************************//**
+                *	@brief  Impl Destructor 
+                *************************************************************************************/
 				virtual ~Impl();
 			private:
 				std::vector<std::shared_ptr<GU::Log::LogTarget>> m_targets;
 				LogFormatter m_logFormatter;
 		};
 
+        
+        /*********************************************************************************//**
+        *	@brief  Impl Constructor 
+        *************************************************************************************/
 		LogManager::Impl::Impl()
 		{
 
 		}
 
 
+        /*********************************************************************************//**
+        *	@brief  This  method adds a log target to the Impl log manager. 
+        *   @param  logTarget is the log target to be added to the Impl log manager.
+        *************************************************************************************/
 		void LogManager::Impl::add(std::shared_ptr<GU::Log::LogTarget> logTarget)
 		{
 			m_targets.push_back(logTarget);
@@ -42,6 +107,10 @@ namespace GU
 		}
 
 
+        /*********************************************************************************//**
+        *	@brief  This method returns the log target at the given index. 
+        *   @param  index is the current position of the log target to be returned. 
+        *************************************************************************************/
 		LogTarget& LogManager::Impl::getTarget(const std::size_t &index)
 		{
 			if(index < m_targets.size())
@@ -57,6 +126,10 @@ namespace GU
 		}
 
 
+        /*********************************************************************************//**
+        *	@brief  This method removes the log target. 
+        *   @param  logTarget The log target to be removed. 
+        *************************************************************************************/
 		bool LogManager::Impl::remove(const GU::Log::LogTarget &logTarget)
 		{
 			for(std::size_t i = 0; i < m_targets.size(); ++i)
@@ -74,38 +147,60 @@ namespace GU
 		}
 
 
+        /*********************************************************************************//**
+        *	@brief  This method returns the number of log targets currently stored in the 
+        *           Impl log manager. 
+        *   @return The number of log targets currently stored in the Impl log manager. 
+        *************************************************************************************/
 		std::size_t LogManager::Impl::getTargetCount() const
 		{
 			return m_targets.size();
 		}
 
 
+        /*********************************************************************************//**
+        *	@brief  This method sets the log formatter for the Impl log manager.  
+        *   @param  logFormatter is the log formatter to be used by the Impl log manager. 
+        *************************************************************************************/
 		void LogManager::Impl::set(LogFormatter &logFormatter)
 		{
 			m_logFormatter = logFormatter;
 		}
 
-    void LogManager::Impl::write(const GU::Core::String &msg)
-    {
-      UNUSED(msg);
-    }
+        
+        /*********************************************************************************//**
+        *	@brief  This method writes a string to the log file.
+        *   @param  msg is the string to be written to the log file. 
+        *************************************************************************************/
+        void LogManager::Impl::write(const GU::Core::String &msg)
+        {
+            UNUSED(msg);
+        }
 
 
-    void LogManager::Impl::write(std::shared_ptr<GU::Log::LogEntry> entry)
-    {
-      for(std::size_t i = 0; i < entry->size(); ++i)
-      {
-        m_logFormatter.init(entry->operator[](i));
-      }
+        /*********************************************************************************//**
+        *	@brief  This method writes a log entry to the log file. 
+        *   @param  entry is the log entry to be written to the log file. 
+        *************************************************************************************/
+        void LogManager::Impl::write(std::shared_ptr<GU::Log::LogEntry> entry)
+        {
+            for(std::size_t i = 0; i < entry->size(); ++i)
+            {
+                m_logFormatter.init(entry->operator[](i));
+            }
 
-      for(std::size_t i = 0; i < m_targets.size(); ++i)
-      {
-        m_targets[i]->write(m_logFormatter.format());
-      }
+            for(std::size_t i = 0; i < m_targets.size(); ++i)
+            {
+                m_targets[i]->write(m_logFormatter.format());
+            }
 
-    }
+        }
 
 
+        /*********************************************************************************//**
+        *	@brief  This method returns the log formatter currently being used by the Impl log 
+        *           manager. 
+        *************************************************************************************/
 		LogFormatter& LogManager::Impl::getFormatter()
 		{
 			return m_logFormatter;
@@ -118,71 +213,111 @@ namespace GU
 		}
 
 
-		LogManager::LogManager():pimpl(new LogManager::Impl())
-		{
-      assert(pimpl != nullptr);
-		}
+        /*********************************************************************************//**
+        *	@brief  Constructor 
+        *************************************************************************************/
+        LogManager::LogManager():pimpl(new LogManager::Impl())
+        {
+            assert(pimpl != nullptr);
+        }
 
 
-		LogManager::~LogManager()
-		{
-			assert(pimpl != nullptr);
-			delete pimpl;
-		}
-
-
+        /*********************************************************************************//**
+        *	@brief  This  method adds a log target to the log manager. 
+        *   @param  logTarget is the log target to be added to the log manager.
+        *************************************************************************************/
 		void LogManager::add(std::shared_ptr<GU::Log::LogTarget> logTarget)
 		{
 			assert(pimpl != nullptr);
 			pimpl->add(std::move(logTarget));
 		}
+		
 
-
+        /*********************************************************************************//**
+        *	@brief  This method returns the log target at the given index. 
+        *   @param  index is the current position of the log target to be returned. 
+        *************************************************************************************/
 		LogTarget& LogManager::getTarget(const std::size_t &index)
 		{
 			assert(pimpl != nullptr);
 			return pimpl->getTarget(index);
 		}
+        
 
-
+        /*********************************************************************************//**
+        *	@brief  This method removes the log target. 
+        *   @param  logTarget The log target to be removed. 
+        *************************************************************************************/
 		bool LogManager::remove(const GU::Log::LogTarget &logTarget)
 		{
-      assert(pimpl != nullptr);
+            assert(pimpl != nullptr);
 			return pimpl->remove(logTarget);
 		}
+        
 
-
+        /*********************************************************************************//**
+        *	@brief  This method returns the number of log targets currently stored in the 
+        *           log manager. 
+        *   @return The number of log targets currently stored in the log manager. 
+        *************************************************************************************/
 		std::size_t LogManager::getTargetCount() const
 		{
 			return pimpl->getTargetCount();
 		}
+        
 
+        /*********************************************************************************//**
+        *	@brief  This method writes a string to the log file.
+        *   @param  msg is the string to be written to the log file. 
+        *************************************************************************************/
+        void LogManager::write(const GU::Core::String &msg)
+        {
+            assert(pimpl != nullptr);
+            pimpl->write(msg);
+        }
+		
 
-		void LogManager::set(LogFormatter &logFormatter)
+        /*********************************************************************************//**
+        *	@brief  This method writes a log entry to the log file. 
+        *   @param  entry is the log entry to be written to the log file. 
+        *************************************************************************************/
+        void LogManager::write(std::shared_ptr<GU::Log::LogEntry> entry)
+        {
+            assert(pimpl != nullptr);
+            pimpl->write(entry);
+        }
+        
+
+        /*********************************************************************************//**
+        *	@brief  This method sets the log formatter for the log manager.  
+        *   @param  logFormatter is the log formatter to be used by the log manager. 
+        *************************************************************************************/
+        void LogManager::set(LogFormatter &logFormatter)
 		{
-      assert(pimpl != nullptr);
+            assert(pimpl != nullptr);
 			pimpl->set(logFormatter);
 		}
+        
 
+        /*********************************************************************************//**
+        *	@brief  This method returns the log formatter currently being used by the log 
+        *           manager. 
+        *************************************************************************************/
+        LogFormatter& LogManager::getFormatter()
+        {
+            assert(pimpl != nullptr);
+            return pimpl->getFormatter();
+        }
+        
 
-    void LogManager::write(const GU::Core::String &msg)
-    {
-      assert(pimpl != nullptr);
-      pimpl->write(msg);
-    }
-
-
-    void LogManager::write(std::shared_ptr<GU::Log::LogEntry> entry)
-    {
-      assert(pimpl != nullptr);
-      pimpl->write(entry);
-    }
-
-
-		LogFormatter& LogManager::getFormatter()
+        /*********************************************************************************//**
+        *	@brief  Destructor 
+        *************************************************************************************/
+        LogManager::~LogManager()
 		{
-      assert(pimpl != nullptr);
-			return pimpl->getFormatter();
+			assert(pimpl != nullptr);
+			delete pimpl;
 		}
+
 	}
 }
