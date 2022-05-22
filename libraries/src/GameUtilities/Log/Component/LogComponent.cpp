@@ -4,10 +4,10 @@ namespace GU
 {
     namespace Log
     {
-      /*****************************************************************
-      * @brief: Constructor
-      * @param: id is a unique identifyer for the current object type
-      *****************************************************************/
+        /*****************************************************************
+        * @brief: Constructor
+        * @param: id is a unique identifyer for the current object type
+        *****************************************************************/
         LogComponent::LogComponent(const componentId &id):
         m_id(id)
         {
@@ -22,7 +22,7 @@ namespace GU
         *****************************************************************/
         bool LogComponent::operator == (const LogComponent &comp)
         {
-          return this->m_id == comp.m_id;
+            return this->m_id == comp.m_id;
         }
 
 
@@ -34,7 +34,7 @@ namespace GU
         *****************************************************************/
         bool LogComponent::operator == (const componentId &comp)
         {
-          return this->m_id == comp;
+            return this->m_id == comp;
         }
 
     }

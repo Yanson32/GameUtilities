@@ -16,38 +16,38 @@ namespace GU
 {
     namespace Log
     {
-      struct LOG_EXPORT SeverityComponent: public LogComponent
-      {
-        /*****************************************************************
-        * @brief: The constructor
-        *****************************************************************/
-        SeverityComponent();
+        struct LOG_EXPORT SeverityComponent: public LogComponent
+        {
+            /*****************************************************************
+            * @brief: The constructor
+            *****************************************************************/
+            SeverityComponent();
 
 
-        /*****************************************************************
-        * @brief: The constructor
-        * @param: severity indicates how important the log is.
-        *****************************************************************/
-        SeverityComponent(const LogType &severity);
+            /*****************************************************************
+            * @brief: The constructor
+            * @param: severity indicates how important the log is.
+            *****************************************************************/
+            SeverityComponent(const LogType &severity);
 
 
-        /*****************************************************************
-        * @brief:  Assignment operator overload.
-        * @param:  comp contains the values to be assigned to the current
-        *          object.
-        * @return: A reference to the updated current object.
-        *****************************************************************/
-        SeverityComponent& operator = (const SeverityComponent &comp);
+            /*****************************************************************
+            * @brief:  Assignment operator overload.
+            * @param:  comp contains the values to be assigned to the current
+            *          object.
+            * @return: A reference to the updated current object.
+            *****************************************************************/
+            SeverityComponent& operator = (const SeverityComponent &comp);
 
 
-        /*****************************************************************
-        * @brief:  This method creates a string from the current severity.
-        * @return: A string representing the current severity object.
-        *****************************************************************/
-        GU::Core::String format();
+            /*****************************************************************
+            * @brief:  This method creates a string from the current severity.
+            * @return: A string representing the current severity object.
+            *****************************************************************/
+            GU::Core::String format();
 
-        LogType m_severity = LogType::GU_MESSAGE;           //The logs severity
-      };
+            LogType m_severity = LogType::GU_MESSAGE;           //The logs severity
+        };
     }
 }
 #endif
