@@ -23,8 +23,17 @@ namespace GU
             *************************************************************************************/
             DateComponent();
             
-
+            
             /*********************************************************************************//**
+            *	@brief  Constructor 
+            *   @param  month is the month component of the current date.
+            *   @param  day is the day component of the current date.
+            *   @param  year is the year component of the current date.
+            *************************************************************************************/
+            DateComponent(const unsigned &month, const unsigned &day, const unsigned &year);
+
+           
+             /*********************************************************************************//**
             *	@brief  This method will copy the data members of the given component into the 
             *           current component.
             *   @param  comp is the log component to be copied. 
@@ -38,6 +47,11 @@ namespace GU
             *   @return A string equal to the current data in the log component. 
             *************************************************************************************/
             GU::Core::String format();
+
+            public:
+                unsigned m_month = 0;
+                unsigned m_day = 0;
+                unsigned m_year = 0;
         };
     }
 }

@@ -1,5 +1,8 @@
 #include "GameUtilities/Log/Component/DateComponent.h"
 #include "GameUtilities/Core/Macros.h"
+#include <string>
+#include <sstream>
+
 namespace GU
 {
     namespace Log
@@ -16,6 +19,22 @@ namespace GU
         }
 
 
+        /*********************************************************************************//**
+        *	@brief  Constructor 
+        *   @param  month is the month component of the current date.
+        *   @param  day is the day component of the current date.
+        *   @param  year is the year component of the current date.
+        *************************************************************************************/
+        DateComponent::DateComponent(const unsigned &month, const unsigned &day, const unsigned &year):
+        LogComponent(componentId::DATE),
+        m_month(m_month),
+        m_day(day),
+        m_year(year)
+        {
+             
+        }
+
+        
         /*********************************************************************************//**
         *	@brief  This method will copy the data members of the given component into the 
         *           current component.
@@ -35,10 +54,13 @@ namespace GU
         *************************************************************************************/
         GU::Core::String DateComponent::format()
         {
-          //GU::Core::String temp;
-          //auto timenow = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
-          //temp = ctime(&timenow);
-          return "Date";
+          std::stringstream ss;
+          ss << std::to_string(m_month);
+          ss << " ";
+          ss << std::to_string(m_day);
+          ss << " ";
+          ss << std::to_string(m_year);
+          return ss.str(); 
         }
 
     }
