@@ -48,6 +48,15 @@ namespace GU
         *           and the second data member is the highest projection. 
         ********************************************************************************/
         Projection ALGORITHM_EXPORT project(const PointsVec &first, const Position &firstPosition, const Direction &normal);
+        
+
+        /****************************************************************************//**
+        *   @brief  This method determines if one object is overlapping the other.
+        *   @param  first is the first object to be compared.
+        *   @param  second is the second object to be compared.
+        *   @return True if the objects are overlapping and false otherwise. 
+        ********************************************************************************/
+        bool ALGORITHM_EXPORT satIntersects(const SatObject &first, const SatObject &second);
     }
 }
 

@@ -170,51 +170,7 @@ namespace GU
         ************************************************************************/
         bool SatObject::intersects(const SatObject &object) const
         {
-            Math::Vector2<float> direction; //This vector represents the direction needed for collision resolution            
-            float magnitude = std::numeric_limits<float>::infinity(); //This is the distance the objects need to move for collision resolution
-            
-
-            //Loop through all the edges of the current object 
-            for(std::size_t i = 0; i < getEdgeCount(); ++i)
-            {
-                Math::Line<float> edge = getEdge(i);
-                Math::Vector2<float> leftNormal = edge.LeftNormal();  
-        
-                std::pair<float, float> thisResult = project(*this, leftNormal);
-                std::pair<float, float> objectResult = project(object, leftNormal);
-                if(thisResult.first < objectResult.first && thisResult.first<  objectResult.second &&
-                    thisResult.second < objectResult.first && thisResult.second < objectResult.second)
-                {
-                    return false;
-                }
-                else if(thisResult.first > objectResult.first && thisResult.first > objectResult.second &&
-                    thisResult.second > objectResult.first && thisResult.second > objectResult.second)
-                {
-                    return false;
-                }
-            } 
-            
-
-            //Loop through all the edges of the parameter object 
-            for(std::size_t i = 0; i < object.getEdgeCount(); ++i)
-            {
-                Math::Line<float> edge = object.getEdge(i);
-                Math::Vector2<float> leftNormal = edge.LeftNormal();  
-                
-                std::pair<float, float> thisResult = project(*this, leftNormal);
-                std::pair<float, float> objectResult = project(object, leftNormal);
-                if(thisResult.first < objectResult.first && thisResult.first<  objectResult.second &&
-                    thisResult.second < objectResult.first && thisResult.second < objectResult.second)
-                {
-                    return false;
-                }
-                else if(thisResult.first > objectResult.first && thisResult.first > objectResult.second &&
-                    thisResult.second > objectResult.first && thisResult.second > objectResult.second)
-                {
-                    return false;
-                }
-            } 
-            return true;
+            return satIntersects(*this, object);
         }
 
         
