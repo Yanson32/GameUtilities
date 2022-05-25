@@ -47,8 +47,7 @@ namespace GU
         * @return: The formatted string.
         *****************************************************************/
         GU::Core::String format();
-
-
+    public:
         GU::Core::String m_msg;              ///The current log message
       };
     }
