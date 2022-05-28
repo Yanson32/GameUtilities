@@ -150,11 +150,11 @@ namespace GU
                 *   @return A const_iterator to the first element in the
                 *           container.
                 ****************************************************************/
-		const_iterator cbegin()
-		{
-			T *temp = &(*this)[0];
-			return Container<T>::const_iterator(temp);
-		}
+                const_iterator cbegin()
+                {
+                    T *temp = &(*this)[0];
+                    return Container<T>::const_iterator(temp);
+                }
 
 
                 /*************************************************************//**
@@ -163,11 +163,11 @@ namespace GU
                 *   @return A const_iterator to one past the last element in the
                 *           container.
                 ****************************************************************/
-		const_iterator cend()
-		{
-			T *temp = &(*this)[this->size()];
-			return Container<T>::const_iterator(temp);
-		}
+                const_iterator cend()
+                {
+                    T *temp = &(*this)[this->size()];
+                    return Container<T>::const_iterator(temp);
+                }
 
 
                 /*************************************************************//**
@@ -176,11 +176,11 @@ namespace GU
                 *   @return A const_reverse_iterator to the last element
                 *           in the container
                 ****************************************************************/
-		const_reverse_iterator crbegin()
-		{
-			T *temp = &(*this)[this->size()];
-			return Container<T>::const_reverse_iterator(temp);
-		}
+                const_reverse_iterator crbegin()
+                {
+                    T *temp = &(*this)[this->size()];
+                    return Container<T>::const_reverse_iterator(temp);
+                }
 
 
                 /*************************************************************//**
@@ -189,11 +189,11 @@ namespace GU
                 *   @return A const_reverse_iterator to one past the first
                 *           element in the container
                 ****************************************************************/
-		const_reverse_iterator crend()
-		{
-			T *temp = &(*this)[0];
-			return Container<T>::const_reverse_iterator(temp);
-		}
+                const_reverse_iterator crend()
+                {
+                    T *temp = &(*this)[0];
+                    return Container<T>::const_reverse_iterator(temp);
+                }
             private:
                 std::unique_ptr<T[]> m_Container;
                 std::size_t m_Size;
@@ -241,6 +241,8 @@ namespace GU
                       *(m_Container.get() + index));
             --m_Size;
         }
+
+
         /****************************************************//**
         *   @brief  Allows access to an element at the given
         *           index.
