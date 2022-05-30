@@ -138,5 +138,145 @@ namespace GU
             return true;
               
         }
+        
+
+        /****************************************************************************//**
+        *   @brief  This method determines if one vector of points (which represents
+        *           a shape) is overlapping a second vector of points.
+        *   @param  first is a vector of points in global coordinates 
+        *   @param  second is a vector of points in global coordinates 
+        *   @return True if the vectors are overlapping and false otherwise. 
+        ********************************************************************************/
+        bool satIntersects(const PointsVec &first, const PointsVec &second)
+        {
+            //Loop through all the edges of the current object 
+            for(std::size_t i = 0; i < first.size(); ++i)
+            {
+                Math::Vector2<float> start(first[i]);
+                Math::Vector2<float> end;
+
+                if(i == first.size() - 1)
+                    end = first[0];
+                else
+                    end = first[i + 1];
+                
+
+                Math::Line<float> edge(start, end);
+                Math::Vector2<float> leftNormal = edge.LeftNormal();  
+    
+                std::pair<float, float> firstResult = project(first, leftNormal);
+                std::pair<float, float> secondResult = project(second, leftNormal);
+                if(firstResult.first < secondResult.first && firstResult.first<  secondResult.second &&
+                    firstResult.second < secondResult.first && firstResult.second < secondResult.second)
+                {
+                    return false;
+                }
+                else if(firstResult.first > secondResult.first && firstResult.first > secondResult.second &&
+                    firstResult.second > secondResult.first && firstResult.second > secondResult.second)
+                {
+                    return false;
+                }
+            }  
+            
+            //Loop through all the edges of the parameter object 
+            for(std::size_t i = 0; i < second.size(); ++i)
+            {
+                Math::Vector2<float> start(second[i]);
+                Math::Vector2<float> end;
+
+                if(i == second.size() - 1)
+                    end = second[0];
+                else
+                    end = second[i + 1];
+                Math::Line<float> edge(start, end);
+                Math::Vector2<float> leftNormal = edge.LeftNormal();  
+                
+                std::pair<float, float> firstResult = project(first, leftNormal);
+                std::pair<float, float> secondResult = project(second, leftNormal);
+                if(firstResult.first < secondResult.first && firstResult.first<  secondResult.second &&
+                    firstResult.second < secondResult.first && firstResult.second < secondResult.second)
+                {
+                    return false;
+                }
+                else if(firstResult.first > secondResult.first && firstResult.first > secondResult.second &&
+                    firstResult.second > secondResult.first && firstResult.second > secondResult.second)
+                {
+                    return false;
+                }
+            } 
+            return true;
+
+        }
+        
+
+        /****************************************************************************//**
+        *   @brief  This method determines if one vector of points (which represents
+        *           a shape) is overlapping a second vector of points.
+        *   @param  first is a vector of points in local coordinates. 
+        *   @param  The position of the first shape in global coordinates.
+        *   @param  second is a vector of points in local coordinates.
+        *   @param  The position of the second shape in global coordinates.
+        *   @return True if the vectors are overlapping and false otherwise. 
+        ********************************************************************************/
+        bool satIntersects(const PointsVec &first, const Position &fPos, const PointsVec &second, const Position &sPos)
+        {
+            //Loop through all the edges of the current object 
+            for(std::size_t i = 0; i < first.size(); ++i)
+            {
+                Math::Vector2<float> start(first[i] + fPos);
+                Math::Vector2<float> end;
+
+                if(i == first.size() - 1)
+                    end = first[0] + fPos;
+                else
+                    end = first[i + 1] + fPos;
+                
+
+                Math::Line<float> edge(start, end);
+                Math::Vector2<float> leftNormal = edge.LeftNormal();  
+    
+                std::pair<float, float> firstResult = project(first, fPos, leftNormal);
+                std::pair<float, float> secondResult = project(second, sPos, leftNormal);
+                if(firstResult.first < secondResult.first && firstResult.first<  secondResult.second &&
+                    firstResult.second < secondResult.first && firstResult.second < secondResult.second)
+                {
+                    return false;
+                }
+                else if(firstResult.first > secondResult.first && firstResult.first > secondResult.second &&
+                    firstResult.second > secondResult.first && firstResult.second > secondResult.second)
+                {
+                    return false;
+                }
+            }  
+            
+            //Loop through all the edges of the parameter object 
+            for(std::size_t i = 0; i < second.size(); ++i)
+            {
+                Math::Vector2<float> start(second[i] + sPos);
+                Math::Vector2<float> end;
+
+                if(i == second.size() - 1)
+                    end = second[0] + sPos;
+                else
+                    end = second[i + 1] + sPos;
+                Math::Line<float> edge(start, end);
+                Math::Vector2<float> leftNormal = edge.LeftNormal();  
+                
+                std::pair<float, float> firstResult = project(first, fPos, leftNormal);
+                std::pair<float, float> secondResult = project(second, sPos, leftNormal);
+                if(firstResult.first < secondResult.first && firstResult.first<  secondResult.second &&
+                    firstResult.second < secondResult.first && firstResult.second < secondResult.second)
+                {
+                    return false;
+                }
+                else if(firstResult.first > secondResult.first && firstResult.first > secondResult.second &&
+                    firstResult.second > secondResult.first && firstResult.second > secondResult.second)
+                {
+                    return false;
+                }
+            } 
+            return true;
+
+        }
     }
 }

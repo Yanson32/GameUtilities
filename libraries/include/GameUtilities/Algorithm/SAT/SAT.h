@@ -57,6 +57,28 @@ namespace GU
         *   @return True if the objects are overlapping and false otherwise. 
         ********************************************************************************/
         bool ALGORITHM_EXPORT satIntersects(const SatObject &first, const SatObject &second);
+        
+
+        /****************************************************************************//**
+        *   @brief  This method determines if one vector of points (which represents
+        *           a shape) is overlapping a second vector of points.
+        *   @param  first is a vector of points in global coordinates 
+        *   @param  second is a vector of points in global coordinates 
+        *   @return True if the vectors are overlapping and false otherwise. 
+        ********************************************************************************/
+        bool ALGORITHM_EXPORT satIntersects(const PointsVec &first, const PointsVec &second);
+        
+
+        /****************************************************************************//**
+        *   @brief  This method determines if one vector of points (which represents
+        *           a shape) is overlapping a second vector of points.
+        *   @param  first is a vector of points in local coordinates. 
+        *   @param  The position of the first shape in global coordinates.
+        *   @param  second is a vector of points in local coordinates.
+        *   @param  The position of the second shape in global coordinates.
+        *   @return True if the vectors are overlapping and false otherwise. 
+        ********************************************************************************/
+        bool ALGORITHM_EXPORT satIntersects(const PointsVec &first, const Position &fPos, const PointsVec &second, const Position &sPos);
     }
 }
 
