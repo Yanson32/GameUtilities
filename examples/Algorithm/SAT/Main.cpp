@@ -1,8 +1,11 @@
 #include <iostream>
 #include "GameUtilities/Algorithm/SAT/SatObject.h"
+#include "GameUtilities/Algorithm/SAT/SAT.h"
 #include <Math/Vector2.h>
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <cassert>
+
 class Shape : public GU::Al::SatObject, public sf::Drawable
 {
     public:
@@ -30,13 +33,83 @@ class Shape : public GU::Al::SatObject, public sf::Drawable
         void move(const int &x, const int &y);
         
 
+        /***********************************************************************************//**
+        *   @brief  This method changes the color of the shape
+        *   @param  color is the color the shape will be displayed with.
+        ***************************************************************************************/
         void setColor(const sf::Color &color);
+        
+
         /***********************************************************************************//**
         *   @brief  This method does any per frame lagic. 
         ***************************************************************************************/
         virtual void update(); 
+        
+
+        /***********************************************************************************//**
+        *   @brief  This method changes the current position of the shape 
+        *   @param  position is the new position of the shape 
+        ***************************************************************************************/
+        void setPosition(const Math::Vector2<float> &position);
+        
+
+        /***********************************************************************************//**
+        *   @brief  This method return the current position of the shape.
+        *   @return The current position of the shape. 
+        ***************************************************************************************/
+        Math::Vector2<float> getPosition() const;
+        
+        
+        /********************************************************************//**
+        *   @brief  This method sets a coordiante at the index specified in
+        *           global coordinates. The coordinate will be translated to 
+        *           local coordinates. 
+        *   @param  coordinate is the new coordinate value in global coordinates 
+        *   @param  index is the current index of the coordinate to be updated. 
+        ************************************************************************/
+        void  setGlobalCoordinate(const Math::Vector2<float> &coordinate, const std::size_t &index);
+        
+        
+        /********************************************************************//**
+        *   @brief  This method returns a coordinate at the index specified. In
+        *           global coordinates.  
+        *   @param  index The current index of the coordinated stored internally 
+        *           to the SatObject.  
+        *   @return A coordinate at the index specified in global coordinates.
+        ************************************************************************/
+        Math::Vector2<float> getGlobalCoordinate(const std::size_t &index) const;
+
+        
+        /********************************************************************//**
+        *   @brief  This method sets a coordinate in local coordinates. The
+        *           coordinate will not be translated to local coordinates.
+        *   @param  coordinate The new value of coordinate at the index specified
+        *           in local coordinates 
+        *   @param  index is the index of the coordinate to be replaced.
+        ************************************************************************/
+        void  setLocalCoordinate(const Math::Vector2<float> &coordinate, const std::size_t &index);
+        
+
+        /********************************************************************//**
+        *   @brief  This method returns the coordinate at the specified index
+        *           In local coordinates.  
+        *   @param  index is the current index of the coordinate. 
+        *   @return The coordinate at the specified index in local coordinates.
+        ************************************************************************/
+        Math::Vector2<float> getLocalCoordinate(const std::size_t &index) const;
+        
+
+        /********************************************************************//**
+        *   @brief  This method determines if tow SatObjects are colliding.
+        *   @return True if the SatObjects are colliding. 
+        ************************************************************************/
+        bool intersects(const SatObject &object);
+        std::size_t getVertexCount() const;
+        std::size_t getEdgeCount() const;
+        Math::Line<float> getEdge(const std::size_t &index) const;
     protected:
         sf::ConvexShape m_shape;
+        Math::Vector2<float> m_position;
 };
 
 
@@ -45,10 +118,147 @@ class Shape : public GU::Al::SatObject, public sf::Drawable
 *   @param  position the center position of the shape in global coordinates.
 *   @param  points the number of vertecies required to create the shape.
 ***************************************************************************************/
-Shape::Shape(const Math::Vector2<float> &position, const std::size_t &points):
-GU::Al::SatObject(position, points)
+Shape::Shape(const Math::Vector2<float> &position, const std::size_t &points):m_position(position)
 {
     m_shape.setPointCount(points);
+}
+
+
+
+/***********************************************************************************//**
+*   @brief  This method changes the current position of the shape 
+*   @param  position is the new position of the shape 
+***************************************************************************************/
+void Shape::setPosition(const Math::Vector2<float> &position)
+{
+    m_position = position;
+}
+
+
+/***********************************************************************************//**
+*   @brief  This method return the current position of the shape.
+*   @return The current position of the shape. 
+***************************************************************************************/
+Math::Vector2<float> Shape::getPosition() const
+{
+    return m_position;
+}
+
+
+/********************************************************************//**
+*   @brief  This method sets a coordiante at the index specified in
+*           global coordinates. The coordinate will be translated to 
+*           local coordinates. 
+*   @param  coordinate is the new coordinate value in global coordinates 
+*   @param  index is the current index of the coordinate to be updated. 
+************************************************************************/
+void  Shape::setGlobalCoordinate(const Math::Vector2<float> &coordinate, const std::size_t &index)
+{
+    assert(index >= 0 && index < getVertexCount());
+    Math::Vector2<float> temp = m_position - coordinate;
+    temp.x = -temp.x;
+    temp.y = -temp.y; 
+    m_shape.setPoint(index, {temp.x, temp.y}); 
+}
+
+
+/********************************************************************//**
+*   @brief  This method returns a coordinate at the index specified. In
+*           global coordinates.  
+*   @param  index The current index of the coordinated stored internally 
+*           to the SatObject.  
+*   @return A coordinate at the index specified in global coordinates.
+************************************************************************/
+Math::Vector2<float> Shape::getGlobalCoordinate(const std::size_t &index) const
+{
+    assert(index >= 0 && index < getVertexCount());
+
+    return getLocalCoordinate(index) + m_position; 
+}
+
+
+/********************************************************************//**
+*   @brief  This method sets a coordinate in local coordinates. The
+*           coordinate will not be translated to local coordinates.
+*   @param  coordinate The new value of coordinate at the index specified
+*           in local coordinates 
+*   @param  index is the index of the coordinate to be replaced.
+************************************************************************/
+void  Shape::setLocalCoordinate(const Math::Vector2<float> &coordinate, const std::size_t &index)
+{
+   assert(index >= 0 && index < getVertexCount()); 
+
+    m_shape.setPoint(index, {coordinate.x, coordinate.y});
+}
+
+
+/********************************************************************//**
+*   @brief  This method returns the coordinate at the specified index
+*           In local coordinates.  
+*   @param  index is the current index of the coordinate. 
+*   @return The coordinate at the specified index in local coordinates.
+************************************************************************/
+Math::Vector2<float>  Shape::getLocalCoordinate(const std::size_t &index) const
+{
+    assert(index >= 0 && index < getVertexCount());
+
+    return {m_shape.getPoint(index).x, m_shape.getPoint(index).y};
+}
+
+
+/********************************************************************//**
+*   @brief  This method returns the number of  vertices that make up the
+*           SAT object. 
+*   @return The number of vertices that make up the SAT object. 
+************************************************************************/
+std::size_t Shape::getVertexCount() const
+{
+    return m_shape.getPointCount();
+}
+
+ 
+/********************************************************************//**
+*   @brief  This method returns the number of edges that make up the
+*           SAT object.
+*   @return The number of edges that make up the SAT object.
+************************************************************************/
+std::size_t Shape::getEdgeCount() const
+{
+    return m_shape.getPointCount(); 
+}
+
+
+/********************************************************************//**
+*   @brief  This method determines if tow SatObjects are colliding.
+*   @return True if the SatObjects are colliding. 
+************************************************************************/
+bool Shape::intersects(const SatObject &object)
+{
+    return satIntersects(*this, object);
+}
+
+
+/********************************************************************//**
+*   @brief  This method returns the edge at the given index.
+*   @param  index The index of the edge to be returned. 
+*   @return A Line object representing the edge at index. 
+************************************************************************/
+Math::Line<float> Shape::getEdge(const std::size_t &index) const
+{
+    if(index < getVertexCount() - 1)
+    {
+        Math::Vector2 start(getGlobalCoordinate(index));
+        Math::Vector2 end(getGlobalCoordinate(index + 1));
+        return Math::Line<float>(start, end);
+    }
+    else if(index == getVertexCount() - 1)
+    {
+        Math::Vector2 start(getGlobalCoordinate(index));
+        Math::Vector2 end(getGlobalCoordinate(0));
+        return Math::Line<float>(start, end);
+    }
+        
+    throw std::runtime_error("SatObject::getEdge index out of range");
 }
 
 
@@ -64,7 +274,7 @@ void Shape::draw (sf::RenderTarget &target, sf::RenderStates states) const
 
 
 /***********************************************************************************//**
-*   @brief  This method changes the shapes location relative to it's current location. 
+*   @brief  This method changes the shapes location relative to it's current location.  
 *   @param  x will be added to the shapes current x axis position 
 *   @param  y will be added to the shapes current y axis position 
 ***************************************************************************************/
@@ -74,13 +284,19 @@ void Shape::move(const int &x, const int &y)
     position.x += x;
     position.y += y;
     setPosition(position);
+
 }
 
 
+/***********************************************************************************//**
+*   @brief  This method changes the color of the shape
+*   @param  color is the color the shape will be displayed with.
+***************************************************************************************/
 void Shape::setColor(const sf::Color &color)
 {
     m_shape.setFillColor(color);
 }
+
 
 /***********************************************************************************//**
 *   @brief  This method does any per frame lagic. 
@@ -186,8 +402,9 @@ int main()
     triangle.setLocalCoordinate(Math::Vector2<float>(0, -50), 0);
     triangle.setLocalCoordinate(Math::Vector2<float>(50, 0), 1);
     triangle.setLocalCoordinate(Math::Vector2<float>(-50,0), 2);
+    triangle.setPosition({300,  300});
 
-    sf::RenderWindow window(sf::VideoMode(800, 600), "SFML works!");
+    sf::RenderWindow window(sf::VideoMode(800, 600), "SAT EXample");
     const int SPEED = 10;
     while (window.isOpen())
     {
@@ -233,6 +450,8 @@ int main()
         }
 
         window.clear();
+
+        /*
         for(std::size_t i = 0; i < triangle.getEdgeCount(); ++i)
         {
             Math::Line<float> edge = triangle.getEdge(i);
@@ -258,6 +477,7 @@ int main()
             window.draw(line);
          
         }
+        */
         window.draw(square);
         window.draw(triangle);
         window.display();

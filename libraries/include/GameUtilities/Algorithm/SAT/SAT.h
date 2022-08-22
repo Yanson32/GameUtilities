@@ -4,6 +4,7 @@
 #include <utility>
 #include <Math/Vector2.h>
 #include <vector>
+#include "GameUtilities/Algorithm/SAT/CollisionTypes.h"
 #include "algorithm_export.h"
 
 namespace GU
@@ -11,10 +12,6 @@ namespace GU
     namespace Al
     {
         class SatObject;
-        typedef std::vector<Math::Vector2<float>> PointsVec;
-        typedef Math::Vector2<float> Position;
-        typedef Math::Vector2<float> Direction;
-        typedef std::pair<float, float> Projection;
         /****************************************************************************//**
         *   @brief  This method projects a SatObject onto a direction vector. 
         *   @param  first is the object to be projected.

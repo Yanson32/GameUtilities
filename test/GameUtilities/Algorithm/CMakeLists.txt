@@ -2,7 +2,8 @@ set(FILES ""
 
 )
 
-set(SUB_DIRECTORIES	    "SAT"
+#set(SUB_DIRECTORIES	    "SAT"
+set(SUB_DIRECTORIES	    ""
 )
 
 #Add subdirectories

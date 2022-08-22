@@ -1,5 +1,6 @@
 #include "GameUtilities/Algorithm/SAT/SAT.h"
 #include "GameUtilities/Algorithm/SAT/SatObject.h"
+#include "GameUtilities/Algorithm/SAT/CollisionInfo.h"
 
 namespace GU
 {
@@ -95,7 +96,7 @@ namespace GU
         {
             
             //Loop through all the edges of the current object 
-            for(std::size_t i = 0; i < first.getEdgeCount(); ++i)
+            for(std::size_t i = 0; i < first.getVertexCount(); ++i)
             {
                 Math::Line<float> edge = first.getEdge(i);
                 Math::Vector2<float> leftNormal = edge.LeftNormal();  
@@ -117,7 +118,7 @@ namespace GU
             }    
 
             //Loop through all the edges of the parameter object 
-            for(std::size_t i = 0; i < second.getEdgeCount(); ++i)
+            for(std::size_t i = 0; i < second.getVertexCount(); ++i)
             {
                 Math::Line<float> edge = second.getEdge(i);
                 Math::Vector2<float> leftNormal = edge.LeftNormal();  
