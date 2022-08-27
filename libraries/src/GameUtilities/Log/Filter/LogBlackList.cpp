@@ -11,7 +11,7 @@ namespace GU
       }
 
 
-      GU::Core::String LogBlackList::filter(std::shared_ptr<GU::Log::LogEntry> entry)
+      bool LogBlackList::filter(std::shared_ptr<GU::Log::LogEntry> entry)
       {
 
       }

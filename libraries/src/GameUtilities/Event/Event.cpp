@@ -1,9 +1,3 @@
-/*!
-*	\author Wayne J Larson Jr.
-*	\version 1.0
-*	\date 12/10/17
-*/
-
 #include "GameUtilities/Event/Event.h"
 
 namespace GU
@@ -12,31 +6,46 @@ namespace GU
     {
 
         /**************************************************************************
-        *	\brief	Event class constructor is not public to prevent it from
+        *	@brief	Event class constructor is not public to prevent it from
         *         	being instantiated accidentally.
-        *   \brief 	param: const int the id of the event.
+        *   @param 	id the id of the event.
+        *   @param  line is the line in source code where the event originated from.
+        *   @param  file is the source file where the event originated from
         **************************************************************************/
-        Event::Event(const int newId, const int newLine, const GU::Core::String &newFile):
-		m_id(newId),
-		m_line(newLine),
-		m_file(newFile)
+        Event::Event(const int id, const int line, const GU::Core::String &file):
+		m_id(id),
+		m_line(line),
+		m_file(file)
         {
 
         }
 
         
+        /**************************************************************************
+        *   @brief	This method returns the id of the event.
+        *   @return A unique identifier for the event.  
+        **************************************************************************/
         int Event::getId() const
         {
           return m_id;
         }
 
 
+        /**************************************************************************
+        *   @brief  This method returns the line in source code where the event
+        *           originated from.	
+        *   @return The line where the event originated from 
+        **************************************************************************/
         int Event::getLine() const
         {
           return m_line;
         }
 
 
+        /**************************************************************************
+        *   @brief  This method returns the source file where the event originated from.
+        *   @return The source file where the event originated from.
+        **************************************************************************/
         GU::Core::String Event::getFile() const
         {
           return m_file;
@@ -44,7 +53,7 @@ namespace GU
 
 
         /**************************************************************************
-        *   \brief	Virtual Destructor
+        *   \brief	Destructor
         **************************************************************************/
         Event::~Event()
         {

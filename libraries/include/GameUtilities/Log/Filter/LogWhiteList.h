@@ -10,7 +10,7 @@ namespace GU
       {
       public:
         LogWhiteList();
-        virtual GU::Core::String filter(std::shared_ptr<GU::Log::LogEntry> entry);
+        virtual bool filter(std::shared_ptr<GU::Log::LogEntry> entry);
         virtual ~LogWhiteList();
 
       };

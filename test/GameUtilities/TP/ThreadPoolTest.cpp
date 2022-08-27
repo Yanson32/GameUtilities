@@ -1,8 +1,8 @@
-#define CATCH_CONFIG_MAIN
-#include <catch2/catch.hpp>
+#include <catch2/catch_test_macros.hpp>
 #include <GameUtilities/TP/ThreadPool.h>
 #include <GameUtilities/TP/ThreadTask.h>
 #include <memory>
+#include <thread>
 
 class Task: public GU::Thread::ThreadPoolTask
 {

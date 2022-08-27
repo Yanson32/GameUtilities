@@ -46,9 +46,7 @@ namespace GU
         * @return: A string representing the current line number.
         *****************************************************************/
         virtual GU::Core::String format() override;
-
-
-
+    public:
         int m_line = -1;
       };
     }

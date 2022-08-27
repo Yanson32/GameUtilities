@@ -60,8 +60,8 @@ namespace GU
                 ************************************************************************/
                 virtual ~ThreadPoolQueue();
             private:
-                std::queue<std::unique_ptr<ThreadPoolTask>> taskQueue;
-                std::mutex mutex;
+                class Impl;
+                Impl *m_pimpl = nullptr;
         };
     }
 }

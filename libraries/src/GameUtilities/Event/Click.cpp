@@ -4,13 +4,21 @@ namespace GU
 {
     namespace Evt
     {
-        Click::Click(const int newId):
+        /**************************************************************************
+        *   @brief  Constructor
+        *   @param  id is the unique id of the button that was clicked 
+        **************************************************************************/
+        Click::Click(const int id):
         Event(static_cast<int>(GU::Evt::EventId::CLICK)),
-        buttonId(newId)
+        m_buttonId(id)
         {
             //ctor
         }
 
+        
+        /**************************************************************************
+        *   @brief  Destructor 
+        **************************************************************************/
         Click::~Click()
         {
             //dtor

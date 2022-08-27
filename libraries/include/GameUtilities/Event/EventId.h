@@ -5,7 +5,7 @@ namespace GU
 {
     namespace Evt
     {
-        enum class EventId
+        enum EventId
         {
             LOWEST = -1,
             CHANGE_STATE = 0,

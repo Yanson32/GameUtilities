@@ -1,8 +1,5 @@
 #ifndef THREAD_POOL_H
 #define THREAD_POOL_H
-#include <vector>
-#include <thread>
-#include <condition_variable>
 #include "GameUtilities/TP/ThreadQueue.h"
 #include "threadpool_export.h"
 namespace GU
@@ -56,10 +53,9 @@ namespace GU
                 *           to wait for a task to execute.
                 ****************************************************************************/
                 void waitForTask();
-                std::vector<std::thread> threads;
-                std::condition_variable cv;
-                Thread::ThreadPoolQueue queue;
-                bool wait = true;
+
+                class Impl;
+                Impl *m_pimpl = nullptr; 
         };
     }
 }

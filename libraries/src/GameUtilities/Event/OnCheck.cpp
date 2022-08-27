@@ -4,14 +4,23 @@ namespace GU
 {
     namespace Evt
     {
-        OnCheck::OnCheck(const int newCheckBoxId, const bool newChecked):
+        /**************************************************************************
+        *   @breif  Constructor
+        *   @param  checkBoxId is a unique identifier for the checkbox.
+        *   @param  checked is true if the checkbox was checked and false otherwise.
+        **************************************************************************/
+        OnCheck::OnCheck(const int checkBoxId, const bool checked):
         Event(static_cast<int>(GU::Evt::EventId::ON_CHECK)),
-        checkboxId(newCheckBoxId),
-        checked(newChecked)
+        m_checkboxId(checkBoxId),
+        m_checked(checked)
         {
             //ctor
         }
 
+        
+        /**************************************************************************
+        *   @breif  Destructor 
+        **************************************************************************/
         OnCheck::~OnCheck()
         {
             //dtor

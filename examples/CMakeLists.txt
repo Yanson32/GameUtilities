@@ -10,10 +10,12 @@ set(GU_EXAMPLES_PRIVATE_COMPILE_FEATURES ${GU_PRIVATE_COMPILE_FEATURES})
 set(GU_EXAMPLES_PUBLIC_COMPILE_FEATURES ${GU_PUBLIC_COMPILE_FEATURES})
 
 
-set(SUBDIRECTORIES #"EnginExample"
-		   #"Particle System"
+set(SUBDIRECTORIES "EnginExample"
+		   "Particle System"
 		   "Log"
-			 "Core"
+		   "Core"
+           "Algorithm"
+           "Event"
 )
 
 foreach(LOOP_VAR ${SUBDIRECTORIES})

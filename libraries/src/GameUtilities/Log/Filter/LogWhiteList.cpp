@@ -12,7 +12,7 @@ namespace GU
       }
 
 
-      GU::Core::String LogWhiteList::filter(std::shared_ptr<GU::Log::LogEntry> entry)
+      bool LogWhiteList::filter(std::shared_ptr<GU::Log::LogEntry> entry)
       {
         
       }
