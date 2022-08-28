@@ -20,6 +20,9 @@ namespace GU
             ON_CHECK= 9,
             ON_COMBO_CHANGED = 10,
             LOG,
+            ON_TEXT_CHANGED,
+            ON_RETURN_PRESSED,
+            ON_RETURN_RELEASED,
             HIGHEST = 11
         };
 

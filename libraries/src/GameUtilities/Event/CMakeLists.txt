@@ -15,6 +15,9 @@ set(FILES
 "${CMAKE_CURRENT_SOURCE_DIR}/OnSliderChanged.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/OnCheck.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/OnComboChanged.cpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/OnTextChanged.cpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/OnReturnPressed.cpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/OnReturnReleased.cpp"
 
 )
 
