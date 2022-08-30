@@ -83,48 +83,50 @@ namespace GU
             for(std::size_t i = 0; i < m_pimpl->m_data.size(); ++i)
             {
                 assert(m_pimpl->m_data[i] != nullptr);
+                
+                std::shared_ptr<LogComponent> data = m_pimpl->m_data[i];
 
-                if((*m_pimpl->m_data[i]) == (*component))
+                if((*data) == (*component))
                 {
-                    switch((*m_pimpl->m_data[i]).m_id)
+                    switch((*data).m_id)
                     {
                         case GU::Log::componentId::DATE:
                         {
-                            std::shared_ptr<GU::Log::DateComponent> temp = std::dynamic_pointer_cast<DateComponent>(m_pimpl->m_data[i]);
+                            std::shared_ptr<GU::Log::DateComponent> temp = std::dynamic_pointer_cast<DateComponent>(data);
                             std::shared_ptr<GU::Log::DateComponent> temp2 = std::dynamic_pointer_cast<DateComponent>(component);
                             (*temp) = (*temp2);
                         }
                         break;
                         case GU::Log::componentId::FILE:
                         {
-                            std::shared_ptr<GU::Log::FileComponent> temp = std::dynamic_pointer_cast<FileComponent>(m_pimpl->m_data[i]);
+                            std::shared_ptr<GU::Log::FileComponent> temp = std::dynamic_pointer_cast<FileComponent>(data);
                             std::shared_ptr<GU::Log::FileComponent> temp2 = std::dynamic_pointer_cast<FileComponent>(component);
                             (*temp) = (*temp2);
                         }
                         break;
                         case GU::Log::componentId::MSG:
                         {
-                          std::shared_ptr<GU::Log::MsgComponent> temp = std::dynamic_pointer_cast<MsgComponent>(m_pimpl->m_data[i]);
+                          std::shared_ptr<GU::Log::MsgComponent> temp = std::dynamic_pointer_cast<MsgComponent>(data);
                           std::shared_ptr<GU::Log::MsgComponent> temp2 = std::dynamic_pointer_cast<MsgComponent>(component);
                           (*temp) = (*temp2);
                         }
                         break;
                         case GU::Log::componentId::SEVERITY:
                         {
-                            std::shared_ptr<GU::Log::SeverityComponent> temp = std::dynamic_pointer_cast<SeverityComponent>(m_pimpl->m_data[i]);
+                            std::shared_ptr<GU::Log::SeverityComponent> temp = std::dynamic_pointer_cast<SeverityComponent>(data);
                             std::shared_ptr<GU::Log::SeverityComponent> temp2 = std::dynamic_pointer_cast<SeverityComponent>(component);
                             (*temp) = (*temp2);
                         }
                         break;
                         case GU::Log::componentId::TIME:
                         {
-                            std::shared_ptr<GU::Log::TimeComponent> temp = std::dynamic_pointer_cast<TimeComponent>(m_pimpl->m_data[i]);
+                            std::shared_ptr<GU::Log::TimeComponent> temp = std::dynamic_pointer_cast<TimeComponent>(data);
                             std::shared_ptr<GU::Log::TimeComponent> temp2 = std::dynamic_pointer_cast<TimeComponent>(component);
                             (*temp) = (*temp2);
                         }
                         break;
                         case GU::Log::componentId::LINE:
-                            std::shared_ptr<GU::Log::LineComponent> temp = std::dynamic_pointer_cast<LineComponent>(m_pimpl->m_data[i]);
+                            std::shared_ptr<GU::Log::LineComponent> temp = std::dynamic_pointer_cast<LineComponent>(data);
                             std::shared_ptr<GU::Log::LineComponent> temp2 = std::dynamic_pointer_cast<LineComponent>(component);
                             (*temp) = (*temp2);
                         break;
