@@ -102,6 +102,7 @@ namespace GU
         *************************************************************************************/
 		void LogManager::Impl::add(std::shared_ptr<GU::Log::LogTarget> logTarget)
 		{
+            assert(logTarget != nullptr);
 			m_targets.push_back(logTarget);
 
 		}
@@ -184,6 +185,8 @@ namespace GU
         *************************************************************************************/
         void LogManager::Impl::write(std::shared_ptr<GU::Log::LogEntry> entry)
         {
+            assert(entry != nullptr);
+
             for(std::size_t i = 0; i < entry->size(); ++i)
             {
                 m_logFormatter.init(entry->operator[](i));
@@ -229,6 +232,7 @@ namespace GU
 		void LogManager::add(std::shared_ptr<GU::Log::LogTarget> logTarget)
 		{
 			assert(pimpl != nullptr);
+            assert(logTarget != nullptr);
 			pimpl->add(std::move(logTarget));
 		}
 		
@@ -284,6 +288,7 @@ namespace GU
         void LogManager::write(std::shared_ptr<GU::Log::LogEntry> entry)
         {
             assert(pimpl != nullptr);
+            assert(entry != nullptr);
             pimpl->write(entry);
         }
         
