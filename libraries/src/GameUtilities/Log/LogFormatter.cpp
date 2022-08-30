@@ -78,9 +78,12 @@ namespace GU
         *************************************************************************************/
         void LogFormatter::init(std::shared_ptr<GU::Log::LogComponent> component)
         {
+            assert(component != nullptr);
             assert(m_pimpl != nullptr);
             for(std::size_t i = 0; i < m_pimpl->m_data.size(); ++i)
             {
+                assert(m_pimpl->m_data[i] != nullptr);
+
                 if((*m_pimpl->m_data[i]) == (*component))
                 {
                     switch((*m_pimpl->m_data[i]).m_id)
