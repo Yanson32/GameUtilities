@@ -11,4 +11,7 @@
 #include "GameUtilities/Event/EventId.h"
 #include "GameUtilities/Event/OnCheck.h"
 #include "GameUtilities/Event/OnComboChanged.h"
+#include "GameUtilities/Event/OnTextChanged.h"
+#include "GameUtilities/Event/OnReturnPressed.h"
+#include "GameUtilities/Event/OnReturnReleased.h"
 #endif // EVENTS_H_INCLUDED
