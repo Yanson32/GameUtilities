@@ -89,7 +89,7 @@ namespace GU
                 virtual ~LogManager();
   	        private:
                 class Impl;
-                Impl* pimpl = nullptr;
+                Impl* m_pimpl = nullptr;
         };
     }
 }
