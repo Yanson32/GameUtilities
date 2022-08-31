@@ -219,9 +219,9 @@ namespace GU
         /*********************************************************************************//**
         *	@brief  Constructor 
         *************************************************************************************/
-        LogManager::LogManager():pimpl(new LogManager::Impl())
+        LogManager::LogManager():m_pimpl(new LogManager::Impl())
         {
-            assert(pimpl != nullptr);
+            assert(m_pimpl != nullptr);
         }
 
 
@@ -231,9 +231,9 @@ namespace GU
         *************************************************************************************/
 		void LogManager::add(std::shared_ptr<GU::Log::LogTarget> logTarget)
 		{
-			assert(pimpl != nullptr);
+			assert(m_pimpl != nullptr);
             assert(logTarget != nullptr);
-			pimpl->add(std::move(logTarget));
+			m_pimpl->add(std::move(logTarget));
 		}
 		
 
@@ -243,8 +243,8 @@ namespace GU
         *************************************************************************************/
 		LogTarget& LogManager::getTarget(const std::size_t &index)
 		{
-			assert(pimpl != nullptr);
-			return pimpl->getTarget(index);
+			assert(m_pimpl != nullptr);
+			return m_pimpl->getTarget(index);
 		}
         
 
@@ -254,8 +254,8 @@ namespace GU
         *************************************************************************************/
 		bool LogManager::remove(const GU::Log::LogTarget &logTarget)
 		{
-            assert(pimpl != nullptr);
-			return pimpl->remove(logTarget);
+            assert(m_pimpl != nullptr);
+			return m_pimpl->remove(logTarget);
 		}
         
 
@@ -266,7 +266,7 @@ namespace GU
         *************************************************************************************/
 		std::size_t LogManager::getTargetCount() const
 		{
-			return pimpl->getTargetCount();
+			return m_pimpl->getTargetCount();
 		}
         
 
@@ -276,8 +276,8 @@ namespace GU
         *************************************************************************************/
         void LogManager::write(const GU::Core::String &msg)
         {
-            assert(pimpl != nullptr);
-            pimpl->write(msg);
+            assert(m_pimpl != nullptr);
+            m_pimpl->write(msg);
         }
 		
 
@@ -287,9 +287,9 @@ namespace GU
         *************************************************************************************/
         void LogManager::write(std::shared_ptr<GU::Log::LogEntry> entry)
         {
-            assert(pimpl != nullptr);
+            assert(m_pimpl != nullptr);
             assert(entry != nullptr);
-            pimpl->write(entry);
+            m_pimpl->write(entry);
         }
         
 
@@ -299,8 +299,8 @@ namespace GU
         *************************************************************************************/
         void LogManager::set(LogFormatter &logFormatter)
 		{
-            assert(pimpl != nullptr);
-			pimpl->set(logFormatter);
+            assert(m_pimpl != nullptr);
+			m_pimpl->set(logFormatter);
 		}
         
 
@@ -310,8 +310,8 @@ namespace GU
         *************************************************************************************/
         LogFormatter& LogManager::getFormatter()
         {
-            assert(pimpl != nullptr);
-            return pimpl->getFormatter();
+            assert(m_pimpl != nullptr);
+            return m_pimpl->getFormatter();
         }
         
 
@@ -320,8 +320,8 @@ namespace GU
         *************************************************************************************/
         LogManager::~LogManager()
 		{
-			assert(pimpl != nullptr);
-			delete pimpl;
+			assert(m_pimpl != nullptr);
+			delete m_pimpl;
 		}
 
 	}
