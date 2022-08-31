@@ -49,9 +49,9 @@ namespace GU
         *	@brief  Constructor 
         *************************************************************************************/
         LogEntry::LogEntry():
-        pimpl(new LogEntry::Impl())
+        m_pimpl(new LogEntry::Impl())
         {
-          assert(pimpl != nullptr);
+          assert(m_pimpl != nullptr);
         }
 
         
@@ -60,8 +60,9 @@ namespace GU
         *************************************************************************************/
         void LogEntry::add(std::shared_ptr<GU::Log::LogComponent> component)
         {
-          assert(pimpl != nullptr);
-          pimpl->m_data.push_back(component);
+            assert(m_pimpl != nullptr);
+            assert(component != nullptr);
+            m_pimpl->m_data.push_back(component);
         }
         
 
@@ -71,7 +72,8 @@ namespace GU
         *************************************************************************************/
         std::size_t LogEntry::size() const
         {
-          return pimpl->m_data.size();
+            assert(m_pimpl != nullptr);
+            return m_pimpl->m_data.size();
         }
 
 
@@ -82,7 +84,10 @@ namespace GU
         *************************************************************************************/
         std::shared_ptr<LogComponent> LogEntry::operator [] (const std::size_t &index)
         {
-          return pimpl->m_data[index];
+            assert(m_pimpl != nullptr);
+            assert(index >= 0);
+            assert(index < m_pimpl->m_data.size());
+            return m_pimpl->m_data[index];
         }
 
 
@@ -91,8 +96,9 @@ namespace GU
         *************************************************************************************/
         LogEntry::~LogEntry()
         {
-          if(pimpl)
-            delete pimpl;
+            assert(m_pimpl != nullptr);
+            if(m_pimpl)
+                delete m_pimpl;
         }
     }
 }

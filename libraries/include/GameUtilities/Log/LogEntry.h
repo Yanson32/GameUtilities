@@ -57,7 +57,7 @@ namespace GU
                 virtual ~LogEntry();
             private:
                 class Impl;
-                Impl* pimpl = nullptr;
+                Impl* m_pimpl = nullptr;
         };
 
         
