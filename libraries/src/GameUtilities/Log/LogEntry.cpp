@@ -49,9 +49,9 @@ namespace GU
         *	@brief  Constructor 
         *************************************************************************************/
         LogEntry::LogEntry():
-        pimpl(new LogEntry::Impl())
+        m_pimpl(new LogEntry::Impl())
         {
-          assert(pimpl != nullptr);
+          assert(m_pimpl != nullptr);
         }
 
         
@@ -60,9 +60,9 @@ namespace GU
         *************************************************************************************/
         void LogEntry::add(std::shared_ptr<GU::Log::LogComponent> component)
         {
-            assert(pimpl != nullptr);
+            assert(m_pimpl != nullptr);
             assert(component != nullptr);
-            pimpl->m_data.push_back(component);
+            m_pimpl->m_data.push_back(component);
         }
         
 
@@ -72,8 +72,8 @@ namespace GU
         *************************************************************************************/
         std::size_t LogEntry::size() const
         {
-            assert(pimpl != nullptr);
-            return pimpl->m_data.size();
+            assert(m_pimpl != nullptr);
+            return m_pimpl->m_data.size();
         }
 
 
@@ -84,10 +84,10 @@ namespace GU
         *************************************************************************************/
         std::shared_ptr<LogComponent> LogEntry::operator [] (const std::size_t &index)
         {
-            assert(pimpl != nullptr);
+            assert(m_pimpl != nullptr);
             assert(index >= 0);
-            assert(index < pimpl->m_data.size());
-            return pimpl->m_data[index];
+            assert(index < m_pimpl->m_data.size());
+            return m_pimpl->m_data[index];
         }
 
 
@@ -96,9 +96,9 @@ namespace GU
         *************************************************************************************/
         LogEntry::~LogEntry()
         {
-            assert(pimpl != nullptr);
-            if(pimpl)
-                delete pimpl;
+            assert(m_pimpl != nullptr);
+            if(m_pimpl)
+                delete m_pimpl;
         }
     }
 }
