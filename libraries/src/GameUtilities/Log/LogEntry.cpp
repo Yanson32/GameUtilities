@@ -15,7 +15,7 @@ namespace GU
                 /*********************************************************************************//**
                 *	@brief  Inplimentation constructor 
                 *************************************************************************************/
-                Impl();
+                Impl(const int &id, const int &type);
             
 
                 /*********************************************************************************//**
@@ -25,13 +25,17 @@ namespace GU
             
             public:
                 std::vector<std::shared_ptr<GU::Log::LogComponent>> m_data;
+                int m_id = -1;
+                int m_type = -1;
         };
 
 
         /*********************************************************************************//**
         *	@brief  Inplimentation constructor 
         *************************************************************************************/
-        LogEntry::Impl::Impl()
+        LogEntry::Impl::Impl(const int &id, const int &type):
+        m_id(id),
+        m_type(type)
         {
         }
 
@@ -48,8 +52,8 @@ namespace GU
         /*********************************************************************************//**
         *	@brief  Constructor 
         *************************************************************************************/
-        LogEntry::LogEntry():
-        m_pimpl(new LogEntry::Impl())
+        LogEntry::LogEntry(const int &id, const int &type):
+        m_pimpl(new LogEntry::Impl(id, type))
         {
           assert(m_pimpl != nullptr);
         }
@@ -76,6 +80,20 @@ namespace GU
             return m_pimpl->m_data.size();
         }
 
+
+        int LogEntry::getId() const
+        {
+            assert(m_pimpl != nullptr);
+            return m_pimpl->m_id; 
+        }
+
+
+        int LogEntry::getType() const
+        {
+            assert(m_pimpl != nullptr);
+            return m_pimpl->m_type;
+        }
+        
 
         /*********************************************************************************//**
         *	@brief  This method returns a pointer to a LogComponent at the given index. 

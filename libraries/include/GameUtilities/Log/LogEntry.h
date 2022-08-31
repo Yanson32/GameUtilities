@@ -19,7 +19,7 @@ namespace GU
                 /*********************************************************************************//**
                 *	@brief  Constructor 
                 *************************************************************************************/
-                LogEntry();
+                LogEntry(const int &id = -1, const int &type = -1);
                 
 
                 /*********************************************************************************//**
@@ -42,7 +42,8 @@ namespace GU
                 *************************************************************************************/
                 std::size_t size() const;
                 
-
+                int getId() const;
+                int getType() const;
                 /*********************************************************************************//**
                 *	@brief  This method returns a pointer to a LogComponent at the given index. 
                 *   @param  index is the index of the LogComponent to be returned. 
