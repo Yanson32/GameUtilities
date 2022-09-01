@@ -19,11 +19,11 @@ namespace GU
             SLIDER_CHANGED = 8,
             ON_CHECK= 9,
             ON_COMBO_CHANGED = 10,
-            LOG,
-            ON_TEXT_CHANGED,
-            ON_RETURN_PRESSED,
-            ON_RETURN_RELEASED,
-            HIGHEST = 11
+            LOG = 11,
+            ON_TEXT_CHANGED = 12,
+            ON_RETURN_PRESSED = 13,
+            ON_RETURN_RELEASED = 14,
+            HIGHEST = 15
         };
 
     }
