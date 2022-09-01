@@ -8,7 +8,7 @@ namespace GU
     {
 
         OnTextChanged::OnTextChanged(const int id, const GU::Core::String &text):
-        Event(static_cast<int>(GU::Evt::EventId::ON_RETURN_RELEASED)),
+        Event(static_cast<int>(GU::Evt::EventId::ON_TEXT_CHANGED)),
         m_id(id)
         {
 
