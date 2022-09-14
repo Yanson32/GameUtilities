@@ -20,7 +20,7 @@ namespace GU
         *   \brief	This method draws the current game state.
         *	\param [in]	pause when true the game will stop. When false the game will continue
         *************************************************************************************/
-        void GameState::Pause(const bool pause)
+        void GameState::pause(const bool pause)
         {
             paused = pause;
         }
@@ -31,7 +31,7 @@ namespace GU
         *			otherwise
         *	\return	boolean true when the game is paused and false otherwise
         *************************************************************************************/
-        bool GameState::IsPaused()const
+        bool GameState::isPaused()const
         {
             return paused;
         }

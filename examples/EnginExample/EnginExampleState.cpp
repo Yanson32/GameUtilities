@@ -7,7 +7,7 @@ window(newWindow)
 {
 
 }
-void EnginExampleState::Init()
+void EnginExampleState::init()
 {
     const float RADIUS = 50;
     circle.setFillColor(sf::Color::Green);
@@ -17,13 +17,13 @@ void EnginExampleState::Init()
 }
 
 
-void EnginExampleState::Clean()
+void EnginExampleState::clean()
 {
 
 }
 
 
-void EnginExampleState::HandleEvents(GU::Engin::Engin& engin, const float &deltaTime)
+void EnginExampleState::handleEvents(GU::Engin::Engin& engin, const float &deltaTime)
 {
     if(window.isOpen())
     {
@@ -42,13 +42,13 @@ void EnginExampleState::HandleEvents(GU::Engin::Engin& engin, const float &delta
 
 
 
-void EnginExampleState::Update(GU::Engin::Engin& engin, const float &deltaTime)
+void EnginExampleState::update(GU::Engin::Engin& engin, const float &deltaTime)
 {
 
 }
 
 
-void EnginExampleState::Draw(GU::Engin::Engin& engin, const float &deltaTime)
+void EnginExampleState::draw(GU::Engin::Engin& engin, const float &deltaTime)
 {
     window.clear();
     window.draw(circle);

@@ -31,39 +31,39 @@ namespace GU
                 /*********************************************************************************//**
                 *   \brief	Initialize the game state.
                 *************************************************************************************/
-                virtual void Init() = 0;
+                virtual void init() = 0;
 
                 /*********************************************************************************//**
                 *   \brief	Clean any resource the state uses
                 *************************************************************************************/
-                virtual void Clean() = 0;
+                virtual void clean() = 0;
 
                 /*********************************************************************************//**
                 *   \brief	This method handles input such as user input and events
                 *	\param	engin is a reference to the game's Engin object.
                 *************************************************************************************/
-                virtual void HandleEvents(Engin& engin, const float &deltaTime) = 0;
+                virtual void handleEvents(Engin& engin, const float &deltaTime) = 0;
 
 
                 /*********************************************************************************//**
                 *   \brief	This method handles input such as user input and events
                 *	\param	engin is a reference to the game's Engin object.
                 *************************************************************************************/
-                virtual void Update(Engin& engin, const float &deltaTime) = 0;
+                virtual void update(Engin& engin, const float &deltaTime) = 0;
 
 
                 /*********************************************************************************//**
                 *   \brief	This method draws the current game state.
                 *	\param	engin is a reference to the game's Engin object.
                 *************************************************************************************/
-                virtual void Draw(Engin& engin, const float &deltaTime) = 0;
+                virtual void draw(Engin& engin, const float &deltaTime) = 0;
 
 
                 /*********************************************************************************//**
                 *   \brief	This method draws the current game state.
                 *	\param	pause when true the game will stop. When false the game will continue
                 *************************************************************************************/
-                void Pause(const bool pause = true);
+                void pause(const bool pause = true);
 
 
                 /*********************************************************************************//**
@@ -71,7 +71,7 @@ namespace GU
                 *			otherwise
                 *	\return	boolean true when the game is paused and false otherwise
                 *************************************************************************************/
-                bool IsPaused()const;
+                bool isPaused()const;
 
                 /*********************************************************************************//**
                 *   \brief	Destructor

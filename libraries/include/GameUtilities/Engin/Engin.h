@@ -37,7 +37,7 @@ namespace GU
                 *	@brief	Push a new state onto the stack
                 *   @param	state a pointer to a GameState object.
                 *************************************************************************************/
-                void Push(StatePtr param);
+                void push(StatePtr param);
 
 
                 /**************************************************************************//**
@@ -49,7 +49,7 @@ namespace GU
                 *			construct a GameState object.
                 ******************************************************************************/
                 template<typename Type, typename... Args>
-                void Push(Args&&... args);
+                void push(Args&&... args);
 
 
                 /*********************************************************************************//**
@@ -57,7 +57,7 @@ namespace GU
                 *   @return boolean true when the state is successfully removed
                 *           from the stack.
                 *************************************************************************************/
-                bool Pop();
+                bool pop();
 
 
                 /*********************************************************************************//**
@@ -65,7 +65,7 @@ namespace GU
                 *           A new GameState object onto the stack.
                 *   @param	state a pointer to a GameState object.
                 *************************************************************************************/
-                void ChangeState(StatePtr param);
+                void changeState(StatePtr param);
 
 
                 /**************************************************************************//**
@@ -78,14 +78,14 @@ namespace GU
                 *   @param  Type this is the type of GameState.
                 ******************************************************************************/
                 template<typename Type, typename... Args>
-                void ChangeState(Args&&... args);
+                void changeState(Args&&... args);
 
 
                 /*********************************************************************************//**
                 *   @brief	This method is used to determine if the game is still running.
                 *	@return boolean true when the game is running and false otherwise
                 *************************************************************************************/
-                bool IsRunning() const;
+                bool isRunning() const;
 
 
                 /*********************************************************************************//**
@@ -93,7 +93,7 @@ namespace GU
                 *
                 *	@return	After calling this method IsRunning() returns false.
                 *************************************************************************************/
-                void Quit();
+                void quit();
 
 
                 bool empty() const;
@@ -103,7 +103,7 @@ namespace GU
                 *           include events and user input.
                 *   @param  deltaTime is the time the previous frame took
                 *************************************************************************************/
-                void HandleEvents(const float &deltaTime);
+                void handleEvents(const float &deltaTime);
 
 
                 /*********************************************************************************//**
@@ -111,7 +111,7 @@ namespace GU
                 *            class. Which will have code for handling game logic.
                 *   @param  deltaTime is the time the previous frame took
                 *************************************************************************************/
-                void Update(const float &deltaTime);
+                void update(const float &deltaTime);
 
 
                 /*********************************************************************************//**
@@ -122,9 +122,9 @@ namespace GU
                 *   @param  StatePtr a pointer to a GameState object.
                 *   @param  deltaTime is the time the previous frame took
                 *************************************************************************************/
-                void Draw(const float &deltaTime);
+                void draw(const float &deltaTime);
 
-                int Size() const;
+                int size() const;
                 /*********************************************************************************//**
                 *   @brief	Destructor:
                 *************************************************************************************/
@@ -144,9 +144,9 @@ namespace GU
         *			construct a GameState object.
         ******************************************************************************/
         template<typename Type, typename... Args>
-        void Engin::Push(Args&&... args)
+        void Engin::push(Args&&... args)
         {
-            this->Push(StatePtr(new Type(std::forward<Args>(args)...)));
+            this->push(StatePtr(new Type(std::forward<Args>(args)...)));
         }
 
 
@@ -160,9 +160,9 @@ namespace GU
         *   \param  Type this is the type of GameState.
         ******************************************************************************/
         template<typename Type, typename... Args>
-        void Engin::ChangeState(Args&&... args)
+        void Engin::changeState(Args&&... args)
         {
-            this->ChangeState(StatePtr(new Type(std::forward<Args>(args)...)));
+            this->changeState(StatePtr(new Type(std::forward<Args>(args)...)));
         }
     }
 }

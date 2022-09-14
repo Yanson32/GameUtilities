@@ -7,23 +7,23 @@ int main()
 {
     sf::RenderWindow window({800, 600}, "EnginExample");
 	GU::Engin::Engin engin;
-	engin.Push<EnginExampleState>(window);
+	engin.push<EnginExampleState>(window);
 
     sf::Clock frame;
     sf::Time accumulator;
     sf::Time deltaTime = sf::seconds(1 / 60);
 
-	while(engin.IsRunning())
+	while(engin.isRunning())
 	{
         accumulator += frame.restart();
-        engin.HandleEvents(deltaTime.asMilliseconds());
+        engin.handleEvents(deltaTime.asMilliseconds());
 
         if(accumulator.asMilliseconds() >= deltaTime.asMilliseconds())
         {
             accumulator -= deltaTime;
-            engin.Update(deltaTime.asMilliseconds());
+            engin.update(deltaTime.asMilliseconds());
         }
-        engin.Draw(deltaTime.asMilliseconds());
+        engin.draw(deltaTime.asMilliseconds());
 	}
 	return 0;
 }

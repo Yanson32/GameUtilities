@@ -51,7 +51,7 @@ namespace GU
                 *           states. See Engin::Push(StatePtr state);
                 *   @param  state is a pointer to a GameState.
                 ********************************************************************/
-                void Push(StatePtr state);
+                void push(StatePtr state);
 
 
                 /********************************************************************
@@ -59,7 +59,7 @@ namespace GU
                 *           states.
                 *           See Engin::Pop();
                 ********************************************************************/
-                bool Pop();
+                bool pop();
 
 
                 /********************************************************************
@@ -69,7 +69,7 @@ namespace GU
                 *           See Engin::ChangeState
                 *   @param  state is a pointer to a GameState.
                 ********************************************************************/
-                void ChangeState(StatePtr state);
+                void changeState(StatePtr state);
 
 
                 /********************************************************************
@@ -77,7 +77,7 @@ namespace GU
                 *           boolean true value when the game is still running. See
                 *           Engin::IsRunning
                 ********************************************************************/
-                bool IsRunning() const;
+                bool isRunning() const;
 
 
                 /********************************************************************
@@ -86,7 +86,7 @@ namespace GU
                 *           See Engin::Quit
                 *           See Engin::IsRunning
                 ********************************************************************/
-                void Quit();
+                void quit();
 
                 bool empty() const
                 {
@@ -97,7 +97,7 @@ namespace GU
                 *   @param  deltaTime is the time the previous frame took
                 *           See Engin::HendleEvents
                 ********************************************************************/
-                void HandleEvents(const float &deltaTime);
+                void handleEvents(const float &deltaTime);
 
 
                 /********************************************************************
@@ -105,7 +105,7 @@ namespace GU
                 *   @param  deltaTime is the time the previous frame took
                 *           See Engin::Update
                 ********************************************************************/
-                void Update(const float &deltaTime);
+                void update(const float &deltaTime);
 
 
                 /********************************************************************
@@ -113,9 +113,9 @@ namespace GU
                 *   @param  deltaTime is the time the previous frame took
                 *           See Engin::Draw
                 ********************************************************************/
-                void Draw(const float &deltaTime);
+                void draw(const float &deltaTime);
 
-                int Size() const
+                int size() const
                 {
                     return states.size();
                 }
@@ -152,18 +152,18 @@ namespace GU
         *           states. See Engin::Push(StatePtr state);
         *   @param  state is a pointer to a GameState.
         ********************************************************************/
-        void Engin::Impl::Push(StatePtr state)
+        void Engin::Impl::push(StatePtr state)
 		{
 			assert(state != nullptr);
 
 			if (!states.empty())
 			{
-				states.top()->Pause();
-				states.top()->Clean();
+				states.top()->pause();
+				states.top()->clean();
 			}
 
 			states.push(std::move(state));
-			states.top()->Init();
+			states.top()->init();
 		}
 
 
@@ -174,7 +174,7 @@ namespace GU
         *   @return boolean true when the state is successfully removed
         *           from the stack.
         ********************************************************************/
-		bool Engin::Impl::Pop()
+		bool Engin::Impl::pop()
 		{
 			if(states.empty())
 			{
@@ -182,13 +182,13 @@ namespace GU
 			}
 
 
-			states.top()->Clean();
+			states.top()->clean();
 			states.pop();
 
 			if (!states.empty())
 			{
-				states.top()->Init();
-				states.top()->Pause(false);
+				states.top()->init();
+				states.top()->pause(false);
 			}
 
 			return true;
@@ -202,17 +202,17 @@ namespace GU
         *           See Engin::ChangeState
         *   @param  state is a pointer to a GameState.
         ********************************************************************/
-		void Engin::Impl::ChangeState(StatePtr state)
+		void Engin::Impl::changeState(StatePtr state)
 		{
 			assert(state != nullptr);
 
 
 			///Remove any existing states
 			while (!states.empty())
-				this->Pop();
+				this->pop();
 
 			///Push the state onto the now empty stack
-			this->Push(std::move(state));
+			this->push(std::move(state));
 		}
 
 
@@ -221,7 +221,7 @@ namespace GU
         *           boolean true value when the game is still running. See
         *           Engin::IsRunning
         ********************************************************************/
-		bool Engin::Impl::IsRunning() const
+		bool Engin::Impl::isRunning() const
 		{
 			return _running;
 		}
@@ -233,7 +233,7 @@ namespace GU
         *           See Engin::Quit
         *           See Engin::IsRunning
         ********************************************************************/
-		void Engin::Impl::Quit()
+		void Engin::Impl::quit()
 		{
 			_running = false;
 		}
@@ -244,12 +244,12 @@ namespace GU
         *   @param  deltaTime is the time the previous frame took
         *           See Engin::HendleEvents
         ********************************************************************/
-		void Engin::Impl::HandleEvents(const float &deltaTime)
+		void Engin::Impl::handleEvents(const float &deltaTime)
 		{
 			assert(!states.empty());
 
 			///Call the current states HandleEvents method.
-			states.top()->HandleEvents(engin, deltaTime);
+			states.top()->handleEvents(engin, deltaTime);
 		}
 
 
@@ -258,12 +258,12 @@ namespace GU
         *   @param  deltaTime is the time the previous frame took
         *           See Engin::Update
         ********************************************************************/
-		void Engin::Impl::Update(const float &deltaTime)
+		void Engin::Impl::update(const float &deltaTime)
 		{
 			assert(!states.empty());
 
 			///Call the current states Update method.
-			states.top()->Update(engin, deltaTime);
+			states.top()->update(engin, deltaTime);
 		}
 
 
@@ -272,12 +272,12 @@ namespace GU
         *   @param  deltaTime is the time the previous frame took
         *           See Engin::Draw
         ********************************************************************/
-		void Engin::Impl::Draw(const float &deltaTime)
+		void Engin::Impl::draw(const float &deltaTime)
 		{
 			assert(!states.empty());
 
 			///Call the current states Draw method.
-			states.top()->Draw(engin, deltaTime);
+			states.top()->draw(engin, deltaTime);
 		}
 
 
@@ -324,10 +324,10 @@ namespace GU
         *	@brief	Push a new state onto the stack.
         *   @param	state a pointer to a GameState object.
         *************************************************************************************/
-        void Engin::Push(StatePtr state)
+        void Engin::push(StatePtr state)
         {
             assert(pimpl != nullptr);
-			pimpl->Push(std::move(state));
+			pimpl->push(std::move(state));
         }
 
 
@@ -336,10 +336,10 @@ namespace GU
         *   @return boolean true when the state is successfully removed
         *           from the stack.
         *************************************************************************************/
-        bool Engin::Pop()
+        bool Engin::pop()
         {
             assert(pimpl != nullptr);
-			return pimpl->Pop();
+			return pimpl->pop();
         }
 
 
@@ -348,10 +348,10 @@ namespace GU
         *           A new GameState object onto the stack.
         *   @param	state a pointer to a GameState object.
         *************************************************************************************/
-        void Engin::ChangeState(StatePtr state)
+        void Engin::changeState(StatePtr state)
         {
             assert(pimpl != nullptr);
-			pimpl->ChangeState(std::move(state));
+			pimpl->changeState(std::move(state));
         }
 
 
@@ -359,10 +359,10 @@ namespace GU
         *   @brief	This method is used to determine if the game is still running.
         *	@return boolean true when the game is running and false otherwise
         *************************************************************************************/
-        bool Engin::IsRunning() const
+        bool Engin::isRunning() const
         {
             assert(pimpl != nullptr);
-			return pimpl->IsRunning();
+			return pimpl->isRunning();
         }
 
 
@@ -371,10 +371,10 @@ namespace GU
         *
         *	@return	After calling this method IsRunning() returns false.
         *************************************************************************************/
-        void Engin::Quit()
+        void Engin::quit()
         {
             assert(pimpl != nullptr);
-			return pimpl->Quit();
+			return pimpl->quit();
         }
 
         bool Engin::empty() const
@@ -388,10 +388,10 @@ namespace GU
         *           include events and user input.
         *   @param  deltaTime is the time the previous frame took
         *************************************************************************************/
-        void Engin::HandleEvents(const float &deltaTime)
+        void Engin::handleEvents(const float &deltaTime)
         {
             assert(pimpl != nullptr);
-			pimpl->HandleEvents(deltaTime);
+			pimpl->handleEvents(deltaTime);
         }
 
 
@@ -400,10 +400,10 @@ namespace GU
         *            class. Which will have code for handling game logic.
         *   @param  deltaTime is the time the previous frame took
         *************************************************************************************/
-        void Engin::Update(const float &deltaTime)
+        void Engin::update(const float &deltaTime)
         {
             assert(pimpl != nullptr);
-			pimpl->Update(deltaTime);
+			pimpl->update(deltaTime);
         }
 
 
@@ -415,16 +415,16 @@ namespace GU
         *   @param  StatePtr a pointer to a GameState object.
         *   @param  deltaTime is the time the previous frame took
         *************************************************************************************/
-        void Engin::Draw(const float &deltaTime)
+        void Engin::draw(const float &deltaTime)
         {
             assert(pimpl != nullptr);
-			pimpl->Draw(deltaTime);
+			pimpl->draw(deltaTime);
         }
 
-        int Engin::Size() const
+        int Engin::size() const
         {
             assert(pimpl != nullptr);
-            return pimpl->Size();
+            return pimpl->size();
         }
 
         /*********************************************************************************//**
