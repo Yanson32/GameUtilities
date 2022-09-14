@@ -1,4 +1,7 @@
-set(FILES "${CMAKE_CURRENT_SOURCE_DIR}/RGBA.cpp"
+set(FILES   "${CMAKE_CURRENT_SOURCE_DIR}/RGBA.cpp"
+            "${CMAKE_CURRENT_SOURCE_DIR}/AABB.cpp"
+            "${CMAKE_CURRENT_SOURCE_DIR}/QuadTree.cpp"
+            "${CMAKE_CURRENT_SOURCE_DIR}/Rectangle.cpp"
 )
 
 set(RELATIVE_PATH "src/GameUtilities/Data")

@@ -1,4 +1,8 @@
-set(FILES "${CMAKE_CURRENT_SOURCE_DIR}/RGBA.h"
+set(FILES   "${CMAKE_CURRENT_SOURCE_DIR}/RGBA.h"
+            "${CMAKE_CURRENT_SOURCE_DIR}/AABB.h"
+            "${CMAKE_CURRENT_SOURCE_DIR}/PhysicsObject.h"
+            "${CMAKE_CURRENT_SOURCE_DIR}/QuadTree.h"
+            "${CMAKE_CURRENT_SOURCE_DIR}/Rectangle.h"
 )
 
 set(RELATIVE_PATH "include/GameUtilities/Data")
