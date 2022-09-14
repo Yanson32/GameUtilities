@@ -1221,8 +1221,11 @@ String::operator const char*() const
         **************************************************************/
         String::~String()
         {
-          if(pimpl)
-            delete pimpl;
+            if(pimpl != nullptr)
+            {
+                delete pimpl;
+                pimpl = nullptr;
+            }
         }
     }
 }

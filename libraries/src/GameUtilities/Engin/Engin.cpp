@@ -438,8 +438,11 @@ namespace GU
         Engin::~Engin()
         {
             //dtor
-            if(pimpl)
+            if(pimpl != nullptr)
+            {
                 delete pimpl;
+                pimpl = nullptr;
+            }
         }
     }
 

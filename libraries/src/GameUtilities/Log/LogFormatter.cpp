@@ -181,7 +181,10 @@ namespace GU
         {
             assert(m_pimpl != nullptr);
             if(m_pimpl != nullptr)
+            {
                 delete m_pimpl;
+                m_pimpl = nullptr;
+            }
         } 
     }
 
