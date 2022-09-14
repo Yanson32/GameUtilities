@@ -16,7 +16,6 @@ namespace GU
 {
     namespace Engin
     {
-
         /*********************************************************************************//**
         *	\brief	This is the main game engin class
         *	\class Engin
@@ -24,7 +23,7 @@ namespace GU
         class ENGIN_EXPORT Engin
         {
             public:
-				typedef std::unique_ptr<GameState> StatePtr;
+                typedef std::unique_ptr<GU::Engin::GameState> StatePtr;
 
                 /*********************************************************************************//**
                 *   @brief	Default constructor
@@ -40,7 +39,7 @@ namespace GU
                 *	@brief	Push a new state onto the stack
                 *   @param	state a pointer to a GameState object.
                 *************************************************************************************/
-                void Push(StatePtr param, std::shared_ptr<Frame> frame);
+                void push(StatePtr param, std::shared_ptr<GU::Engin::Frame> frame);
 
 
                 /**************************************************************************//**
@@ -52,7 +51,7 @@ namespace GU
                 *			construct a GameState object.
                 ******************************************************************************/
                 template<typename Type, typename... Args>
-                void Push(std::shared_ptr<Frame> frame, Args&&... args);
+                void push(std::shared_ptr<GU::Engin::Frame> frame, Args&&... args);
 
 
                 /*********************************************************************************//**
@@ -60,7 +59,7 @@ namespace GU
                 *   @return boolean true when the state is successfully removed
                 *           from the stack.
                 *************************************************************************************/
-                bool Pop(std::shared_ptr<Frame> frame);
+                bool pop(std::shared_ptr<GU::Engin::Frame> frame);
 
 
                 /*********************************************************************************//**
@@ -68,7 +67,7 @@ namespace GU
                 *           A new GameState object onto the stack.
                 *   @param	state a pointer to a GameState object.
                 *************************************************************************************/
-                void ChangeState(StatePtr param, std::shared_ptr<Frame> frame);
+                void changeState(StatePtr param, std::shared_ptr<GU::Engin::Frame> frame);
 
 
                 /**************************************************************************//**
@@ -81,14 +80,14 @@ namespace GU
                 *   @param  Type this is the type of GameState.
                 ******************************************************************************/
                 template<typename Type, typename... Args>
-                void ChangeState(std::shared_ptr<Frame> frame, Args&&... args);
+                void changeState(std::shared_ptr<GU::Engin::Frame> frame, Args&&... args);
 
 
                 /*********************************************************************************//**
                 *   @brief	This method is used to determine if the game is still running.
                 *	@return boolean true when the game is running and false otherwise
                 *************************************************************************************/
-                bool IsRunning() const;
+                bool isRunning() const;
 
 
                 /*********************************************************************************//**
@@ -96,7 +95,7 @@ namespace GU
                 *
                 *	@return	After calling this method IsRunning() returns false.
                 *************************************************************************************/
-                void Quit();
+                void quit();
 
 
                 bool empty() const;
@@ -108,7 +107,7 @@ namespace GU
                 *           include events and user input.
                 *   @param  deltaTime is the time the previous frame took
                 *************************************************************************************/
-                void HandleEvents(const float &deltaTime, std::shared_ptr<Frame> frame);
+                void handleEvents(const float &deltaTime, std::shared_ptr<GU::Engin::Frame> frame);
 
 
                 /*********************************************************************************//**
@@ -116,7 +115,7 @@ namespace GU
                 *            class. Which will have code for handling game logic.
                 *   @param  deltaTime is the time the previous frame took
                 *************************************************************************************/
-                void Update(const float &deltaTime, std::shared_ptr<Frame> frame);
+                void update(const float &deltaTime, std::shared_ptr<GU::Engin::Frame> frame);
 
 
                 /*********************************************************************************//**
@@ -127,17 +126,17 @@ namespace GU
                 *   @param  StatePtr a pointer to a GameState object.
                 *   @param  deltaTime is the time the previous frame took
                 *************************************************************************************/
-                void Draw(const float &deltaTime, std::shared_ptr<Frame> frame);
+                void draw(const float &deltaTime, std::shared_ptr<GU::Engin::Frame> frame);
 
 
-                int Size() const;
+                int size() const;
                 /*********************************************************************************//**
                 *   @brief	Destructor:
                 *************************************************************************************/
                 virtual ~Engin();
             private:
-				class Impl;
-				Impl* pimpl = nullptr;
+                class Impl;
+                Impl* pimpl = nullptr;
         };
 
 
@@ -150,9 +149,9 @@ namespace GU
         *			construct a GameState object.
         ******************************************************************************/
         template<typename Type, typename... Args>
-        void Engin::Push(std::shared_ptr<Frame> frame, Args&&... args)
+        void Engin::push(std::shared_ptr<GU::Engin::Frame> frame, Args&&... args)
         {
-            this->Push(StatePtr(new Type(std::forward<Args>(args)...)), frame);
+            this->push(StatePtr(new Type(std::forward<Args>(args)...)), frame);
         }
 
 
@@ -166,9 +165,9 @@ namespace GU
         *   \param  Type this is the type of GameState.
         ******************************************************************************/
         template<typename Type, typename... Args>
-        void Engin::ChangeState(std::shared_ptr<Frame> frame, Args&&... args)
+        void Engin::changeState(std::shared_ptr<GU::Engin::Frame> frame, Args&&... args)
         {
-            this->ChangeState(StatePtr(new Type(std::forward<Args>(args)...)), frame);
+            this->changeState(StatePtr(new Type(std::forward<Args>(args)...)), frame);
         }
     }
 }

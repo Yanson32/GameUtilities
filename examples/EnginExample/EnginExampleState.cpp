@@ -7,7 +7,9 @@ window(newWindow)
 {
 
 }
-void EnginExampleState::Init()
+
+
+void EnginExampleState::init(std::shared_ptr<GU::Engin::Frame> frame)
 {
     const float RADIUS = 50;
     circle.setFillColor(sf::Color::Green);
@@ -17,13 +19,13 @@ void EnginExampleState::Init()
 }
 
 
-void EnginExampleState::Clean()
+void EnginExampleState::clean(std::shared_ptr<GU::Engin::Frame> frame)
 {
 
 }
 
 
-void EnginExampleState::HandleEvents(GU::Engin::Engin& engin, const float &deltaTime)
+void EnginExampleState::handleEvents(GU::Engin::Engin& engin, const float &deltaTime, std::shared_ptr<GU::Engin::Frame> frame)
 {
     if(window.isOpen())
     {
@@ -42,13 +44,13 @@ void EnginExampleState::HandleEvents(GU::Engin::Engin& engin, const float &delta
 
 
 
-void EnginExampleState::Update(GU::Engin::Engin& engin, const float &deltaTime)
+void EnginExampleState::update(GU::Engin::Engin& engin, const float &deltaTime, std::shared_ptr<GU::Engin::Frame> frame)
 {
 
 }
 
 
-void EnginExampleState::Draw(GU::Engin::Engin& engin, const float &deltaTime)
+void EnginExampleState::draw(GU::Engin::Engin& engin, const float &deltaTime, std::shared_ptr<GU::Engin::Frame> frame)
 {
     window.clear();
     window.draw(circle);

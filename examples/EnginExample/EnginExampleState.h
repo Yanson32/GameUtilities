@@ -6,22 +6,13 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 	class EnginExampleState: public GU::Engin::GameState
 	{
-		public:
+	public:
 			EnginExampleState(sf::RenderWindow &newWindow);
-                virtual void Init();
-
-
-                virtual void Clean();
-
-
-                virtual void HandleEvents(GU::Engin::Engin& engin, const float &deltaTime);
-
-
-
-                virtual void Update(GU::Engin::Engin& engin, const float &deltaTime);
-
-
-                virtual void Draw(GU::Engin::Engin& engin, const float &deltaTime);
+            virtual void init(std::shared_ptr<GU::Engin::Frame> frame) override;
+            virtual void clean(std::shared_ptr<GU::Engin::Frame> frame) override;
+            virtual void handleEvents(GU::Engin::Engin& engin, const float &deltaTime, std::shared_ptr<GU::Engin::Frame> frame) override;
+            virtual void update(GU::Engin::Engin& engin, const float &deltaTime, std::shared_ptr<GU::Engin::Frame> frame) override;
+            virtual void draw(GU::Engin::Engin& engin, const float &deltaTime, std::shared_ptr<GU::Engin::Frame> frame) override;
         private:
             sf::RenderWindow &window;
             sf::CircleShape circle;
