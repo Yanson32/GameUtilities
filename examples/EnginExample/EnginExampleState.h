@@ -8,20 +8,11 @@
 	{
 		public:
 			EnginExampleState(sf::RenderWindow &newWindow);
-                virtual void Init();
-
-
-                virtual void Clean();
-
-
-                virtual void HandleEvents(GU::Engin::Engin& engin, const float &deltaTime);
-
-
-
-                virtual void Update(GU::Engin::Engin& engin, const float &deltaTime);
-
-
-                virtual void Draw(GU::Engin::Engin& engin, const float &deltaTime);
+            virtual void Init() override;
+            virtual void Clean() override;
+            virtual void HandleEvents(GU::Engin::Engin& engin, const float &deltaTime) override;
+            virtual void Update(GU::Engin::Engin& engin, const float &deltaTime) override;
+            virtual void Draw(GU::Engin::Engin& engin, const float &deltaTime) override;
         private:
             sf::RenderWindow &window;
             sf::CircleShape circle;
