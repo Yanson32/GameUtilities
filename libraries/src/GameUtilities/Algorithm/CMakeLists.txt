@@ -2,7 +2,8 @@ set(FILES "")
 
 set(RELATIVE_PATH "src/GameUtilities/Algorithm")
 
-set(SUB_DIRECTORIES "SAT")
+set(SUB_DIRECTORIES "SAT"
+)
 
 #Add subdirectories
 foreach(LOOP_VAR ${SUB_DIRECTORIES})
