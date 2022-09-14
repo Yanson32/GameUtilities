@@ -8,38 +8,38 @@
 class ExampleFrame: public GU::Engin::Frame
 {
     public:
-        virtual void Init() override;
-        virtual void Clean() override;
-        virtual void HandleEvents(GU::Engin::Engin& engin, const float &deltaTime) override;
-        virtual void Update(GU::Engin::Engin& engin, const float &deltaTime) override;
-        virtual void Draw(GU::Engin::Engin& engin, const float &deltaTime) override;
+        virtual void init() override;
+        virtual void clean() override;
+        virtual void handleEvents(GU::Engin::Engin& engin, const float &deltaTime) override;
+        virtual void update(GU::Engin::Engin& engin, const float &deltaTime) override;
+        virtual void draw(GU::Engin::Engin& engin, const float &deltaTime) override;
 };
 
-void ExampleFrame::Init()
+void ExampleFrame::init()
 {
 
 }
 
 
-void ExampleFrame::Clean()
+void ExampleFrame::clean()
 {
 
 }
 
 
-void ExampleFrame::HandleEvents(GU::Engin::Engin& engin, const float &deltaTime)
+void ExampleFrame::handleEvents(GU::Engin::Engin& engin, const float &deltaTime)
 {
 
 }
 
 
-void ExampleFrame::Update(GU::Engin::Engin& engin, const float &deltaTime)
+void ExampleFrame::update(GU::Engin::Engin& engin, const float &deltaTime)
 {
 
 }
 
 
-void ExampleFrame::Draw(GU::Engin::Engin& engin, const float &deltaTime)
+void ExampleFrame::draw(GU::Engin::Engin& engin, const float &deltaTime)
 {
 
 }

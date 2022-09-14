@@ -10,11 +10,11 @@ namespace GU
         class ENGIN_EXPORT Frame 
         {
             public:
-                virtual void Init() = 0;
-                virtual void Clean() = 0;
-                virtual void HandleEvents(Engin& engin, const float &deltaTime) = 0;
-                virtual void Update(Engin& engin, const float &deltaTime) = 0;
-                virtual void Draw(Engin& engin, const float &deltaTime) = 0;
+                virtual void init() = 0;
+                virtual void clean() = 0;
+                virtual void handleEvents(GU::Engin::Engin& engin, const float &deltaTime) = 0;
+                virtual void update(GU::Engin::Engin& engin, const float &deltaTime) = 0;
+                virtual void draw(GU::Engin::Engin& engin, const float &deltaTime) = 0;
         };
 
     }
