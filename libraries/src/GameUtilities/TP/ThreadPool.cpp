@@ -116,7 +116,10 @@ namespace GU
                 it->join();
             }
             if(m_pimpl != nullptr)
+            {
                 delete m_pimpl;
+                m_pimpl = nullptr;
+            }
         }
     }
 }

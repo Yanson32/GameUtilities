@@ -151,8 +151,11 @@ namespace GU
 		FrameRate::~FrameRate()
 		{
 			//dtor
-			if(pimpl)
+			if(pimpl != nullptr)
+            {
                 delete pimpl;
+                pimpl = nullptr;
+            }
 		}
 
     }

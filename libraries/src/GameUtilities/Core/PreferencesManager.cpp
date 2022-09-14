@@ -248,7 +248,10 @@ namespace GU
     {
         assert(pimpl != nullptr);
         if(pimpl != nullptr)
+        {
     	    delete pimpl;
+            pimpl = nullptr;
+        }
     }
   }
 }
