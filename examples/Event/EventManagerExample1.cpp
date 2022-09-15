@@ -5,9 +5,9 @@
 
 int main()
 {
-    GU::Evt::EventManager::inst().Post<GU::Evt::Pop>();
+    GU::Evt::EventManager::inst().post<GU::Evt::Pop>();
 	GU::Evt::EventPtr evt;
-    while(GU::Evt::EventManager::inst().Poll(evt))
+    while(GU::Evt::EventManager::inst().poll(evt))
     {
         switch(evt->getId())
         {

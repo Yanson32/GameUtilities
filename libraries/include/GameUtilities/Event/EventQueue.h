@@ -33,7 +33,7 @@ namespace GU
 			*   Purpose:    This method adds an event to the event queue.
 			*   Input:      EventPtr a pointer to an event to be added.
 			***************************************************************************/
-			void Post(EventPtr event);
+			void post(EventPtr event);
 
 
 			/***************************************************************************
@@ -44,7 +44,7 @@ namespace GU
 			*               passed to the constructor of the event.
 			***************************************************************************/
 			template<typename Type, typename... Args>
-			void Post(Args&&... args);
+			void post(Args&&... args);
 
 
 			/***************************************************************************
@@ -63,7 +63,7 @@ namespace GU
 			*   Return:     bool true if an event has been taken from the queue, and
 			*               false otherwise.
 			***************************************************************************/
-			bool Poll(EventPtr &event);
+			bool poll(EventPtr &event);
 
 
 			/***************************************************************************
@@ -85,9 +85,9 @@ namespace GU
 		*               passed to the constructor of the event.
 		***************************************************************************/
 		template<typename T, typename... Args>
-		void EventQueue::Post(Args&&... args)
+		void EventQueue::post(Args&&... args)
 		{
-			this->Post(EventPtr(new T(std::forward<Args>(args)...)));
+			this->post(EventPtr(new T(std::forward<Args>(args)...)));
 		}
 
 	}

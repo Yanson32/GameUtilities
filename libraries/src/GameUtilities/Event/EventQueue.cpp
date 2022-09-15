@@ -18,9 +18,9 @@ namespace GU
 		{
 			public:
 				impl();
-				void Post(EventPtr event);
+				void post(EventPtr event);
 				bool empty() const;
-				bool Poll(EventPtr &event);
+				bool poll(EventPtr &event);
 				virtual ~impl();
 			private:
 				std::queue<EventPtr> eventQueue;
@@ -37,7 +37,7 @@ namespace GU
 		}
 
 		//Post implimentation
-		void EventQueue::impl::Post(EventPtr event)
+		void EventQueue::impl::post(EventPtr event)
 		{
 			assert(event != nullptr);
 			#ifdef MULTITHREAD
@@ -54,7 +54,7 @@ namespace GU
 		}
 
 		//Poll Implimentation
-		bool EventQueue::impl::Poll(EventPtr &event)
+		bool EventQueue::impl::poll(EventPtr &event)
 		{
 			#ifdef MULTITHREAD
 				std::lock_guard<std::mutex> lock(eventQueueLock);
@@ -107,10 +107,10 @@ namespace GU
         *   \brief	This method adds an event to the event queue.
         *   \brief 	param: EventPtr a pointer to an event to be added.
         ***************************************************************************/
-        void EventQueue::Post(EventPtr event)
+        void EventQueue::post(EventPtr event)
         {
             assert(pimpl != nullptr);
-			pimpl->Post(event);
+			pimpl->post(event);
         }
 
 
@@ -134,10 +134,10 @@ namespace GU
         *   \brief  Return: bool true if an event has been taken from the queue, and
         *           false otherwise.
         ***************************************************************************/
-        bool EventQueue::Poll(EventPtr &event)
+        bool EventQueue::poll(EventPtr &event)
         {
             assert(pimpl != nullptr);
-			return pimpl->Poll(event);
+			return pimpl->poll(event);
         }
 
 
