@@ -15,6 +15,5 @@
             virtual void draw(GU::Engin::Engin& engin, const float &deltaTime, std::shared_ptr<GU::Engin::Frame> frame) override;
         private:
             sf::RenderWindow &window;
-            sf::CircleShape circle;
 	};
 #endif
