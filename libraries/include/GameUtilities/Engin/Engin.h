@@ -131,7 +131,7 @@ namespace GU
                 virtual ~Engin();
             private:
 				class Impl;
-				Impl* pimpl = nullptr;
+				Impl* m_pimpl = nullptr;
         };
 
 

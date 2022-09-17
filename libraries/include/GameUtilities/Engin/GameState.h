@@ -6,6 +6,7 @@
 #ifndef GAMEUTILITIES_ENGIN_GAMESTATE_H
 #define GAMEUTILITIES_ENGIN_GAMESTATE_H
 #include "engin_export.h"
+#include <memory>
 
 namespace GU
 {
@@ -42,21 +43,21 @@ namespace GU
                 *   \brief	This method handles input such as user input and events
                 *	\param	engin is a reference to the game's Engin object.
                 *************************************************************************************/
-                virtual void handleEvents(Engin& engin, const float &deltaTime) = 0;
+                virtual void handleEvents(GU::Engin::Engin *engin, const float &deltaTime) = 0;
 
 
                 /*********************************************************************************//**
                 *   \brief	This method handles input such as user input and events
                 *	\param	engin is a reference to the game's Engin object.
                 *************************************************************************************/
-                virtual void update(Engin& engin, const float &deltaTime) = 0;
+                virtual void update(GU::Engin::Engin *engin, const float &deltaTime) = 0;
 
 
                 /*********************************************************************************//**
                 *   \brief	This method draws the current game state.
                 *	\param	engin is a reference to the game's Engin object.
                 *************************************************************************************/
-                virtual void draw(Engin& engin, const float &deltaTime) = 0;
+                virtual void draw(GU::Engin::Engin *engin, const float &deltaTime) = 0;
 
 
                 /*********************************************************************************//**

@@ -10,9 +10,9 @@
 			EnginExampleState(sf::RenderWindow &newWindow);
             virtual void init() override;
             virtual void clean() override;
-            virtual void handleEvents(GU::Engin::Engin& engin, const float &deltaTime) override;
-            virtual void update(GU::Engin::Engin& engin, const float &deltaTime) override;
-            virtual void draw(GU::Engin::Engin& engin, const float &deltaTime) override;
+            virtual void handleEvents(GU::Engin::Engin *engin, const float &deltaTime) override;
+            virtual void update(GU::Engin::Engin *engin, const float &deltaTime) override;
+            virtual void draw(GU::Engin::Engin *engin, const float &deltaTime) override;
         private:
             sf::RenderWindow &window;
             sf::CircleShape circle;
