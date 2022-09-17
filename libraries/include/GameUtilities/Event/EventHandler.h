@@ -16,7 +16,7 @@ namespace GU
         {
             public:
                 EventHandler();
-                virtual void handleGUEvent(GU::Engin::Engin& engin, GU::Evt::EventPtr event) = 0;
+                virtual void handleGUEvent(GU::Engin::Engin *engin, GU::Evt::EventPtr event) = 0;
                 virtual ~EventHandler();
             protected:
             private:
