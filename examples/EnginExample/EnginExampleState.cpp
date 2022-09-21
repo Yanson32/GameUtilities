@@ -23,7 +23,7 @@ void EnginExampleState::clean()
 }
 
 
-void EnginExampleState::handleEvents(GU::Engin::Engin *engin, const float &deltaTime)
+void EnginExampleState::handleEvents(EnginPtr engin, const float &deltaTime)
 {
     if(window.isOpen())
     {
@@ -43,13 +43,13 @@ void EnginExampleState::handleEvents(GU::Engin::Engin *engin, const float &delta
 
 
 
-void EnginExampleState::update(GU::Engin::Engin *engin, const float &deltaTime)
+void EnginExampleState::update(EnginPtr engin, const float &deltaTime)
 {
 
 }
 
 
-void EnginExampleState::draw(GU::Engin::Engin *engin, const float &deltaTime)
+void EnginExampleState::draw(EnginPtr engin, const float &deltaTime)
 {
     window.clear();
     window.draw(circle);

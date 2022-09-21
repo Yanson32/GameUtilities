@@ -15,7 +15,7 @@ namespace GU
         class EVENT_EXPORT EventHandler
         {
             public:
-                typedef GU::Engin::Engin const * EnginPtr;
+                typedef GU::Engin::Engin * const EnginPtr;
                 EventHandler();
                 virtual void handleGUEvent(EnginPtr engin, GU::Evt::EventPtr event) = 0;
                 virtual ~EventHandler();
