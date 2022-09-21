@@ -22,6 +22,7 @@ namespace GU
         class ENGIN_EXPORT GameState
         {
             public:
+                typedef GU::Engin::Engin const * EnginPtr;
 
                 /*********************************************************************************//**
                 *   \brief	Default constructor
@@ -43,21 +44,21 @@ namespace GU
                 *   \brief	This method handles input such as user input and events
                 *	\param	engin is a reference to the game's Engin object.
                 *************************************************************************************/
-                virtual void handleEvents(GU::Engin::Engin *engin, const float &deltaTime) = 0;
+                virtual void handleEvents(EnginPtr engin, const float &deltaTime) = 0;
 
 
                 /*********************************************************************************//**
                 *   \brief	This method handles input such as user input and events
                 *	\param	engin is a reference to the game's Engin object.
                 *************************************************************************************/
-                virtual void update(GU::Engin::Engin *engin, const float &deltaTime) = 0;
+                virtual void update(EnginPtr engin, const float &deltaTime) = 0;
 
 
                 /*********************************************************************************//**
                 *   \brief	This method draws the current game state.
                 *	\param	engin is a reference to the game's Engin object.
                 *************************************************************************************/
-                virtual void draw(GU::Engin::Engin *engin, const float &deltaTime) = 0;
+                virtual void draw(EnginPtr engin, const float &deltaTime) = 0;
 
 
                 /*********************************************************************************//**
