@@ -26,7 +26,7 @@ namespace GU
         {
             std::ofstream m_file;
             
-            m_file.open(m_path);
+            m_file.open(m_path, std::ios_base::app);
             if(!m_file.good())
             {
                 std::cout << "Unable to open file " << m_path.toStdString() << std::endl;
