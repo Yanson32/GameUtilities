@@ -33,11 +33,29 @@ namespace GU
             /*****************************************************************
             * @brief:  Equality operator
             * @param:  comp will be used to check for equality against the
-            *          current componentId object.
+            *          current componentId.
             * @return: True of the objects are equal and false otherwise
             *****************************************************************/
             bool operator == (const componentId &comp);
 
+
+            /*****************************************************************
+            * @brief:  Not equal operator
+            * @param:  comp will be used to check for equality against the
+            *          current LogComponent object.
+            * @return: True of the objects are not equal and false otherwise
+            *****************************************************************/
+            bool operator != (const LogComponent &comp);
+            
+
+            /*****************************************************************
+            * @brief:  Not equal operator
+            * @param:  comp will be used to check for equality against the
+            *          current componentId.
+            * @return: True of the objects are not equal and false otherwise
+            *****************************************************************/
+            bool operator != (const componentId &comp);
+            
 
             /*****************************************************************
             * @brief:  This method formats the data in the current object
