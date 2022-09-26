@@ -29,7 +29,7 @@ namespace GU
         /*****************************************************************
         * @brief:  Equality operator
         * @param:  comp will be used to check for equality against the
-        *          current componentId object.
+        *          current componentId.
         * @return: True of the objects are equal and false otherwise
         *****************************************************************/
         bool LogComponent::operator == (const componentId &comp)
@@ -37,5 +37,28 @@ namespace GU
             return this->m_id == comp;
         }
 
+        
+        /*****************************************************************
+        * @brief:  Not equal operator
+        * @param:  comp will be used to check for equality against the
+        *          current LogComponent object.
+        * @return: True of the objects are not equal and false otherwise
+        *****************************************************************/
+        bool LogComponent::operator != (const LogComponent &comp)
+        {
+            return this->m_id != comp.m_id;
+        }
+
+
+        /*****************************************************************
+        * @brief:  Not equal operator
+        * @param:  comp will be used to check for equality against the
+        *          current componentId.
+        * @return: True of the objects are not equal and false otherwise
+        *****************************************************************/
+        bool LogComponent::operator != (const componentId &comp)
+        {
+            return this->m_id != comp;
+        }
     }
 }

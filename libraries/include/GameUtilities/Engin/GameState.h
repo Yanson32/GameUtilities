@@ -23,6 +23,7 @@ namespace GU
         class ENGIN_EXPORT GameState
         {
             public:
+                typedef GU::Engin::Engin * const EnginPtr;
 
                 /*********************************************************************************//**
                 *   \brief	Default constructor
