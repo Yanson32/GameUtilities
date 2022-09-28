@@ -1,4 +1,4 @@
-#include "GameUtilities/Event/MessageEvent.h"
+#include "GameUtilities/Event/Events/MessageEvent.h"
 #include "GameUtilities/Core/Macros.h"
 
 namespace GU

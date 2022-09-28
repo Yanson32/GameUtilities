@@ -1,15 +1,12 @@
 set(FILES
-"${CMAKE_CURRENT_SOURCE_DIR}/EventManager.cpp"
-"${CMAKE_CURRENT_SOURCE_DIR}/Dispatcher.cpp"
-"${CMAKE_CURRENT_SOURCE_DIR}/EventQueue.cpp"
-"${CMAKE_CURRENT_SOURCE_DIR}/Listener.cpp"
-"${CMAKE_CURRENT_SOURCE_DIR}/EventHandler.cpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/OnReturnPressed.cpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/OnReturnReleased.cpp"
 
 )
 
-set(RELATIVE_PATH "src/GameUtilities/Event")
+set(RELATIVE_PATH "src/GameUtilities/Event/Events/Keyboard")
 
-set(SUB_DIRECTORIES "Events")
+set(SUB_DIRECTORIES "")
 
 #Add subdirectories
 foreach(LOOP_VAR ${SUB_DIRECTORIES})

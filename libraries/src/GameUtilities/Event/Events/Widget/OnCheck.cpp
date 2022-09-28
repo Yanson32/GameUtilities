@@ -1,28 +1,27 @@
-#include "GameUtilities/Event/OnComboChanged.h"
+#include "GameUtilities/Event/Events/Widget/OnCheck.h"
 #include "GameUtilities/Event/EventId.h"
 namespace GU
 {
     namespace Evt
     {
         /**************************************************************************
-        *   @brief  Constructor   
-        *   @param  newComboId is the id of the combo box
-        *   @param  newIndex is the index of the data element that has changed. 
+        *   @breif  Constructor
+        *   @param  checkBoxId is a unique identifier for the checkbox.
+        *   @param  checked is true if the checkbox was checked and false otherwise.
         **************************************************************************/
-        OnComboChanged::OnComboChanged(const int comboId, const int index):
-        Event(static_cast<int>(GU::Evt::EventId::ON_COMBO_CHANGED)),
-        m_comboId(comboId),
-        m_index(index)
+        OnCheck::OnCheck(const int checkBoxId, const bool checked):
+        Event(static_cast<int>(GU::Evt::EventId::ON_CHECK)),
+        m_checkboxId(checkBoxId),
+        m_checked(checked)
         {
             //ctor
         }
 
         
-
         /**************************************************************************
-        *   @brief  Destructor
+        *   @breif  Destructor 
         **************************************************************************/
-        OnComboChanged::~OnComboChanged()
+        OnCheck::~OnCheck()
         {
             //dtor
         }

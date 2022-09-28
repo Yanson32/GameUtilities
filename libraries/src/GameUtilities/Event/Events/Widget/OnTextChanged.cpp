@@ -1,4 +1,4 @@
-#include "GameUtilities/Event/OnTextChanged.h"
+#include "GameUtilities/Event/Events/Widget/OnTextChanged.h"
 #include "GameUtilities/Event/EventId.h"
 
 

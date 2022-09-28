@@ -1,4 +1,4 @@
-#include "GameUtilities/Event/OnSliderChanged.h"
+#include "GameUtilities/Event/Events/Widget/OnSliderChanged.h"
 #include "GameUtilities/Event/EventId.h"
 
 namespace GU

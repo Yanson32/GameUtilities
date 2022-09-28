@@ -1,4 +1,4 @@
-#include "GameUtilities/Event/LogEvent.h"
+#include "GameUtilities/Event/Events/LogEvent.h"
 #include "GameUtilities/Core/Macros.h"
 #include "GameUtilities/Event/EventId.h"
 namespace GU

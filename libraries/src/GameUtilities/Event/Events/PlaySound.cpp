@@ -1,4 +1,4 @@
-#include "GameUtilities/Event/PlaySound.h"
+#include "GameUtilities/Event/Events/PlaySound.h"
 #include "GameUtilities/Event/EventId.h"
 
 namespace GU

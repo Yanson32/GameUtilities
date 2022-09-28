@@ -1,4 +1,4 @@
-#include "GameUtilities/Event/Event.h"
+#include "GameUtilities/Event/Events/Event.h"
 
 namespace GU
 {
