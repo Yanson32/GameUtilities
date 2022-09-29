@@ -1,4 +1,4 @@
-#include "GameUtilities/Event/Events/Pop.h"
+#include "GameUtilities/Event/Events/OnPlaySound.h"
 #include "GameUtilities/Event/EventId.h"
 
 namespace GU
@@ -7,22 +7,21 @@ namespace GU
     {
         /**************************************************************************
         *   @brief  Constructor
-        *   @param  id is the unique identifier for the pop event.
+        *   @param  id is the unique identifier for the sound.
         *   @param  line is the line number where the event originated from
         *   @param  file is the file where the event originated from
         **************************************************************************/
-		Pop::Pop(const int id, const int line, const char* file):
-		Event(static_cast<int>(GU::Evt::EventId::POP_STATE), line, file),
-        m_id(id)
+		OnPlaySound::OnPlaySound(const int &id, const int line, const char* file):
+		Event(static_cast<int>(GU::Evt::EventId::PLAY_SOUND), line, file), m_soundId(id)
 		{
 			//ctor
 		}
 
         
         /**************************************************************************
-        *   @brief  Deconstructor 
+        *   @brief  Destructor 
         **************************************************************************/
-		Pop::~Pop()
+		OnPlaySound::~OnPlaySound()
 		{
 			//dtor
 		}

@@ -1,5 +1,5 @@
-#ifndef GAMEUTILITIES_SLIDER_CHANGED_H
-#define GAMEUTILITIES_SLIDER_CHANGED_H
+#ifndef GAMEUTILITIES_ON_SLIDER_CHANGED_H
+#define GAMEUTILITIES_ON_SLIDER_CHANGED_H
 /**************************************************************************
 *   Author:     Wayne J Larson Jr.
 *   Date:       05/10/22

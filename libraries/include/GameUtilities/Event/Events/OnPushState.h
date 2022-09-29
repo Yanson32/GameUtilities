@@ -1,5 +1,5 @@
-#ifndef GAMEUTILITIES_PUSHSTATE_H
-#define GAMEUTILITIES_PUSHSTATE_H
+#ifndef GAMEUTILITIES_EVENT_ONPUSHSTATE_H
+#define GAMEUTILITIES_EVENT_ONPUSHSTATE_H
 /*******************************************************//**
 *   @author Wayne J Larson Jr.
 *   @date   5/17/22
@@ -13,7 +13,7 @@ namespace GU
 {
     namespace Evt
     {
-		class EVENT_EXPORT PushState: public Event
+		class EVENT_EXPORT OnPushState: public Event
 		{
 			public:
                 /*******************************************************//**
@@ -24,13 +24,13 @@ namespace GU
                 *   @param  file is the source file where the event was
                 *           generated.
                 ***********************************************************/
-				PushState(const int stateId, const int line = 0, const char* file = "");
+				OnPushState(const int stateId, const int line = 0, const char* file = "");
                 
 
                 /*******************************************************//**
                 *   @brief  Destructor 
                 ***********************************************************/
-				virtual ~PushState();
+				virtual ~OnPushState();
 			public:	
                 const int m_id;
 		};

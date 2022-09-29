@@ -1,5 +1,5 @@
-#ifndef GAMEUTILITIES_POP_H
-#define GAMEUTILITIES_POP_H
+#ifndef GAMEUTILITIES_ONPOP_H
+#define GAMEUTILITIES_ONPOP_H
 /**************************************************************************
 *   Author:     Wayne J Larson Jr.
 *   Date:       05/12/22
@@ -14,7 +14,7 @@ namespace GU
     namespace Evt
     {
 
-		class EVENT_EXPORT Pop: public Event
+		class EVENT_EXPORT OnPop: public Event
 		{
 			public:
                 /**************************************************************************
@@ -23,13 +23,13 @@ namespace GU
                 *   @param  line is the line number where the event originated from
                 *   @param  file is the file where the event originated from
                 **************************************************************************/
-				Pop(const int id = -1, const int line = 0, const char* file = "");
+				OnPop(const int id = -1, const int line = 0, const char* file = "");
                 
 
                 /**************************************************************************
                 *   @brief  Deconstructor 
                 **************************************************************************/
-				virtual ~Pop();
+				virtual ~OnPop();
 	        public:
                 const int m_id;
 

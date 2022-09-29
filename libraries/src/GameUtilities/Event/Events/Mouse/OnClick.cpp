@@ -1,29 +1,27 @@
-#include "GameUtilities/Event/Events/PlaySound.h"
+#include "GameUtilities/Event/Events/Mouse/OnClick.h"
 #include "GameUtilities/Event/EventId.h"
-
 namespace GU
 {
     namespace Evt
     {
         /**************************************************************************
         *   @brief  Constructor
-        *   @param  id is the unique identifier for the sound.
-        *   @param  line is the line number where the event originated from
-        *   @param  file is the file where the event originated from
+        *   @param  id is the unique id of the button that was clicked 
         **************************************************************************/
-		PlaySound::PlaySound(const int &id, const int line, const char* file):
-		Event(static_cast<int>(GU::Evt::EventId::PLAY_SOUND), line, file), m_soundId(id)
-		{
-			//ctor
-		}
+        OnClick::OnClick(const int id):
+        Event(static_cast<int>(GU::Evt::EventId::CLICK)),
+        m_buttonId(id)
+        {
+            //ctor
+        }
 
         
         /**************************************************************************
         *   @brief  Destructor 
         **************************************************************************/
-		PlaySound::~PlaySound()
-		{
-			//dtor
-		}
-	}
+        OnClick::~OnClick()
+        {
+            //dtor
+        }
+    }
 }

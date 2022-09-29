@@ -1,4 +1,4 @@
-#include "GameUtilities/Event/Events/PushState.h"
+#include "GameUtilities/Event/Events/OnPushState.h"
 #include "GameUtilities/Event/EventId.h"
 
 namespace GU
@@ -14,7 +14,7 @@ namespace GU
         *   @param  file is the source file where the event was
         *           generated.
         ***********************************************************/
-		PushState::PushState(const int stateId, const int line, const char* file):
+		OnPushState::OnPushState(const int stateId, const int line, const char* file):
 		Event(static_cast<int>(GU::Evt::EventId::PUSH_STATE), line, file),
 		m_id(stateId)
 		{
@@ -25,7 +25,7 @@ namespace GU
         /*******************************************************//**
         *   @brief  Destructor 
         ***********************************************************/
-		PushState::~PushState()
+		OnPushState::~OnPushState()
 		{
 			//dtor
 		}

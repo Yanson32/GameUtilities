@@ -1,4 +1,4 @@
-#include "GameUtilities/Event/ChangeState.h"
+#include "GameUtilities/Event/Events/OnChangeState.h"
 #include "GameUtilities/Event/EventId.h"
 namespace GU
 {
@@ -11,7 +11,7 @@ namespace GU
         *   @param  newLine the line where the event originates from
         *   @param  newFile the file where the event originates from
         ***********************************************************/
-		ChangeState::ChangeState(const int newStateId, const int newLine, const char* newFile):
+		OnChangeState::OnChangeState(const int newStateId, const int newLine, const char* newFile):
 		Event(static_cast<int>(GU::Evt::EventId::CHANGE_STATE), newLine, newFile),
 		stateId(newStateId)
 		{
@@ -22,7 +22,7 @@ namespace GU
         /*******************************************************//**
         *   @brief  Destructor
         ***********************************************************/
-		ChangeState::~ChangeState()
+		OnChangeState::~OnChangeState()
 		{
 			//dtor
 		}

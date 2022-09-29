@@ -1,34 +1,39 @@
-#ifndef GAMEUTILITIES_CLICK_H
-#define GAMEUTILITIES_CLICK_H
+#ifndef GAMEUTILITIES_ONPLAYMUSIC_H
+#define GAMEUTILITIES_ONPLAYMUSIC_H
 /**************************************************************************
 *   Author:     Wayne J Larson Jr.
-*   Date:       05/13/22
+*   Date:       5/11/22
 *   Purpose:    This class is a subclass of the event class. This event
-*               is generated when the user clicks on something. 
+*               is generated to indicate that the music should start playing. 
 **************************************************************************/
 #include "event_export.h"
 #include "GameUtilities/Event/Event.h"
+
 namespace GU
 {
     namespace Evt
     {
-        class EVENT_EXPORT Click: public Event
-        {
-            public:
+
+		class EVENT_EXPORT OnPlayMusic: public Event
+		{
+			public:
                 /**************************************************************************
-                *   @brief  Constructor
-                *   @param  id is the unique id of the button that was clicked 
+                *   @brief  Constructor.
+                *   @param  musicFile is the music to be played.   
+                *   @param  line is the line in code where the event was generated.
+                *   @param  file is the file were the event was generated.
                 **************************************************************************/
-                Click(const int id);
+				OnPlayMusic(const char* musicFile, const int line = 0, const char* f1ile = "");
                 
 
                 /**************************************************************************
-                *   @brief  Destructor 
+                *   @brief  Destructor.
                 **************************************************************************/
-                virtual ~Click();
+				virtual ~OnPlayMusic();
             public:
-                const int m_buttonId;
-        };
-    }
+				const char* m_musicFile;
+		};
+	}
 }
-#endif // CLICK_H
+
+#endif // PLAYMUSIC_H

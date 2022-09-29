@@ -1,5 +1,5 @@
 set(FILES
-"${CMAKE_CURRENT_SOURCE_DIR}/Click.h"
+"${CMAKE_CURRENT_SOURCE_DIR}/OnClick.h"
 )
 
 set(RELATIVE_PATH "include/GameUtilities/Event/Events/Mouse")

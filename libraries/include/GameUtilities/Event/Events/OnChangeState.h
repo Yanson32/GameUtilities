@@ -5,8 +5,8 @@
 *           Event class and is used to signal a change
 *           in the games state.
 ***********************************************************/
-#ifndef GAMEUTILITIES_CHANGESTATE_H
-#define GAMEUTILITIES_CHANGESTATE_H
+#ifndef GAMEUTILITIES_ONCHANGESTATE_H
+#define GAMEUTILITIES_ONCHANGESTATE_H
 #include "event_export.h"
 #include "GameUtilities/Event/Event.h"
 
@@ -14,7 +14,7 @@ namespace GU
 {
     namespace Evt
     {
-		class EVENT_EXPORT ChangeState: public Event
+		class EVENT_EXPORT OnChangeState: public Event
 		{
 			public:
                 /*******************************************************//**
@@ -23,7 +23,7 @@ namespace GU
                 *   @param  newLine the line where the event originates from
                 *   @param  newFile the file where the event originates from
                 ***********************************************************/
-				ChangeState(const int newStateId, const int newLine = 0, const char* newFile = "");
+				OnChangeState(const int newStateId, const int newLine = 0, const char* newFile = "");
 
 
 				const int stateId;  //The unique identifier of the state
@@ -32,7 +32,7 @@ namespace GU
                 /*******************************************************//**
                 *   @brief  Destructor
                 ***********************************************************/
-				virtual ~ChangeState();
+				virtual ~OnChangeState();
 		};
 	}
 }

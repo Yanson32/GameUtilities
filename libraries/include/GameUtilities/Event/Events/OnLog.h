@@ -1,9 +1,10 @@
-#ifndef GAMEUTILITIES_EVENT_MESSAGE_H 
-#define GAMEUTILITIES_EVENT_MESSAGE_H
+#ifndef GAMEUTILITIES_EVENT_ONLOG_H
+#define GAMEUTILITIES_EVENT_ONLOG_H
 #include "event_export.h"
 #include <memory>
 #include "GameUtilities/Event/Event.h"
-#include <string>
+#include "GameUtilities/Log/LogType.h"
+#include "GameUtilities/Core/String.h"
 
 namespace GU
 {
@@ -17,38 +18,28 @@ namespace GU
         *               object. Which can then be registered to receive events.
         **************************************************************************/
 
-        class EVENT_EXPORT MessageEvent: public Event 
+        class EVENT_EXPORT OnLog : public Event
         {
             public:
                 /**************************************************************************
                 *   Constructor
                 **************************************************************************/
-                MessageEvent(const std::string &msg, const int  newSeverity = -1);
+                OnLog(const GU::Core::String &msg, const int  &newSeverity, const int newLine, const GU::Core::String &newFile);
 
-
-                /**************************************************************************
-                *   Purpose:    Method called when an event is sent
-                *   Input:      EventPtr a pointer to an event this can be a nullptr.
-                *               the pointer will be overwritten so the event should not
-                *               still be useful
-                **************************************************************************/
-                virtual void OnEvent(EventPtr event) = 0;
-
-                
-                int getMessageType() const;
+                GU::Core::String getMessage() const;
+                int getSeverity() const;
 
                 /**************************************************************************
                 *   Destructor
                 **************************************************************************/
-                virtual ~MessageEvent();
+                virtual ~OnLog();
 
             private:
-                const int m_messageType = -1;
+                const int m_severity = -1;
+                GU::Core::String m_msg;
         };
 
     }
 
 }
 #endif // LISTENER_H
-
-

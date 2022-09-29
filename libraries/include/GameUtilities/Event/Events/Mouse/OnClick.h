@@ -1,38 +1,34 @@
-#ifndef GAMEUTILITIES_PLAYSOUND_H
-#define GAMEUTILITIES_PLAYSOUND_H
+#ifndef GAMEUTILITIES_ONCLICK_H
+#define GAMEUTILITIES_ONCLICK_H
 /**************************************************************************
 *   Author:     Wayne J Larson Jr.
-*   Date:       05/08/22
-*   Purpose:    This event is to indicate when a combo box has changed 
+*   Date:       05/13/22
+*   Purpose:    This class is a subclass of the event class. This event
+*               is generated when the user clicks on something. 
 **************************************************************************/
 #include "event_export.h"
 #include "GameUtilities/Event/Event.h"
-
 namespace GU
 {
     namespace Evt
     {
-
-		class EVENT_EXPORT PlaySound: public Event
-		{
-			public:
+        class EVENT_EXPORT OnClick: public Event
+        {
+            public:
                 /**************************************************************************
                 *   @brief  Constructor
-                *   @param  id is the unique identifier for the sound.
-                *   @param  line is the line number where the event originated from
-                *   @param  file is the file where the event originated from
+                *   @param  id is the unique id of the button that was clicked 
                 **************************************************************************/
-				PlaySound(const int &id, const int line = 0, const char* file= "");
+                OnClick(const int id);
                 
-                
+
                 /**************************************************************************
                 *   @brief  Destructor 
                 **************************************************************************/
-				virtual ~PlaySound();
+                virtual ~OnClick();
             public:
-				int m_soundId;
-		};
-	}
+                const int m_buttonId;
+        };
+    }
 }
-
-#endif // PLAYSOUND_H
+#endif // CLICK_H

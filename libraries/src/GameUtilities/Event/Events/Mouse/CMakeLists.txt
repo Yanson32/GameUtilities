@@ -1,5 +1,5 @@
 set(FILES
-"${CMAKE_CURRENT_SOURCE_DIR}/Click.cpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/OnClick.cpp"
 
 )
 
