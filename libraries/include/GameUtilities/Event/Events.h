@@ -14,7 +14,7 @@
 #include "GameUtilities/Event/Events/Widget/OnCheck.h"
 #include "GameUtilities/Event/Events/Widget/OnTextChanged.h"
 #include "GameUtilities/Event/Events/Widget/OnSliderChanged.h"
-#include "GameUtilities/Event/Events/Widget/OnComboChanged.h"
+#include "GameUtilities/Event/Events/Widget/OnItemSelected.h"
 #include "GameUtilities/Event/Events/Keyboard/OnReturnPressed.h"
 #include "GameUtilities/Event/Events/Keybaord/OnReturnReleased.h"
 #include "GameUtilities/Event/Events/Mouse/OnClick.h"

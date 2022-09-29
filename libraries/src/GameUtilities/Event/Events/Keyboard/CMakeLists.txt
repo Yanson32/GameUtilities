@@ -1,6 +1,6 @@
 set(FILES
-"${CMAKE_CURRENT_SOURCE_DIR}/OnReturnPressed.cpp"
-"${CMAKE_CURRENT_SOURCE_DIR}/OnReturnReleased.cpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/OnKeyPressed.cpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/OnKeyReleased.cpp"
 
 )
 

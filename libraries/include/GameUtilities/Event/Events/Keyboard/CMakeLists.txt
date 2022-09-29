@@ -1,6 +1,6 @@
 set(FILES
-"${CMAKE_CURRENT_SOURCE_DIR}/OnReturnPressed.h"
-"${CMAKE_CURRENT_SOURCE_DIR}/OnReturnReleased.h"
+"${CMAKE_CURRENT_SOURCE_DIR}/OnKeyPressed.h"
+"${CMAKE_CURRENT_SOURCE_DIR}/OnKeyReleased.h"
 )
 
 set(RELATIVE_PATH "include/GameUtilities/Event/Events/Keyboard")

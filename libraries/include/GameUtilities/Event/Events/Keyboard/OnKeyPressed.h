@@ -7,12 +7,12 @@ namespace GU
     namespace Evt
     {
 
-        class OnReturnPressed: public GU::Evt::Event
+        class OnKeyPressed: public GU::Evt::Event
         {
             public:
-                OnReturnPressed(const int id);
-                virtual ~OnReturnPressed();
-                const int m_id = -1;
+                OnKeyPressed(const int &key);
+                virtual ~OnKeyPressed();
+                const int m_keyId = -1;
         };
     }
 }

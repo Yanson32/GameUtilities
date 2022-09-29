@@ -7,12 +7,12 @@ namespace GU
     namespace Evt
     {
 
-        class OnReturnReleased: public GU::Evt::Event
+        class OnKeyReleased: public GU::Evt::Event
         {
             public:
-                OnReturnReleased(const int id);
-                virtual ~OnReturnReleased();
-                const int m_id = -1;
+                OnKeyReleased(const int &key);
+                virtual ~OnKeyReleased();
+                const int m_keyId = -1;
         };
     }
 }
