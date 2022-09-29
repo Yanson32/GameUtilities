@@ -53,7 +53,7 @@ namespace GU
                 *   @param  line is the line in source code where the event originated from.
                 *   @param  file is the source file where the event originated from
                 **************************************************************************/
-                Event(const int id = ALL, const int line = 0, const GU::Core::String &file = "");
+                Event(const int eventId = ALL, const int line = 0, const GU::Core::String &file = "");
                 
 
                 /**************************************************************************
@@ -69,7 +69,7 @@ namespace GU
                 **************************************************************************/
                 Event& operator = (const Event& ) = delete;
             protected:
-                const int m_id = 0;
+                const int m_eventId = 0;
                 int m_line = 0;
                 const GU::Core::String m_file;
 

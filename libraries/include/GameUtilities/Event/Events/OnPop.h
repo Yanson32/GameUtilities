@@ -23,7 +23,7 @@ namespace GU
                 *   @param  line is the line number where the event originated from
                 *   @param  file is the file where the event originated from
                 **************************************************************************/
-				OnPop(const int id = -1, const int line = 0, const char* file = "");
+				OnPop(const int &popId = -1, const int &line = 0, const char* file = "");
                 
 
                 /**************************************************************************
@@ -31,7 +31,7 @@ namespace GU
                 **************************************************************************/
 				virtual ~OnPop();
 	        public:
-                const int m_id;
+                const int m_popId;
 
         };
 	}

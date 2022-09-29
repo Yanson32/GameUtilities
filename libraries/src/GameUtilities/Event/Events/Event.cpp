@@ -12,8 +12,8 @@ namespace GU
         *   @param  line is the line in source code where the event originated from.
         *   @param  file is the source file where the event originated from
         **************************************************************************/
-        Event::Event(const int id, const int line, const GU::Core::String &file):
-		m_id(id),
+        Event::Event(const int eventId, const int line, const GU::Core::String &file):
+		m_eventId(eventId),
 		m_line(line),
 		m_file(file)
         {
@@ -27,7 +27,7 @@ namespace GU
         **************************************************************************/
         int Event::getId() const
         {
-          return m_id;
+          return m_eventId;
         }
 
 

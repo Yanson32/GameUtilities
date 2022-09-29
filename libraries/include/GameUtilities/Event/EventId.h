@@ -23,6 +23,7 @@ namespace GU
             ON_TEXT_CHANGED = 12,
             ON_KEY_PRESSED = 13,
             ON_KEY_RELEASED = 14,
+            ON_MESSAGE,
             HIGHEST = 15
         };
 

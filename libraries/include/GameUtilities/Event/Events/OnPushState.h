@@ -24,7 +24,7 @@ namespace GU
                 *   @param  file is the source file where the event was
                 *           generated.
                 ***********************************************************/
-				OnPushState(const int stateId, const int line = 0, const char* file = "");
+				OnPushState(const int &stateId, const int &line = 0, const char* file = "");
                 
 
                 /*******************************************************//**
@@ -32,7 +32,7 @@ namespace GU
                 ***********************************************************/
 				virtual ~OnPushState();
 			public:	
-                const int m_id;
+                const int m_stateId;
 		};
 	}
 }

@@ -19,7 +19,7 @@ namespace GU
                 *   @brief  Constructor
                 *   @param  id is the unique id of the button that was clicked 
                 **************************************************************************/
-                OnClick(const int id);
+                OnClick(const int &buttonId, const int &line, const char* file = "");
                 
 
                 /**************************************************************************

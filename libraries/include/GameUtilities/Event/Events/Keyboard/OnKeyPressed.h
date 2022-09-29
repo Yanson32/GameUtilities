@@ -10,7 +10,7 @@ namespace GU
         class OnKeyPressed: public GU::Evt::Event
         {
             public:
-                OnKeyPressed(const int &key);
+                OnKeyPressed(const int &key, const int &line, const char* file = "");
                 virtual ~OnKeyPressed();
                 const int m_keyId = -1;
         };

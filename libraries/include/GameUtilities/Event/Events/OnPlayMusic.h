@@ -23,7 +23,7 @@ namespace GU
                 *   @param  line is the line in code where the event was generated.
                 *   @param  file is the file were the event was generated.
                 **************************************************************************/
-				OnPlayMusic(const char* musicFile, const int line = 0, const char* f1ile = "");
+				OnPlayMusic(const char* musicFile, const int &line = 0, const char* file = "");
                 
 
                 /**************************************************************************

@@ -23,15 +23,14 @@ namespace GU
                 *   @param  line is where the event was generated in code.
                 *   @param  file is the file where the event was generated.
                 **************************************************************************/
-				OnSliderChanged(void *parent, const int &newId, const int &newValue, const int newLine = 0, const char* newFile = "");
+				OnSliderChanged(void *parent, const int &widgetId, const int &sliderPos, const int &line = 0, const char* file = "");
 				
                 /**************************************************************************
                 *   @breif  Deconstructor 
                 **************************************************************************/
                 virtual ~OnSliderChanged();
 			public:
-			    const int m_sliderId = -1;
-                int m_value = 0;
+                int m_sliderPos = 0;
 		};
 	}
 }

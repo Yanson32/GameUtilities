@@ -11,7 +11,7 @@ namespace GU
         *   @param  line is the line number where the event originated from
         *   @param  file is the file where the event originated from
         **************************************************************************/
-		OnPlaySound::OnPlaySound(const int &id, const int line, const char* file):
+		OnPlaySound::OnPlaySound(const int &id, const int &line, const char* file):
 		Event(static_cast<int>(GU::Evt::EventId::PLAY_SOUND), line, file), m_soundId(id)
 		{
 			//ctor

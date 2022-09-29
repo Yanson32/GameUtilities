@@ -23,16 +23,15 @@ namespace GU
                 *   @param  newLine the line where the event originates from
                 *   @param  newFile the file where the event originates from
                 ***********************************************************/
-				OnChangeState(const int newStateId, const int newLine = 0, const char* newFile = "");
-
-
-				const int stateId;  //The unique identifier of the state
+				OnChangeState(const int &stateId, const int &line = 0, const char* file = "");
 
 
                 /*******************************************************//**
                 *   @brief  Destructor
                 ***********************************************************/
 				virtual ~OnChangeState();
+            public:
+                const int m_stateId;
 		};
 	}
 }

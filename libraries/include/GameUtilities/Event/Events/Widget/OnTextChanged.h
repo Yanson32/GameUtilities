@@ -11,9 +11,8 @@ namespace GU
         class OnTextChanged: public GU::Evt::WidgetEvent
         {
             public:
-                OnTextChanged(void *parent, const int id, const GU::Core::String &text);
+                OnTextChanged(void *parent, const int &widgetId, const GU::Core::String &text, const int &line, const char* file);
                 virtual ~OnTextChanged();
-                const int m_id = -1;
                 const GU::Core::String m_text = "";
         };
     }

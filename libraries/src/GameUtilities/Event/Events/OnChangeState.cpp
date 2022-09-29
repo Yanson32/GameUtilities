@@ -11,9 +11,9 @@ namespace GU
         *   @param  newLine the line where the event originates from
         *   @param  newFile the file where the event originates from
         ***********************************************************/
-		OnChangeState::OnChangeState(const int newStateId, const int newLine, const char* newFile):
-		Event(static_cast<int>(GU::Evt::EventId::CHANGE_STATE), newLine, newFile),
-		stateId(newStateId)
+		OnChangeState::OnChangeState(const int &stateId, const int &line, const char* file):
+		Event(static_cast<int>(GU::Evt::EventId::CHANGE_STATE), line, file),
+		m_stateId(stateId)
 		{
 			//ctor
 		}

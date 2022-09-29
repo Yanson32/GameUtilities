@@ -7,9 +7,8 @@ namespace GU
     namespace Evt
     {
 
-        OnTextChanged::OnTextChanged(void *parent, const int id, const GU::Core::String &text):
-        WidgetEvent(parent, static_cast<int>(GU::Evt::EventId::ON_TEXT_CHANGED)),
-        m_id(id),
+        OnTextChanged::OnTextChanged(void *parent, const int &widgetId, const GU::Core::String &text, const int &line, const char* file):
+        WidgetEvent(parent, widgetId, static_cast<int>(GU::Evt::EventId::ON_TEXT_CHANGED), line, file),
         m_text(text)
         {
 

@@ -23,7 +23,12 @@ namespace GU
                 *   @param  comboId is the id of the combo box
                 *   @param  index is the index of the data element that has changed. 
                 **************************************************************************/
-                OnItemSelected(void *parent, const int &comboId, const int &index = -1, const GU::Core::String &text = "");
+                OnItemSelected(void *parent, 
+                const int &widgetId, 
+                const int &index = -1, 
+                const GU::Core::String &text = "",
+                const int &line = -1, 
+                const char* file = "");
                 
 
                 /**************************************************************************
@@ -32,7 +37,6 @@ namespace GU
                 virtual ~OnItemSelected();
                 
             public:
-                const int m_comboId = -1;                     //Id of the combo box
                 const int m_index;                            //Index of the data element
                 const GU::Core::String m_text;     
         };

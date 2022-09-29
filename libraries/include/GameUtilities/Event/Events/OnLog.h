@@ -24,7 +24,7 @@ namespace GU
                 /**************************************************************************
                 *   Constructor
                 **************************************************************************/
-                OnLog(const GU::Core::String &msg, const int  &newSeverity, const int newLine, const GU::Core::String &newFile);
+                OnLog(const GU::Core::String &msg, const int  &severity, const int &line, const char* file = "");
 
                 GU::Core::String getMessage() const;
                 int getSeverity() const;

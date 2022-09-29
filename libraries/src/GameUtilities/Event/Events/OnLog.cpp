@@ -5,8 +5,8 @@ namespace GU
 {
     namespace Evt
     {
-        OnLog::OnLog(const GU::Core::String &msg, const int &newSeverity, const int newLine, const GU::Core::String &newFile):
-	    Event(static_cast<int>(GU::Evt::EventId::LOG), newLine, newFile),
+        OnLog::OnLog(const GU::Core::String &msg, const int &newSeverity, const int &line, const char* file):
+	    Event(static_cast<int>(GU::Evt::EventId::LOG), line, file),
         m_severity(newSeverity),
 	    m_msg(msg)
         {

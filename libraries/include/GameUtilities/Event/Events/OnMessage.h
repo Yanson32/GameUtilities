@@ -3,7 +3,7 @@
 #include "event_export.h"
 #include <memory>
 #include "GameUtilities/Event/Event.h"
-#include <string>
+#include "GameUtilities/Core/String.h"
 
 namespace GU
 {
@@ -23,7 +23,7 @@ namespace GU
                 /**************************************************************************
                 *   Constructor
                 **************************************************************************/
-                OnMessage(const std::string &msg, const int  newSeverity = -1);
+                OnMessage(const GU::Core::String &msg, const int  &messageType  = -1, const int &line = -1, const char* file = "");
 
 
                 /**************************************************************************
@@ -44,6 +44,7 @@ namespace GU
 
             private:
                 const int m_messageType = -1;
+                const GU::Core::String m_msg;
         };
 
     }

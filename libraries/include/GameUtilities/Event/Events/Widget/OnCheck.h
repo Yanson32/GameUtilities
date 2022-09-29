@@ -20,7 +20,7 @@ namespace GU
                 *   @param  checkBoxId is a unique identifier for the checkbox.
                 *   @param  checked is true if the checkbox was checked and false otherwise.
                 **************************************************************************/
-                OnCheck(void *parent, const int &checkBoxId, const bool &checked);
+                OnCheck(void *parent, const int &widgetId, const bool &checked, const int &line, const char* file);
                 
 
                 /**************************************************************************
@@ -28,7 +28,6 @@ namespace GU
                 **************************************************************************/
                 virtual ~OnCheck();
             public: 
-                const int m_checkboxId = -1;
                 const bool m_checked;
 
         };

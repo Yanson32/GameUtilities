@@ -10,7 +10,7 @@ namespace GU
         class OnKeyReleased: public GU::Evt::Event
         {
             public:
-                OnKeyReleased(const int &key);
+                OnKeyReleased(const int &key, const int &line, const char* file = "");
                 virtual ~OnKeyReleased();
                 const int m_keyId = -1;
         };

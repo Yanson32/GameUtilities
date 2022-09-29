@@ -22,7 +22,7 @@ namespace GU
                 *   @param  line is the line number where the event originated from
                 *   @param  file is the file where the event originated from
                 **************************************************************************/
-				OnPlaySound(const int &id, const int line = 0, const char* file= "");
+				OnPlaySound(const int &soundId, const int &line = 0, const char* file= "");
                 
                 
                 /**************************************************************************

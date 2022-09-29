@@ -14,9 +14,9 @@ namespace GU
         *   @param  file is the source file where the event was
         *           generated.
         ***********************************************************/
-		OnPushState::OnPushState(const int stateId, const int line, const char* file):
+		OnPushState::OnPushState(const int &stateId, const int &line, const char* file):
 		Event(static_cast<int>(GU::Evt::EventId::PUSH_STATE), line, file),
-		m_id(stateId)
+		m_stateId(stateId)
 		{
 			//ctor
 		}
