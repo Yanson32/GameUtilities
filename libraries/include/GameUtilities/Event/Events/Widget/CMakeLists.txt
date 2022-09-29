@@ -1,4 +1,5 @@
 set(FILES
+"${CMAKE_CURRENT_SOURCE_DIR}/WidgetEvent.h"
 "${CMAKE_CURRENT_SOURCE_DIR}/OnCheck.h"
 "${CMAKE_CURRENT_SOURCE_DIR}/OnItemSelected.h"
 "${CMAKE_CURRENT_SOURCE_DIR}/OnSliderChanged.h"

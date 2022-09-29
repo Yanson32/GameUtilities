@@ -9,8 +9,8 @@ namespace GU
         *   @param  checkBoxId is a unique identifier for the checkbox.
         *   @param  checked is true if the checkbox was checked and false otherwise.
         **************************************************************************/
-        OnCheck::OnCheck(const int checkBoxId, const bool checked):
-        Event(static_cast<int>(GU::Evt::EventId::ON_CHECK)),
+        OnCheck::OnCheck(void *parent, const int &checkBoxId, const bool &checked):
+        WidgetEvent(parent, static_cast<int>(GU::Evt::EventId::ON_CHECK)),
         m_checkboxId(checkBoxId),
         m_checked(checked)
         {

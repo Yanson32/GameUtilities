@@ -3,6 +3,7 @@ set(FILES
 "${CMAKE_CURRENT_SOURCE_DIR}/OnItemSelected.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/OnTextChanged.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/OnSliderChanged.cpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/WidgetEvent.cpp"
 
 )
 

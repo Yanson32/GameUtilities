@@ -6,13 +6,13 @@
 *   Purpose:    This event is generated when the user clicks on something. 
 **************************************************************************/
 #include "event_export.h"
-#include "GameUtilities/Event/Event.h"
+#include "GameUtilities/Event/Events/Widget/WidgetEvent.h"
 
 namespace GU
 {
     namespace Evt
     {
-        class EVENT_EXPORT OnCheck: public Event
+        class EVENT_EXPORT OnCheck: public WidgetEvent
         {
             public:
                 /**************************************************************************
@@ -20,7 +20,7 @@ namespace GU
                 *   @param  checkBoxId is a unique identifier for the checkbox.
                 *   @param  checked is true if the checkbox was checked and false otherwise.
                 **************************************************************************/
-                OnCheck(const int checkBoxId, const bool checked);
+                OnCheck(void *parent, const int &checkBoxId, const bool &checked);
                 
 
                 /**************************************************************************

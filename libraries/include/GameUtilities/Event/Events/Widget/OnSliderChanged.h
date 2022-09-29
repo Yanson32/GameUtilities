@@ -6,14 +6,14 @@
 *   Purpose:    This event is created when a slider changes it's value. 
 **************************************************************************/
 #include "event_export.h"
-#include "GameUtilities/Event/Event.h"
+#include "GameUtilities/Event/Events/Widget/WidgetEvent.h"
 
 namespace GU
 {
     namespace Evt
     {
 
-		class EVENT_EXPORT OnSliderChanged: public Event
+		class EVENT_EXPORT OnSliderChanged: public WidgetEvent
 		{
 			public:
                 /**************************************************************************
@@ -23,7 +23,7 @@ namespace GU
                 *   @param  line is where the event was generated in code.
                 *   @param  file is the file where the event was generated.
                 **************************************************************************/
-				OnSliderChanged(const int &newId, const int &newValue, const int newLine = 0, const char* newFile = "");
+				OnSliderChanged(void *parent, const int &newId, const int &newValue, const int newLine = 0, const char* newFile = "");
 				
                 /**************************************************************************
                 *   @breif  Deconstructor 

@@ -5,7 +5,7 @@
 *   Date:       05/07/22
 *   Purpose:    This event is to indicate when a combo box has changed 
 **************************************************************************/
-#include "GameUtilities/Event/Event.h"
+#include "GameUtilities/Event/Events/Widget/WidgetEvent.h"
 #include "GameUtilities/Core/String.h"
 #include "event_export.h"
 
@@ -14,7 +14,7 @@ namespace GU
     namespace Evt
     {
 
-        class EVENT_EXPORT OnItemSelected: public Event
+        class EVENT_EXPORT OnItemSelected: public WidgetEvent
         {
             public:
                
@@ -23,7 +23,7 @@ namespace GU
                 *   @param  comboId is the id of the combo box
                 *   @param  index is the index of the data element that has changed. 
                 **************************************************************************/
-                OnItemSelected(const int &comboId, const int &index = -1, const GU::Core::String &text = "");
+                OnItemSelected(void *parent, const int &comboId, const int &index = -1, const GU::Core::String &text = "");
                 
 
                 /**************************************************************************
