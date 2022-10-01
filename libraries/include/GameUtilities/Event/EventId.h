@@ -24,6 +24,16 @@ namespace GU
             ON_KEY_PRESSED = 13,
             ON_KEY_RELEASED = 14,
             ON_MESSAGE,
+            ON_BEGIN_DRAG,
+            ON_END_DRAG,
+            ON_CONTEXT_MENU,
+            ON_DOUBLE_CLICK,
+            ON_MOUSE_BUTTON_PRESSED,
+            ON_MOUSE_BUTTON_RELEASED,
+            ON_MOUSE_MOVED,
+            ON_MOUSE_WHEEL,
+            ON_START_MOUSE_DRAG,
+            CON_END_MOUSE_DRAG,
             HIGHEST = 15
         };
 
