@@ -33,7 +33,10 @@ namespace GU
             ON_MOUSE_MOVED,
             ON_MOUSE_WHEEL,
             ON_START_MOUSE_DRAG,
-            CON_END_MOUSE_DRAG,
+            ON_END_MOUSE_DRAG,
+            ON_START,
+            ON_UPDATE,
+            ON_REFRESH,
             HIGHEST = 15
         };
 
