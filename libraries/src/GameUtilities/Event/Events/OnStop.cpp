@@ -17,7 +17,7 @@ namespace GU
         *   Constructor
         **************************************************************************/
         OnStop::OnStop(const int &stopId, const int &line, const char* file):
-        Event(static_cast<int>(), line, file),
+        Event(static_cast<int>(GU::Evt::EventId::ON_STOP), line, file),
         m_stopId(stopId)
         {
 

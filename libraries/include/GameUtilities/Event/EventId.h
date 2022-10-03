@@ -35,8 +35,11 @@ namespace GU
             ON_START_MOUSE_DRAG,
             ON_END_MOUSE_DRAG,
             ON_START,
+            ON_STOP,
             ON_UPDATE,
             ON_REFRESH,
+            ON_PAUSE,
+            ON_RESUME,
             HIGHEST = 15
         };
 

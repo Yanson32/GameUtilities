@@ -16,7 +16,7 @@ namespace GU
         /**************************************************************************
         *   Constructor
         **************************************************************************/
-        OnResume::OnResume(const int &resumehId, const int &line, const char* file):
+        OnResume::OnResume(const int &resumeId, const int &line, const char* file):
         Event(static_cast<int>(GU::Evt::EventId::ON_RESUME), line, file),
         m_resumeId(resumeId)
         {

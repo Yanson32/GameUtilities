@@ -16,7 +16,7 @@ namespace GU
         /**************************************************************************
         *   Constructor
         **************************************************************************/
-        OnPause::OnPause(const int &pauseId, const int &line, const char* file)
+        OnPause::OnPause(const int &pauseId, const int &line, const char* file):
         Event(static_cast<int>(GU::Evt::EventId::ON_PAUSE), line, file),
         m_pauseId(pauseId)
         {

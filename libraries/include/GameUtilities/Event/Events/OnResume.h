@@ -20,7 +20,7 @@ namespace GU
                 /**************************************************************************
                 *   Constructor
                 **************************************************************************/
-                OnResume(const int &resumehId, const int &line, const char* file = "");
+                OnResume(const int &resumeId, const int &line, const char* file = "");
 
                 
                 /**************************************************************************
@@ -28,7 +28,7 @@ namespace GU
                 **************************************************************************/
                 virtual ~OnResume(); 
             private:
-                const int m_refreshId = -1;
+                const int m_resumeId = -1;
         };
 
     }
