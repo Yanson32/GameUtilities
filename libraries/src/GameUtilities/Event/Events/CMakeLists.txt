@@ -13,6 +13,12 @@ set(FILES
 "${CMAKE_CURRENT_SOURCE_DIR}/OnPause.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/OnResume.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/OnStop.cpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/OnAdd.cpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/OnRemove.cpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/OnPush.cpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/OnChange.cpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/OnStartFocus.cpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/OnEndFocus.cpp"
 )
 
 set(RELATIVE_PATH "src/GameUtilities/Event/Events")
@@ -20,6 +26,7 @@ set(RELATIVE_PATH "src/GameUtilities/Event/Events")
 set(SUB_DIRECTORIES "Mouse"
                     "Keyboard"
                     "Widget"
+                    "Physics"
 )
 
 #Add subdirectories

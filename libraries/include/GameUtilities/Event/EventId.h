@@ -40,6 +40,12 @@ namespace GU
             ON_REFRESH,
             ON_PAUSE,
             ON_RESUME,
+            ON_ADD,
+            ON_CHANGE,
+            ON_FOCUS,
+            ON_START_COLLISION,
+            ON_END_COLLISION,
+            ON_PUSH,
             HIGHEST = 15
         };
 
