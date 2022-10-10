@@ -8,6 +8,8 @@ set(FILES
 "${CMAKE_CURRENT_SOURCE_DIR}/OnClick.h"
 "${CMAKE_CURRENT_SOURCE_DIR}/OnDoubleClick.h"
 "${CMAKE_CURRENT_SOURCE_DIR}/OnMouseMoved.h"
+"${CMAKE_CURRENT_SOURCE_DIR}/OnStartDrag.h"
+"${CMAKE_CURRENT_SOURCE_DIR}/OnEndDrag.h"
 )
 
 set(RELATIVE_PATH "include/GameUtilities/Event/Events/Mouse")
