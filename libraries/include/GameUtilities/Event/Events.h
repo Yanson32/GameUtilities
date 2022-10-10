@@ -52,6 +52,7 @@
 #include "GameUtilities/Event/Events/Keyboard/OnKeyReleased.h"
 #include "GameUtilities/Event/Events/Mouse/OnClick.h"
 #include "GameUtilities/Event/Events/Mouse/OnContextMenu.h"
+#include "GameUtilities/Event/Events/Mouse/OnStartMouseDrag.h"
 #include "GameUtilities/Event/Events/Mouse/OnEndMouseDrag.h"
 #include "GameUtilities/Event/Events/Mouse/OnMouseButtonReleased.h"
 #include "GameUtilities/Event/Events/Mouse/OnMouseWheel.h"
@@ -59,7 +60,6 @@
 #include "GameUtilities/Event/Events/Mouse/OnDoubleClick.h"
 #include "GameUtilities/Event/Events/Mouse/OnMouseButtonPressed.h"
 #include "GameUtilities/Event/Events/Mouse/OnMouseMoved.h"
-#include "GameUtilities/Event/Events/Mouse/OnStartDrag.h"
 #include "GameUtilities/Event/Events/Physics/OnStartCollision.h"
 #include "GameUtilities/Event/Events/Physics/OnEndCollision.h"
 #endif // EVENTS_H_INCLUDED
