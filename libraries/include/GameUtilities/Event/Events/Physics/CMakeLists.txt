@@ -3,7 +3,7 @@ set(FILES
 "${CMAKE_CURRENT_SOURCE_DIR}/OnEndCollision.h"
 )
 
-set(RELATIVE_PATH "include/GameUtilities/Event/Physics")
+set(RELATIVE_PATH "include/GameUtilities/Event/Events/Physics")
 
 set(SUB_DIRECTORIES ""
 )
