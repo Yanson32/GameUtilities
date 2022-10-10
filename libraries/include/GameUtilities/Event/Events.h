@@ -49,7 +49,7 @@
 #include "GameUtilities/Event/Events/Widget/OnSliderChanged.h"
 #include "GameUtilities/Event/Events/Widget/OnItemSelected.h"
 #include "GameUtilities/Event/Events/Keyboard/OnKeyPressed.h"
-#include "GameUtilities/Event/Events/Keybaord/OnKeyReleased.h"
+#include "GameUtilities/Event/Events/Keyboard/OnKeyReleased.h"
 #include "GameUtilities/Event/Events/Mouse/OnClick.h"
 #include "GameUtilities/Event/Events/Mouse/OnContextMenu.h"
 #include "GameUtilities/Event/Events/Mouse/OnEndMouseDrag.h"
