@@ -34,7 +34,7 @@ namespace GU
         class OnTextChanged: public GU::Evt::WidgetEvent
         {
             public:
-                OnTextChanged(void *parent, const int &widgetId, const GU::Core::String &text, const int &line, const char* file);
+                OnTextChanged(void *parent, const int &widgetId, const GU::Core::String &text, const int &line = -1, const char* file);
                 virtual ~OnTextChanged();
                 const GU::Core::String m_text = "";
         };
