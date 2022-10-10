@@ -53,4 +53,4 @@ namespace GU
 	}
 }
 
-#endif // MUSICVOLUMECHANGED_H
+#endif 
