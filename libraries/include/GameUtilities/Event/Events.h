@@ -27,7 +27,6 @@
 #include "GameUtilities/Event/Events/OnMessage.h"
 #include "GameUtilities/Event/Events/OnLog.h"
 #include "GameUtilities/Event/Events/Event.h"
-#include "GameUtilities/Event/Events/OnMusicVolumeChanged.h"
 #include "GameUtilities/Event/Events/OnPlayMusic.h"
 #include "GameUtilities/Event/Events/OnPlaySound.h"
 #include "GameUtilities/Event/Events/OnPop.h"
