@@ -3,7 +3,7 @@ set(FILES
 "${CMAKE_CURRENT_SOURCE_DIR}/OnStartCollision.cpp"
 )
 
-set(RELATIVE_PATH "src/GameUtilities/Event/Events")
+set(RELATIVE_PATH "src/GameUtilities/Event/Events/Physics")
 
 set(SUB_DIRECTORIES ""
 )
