@@ -1,10 +1,10 @@
-#ifndef GAMEUTILITIES_EVENT_ON_END_MOUSE_DRAG_H
-#define GAMEUTILITIES_EVENT_ON_END_MOUSE_DRAG_H
+#ifndef GAMEUTILITIES_START_MOUSE_DRAG_H
+#define GAMEUTILITIES_START_MOUSE_DRAG_H
 /**************************************************************************
 *   @Author:     Wayne J Larson Jr.
 *   @Date:       09/30/22
-*   @Purpose:    The OnEndDrag event will be generated when the user stops
-*               using the mouse to drag. 
+*   @Purpose:    This event is generated when the user initiates a drag 
+*               operation with the mouse 
 **************************************************************************/
 
 /*************************************************************************
@@ -43,4 +43,3 @@ namespace GU
     }
 }
 #endif
-
