@@ -73,14 +73,14 @@ namespace GU
                 *	@brief  This method sets the log formatter for the log manager.  
                 *   @param  logFormatter is the log formatter to be used by the log manager. 
                 *************************************************************************************/
-                void set(LogFormatter &logFormatter);
+                void set(std::shared_ptr<LogFormatter> logFormatter);
                 
 
                 /*********************************************************************************//**
                 *	@brief  This method returns the log formatter currently being used by the log 
                 *           manager. 
                 *************************************************************************************/
-                LogFormatter& getFormatter();
+                std::shared_ptr<LogFormatter> getFormatter();
                 
 
                 /*********************************************************************************//**

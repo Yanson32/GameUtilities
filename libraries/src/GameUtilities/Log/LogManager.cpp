@@ -53,7 +53,7 @@ namespace GU
                 *	@brief  This method sets the log formatter for the Impl log manager.  
                 *   @param  logFormatter is the log formatter to be used by the Impl log manager. 
                 *************************************************************************************/
-				void set(LogFormatter &logFormatter);
+				void set(std::shared_ptr<LogFormatter> logFormatter);
                 
 
                 /*********************************************************************************//**
@@ -74,7 +74,7 @@ namespace GU
                 *	@brief  This method returns the log formatter currently being used by the Impl log 
                 *           manager. 
                 *************************************************************************************/
-				LogFormatter& getFormatter();
+				std::shared_ptr<LogFormatter> getFormatter();
                 
 
                 /*********************************************************************************//**
@@ -83,7 +83,7 @@ namespace GU
 				virtual ~Impl();
 			private:
 				std::vector<std::shared_ptr<GU::Log::LogTarget>> m_targets;
-				LogFormatter m_logFormatter;
+				std::shared_ptr<LogFormatter> m_logFormatter;
 		};
 
         
@@ -163,7 +163,7 @@ namespace GU
         *	@brief  This method sets the log formatter for the Impl log manager.  
         *   @param  logFormatter is the log formatter to be used by the Impl log manager. 
         *************************************************************************************/
-		void LogManager::Impl::set(LogFormatter &logFormatter)
+		void LogManager::Impl::set(std::shared_ptr<LogFormatter> logFormatter)
 		{
 			m_logFormatter = logFormatter;
 		}
@@ -189,12 +189,12 @@ namespace GU
 
             for(std::size_t i = 0; i < entry->size(); ++i)
             {
-                m_logFormatter.init(entry->operator[](i));
+                m_logFormatter->init(entry->operator[](i));
             }
 
             for(std::size_t i = 0; i < m_targets.size(); ++i)
             {
-                m_targets[i]->write(m_logFormatter.format());
+                m_targets[i]->write(m_logFormatter->format());
             }
 
         }
@@ -204,7 +204,7 @@ namespace GU
         *	@brief  This method returns the log formatter currently being used by the Impl log 
         *           manager. 
         *************************************************************************************/
-		LogFormatter& LogManager::Impl::getFormatter()
+		std::shared_ptr<LogFormatter> LogManager::Impl::getFormatter()
 		{
 			return m_logFormatter;
 		}
@@ -297,7 +297,7 @@ namespace GU
         *	@brief  This method sets the log formatter for the log manager.  
         *   @param  logFormatter is the log formatter to be used by the log manager. 
         *************************************************************************************/
-        void LogManager::set(LogFormatter &logFormatter)
+        void LogManager::set(std::shared_ptr<LogFormatter> logFormatter)
 		{
             assert(m_pimpl != nullptr);
 			m_pimpl->set(logFormatter);
@@ -308,7 +308,7 @@ namespace GU
         *	@brief  This method returns the log formatter currently being used by the log 
         *           manager. 
         *************************************************************************************/
-        LogFormatter& LogManager::getFormatter()
+        std::shared_ptr<LogFormatter> LogManager::getFormatter()
         {
             assert(m_pimpl != nullptr);
             return m_pimpl->getFormatter();
