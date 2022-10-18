@@ -57,7 +57,7 @@ namespace GU
         bool ResourceManager::add(const int &key, std::shared_ptr<GU::Core::Resource> value)
         {
             assert(m_pimpl != nullptr);
-            assert(resource != nullptr);
+            assert(value != nullptr);
             assert(!this->isLoaded(key));
             if(this->isLoaded(key))
                 return false;
