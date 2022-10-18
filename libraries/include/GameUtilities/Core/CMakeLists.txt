@@ -1,12 +1,14 @@
 set(FILES	"${CMAKE_CURRENT_SOURCE_DIR}/FrameRate.h"
-		"${CMAKE_CURRENT_SOURCE_DIR}/Resource Holder.h"
-		"${CMAKE_CURRENT_SOURCE_DIR}/NonCopyable.h"
-        "${CMAKE_CURRENT_SOURCE_DIR}/Macros.h"
-        "${CMAKE_CURRENT_SOURCE_DIR}/String.h"
-	"${CMAKE_CURRENT_SOURCE_DIR}/PreferencesManager.h"
-	"${CMAKE_CURRENT_SOURCE_DIR}/Paths.h"
-	"${CMAKE_CURRENT_SOURCE_DIR}/Thread.h"
-		"${CMAKE_CURRENT_SOURCE_DIR}/RAIIStream.h"
+		    "${CMAKE_CURRENT_SOURCE_DIR}/Resource Holder.h"
+		    "${CMAKE_CURRENT_SOURCE_DIR}/NonCopyable.h"
+            "${CMAKE_CURRENT_SOURCE_DIR}/Macros.h"
+            "${CMAKE_CURRENT_SOURCE_DIR}/String.h"
+	        "${CMAKE_CURRENT_SOURCE_DIR}/PreferencesManager.h"
+	        "${CMAKE_CURRENT_SOURCE_DIR}/Paths.h"
+	        "${CMAKE_CURRENT_SOURCE_DIR}/Thread.h"
+		    "${CMAKE_CURRENT_SOURCE_DIR}/RAIIStream.h"
+		    "${CMAKE_CURRENT_SOURCE_DIR}/ResourceManager.h"
+		    "${CMAKE_CURRENT_SOURCE_DIR}/Resource.h"
 
 )
 
