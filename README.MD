@@ -7,9 +7,14 @@ The goal of the GameUtiliites toolkit is to provide infrastructure for making 2d
 - Event System
 - Particle System
 - Thread Pool
-- Log System
+- Loging System
 - Algorithms
 - Data Structures
+- Resource Manager
+
+## Supported operating systems
+- Linux
+- Windows
 
 ## Dependencies
 - [Math](https://github.com/Yanson32/Math)
