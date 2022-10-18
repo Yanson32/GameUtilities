@@ -26,6 +26,7 @@
 #include "GameUtilities/Event/Events/Widget/WidgetEvent.h"
 #include "GameUtilities/Core/String.h"
 #include "event_export.h"
+#include <memory>
 
 namespace GU
 {
@@ -41,7 +42,7 @@ namespace GU
                 *   @param  comboId is the id of the combo box
                 *   @param  index is the index of the data element that has changed. 
                 **************************************************************************/
-                OnItemSelected(void *parent, 
+                OnItemSelected(std::shared_ptr<void> parent, 
                 const int &widgetId, 
                 const int &index = -1, 
                 const GU::Core::String &text = "",

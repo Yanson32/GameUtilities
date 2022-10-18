@@ -9,7 +9,7 @@ namespace GU
         *   @param  newComboId is the id of the combo box
         *   @param  newIndex is the index of the data element that has changed. 
         **************************************************************************/
-        OnItemSelected::OnItemSelected(void *parent, 
+        OnItemSelected::OnItemSelected(std::shared_ptr<void> parent, 
         const int &widgetId, 
         const int &index, 
         const GU::Core::String &text, 

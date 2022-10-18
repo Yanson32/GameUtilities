@@ -25,6 +25,7 @@
 ***************************************************************************/
 #include "event_export.h"
 #include "GameUtilities/Event/Event.h"
+#include <memory>
 
 namespace GU
 {
@@ -33,10 +34,10 @@ namespace GU
         class EVENT_EXPORT WidgetEvent: public GU::Evt::Event
         {
             public:
-                WidgetEvent(void *parent, const int &widgetId, const int &eventId, const int &line = 0, const char* file = nullptr);
+                WidgetEvent(std::shared_ptr<void> parent, const int &widgetId, const int &eventId, const int &line = 0, const char* file = nullptr);
                 virtual ~WidgetEvent();
             public:
-                void *m_parent = nullptr;
+                std::shared_ptr<void> m_parent = nullptr;
                 const int m_widgetId = -1;
         };
     }

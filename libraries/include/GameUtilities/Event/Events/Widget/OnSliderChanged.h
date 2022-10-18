@@ -25,6 +25,7 @@
 ***************************************************************************/
 #include "event_export.h"
 #include "GameUtilities/Event/Events/Widget/WidgetEvent.h"
+#include <memory>
 
 namespace GU
 {
@@ -41,7 +42,7 @@ namespace GU
                 *   @param  line is where the event was generated in code.
                 *   @param  file is the file where the event was generated.
                 **************************************************************************/
-				OnSliderChanged(void *parent, const int &widgetId, const int &sliderPos, const int &line = 0, const char* file = "");
+				OnSliderChanged(std::shared_ptr<void> parent, const int &widgetId, const int &sliderPos, const int &line = 0, const char* file = "");
 				
                 /**************************************************************************
                 *   @breif  Deconstructor 

@@ -12,7 +12,7 @@ namespace GU
         *   @param  line is where the event was generated in code.
         *   @param  file is the file where the event was generated.
         **************************************************************************/
-		OnSliderChanged::OnSliderChanged(void *parent, const int &widgetId, const int &value, const int &line, const char* file):
+		OnSliderChanged::OnSliderChanged(std::shared_ptr<void> parent, const int &widgetId, const int &value, const int &line, const char* file):
 		WidgetEvent(parent, widgetId, static_cast<int>(GU::Evt::EventId::SLIDER_CHANGED), line, file),
         m_sliderPos(value)
 

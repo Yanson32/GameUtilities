@@ -25,6 +25,7 @@
 ***************************************************************************/
 #include "GameUtilities/Event/Events/Widget/WidgetEvent.h"
 #include "GameUtilities/Core/String.h"
+#include <memory>
 
 namespace GU
 {
@@ -34,7 +35,8 @@ namespace GU
         class OnTextChanged: public GU::Evt::WidgetEvent
         {
             public:
-                OnTextChanged(void *parent, const int &widgetId, const GU::Core::String &text, const int &line = -1, const char* file = "");
+                OnTextChanged(std::shared_ptr<void> parent, const int &widgetId, const GU::Core::String &text, const int &line = -1, const char* file = "");
+
                 virtual ~OnTextChanged();
                 const GU::Core::String m_text = "";
         };
