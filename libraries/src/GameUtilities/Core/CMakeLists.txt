@@ -3,6 +3,8 @@ set(FILES
 "${CMAKE_CURRENT_SOURCE_DIR}/PreferencesManager.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/String.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/Paths.cpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/ResourceManager.cpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/Resource.cpp"
 )
 
 set(RELATIVE_PATH "src/GameUtilities/Core")
