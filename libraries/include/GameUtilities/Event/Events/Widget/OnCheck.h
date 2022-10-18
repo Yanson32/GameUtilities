@@ -25,6 +25,7 @@
 ***************************************************************************/
 #include "event_export.h"
 #include "GameUtilities/Event/Events/Widget/WidgetEvent.h"
+#include <memory>
 
 namespace GU
 {
@@ -38,7 +39,7 @@ namespace GU
                 *   @param  checkBoxId is a unique identifier for the checkbox.
                 *   @param  checked is true if the checkbox was checked and false otherwise.
                 **************************************************************************/
-                OnCheck(void *parent, const int &widgetId, const bool &checked, const int &line = -1, const char* file = "");
+                OnCheck(std::shared_ptr<void> parent, const int &widgetId, const bool &checked, const int &line = -1, const char* file = "");
                 
 
                 /**************************************************************************
