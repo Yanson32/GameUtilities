@@ -11,6 +11,7 @@ set(SUB_DIRECTORIES "Event"
 "Log"
 "Data"
 "Algorithm"
+"Window"
 )
 
 #Add subdirectories

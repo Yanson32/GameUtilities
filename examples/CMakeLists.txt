@@ -17,6 +17,7 @@ set(SUBDIRECTORIES "EnginExample"
            "Algorithm"
            "Event"
            "Data"
+           "Window"
 )
 
 foreach(LOOP_VAR ${SUBDIRECTORIES})

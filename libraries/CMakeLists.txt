@@ -55,6 +55,13 @@ target_link_libraries("Log" PUBLIC "Core")
 #Link the log target against the Core target
 target_link_libraries("Event" PUBLIC "Core" "Log")
 
+find_package(X11)
+if(X11_FOUND)
+    target_include_directories("Window" PUBLIC ${X11_INCLUDE_DIR})
+    target_link_libraries("Window" PUBLIC ${X11_LIBRARIES})
+    add_definitions(-DX11)
+endif()
+
 #install export file
 install(FILES
         #"${CMAKE_CURRENT_BINARY_DIR}/gameutilities_export.h"
@@ -71,8 +78,7 @@ foreach(VAR ${GU_LIBS})
 	set(EXPORT_FILE_NAME "${PROJECT_NAME}${VAR}-Exports")
 	if(NOT BUILD_SHARED_LIBS)
 		set(EXPORT_FILE_NAME "${PROJECT_NAME}${VAR}Static-Exports")
-	endif()
-
+	endif() 
     install(TARGETS ${VAR} DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR} EXPORT "${EXPORT_FILE_NAME}" INCLUDES DESTINATION "include")
 
 	#Export to the install tree
