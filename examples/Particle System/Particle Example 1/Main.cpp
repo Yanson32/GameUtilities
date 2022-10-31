@@ -134,7 +134,7 @@ void sfStarburst::draw(sf::RenderTarget& target, sf::RenderStates states) const
         std::shared_ptr<CircleAtt> att = std::static_pointer_cast<CircleAtt>(this->getComponent(CIRCLE_ATT));
         for(std::size_t i = 0; i < att->data.size(); ++i)
         {
-            target.draw(att->data[i]);
+            target.draw(att->data[i], states);
         }
     }
 }

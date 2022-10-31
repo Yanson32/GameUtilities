@@ -1,4 +1,3 @@
-
 add_executable("QuadTreeExample" "QuadTreeExample.cpp")
 target_link_libraries("QuadTreeExample" PUBLIC Data)
 target_link_libraries("QuadTreeExample" PRIVATE sfml-system sfml-window sfml-graphics)

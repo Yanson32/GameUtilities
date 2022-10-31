@@ -1,6 +1,7 @@
 #include "EnginExampleState.h"
 #include <iostream>
 #include <SFML/Window/Event.hpp>
+#include "GameUtilities/Core/Macros.h"
 
 EnginExampleState::EnginExampleState(sf::RenderWindow &newWindow):
 window(newWindow)
@@ -25,6 +26,7 @@ void EnginExampleState::clean()
 
 void EnginExampleState::handleEvents(EnginPtr engin, const float &deltaTime)
 {
+    UNUSED(deltaTime);
     if(window.isOpen())
     {
         sf::Event event;
@@ -33,9 +35,15 @@ void EnginExampleState::handleEvents(EnginPtr engin, const float &deltaTime)
             switch(event.type)
             {
                 case sf::Event::Closed:
+                {
                     window.close();
                     engin->quit();
-                    break;
+                }
+                break;
+                default:
+                {
+
+                }
             }
         }
     }
@@ -45,12 +53,15 @@ void EnginExampleState::handleEvents(EnginPtr engin, const float &deltaTime)
 
 void EnginExampleState::update(EnginPtr engin, const float &deltaTime)
 {
-
+    UNUSED(engin);
+    UNUSED(deltaTime);
 }
 
 
 void EnginExampleState::draw(EnginPtr engin, const float &deltaTime)
 {
+    UNUSED(engin);
+    UNUSED(deltaTime);
     window.clear();
     window.draw(circle);
     window.display();
