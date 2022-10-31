@@ -5,7 +5,7 @@ set(FILES ""
 set(SUB_DIRECTORIES	    "EnginTests"
 			            "ParticleSystem"
 			            "Algorithm"
-#			            "TP"
+			            "TP"
 )
 
 #Add subdirectories

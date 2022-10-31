@@ -62,6 +62,11 @@ if(X11_FOUND)
     add_definitions(-DX11)
 endif()
 
+find_package(Threads)
+if(Threads_FOUND)
+    target_link_libraries("ThreadPool" PUBLIC Threads::Threads)
+endif()
+
 #install export file
 install(FILES
         #"${CMAKE_CURRENT_BINARY_DIR}/gameutilities_export.h"

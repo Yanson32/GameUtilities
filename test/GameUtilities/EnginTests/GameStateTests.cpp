@@ -1,5 +1,6 @@
 #include <catch2/catch_test_macros.hpp>
 #include <GameUtilities/Engin/GameState.h>
+#include <memory>
 
 class TestState: public GU::Engin::GameState
 {
@@ -8,63 +9,63 @@ class TestState: public GU::Engin::GameState
         /*********************************************************************************//**
         *   \brief	Initialize the game state.
         *************************************************************************************/
-        virtual void Init() {};
+        virtual void init() override {};
 
         /*********************************************************************************//**
         *   \brief	Clean any resource the state uses
         *************************************************************************************/
-        virtual void Clean() {};
+        virtual void clean() override {};
 
         /*********************************************************************************//**
         *   \brief	This method handles input such as user input and events
         *	\param	engin is a reference to the game's Engin object.
         *************************************************************************************/
-        virtual void HandleEvents(GU::Engin::Engin& engin, const float &deltaTime) {};
+        virtual void handleEvents(GU::Engin::GameState::EnginPtr engin, const float &deltaTime) override {};
 
 
         /*********************************************************************************//**
         *   \brief	This method handles input such as user input and events
         *	\param	engin is a reference to the game's Engin object.
         *************************************************************************************/
-        virtual void Update(GU::Engin::Engin& engin, const float &deltaTime) {};
+        virtual void update(GU::Engin::GameState::EnginPtr engin, const float &deltaTime) override {};
 
 
         /*********************************************************************************//**
         *   \brief	This method draws the current game state.
         *	\param	engin is a reference to the game's Engin object.
         *************************************************************************************/
-        virtual void Draw(GU::Engin::Engin& engin, const float &deltaTime) {};
+        virtual void draw(GU::Engin::GameState::EnginPtr engin, const float &deltaTime) override {};
 
         virtual ~TestState(){}
 };
 
 TEST_CASE( "GameState class default constructor", "[Default Constructor]" ) {
     TestState state;
-    REQUIRE( state.IsPaused() == false);
+    REQUIRE( state.isPaused() == false);
 }
 
 TEST_CASE( "GameState class copy constructor", "[Copy Constructor]" ) {
     TestState state;
-    state.Pause(true);
+    state.pause(true);
     TestState state2(state);
-    REQUIRE( state2.IsPaused() == true);
+    REQUIRE( state2.isPaused() == true);
 }
 
 TEST_CASE( "GameState class assignment operator", "[Assignment]" ) {
     TestState state;
-    state.Pause(true);
+    state.pause(true);
     TestState state2;
     state2 = state;
-    REQUIRE( state2.IsPaused() == true);
+    REQUIRE( state2.isPaused() == true);
 }
 
 TEST_CASE( "GameState class IsPaused", "[IsPaused]" ) {
     TestState state;
-    REQUIRE( state.IsPaused() == false);
+    REQUIRE( state.isPaused() == false);
 }
 
 TEST_CASE( "GameState class Pause", "[Pause]" ) {
     TestState state;
-    state.Pause(true);
-    REQUIRE( state.IsPaused() == true);
+    state.pause(true);
+    REQUIRE( state.isPaused() == true);
 }
