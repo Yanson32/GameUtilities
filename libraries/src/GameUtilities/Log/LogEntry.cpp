@@ -103,7 +103,6 @@ namespace GU
         std::shared_ptr<LogComponent> LogEntry::operator [] (const std::size_t &index)
         {
             assert(m_pimpl != nullptr);
-            assert(index >= 0);
             assert(index < m_pimpl->m_data.size());
             return m_pimpl->m_data[index];
         }

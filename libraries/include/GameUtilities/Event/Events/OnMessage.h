@@ -67,8 +67,8 @@ namespace GU
                 virtual ~OnMessage();
 
             private:
-                const int m_messageType = -1;
                 const GU::Core::String m_msg;
+                const int m_messageType = -1;
         };
 
     }

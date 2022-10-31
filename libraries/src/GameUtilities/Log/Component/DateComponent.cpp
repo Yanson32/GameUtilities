@@ -27,7 +27,7 @@ namespace GU
         *************************************************************************************/
         DateComponent::DateComponent(const unsigned &month, const unsigned &day, const unsigned &year):
         LogComponent(componentId::DATE),
-        m_month(m_month),
+        m_month(month),
         m_day(day),
         m_year(year)
         {

@@ -29,7 +29,7 @@
 #include "GameUtilities/Data/Rectangle.h"
 #include "GameUtilities/Data/AABB.h"
 #include <vector>
-
+#include <cstddef>
 namespace GU
 {
     namespace Data 
@@ -142,9 +142,9 @@ namespace GU
                 std::vector<std::shared_ptr<QuadTree>> m_quadrants;
                 std::vector<std::shared_ptr<PhysicsObject>> m_data;
                 GU::Data::AABB m_bounds;
-                const int m_max;
-                const int m_maxLevel;
                 const int m_currentLevel;
+                const std::size_t m_max;
+                const int m_maxLevel;
         };
     }
 }
