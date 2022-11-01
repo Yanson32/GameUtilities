@@ -39,7 +39,7 @@ namespace GU
 
                 /****************************************************//**
                 *   @brief  Constructor
-                *   @param  size the number of objects the container
+                *   @param  capacity size the number of objects the container
                 *           should hold.
                 ********************************************************/
                 Container(const std::size_t capacity);
@@ -203,7 +203,7 @@ namespace GU
 
         /****************************************************//**
         *   @brief  Constructor
-        *   @param  size the number of objects the container
+        *   @param  capacity size the number of objects the container
         *           should hold.
         ********************************************************/
         template <class T>
