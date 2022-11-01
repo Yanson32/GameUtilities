@@ -1,4 +1,4 @@
-# GameUtilities
+# GameUtilities {#mainpage}
     The GameUtilities toolkit provides some commonly used data structures, and algorithms to make building your game faster, and esier.
 The goal of the GameUtiliites toolkit is to provide infrastructure for making 2d games, while having verry few dependancies. 
 
