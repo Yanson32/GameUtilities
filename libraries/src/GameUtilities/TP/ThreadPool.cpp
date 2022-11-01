@@ -25,17 +25,17 @@ namespace GU
 
 
         /************************************************************************//**
-        *   @brief  Constructor
-        *   @param  The number of threads to be alloted. This must be less than
-        *           std::thread::hardware_cuncurrency
+        *   @brief  Constructor.
+        *   @param  numThreads The number of threads to be alloted. This must be less 
+        *           than std::thread::hardware_cuncurrency.
         ****************************************************************************/
-        ThreadPool::ThreadPool(const unsigned &newNumThreads):
+        ThreadPool::ThreadPool(const unsigned &numThreads):
         m_pimpl(new ThreadPool::Impl())
         {
             assert(m_pimpl != nullptr);
-            assert(newNumThreads < std::thread::hardware_concurrency());
-            assert(newNumThreads > 0);
-            for(std::size_t i = 0; i < newNumThreads; ++i)
+            assert(numThreads < std::thread::hardware_concurrency());
+            assert(numThreads > 0);
+            for(std::size_t i = 0; i < numThreads; ++i)
             {
                 m_pimpl->m_threads.emplace_back(&ThreadPool::waitForTask, this);
             }
@@ -45,12 +45,12 @@ namespace GU
 
         /************************************************************************//**
         *   @brief  Queue a new task.
-        *   @param  An object that contains a task to be completed.
+        *   @param  task An object that contains a task to be completed.
         ****************************************************************************/
-        void ThreadPool::add(std::unique_ptr<ThreadPoolTask> newTask)
+        void ThreadPool::add(std::unique_ptr<ThreadPoolTask> task)
         {
-            assert(newTask != nullptr);
-            m_pimpl->m_queue.add(std::move(newTask));
+            assert(task != nullptr);
+            m_pimpl->m_queue.add(std::move(task));
         }
 
 

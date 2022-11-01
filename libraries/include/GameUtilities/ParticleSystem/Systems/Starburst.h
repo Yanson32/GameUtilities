@@ -23,7 +23,7 @@ namespace GU
                     *   @param  position the base position of the particle system
                     *   @param  size the number of particles in the system.
                     ****************************************************************/
-                    Starburst(const Math::Vector2<float> &newPosition, const std::size_t newSize);
+                    Starburst(const Math::Vector2<float> &position, const std::size_t size);
 
 
                     /************************************************************//**
@@ -40,8 +40,8 @@ namespace GU
                     ****************************************************************/
                     void setMagnitude(const unsigned magnitude);
 
-					std::size_t size = 10;
-                    Math::Vector2<float> position;
+					std::size_t m_size = 10;
+                    Math::Vector2<float> m_position;
             };
         }
     }

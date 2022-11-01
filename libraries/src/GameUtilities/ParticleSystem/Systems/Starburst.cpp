@@ -23,9 +23,9 @@ namespace GU
             *   @param  position the base position of the particle system
             *   @param  size the number of particles in the system.
             ****************************************************************/
-            Starburst::Starburst(const Math::Vector2<float> &newPosition, const std::size_t newSize):
-			size(newSize),
-			position(newPosition)
+            Starburst::Starburst(const Math::Vector2<float> &position, const std::size_t size):
+			m_size(size),
+			m_position(position)
 
             {
                 //setPosition(position);
@@ -47,22 +47,22 @@ namespace GU
 
 			void Starburst::init()
 			{
-				std::shared_ptr<GU::PS::AT::Position> pos(new GU::PS::AT::Position(*this, size));
+				std::shared_ptr<GU::PS::AT::Position> pos(new GU::PS::AT::Position(*this, m_size));
 				assert(pos != nullptr);
 				this->addAttribute(std::static_pointer_cast<GU::PS::AT::Base>(pos));
 
-				for (size_t i = 0; i < size; ++i)
+				for (std::size_t i = 0; i < m_size; ++i)
 				{
-					pos->data[i].first = position.x;
-					pos->data[i].second = position.y;
+					pos->data[i].first = m_position.x;
+					pos->data[i].second = m_position.y;
 				}
 
 
-				std::shared_ptr<GU::PS::AT::Velocity> vel(new GU::PS::AT::Velocity(*this, size));
+				std::shared_ptr<GU::PS::AT::Velocity> vel(new GU::PS::AT::Velocity(*this, m_size));
 				assert(vel != nullptr);
 				this->addAttribute(std::static_pointer_cast<GU::PS::AT::Base>(vel));
-                float degree = 360 / size;
-				for(size_t i = 0; i < size; ++i)
+                float degree = 360 / m_size;
+				for(size_t i = 0; i < m_size; ++i)
 				{
 					float angle = degree * i;
 					vel->data[i].first = std::sin(angle);

@@ -7,7 +7,7 @@ namespace GU
     namespace Thread
     {
         /************************************************************************//**
-        *   @brief  This class manages available threads
+        *   @brief  This class manages available threads.
         *   @author Wayne J Larson Jr.
         *   @date   11/23/19
         ****************************************************************************/
@@ -16,18 +16,18 @@ namespace GU
             public:
 
                 /************************************************************************//**
-                *   @brief  Constructor
-                *   @param  The number of threads to be alloted. This must be less than
-                *           std::thread::hardware_cuncurrency
+                *   @brief  Constructor.
+                *   @param  numThreads The number of threads to be alloted. This must be less 
+                *           than std::thread::hardware_cuncurrency.
                 ****************************************************************************/
-                ThreadPool(const unsigned &newNumThreads);
+                ThreadPool(const unsigned &numThreads);
 
 
                 /************************************************************************//**
                 *   @brief  Queue a new task.
-                *   @param  An object that contains a task to be completed.
+                *   @param  task An object that contains a task to be completed.
                 ****************************************************************************/
-                void add(std::unique_ptr<ThreadPoolTask> newTask);
+                void add(std::unique_ptr<ThreadPoolTask> task);
 
 
                 /************************************************************************//**
