@@ -5,4 +5,6 @@ sudo apt install cmake -y
 sudo apt install build-essential -y
 sudo apt install git -y
 sudo apt install libx11-dev -y
+sudo apt install curl -y
+sudo apt install git -y
 
