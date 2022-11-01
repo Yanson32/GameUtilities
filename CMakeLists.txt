@@ -1,5 +1,5 @@
 #for backwards compatibility
-cmake_minimum_required(VERSION 3.5.1)
+cmake_minimum_required(VERSION 3.9.0)
 
 option(GU_BUILD_EXAMPLES "Set to TRUE if you want to build examples" FALSE)
 option(GU_BUILD_DOC "Set to TRUE if you want to build library documentation" FALSE)

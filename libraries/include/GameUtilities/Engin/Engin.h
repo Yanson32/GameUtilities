@@ -1,6 +1,7 @@
 /*********************************************************************************//**
-*	\author	Wayne J Larson Jr.
-*	\date 12/10/17
+*   @file Engin.h
+*	@author	Wayne J Larson Jr.
+*	@date 12/10/17
 *************************************************************************************/
 
 #ifndef GAMEUTILITIES_ENGIN_ENGIN_H
@@ -15,8 +16,8 @@ namespace GU
     {
 
         /*********************************************************************************//**
-        *	\brief	This is the main game engin class
-        *	\class Engin
+        *	@brief	This is the main game engin class
+        *	@class Engin
         *************************************************************************************/
         class ENGIN_EXPORT Engin
         {
