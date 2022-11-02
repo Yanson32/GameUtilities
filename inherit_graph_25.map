@@ -1,0 +1,9 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$structGU_1_1Log_1_1LogComponent.html" title=" " alt="" coords="5,132,184,159"/>
+<area shape="rect" id="node2" href="$structGU_1_1Log_1_1DateComponent.html" title=" " alt="" coords="244,5,431,32"/>
+<area shape="rect" id="node3" href="$structGU_1_1Log_1_1FileComponent.html" title=" " alt="" coords="248,56,427,83"/>
+<area shape="rect" id="node4" href="$structGU_1_1Log_1_1LineComponent.html" title=" " alt="" coords="246,107,429,133"/>
+<area shape="rect" id="node5" href="$structGU_1_1Log_1_1MsgComponent.html" title=" " alt="" coords="246,157,429,184"/>
+<area shape="rect" id="node6" href="$structGU_1_1Log_1_1SeverityComponent.html" title=" " alt="" coords="232,208,443,235"/>
+<area shape="rect" id="node7" href="$structGU_1_1Log_1_1TimeComponent.html" title=" " alt="" coords="243,259,431,285"/>
+</map>

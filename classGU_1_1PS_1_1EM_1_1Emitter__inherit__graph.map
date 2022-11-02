@@ -1,0 +1,5 @@
+<map id="GU::PS::EM::Emitter" name="GU::PS::EM::Emitter">
+<area shape="rect" id="node1" title=" " alt="" coords="84,5,235,32"/>
+<area shape="rect" id="node2" href="$classGU_1_1PS_1_1EM_1_1Line.html" title=" " alt="" coords="5,80,135,107"/>
+<area shape="rect" id="node3" href="$classGU_1_1PS_1_1EM_1_1PointEmitter.html" title=" " alt="" coords="159,80,341,107"/>
+</map>

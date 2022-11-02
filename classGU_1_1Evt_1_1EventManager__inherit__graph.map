@@ -1,0 +1,5 @@
+<map id="GU::Evt::EventManager" name="GU::Evt::EventManager">
+<area shape="rect" id="node1" title=" " alt="" coords="87,80,261,107"/>
+<area shape="rect" id="node2" href="$classGU_1_1Evt_1_1EventQueue.html" title=" " alt="" coords="5,5,164,32"/>
+<area shape="rect" id="node3" href="$classGU_1_1Evt_1_1Dispatcher.html" title="This class distributes events to the appropriate listeners." alt="" coords="189,5,338,32"/>
+</map>

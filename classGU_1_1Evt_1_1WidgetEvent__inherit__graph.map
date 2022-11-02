@@ -1,0 +1,8 @@
+<map id="GU::Evt::WidgetEvent" name="GU::Evt::WidgetEvent">
+<area shape="rect" id="node1" title=" " alt="" coords="169,81,332,108"/>
+<area shape="rect" id="node3" href="$classGU_1_1Evt_1_1OnCheck.html" title=" " alt="" coords="407,5,544,32"/>
+<area shape="rect" id="node4" href="$classGU_1_1Evt_1_1OnItemSelected.html" title=" " alt="" coords="384,56,567,83"/>
+<area shape="rect" id="node5" href="$classGU_1_1Evt_1_1OnSliderChanged.html" title=" " alt="" coords="380,107,571,133"/>
+<area shape="rect" id="node6" href="$classGU_1_1Evt_1_1OnTextChanged.html" title=" " alt="" coords="385,157,566,184"/>
+<area shape="rect" id="node2" href="$classGU_1_1Evt_1_1Event.html" title=" " alt="" coords="5,81,121,108"/>
+</map>
