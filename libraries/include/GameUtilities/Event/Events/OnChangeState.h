@@ -37,9 +37,9 @@ namespace GU
 			public:
                 /*******************************************************//**
                 *   @brief  Constructor
-                *   @param  newStateId a unique identifier of the new state
-                *   @param  newLine the line where the event originates from
-                *   @param  newFile the file where the event originates from
+                *   @param  stateId a unique identifier of the new state
+                *   @param  line the line where the event originates from
+                *   @param  file the file where the event originates from
                 ***********************************************************/
 				OnChangeState(const int &stateId, const int &line = 0, const char* file = "");
 

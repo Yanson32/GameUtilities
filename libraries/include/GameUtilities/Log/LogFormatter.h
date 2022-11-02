@@ -42,7 +42,6 @@ namespace GU
                 *           is used by the formatter to determine the order that the components will 
                 *           be written to the log file. Components will be written to the log file
                 *           in the same order they were added to the formatter.
-                *   @param  component is the log component to be added to the log file. 
                 *************************************************************************************/
                 template<typename Type, typename... Args>
                 void add(Args&&... args);
@@ -86,7 +85,6 @@ namespace GU
         *           is used by the formatter to determine the order that the components will 
         *           be written to the log file. Components will be written to the log file
         *           in the same order they were added to the formatter.
-        *   @param  component is the log component to be added to the log file. 
         *************************************************************************************/
         template<typename Type, typename... Args>
         void LogFormatter::add(Args&&... args)

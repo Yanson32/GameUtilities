@@ -19,7 +19,7 @@ namespace GU
 
         /*********************************************************************************//**
         *	@brief  Constructor
-        *   @param  hour is the hour component of the current time
+        *   @param  hours is the hour component of the current time
         *   @param  minutes is the minutes component of the current time.
         *   @param  seconds is the seconds component of the current time
         *************************************************************************************/
@@ -35,7 +35,7 @@ namespace GU
         
         /*********************************************************************************//**
         *	@brief  This method copies the given object into the current object with deep copy.
-        *   @comp   is the object to be copied. 
+        *   @param  comp is the object to be copied. 
         *   @return Is a reference to the current updated object
         *************************************************************************************/
         TimeComponent& TimeComponent::operator = (const TimeComponent &comp)

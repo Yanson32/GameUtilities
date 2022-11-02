@@ -442,8 +442,6 @@ namespace GU
 
                 /****************************************************//**
                 *   @brief  Overloaded post increment operator.
-                *   @param  int this is a dummy parameter to differentiate
-                *           between the pre and post operator.
                 *   @return An iterator to the current element in the
                 *           container.
                 ********************************************************/
@@ -460,8 +458,6 @@ namespace GU
 
                 /****************************************************//**
                 *   @brief  Overloaded post decrement operator.
-                *   @param  int this is a dummy parameter to differentiate
-                *           between the pre and post operator.
                 *   @return An iterator to the current element in the
                 *           container.
                 ********************************************************/
@@ -525,8 +521,6 @@ namespace GU
 
         /****************************************************//**
         *   @brief  Overloaded post increment operator.
-        *   @param  int this is a dummy parameter to differentiate
-        *           between the pre and post operator.
         *   @return An iterator to the current element in the
         *           container.
         ********************************************************/
@@ -554,8 +548,6 @@ namespace GU
 
         /****************************************************//**
         *   @brief  Overloaded post decrement operator.
-        *   @param  int this is a dummy parameter to differentiate
-        *           between the pre and post operator.
         *   @return An iterator to the current element in the
         *           container.
         ********************************************************/

@@ -7,9 +7,9 @@ namespace GU
 
         /*******************************************************//**
         *   @brief  Constructor
-        *   @param  newStateId a unique identifier of the new state
-        *   @param  newLine the line where the event originates from
-        *   @param  newFile the file where the event originates from
+        *   @param  stateId a unique identifier of the new state
+        *   @param  line the line where the event originates from
+        *   @param  file the file where the event originates from
         ***********************************************************/
 		OnChangeState::OnChangeState(const int &stateId, const int &line, const char* file):
 		Event(static_cast<int>(GU::Evt::EventId::CHANGE_STATE), line, file),

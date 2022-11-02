@@ -290,7 +290,7 @@ namespace GU
 
         /*******************************************************************************************
         *   Purpose:    This method registers an event listener with an event.
-        *   Input:      ListenerPtr a pointer to the listener to be registered.
+        *   Input:      listener a pointer to the listener to be registered.
         *               const int the id of the event listener should listen for.
         *               if id = ALL (-1) then the listener will receive all events
         *******************************************************************************************/
@@ -303,7 +303,7 @@ namespace GU
 
         /*******************************************************************************************
         *   Purpose:    This method registers an event listener with an event.
-        *   Input:      ListenerPtr a pointer to the listener to be registered.
+        *   Input:      listener a pointer to the listener to be registered.
         *               EventPtr the event that the listener will listen for.
         *               if event = EventPtr(new Event); then the listener will receive all events.
         *******************************************************************************************/
@@ -342,7 +342,7 @@ namespace GU
 
         /*******************************************************************************************
         *   Purpose:    This method unregisters an event listener.
-        *   Input:      ListenerPtr a pointer to the listener to be unregistered.
+        *   Input:      listener a pointer to the listener to be unregistered.
         *               const int the id of the event the listener should be unregistered from.
         *               if id = Evt::ALL then the listener will be unregistered from all events.
         *******************************************************************************************/
@@ -355,7 +355,7 @@ namespace GU
 
         /*******************************************************************************************
         *   Purpose:    This method unregisters an event listener.
-        *   Input:      ListenerPtr a pointer to the listener to be unregistered.
+        *   Input:      listener a pointer to the listener to be unregistered.
         *               EventPtr a pointer to the event listener should be unregistered from.
         *               if event = EventPtr(new Event); then the listener will be unregistered from
         *               all events.
@@ -397,7 +397,7 @@ namespace GU
         /*******************************************************************************************
         *   @brief          This method returns true if a listener has already been registered with an
         *                   event.
-        *   @param [in]     ListenerPtr a pointer to a listener in question of being registered with
+        *   @param [in]     listener a pointer to a listener in question of being registered with
         *                   the given event.
         *   @param [in]     id of the event in question of being registered with the
         *                   given listener.
@@ -415,7 +415,7 @@ namespace GU
         /*******************************************************************************************
         *   Purpose:    This method returns true if a listener has already been registered with an
         *               event.
-        *   Input:      ListenerPtr a pointer to a listener in question of being registered with
+        *   Input:      listener a pointer to a listener in question of being registered with
         *               the given event.
         *               EventPtr a pointer of the event in question of being registered with the
         *               given listener.
@@ -463,7 +463,7 @@ namespace GU
         /*******************************************************************************************
         *   Purpose:    This method is used to send an event to any listeners that are registered
         *               to listen for the event.
-        *   Input:      EventPtr a pointer to the event.
+        *   Input:      event a pointer to the event.
         *******************************************************************************************/
         void Dispatcher::Dispatch(EventPtr event)
         {
