@@ -43,6 +43,7 @@ namespace GU
                 /*********************************************************************************//**
                 *   \brief	This method handles input such as user input and events
                 *	\param	engin is a reference to the game's Engin object.
+                *	\param	deltaTime is the length of time a single frame takes 
                 *************************************************************************************/
                 virtual void handleEvents(EnginPtr engin, const float &deltaTime) = 0;
 
@@ -50,6 +51,7 @@ namespace GU
                 /*********************************************************************************//**
                 *   \brief	This method handles input such as user input and events
                 *	\param	engin is a reference to the game's Engin object.
+                *	\param	deltaTime is the length of time a single frame takes 
                 *************************************************************************************/
                 virtual void update(EnginPtr engin, const float &deltaTime) = 0;
 
@@ -57,6 +59,7 @@ namespace GU
                 /*********************************************************************************//**
                 *   \brief	This method draws the current game state.
                 *	\param	engin is a reference to the game's Engin object.
+                *	\param	deltaTime is the length of time a single frame takes 
                 *************************************************************************************/
                 virtual void draw(EnginPtr engin, const float &deltaTime) = 0;
 
@@ -80,8 +83,8 @@ namespace GU
                 *************************************************************************************/
                 virtual ~GameState();
             private:
-                ///true when the game is paused and false otherwise
-                bool paused = false;
+                ///true when the game is paused and false otherwise  
+                bool m_paused = false;      
         };
     }
 }

@@ -22,7 +22,7 @@ namespace GU
         *************************************************************************************/
         void GameState::pause(const bool pause)
         {
-            paused = pause;
+            m_paused = pause;
         }
 
 
@@ -33,7 +33,7 @@ namespace GU
         *************************************************************************************/
         bool GameState::isPaused()const
         {
-            return paused;
+            return m_paused;
         }
 
 
