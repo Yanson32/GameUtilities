@@ -12,6 +12,9 @@ The goal of the GameUtiliites toolkit is to provide infrastructure for making 2d
 - Data Structures
 - Resource Manager
 
+## Documentation can be found here
+[GameUtilities](https://yanson32.github.io/GameUtilities/)
+
 ## Supported operating systems
 - Linux
 - Windows
