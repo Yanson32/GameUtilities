@@ -50,40 +50,38 @@ namespace GU
 				std::shared_ptr<GU::PS::AT::Position> pos(new GU::PS::AT::Position(*this, m_size));
                 assert(pos != nullptr);
               
-                //Initialize position container 
-                for(std::size_t i = 0; i < m_size; ++i) 
-                    pos->data.emplace_back(0, 0);		
-				
-				this->addAttribute(std::static_pointer_cast<GU::PS::AT::Base>(pos));
-
 				for (std::size_t i = 0; i < m_size; ++i)
 				{
+                    pos->data.emplace_back(0, 0);		
 					pos->data[i].first = m_position.x;
 					pos->data[i].second = m_position.y;
 				}
+				
+                this->addAttribute(std::static_pointer_cast<GU::PS::AT::Base>(pos));
 
 
 				std::shared_ptr<GU::PS::AT::Velocity> vel(new GU::PS::AT::Velocity(*this, m_size));
 				assert(vel != nullptr);
 
-                //Initialize velocity container 
-                for(std::size_t i = 0; i < m_size; ++i) 
-                    vel->data.emplace_back(0, 0);		
-
-				this->addAttribute(std::static_pointer_cast<GU::PS::AT::Base>(vel));
                 float degree = 360 / m_size;
 				for(size_t i = 0; i < m_size; ++i)
 				{
+                    vel->data.emplace_back(0, 0);		
 					float angle = degree * i;
 					vel->data[i].first = std::sin(angle);
 					vel->data[i].second = std::cos(angle);
 				}
 
-				//std::shared_ptr<GU::PS::CP::LifeSpan> life(new GU::PS::UP::LifeSpan(*this, size));
-				//assert(life != nullptr);
-				//this->addUpdater(std::static_pointer_cast<GU::PS::UP::Base>(life));
-				//for(size_t i = 0; i  < size; ++i)
-				//	life->data.emplace_back(1);
+				this->addAttribute(std::static_pointer_cast<GU::PS::AT::Base>(vel));
+
+				std::shared_ptr<GU::PS::AT::LifeSpan> life(new GU::PS::AT::LifeSpan(*this, m_size));
+				assert(life != nullptr);
+			
+                //Initialize life container	
+                for(size_t i = 0; i  < m_size; ++i)
+					life->data.emplace_back(1);
+
+				this->addAttribute(std::static_pointer_cast<GU::PS::AT::Base>(life));
 
                 //Add updaters to class
                 std::shared_ptr<GU::PS::UP::Base> up(new GU::PS::UP::Position());
