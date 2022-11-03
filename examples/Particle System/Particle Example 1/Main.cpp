@@ -51,12 +51,13 @@ CircleAtt::CircleAtt(GU::PS::AT::Manager& newManager, const std::size_t &newSize
     GU::PS::AT::Base::Base(newManager, newSize, newId),
     data(newSize)
 {
-
+    
+    
     for(std::size_t i = 0; i < newSize; ++i)
     {
-        sf::CircleShape &circle = data[i];
-        circle.setFillColor(sf::Color::Green);
-        circle.setRadius(5);
+        data.emplace_back<sf::CircleShape>(sf::CircleShape());
+        data[i].setFillColor(sf::Color::Green);
+        data[i].setRadius(5);
     }
 
 }

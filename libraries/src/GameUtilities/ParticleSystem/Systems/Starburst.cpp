@@ -48,7 +48,12 @@ namespace GU
 			void Starburst::init()
 			{
 				std::shared_ptr<GU::PS::AT::Position> pos(new GU::PS::AT::Position(*this, m_size));
-				assert(pos != nullptr);
+                assert(pos != nullptr);
+              
+                //Initialize position container 
+                for(std::size_t i = 0; i < m_size; ++i) 
+                    pos->data.emplace_back(0, 0);		
+				
 				this->addAttribute(std::static_pointer_cast<GU::PS::AT::Base>(pos));
 
 				for (std::size_t i = 0; i < m_size; ++i)
@@ -60,6 +65,11 @@ namespace GU
 
 				std::shared_ptr<GU::PS::AT::Velocity> vel(new GU::PS::AT::Velocity(*this, m_size));
 				assert(vel != nullptr);
+
+                //Initialize velocity container 
+                for(std::size_t i = 0; i < m_size; ++i) 
+                    vel->data.emplace_back(0, 0);		
+
 				this->addAttribute(std::static_pointer_cast<GU::PS::AT::Base>(vel));
                 float degree = 360 / m_size;
 				for(size_t i = 0; i < m_size; ++i)
