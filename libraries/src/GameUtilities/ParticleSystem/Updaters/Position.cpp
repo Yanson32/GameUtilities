@@ -17,8 +17,10 @@ namespace GU
 
             void Position::update(GU::PS::AT::Manager &manager, const float &deltaTime)
             {
-                std::shared_ptr<GU::PS::AT::Velocity> vel = std::static_pointer_cast<GU::PS::AT::Velocity>(manager.getComponent(GU::PS::AT::Id::VELOCITY));
-                std::shared_ptr<GU::PS::AT::Position> pos = std::static_pointer_cast<GU::PS::AT::Position>(manager.getComponent(GU::PS::AT::Id::POSITION));
+                typedef GU::PS::AT::Velocity Velocity; 
+                typedef GU::PS::AT::Position Position; 
+                std::shared_ptr<Velocity> vel = std::static_pointer_cast<Velocity>(manager.getComponent(GU::PS::AT::Id::VELOCITY));
+                std::shared_ptr<Position> pos = std::static_pointer_cast<Position>(manager.getComponent(GU::PS::AT::Id::POSITION));
 
                 assert(vel != nullptr);
                 assert(pos != nullptr);
