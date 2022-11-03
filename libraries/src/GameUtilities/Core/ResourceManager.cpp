@@ -53,6 +53,7 @@ namespace GU
         *	@brief  Add a previously loaded resource to the resource manager class. 
         *   @param  key is a unique identifier for the resource. 
         *   @param  value is a pointer to the resource. 
+        *   @return True is returned if the resource is added sucessfully and false otherwise.
         *************************************************************************************/
         bool ResourceManager::add(const int &key, std::shared_ptr<GU::Core::Resource> value)
         {

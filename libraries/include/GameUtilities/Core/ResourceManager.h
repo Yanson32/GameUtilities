@@ -48,7 +48,7 @@ namespace GU
                 *   @param  key is a unique identifier for the resource.
                 *   @param  data is a pointer to the resources data.
                 *   @param  size is the total size of the data. 
-                *   @param  True is returned if the resource is loaded sucessfully and false otherwise.
+                *   @return True is returned if the resource is loaded sucessfully and false otherwise.
                 *************************************************************************************/
                 template <class Resource>
                 bool load(const int &key, const std::shared_ptr<void> data, const std::size_t &size);
@@ -58,7 +58,7 @@ namespace GU
                 *	@brief  Load resource disk. 
                 *   @param  key is a unique identifier for the resource.
                 *   @param  file is the pathe to the resource on disk. 
-                *   @param  True is returned if the resource is loaded sucessfully and false otherwise.
+                *   @return True is returned if the resource is loaded sucessfully and false otherwise.
                 *************************************************************************************/
                 template <class Resource>
                 bool load(const int &key, const GU::Core::String &file);
@@ -68,7 +68,7 @@ namespace GU
                 *	@brief  Add a previously loaded resource to the resource manager class. 
                 *   @param  key is a unique identifier for the resource. 
                 *   @param  value is a pointer to the resource. 
-                *   @param  True is returned if the resource is added sucessfully and false otherwise.
+                *   @return True is returned if the resource is added sucessfully and false otherwise.
                 *************************************************************************************/
                 bool add(const int &key, std::shared_ptr<GU::Core::Resource> value);
                
@@ -93,18 +93,15 @@ namespace GU
                 /*********************************************************************************//**
                 *	@brief  Destructor 
                 *************************************************************************************/
-                virtual ~ResourceManager();
-            private:
-                class Impl;
-                Impl *m_pimpl = nullptr;
+                virtual ~ResourceManager(); private: class Impl; Impl *m_pimpl = nullptr;
         };
         
         /*********************************************************************************//**
-        *	@brief  Load resource from memory.
-        *   @param  key is a unique identifier for the resource.
-        *   @param  data is a pointer to the resources data.
-        *   @param  size is the total size of the data. 
-        *   @param  True is returned if the resource is loaded sucessfully and false otherwise.
+        *	brief  Load resource from memory.
+        *   param  key is a unique identifier for the resource.
+        *   param  data is a pointer to the resources data.
+        *   param  size is the total size of the data. 
+        *   return True is returned if the resource is loaded sucessfully and false otherwise.
         *************************************************************************************/
         template <class Resource>
         bool ResourceManager::load(const int &key, const std::shared_ptr<void> data, const std::size_t &size)
@@ -118,10 +115,10 @@ namespace GU
 
 
         /*********************************************************************************//**
-        *	@brief  Load resource disk. 
-        *   @param  key is a unique identifier for the resource.
-        *   @param  file is the pathe to the resource on disk. 
-        *   @param  True is returned if the resource is loaded sucessfully and false otherwise.
+        *	brief  Load resource disk. 
+        *   param  key is a unique identifier for the resource.
+        *   param  file is the pathe to the resource on disk. 
+        *   return True is returned if the resource is loaded sucessfully and false otherwise.
         *************************************************************************************/
         template <class Resource>
         bool ResourceManager::load(const int &key, const GU::Core::String &file)
