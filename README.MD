@@ -21,6 +21,7 @@ The goal of the GameUtiliites toolkit is to provide infrastructure for making 2d
 
 ## Dependencies
 - [Math](https://github.com/Yanson32/Math)
+- [Linux - xlib](https://www.x.org/releases/current/doc/libX11/libX11/libX11.html)
 
 ## Optional Dependencies
 - [SFML](https://www.sfml-dev.org/)
