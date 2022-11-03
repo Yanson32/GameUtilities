@@ -2,7 +2,7 @@
 *   @Author     Wayne J Larson Jr.
 *   @Date       4/08/18
 *   @class      This updater class is used to update the particles position.
-*   @file       Position.h
+*   @file       Position.cpp
 **************************************************************************/
 
 /*************************************************************************
