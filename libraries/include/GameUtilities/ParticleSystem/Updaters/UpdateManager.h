@@ -41,9 +41,30 @@ namespace GU
             class PARTICLESYSTEM_EXPORT UpdateManager
             {
                 public:
+                    /************************************************************************//**
+                    *   @brief  Constructor 
+                    ****************************************************************************/
                     UpdateManager();
+                    
+
+                    /************************************************************************//**
+                    *   @brief  This method adds an Updater to the manager class. 
+                    *   @param  comp is a shared pointer to the updater to be added to the class. 
+                    ****************************************************************************/
                     void addUpdater(std::shared_ptr<GU::PS::UP::UpdaterBase> comp);
+                    
+
+                    /************************************************************************//**
+                    *   @brief  This method will call the update method of all stored updaters.
+                    *   @param  manager is a reference to the attrubute manager.
+                    *   @param  deltaTime is the length of time for a single frame 
+                    ****************************************************************************/
                     void update(GU::PS::AT::Manager &manager, const float &deltaTime);
+                    
+
+                    /************************************************************************//**
+                    *   @brief  Destructor.
+                    ****************************************************************************/
                     virtual ~UpdateManager();
 
                 protected:
