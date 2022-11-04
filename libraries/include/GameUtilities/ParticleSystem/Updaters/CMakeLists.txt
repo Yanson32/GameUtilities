@@ -1,5 +1,5 @@
 set(FILES 	"${CMAKE_CURRENT_SOURCE_DIR}/UpdaterBase.h"
-			"${CMAKE_CURRENT_SOURCE_DIR}/Manager.h"
+			"${CMAKE_CURRENT_SOURCE_DIR}/UpdateManager.h"
 			"${CMAKE_CURRENT_SOURCE_DIR}/Position.h"
 )
 set(SUB_DIRECTORIES ""

@@ -42,7 +42,7 @@ namespace GU
             ****************************************************************/
             void Starburst::update(const float &deltaTime)
             {
-                GU::PS::UP::Manager::update(*this, deltaTime);
+                GU::PS::UP::UpdateManager::update(*this, deltaTime);
             }
 
 			void Starburst::init()
