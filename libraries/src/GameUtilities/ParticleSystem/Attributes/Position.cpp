@@ -7,7 +7,7 @@ namespace GU
 		namespace AT
 		{
 			Position::Position(GU::PS::AT::Manager &newManager, const std::size_t &newSize):
-            Base::Base(newManager, newSize, GU::PS::AT::Id::POSITION),
+            AttributeBase::AttributeBase(newManager, newSize, GU::PS::AT::Id::POSITION),
             data(newSize)
 			{
 

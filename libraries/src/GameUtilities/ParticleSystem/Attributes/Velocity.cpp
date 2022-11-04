@@ -10,7 +10,7 @@ namespace GU
 		namespace AT
 		{
 			Velocity::Velocity(GU::PS::AT::Manager &newManager, const std::size_t &newSize):
-            Base::Base(newManager, newSize, GU::PS::AT::Id::VELOCITY),
+            AttributeBase::AttributeBase(newManager, newSize, GU::PS::AT::Id::VELOCITY),
             data(newSize)
 			{
 

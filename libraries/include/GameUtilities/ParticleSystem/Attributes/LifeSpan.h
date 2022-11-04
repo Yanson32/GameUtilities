@@ -1,7 +1,7 @@
 #ifndef ATTRIBUTES_LIFE_SPAN_H
 #define ATTRIBUTES_LIFE_SPAN_H
 #include "particlesystem_export.h"
-#include "GameUtilities/ParticleSystem/Attributes/Base.h"
+#include "GameUtilities/ParticleSystem/Attributes/AttributeBase.h"
 #include "GameUtilities/ParticleSystem/Container.h"
 namespace GU
 {
@@ -9,7 +9,7 @@ namespace GU
 	{
 		namespace AT
 		{
-			class PARTICLESYSTEM_EXPORT LifeSpan: public GU::PS::AT::Base
+			class PARTICLESYSTEM_EXPORT LifeSpan: public GU::PS::AT::AttributeBase
 			{
 				public:
 					LifeSpan(GU::PS::AT::Manager &newManager, const std::size_t &newSize);

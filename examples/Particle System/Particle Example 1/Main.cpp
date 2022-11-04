@@ -3,9 +3,8 @@
 #include <GameUtilities/ParticleSystem/Attributes/Position.h>
 #include <GameUtilities/ParticleSystem/Attributes/Velocity.h>
 #include <GameUtilities/ParticleSystem/Attributes/LifeSpan.h>
-#include <GameUtilities/ParticleSystem/Attributes/Base.h>
 #include <GameUtilities/ParticleSystem/Attributes/Id.h>
-#include <GameUtilities/ParticleSystem/Attributes/Base.h>
+#include <GameUtilities/ParticleSystem/Attributes/AttributeBase.h>
 #include <GameUtilities/ParticleSystem/Container.h>
 #include <Math/Vector2.h>
 #include <SFML/Graphics.hpp>
@@ -18,7 +17,7 @@ const int CIRCLE_ATT = 3;	///CircleAtt's id
 *	@brief	sf::CircleShape attribute. for drawing particles with sfml.
 *	@class	CircleAtt
 ************************************************************************************/
-class CircleAtt: public GU::PS::AT::Base
+class CircleAtt: public GU::PS::AT::AttributeBase
 {
     public:
 
@@ -48,7 +47,7 @@ class CircleAtt: public GU::PS::AT::Base
 *	@param	newId the id of the attribute.
 **************************************************************************************/
 CircleAtt::CircleAtt(GU::PS::AT::Manager& newManager, const std::size_t &newSize, const int &newId):
-    GU::PS::AT::Base::Base(newManager, newSize, newId),
+    GU::PS::AT::AttributeBase::AttributeBase(newManager, newSize, newId),
     data(newSize)
 {
     

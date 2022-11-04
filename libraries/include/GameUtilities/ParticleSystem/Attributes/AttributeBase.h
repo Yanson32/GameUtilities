@@ -10,12 +10,12 @@ namespace GU
 		namespace AT
 		{
             class Manager;
-			class PARTICLESYSTEM_EXPORT Base
+			class PARTICLESYSTEM_EXPORT AttributeBase
 			{
 				public:
-					Base(GU::PS::AT::Manager& newManager, const std::size_t &newSize, const int &newId = -1);
+					AttributeBase(GU::PS::AT::Manager& newManager, const std::size_t &newSize, const int &newId = -1);
 					virtual void remove(const std::size_t &index) = 0;
-					virtual ~Base();
+					virtual ~AttributeBase();
 				protected:
 
                     GU::PS::AT::Manager &manager;

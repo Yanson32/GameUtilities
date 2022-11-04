@@ -1,5 +1,5 @@
 set(FILES "${CMAKE_CURRENT_SOURCE_DIR}/Manager.cpp"
-"${CMAKE_CURRENT_SOURCE_DIR}/Base.cpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/AttributeBase.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/LifeSpan.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/Position.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/Velocity.cpp"

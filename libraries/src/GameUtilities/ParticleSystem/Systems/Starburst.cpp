@@ -57,7 +57,7 @@ namespace GU
 					pos->data[i].second = m_position.y;
 				}
 				
-                this->addAttribute(std::static_pointer_cast<GU::PS::AT::Base>(pos));
+                this->addAttribute(std::static_pointer_cast<GU::PS::AT::AttributeBase>(pos));
 
 
 				std::shared_ptr<GU::PS::AT::Velocity> vel(new GU::PS::AT::Velocity(*this, m_size));
@@ -72,7 +72,7 @@ namespace GU
 					vel->data[i].second = std::cos(angle);
 				}
 
-				this->addAttribute(std::static_pointer_cast<GU::PS::AT::Base>(vel));
+				this->addAttribute(std::static_pointer_cast<GU::PS::AT::AttributeBase>(vel));
 
 				std::shared_ptr<GU::PS::AT::LifeSpan> life(new GU::PS::AT::LifeSpan(*this, m_size));
 				assert(life != nullptr);
@@ -81,7 +81,7 @@ namespace GU
                 for(size_t i = 0; i  < m_size; ++i)
 					life->data.emplace_back(1);
 
-				this->addAttribute(std::static_pointer_cast<GU::PS::AT::Base>(life));
+				this->addAttribute(std::static_pointer_cast<GU::PS::AT::AttributeBase>(life));
 
                 //Add updaters to class
                 std::shared_ptr<GU::PS::UP::UpdaterBase> up(new GU::PS::UP::Position());

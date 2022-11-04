@@ -1,7 +1,7 @@
 #ifndef ATTRIBUTES_MANAGER_H
 #define ATTRIBUTES_MANAGER_H
 #include "particlesystem_export.h"
-#include "GameUtilities/ParticleSystem/Attributes/Base.h"
+#include "GameUtilities/ParticleSystem/Attributes/AttributeBase.h"
 #include <memory>
 #include <vector>
 #include <stack>
@@ -44,12 +44,12 @@ namespace GU
                     Manager();
                     void sendMessage(const Message &message);
                     bool hasComponent(const int &id) const;
-                    void addAttribute(std::shared_ptr<GU::PS::AT::Base> comp);
-                    std::shared_ptr<GU::PS::AT::Base> getComponent(const int &id) const;
+                    void addAttribute(std::shared_ptr<GU::PS::AT::AttributeBase> comp);
+                    std::shared_ptr<GU::PS::AT::AttributeBase> getComponent(const int &id) const;
 					void remove(const std::size_t &index);
 					virtual ~Manager();
 				private:
-					std::vector<std::shared_ptr<GU::PS::AT::Base>> components;
+					std::vector<std::shared_ptr<GU::PS::AT::AttributeBase>> components;
 					std::stack<GU::PS::AT::Message> messages;
 			};
 		}

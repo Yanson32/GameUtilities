@@ -29,7 +29,7 @@ namespace GU
                     components[i]->remove(index);
 				}
 			}
-            std::shared_ptr<GU::PS::AT::Base> Manager::getComponent(const int &id) const
+            std::shared_ptr<GU::PS::AT::AttributeBase> Manager::getComponent(const int &id) const
             {
 
                 for(std::size_t i = 0; i < components.size(); ++i)
@@ -57,7 +57,7 @@ namespace GU
 			}
 
 
-			void Manager::addAttribute(std::shared_ptr<GU::PS::AT::Base> comp)
+			void Manager::addAttribute(std::shared_ptr<GU::PS::AT::AttributeBase> comp)
 			{
 				assert(comp != nullptr);
                 if(hasComponent(comp->id))
