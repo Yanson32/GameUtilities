@@ -48,12 +48,14 @@ add_subdirectory("src")
 
 find_package("Math" REQUIRED)
 target_link_libraries("ParticleSystem" PUBLIC Math::Math)
+target_link_libraries("Window" PUBLIC Math::Math)
 
 #Link the log target against the Core target
 target_link_libraries("Log" PUBLIC "Core")
 
 #Link the log target against the Core target
 target_link_libraries("Event" PUBLIC "Core" "Log")
+
 
 find_package(X11)
 if(X11_FOUND)

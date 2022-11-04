@@ -39,7 +39,7 @@ namespace GU
         class WINDOW_EXPORT WindowX11: public WindowBase
         {
             public:
-                WindowX11();
+                WindowX11(const Math::Vector2<float> &size);
                 virtual ~WindowX11();
             public:
                 class Impl;

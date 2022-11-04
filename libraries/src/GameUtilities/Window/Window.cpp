@@ -34,15 +34,22 @@ namespace GU
         class Window::Impl
         {
             public:
-                #ifdef X11 
-                    std::shared_ptr<GU::Win::WindowBase> m_windowImpl = std::shared_ptr<GU::Win::WindowBase>(new WindowX11());
-                #else
-                    std::shared_ptr<GU::Win::WindowBase> m_windowImpl = nullptr;
-                #endif
+                Impl(const Math::Vector2<float> &size);
+                    std::shared_ptr<GU::Win::WindowBase> m_windowImpl = nullptr; 
         };
 
-        Window::Window():
-        m_pimpl(new Window::Impl())
+
+        Window::Impl::Impl(const Math::Vector2<float> &size)
+        {
+                #ifdef X11 
+                    m_windowImpl = std::shared_ptr<GU::Win::WindowBase>(new WindowX11(size));
+                #endif
+            
+        }
+
+        Window::Window(const Math::Vector2<float> &size):
+        WindowBase::WindowBase(size),
+        m_pimpl(new Window::Impl(size))
         {
             assert(m_pimpl != nullptr);
             assert(m_pimpl->m_windowImpl != nullptr);

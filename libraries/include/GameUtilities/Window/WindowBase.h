@@ -25,6 +25,7 @@
 ***************************************************************************/
 
 #include "window_export.h"
+#include <Math/Vector2.h>
 
 
 namespace GU
@@ -34,7 +35,7 @@ namespace GU
         class WINDOW_EXPORT WindowBase
         {
             public:
-                WindowBase();
+                WindowBase(const Math::Vector2<float> &size);
                 virtual ~WindowBase();
         };
     }

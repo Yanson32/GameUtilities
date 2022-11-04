@@ -44,7 +44,8 @@ namespace GU
         };
         
             
-        WindowX11::WindowX11():
+        WindowX11::WindowX11(const Math::Vector2<float> &size):
+        WindowBase::WindowBase(size), 
         m_pimpl(new WindowX11::Impl())
         {
 
@@ -59,7 +60,7 @@ namespace GU
 
             m_pimpl->s = DefaultScreen(m_pimpl->d);
             m_pimpl->w = XCreateSimpleWindow(m_pimpl->d, 
-                        RootWindow(m_pimpl->d, m_pimpl->s), 10, 10, 100, 100, 1, 
+                        RootWindow(m_pimpl->d, m_pimpl->s), 10, 10, size.x, size.y, 1, 
                         BlackPixel(m_pimpl->d, m_pimpl->s), WhitePixel(m_pimpl->d, m_pimpl->s));
            
             XSelectInput(m_pimpl->d, m_pimpl->w, ExposureMask | KeyPressMask);

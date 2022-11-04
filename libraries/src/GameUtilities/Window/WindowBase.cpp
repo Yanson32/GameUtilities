@@ -28,7 +28,7 @@ namespace GU
 {
     namespace Win
     {
-        WindowBase::WindowBase()
+        WindowBase::WindowBase(const Math::Vector2<float> &size)
         {
 
         }
