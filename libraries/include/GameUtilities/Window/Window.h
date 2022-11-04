@@ -37,6 +37,8 @@ namespace GU
         {
             public:
                 Window(const Math::Vector2<float> &size);
+                void hide() const;
+                void show() const;
                 virtual ~Window();
             private:
                 class Impl;

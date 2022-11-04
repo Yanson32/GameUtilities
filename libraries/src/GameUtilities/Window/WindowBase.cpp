@@ -22,7 +22,7 @@
 * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ***************************************************************************/
 #include "GameUtilities/Window/WindowBase.h"
-
+#include <iostream>
 
 namespace GU
 {
@@ -32,6 +32,18 @@ namespace GU
         {
 
         }
+
+        void WindowBase::hide() const
+        {
+            std::cerr << "Not implimented in WindowBase" << std::endl; 
+        }
+
+        
+        void WindowBase::show() const
+        {
+            std::cerr << "Not implimented in WindowBase" << std::endl; 
+        }
+
 
         WindowBase::~WindowBase()
         {

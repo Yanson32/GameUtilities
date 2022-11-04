@@ -54,6 +54,14 @@ namespace GU
             assert(m_pimpl != nullptr);
             assert(m_pimpl->m_windowImpl != nullptr);
         }
+        void Window::hide() const
+        {
+
+        }
+        void Window::show() const
+        {
+
+        }
 
         Window::~Window()
         {

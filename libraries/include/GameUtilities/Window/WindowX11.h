@@ -40,6 +40,8 @@ namespace GU
         {
             public:
                 WindowX11(const Math::Vector2<float> &size);
+                void hide() const;
+                void show() const;
                 virtual ~WindowX11();
             public:
                 class Impl;

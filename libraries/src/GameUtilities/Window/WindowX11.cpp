@@ -81,6 +81,18 @@ namespace GU
 
 
         }
+        
+
+        void WindowX11::hide() const
+        {
+            
+        }
+        
+
+        void WindowX11::show() const
+        {
+
+        }
 
         WindowX11::~WindowX11()
         {
