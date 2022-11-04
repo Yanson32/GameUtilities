@@ -1,4 +1,4 @@
-set(FILES 	"${CMAKE_CURRENT_SOURCE_DIR}/Base.cpp"
+set(FILES 	"${CMAKE_CURRENT_SOURCE_DIR}/UpdaterBase.cpp"
 			"${CMAKE_CURRENT_SOURCE_DIR}/Manager.cpp"
 			"${CMAKE_CURRENT_SOURCE_DIR}/Position.cpp"
 )

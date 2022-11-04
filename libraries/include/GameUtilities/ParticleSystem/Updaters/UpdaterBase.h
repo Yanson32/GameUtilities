@@ -1,10 +1,10 @@
-#ifndef PARTICLE_SYSTEM_UPDATER_POSITION_H
-#define PARTICLE_SYSTEM_UPDATER_POSITION_H
+#ifndef PARTICLE_SYSTEM_UPDATERS_BASE_H
+#define PARTICLE_SYSTEM_UPDATERS_BASE_H
 /**************************************************************************
 *   @Author     Wayne J Larson Jr.
 *   @Date       4/08/18
-*   @class      This updater class is used to update the particles position.
-*   @file       Position.h
+*   @class      This class is the base class for all updaters.
+*   @file       UpdaterBase.h
 **************************************************************************/
 
 /*************************************************************************
@@ -25,40 +25,43 @@
 * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ***************************************************************************/
 #include "particlesystem_export.h"
-#include "GameUtilities/ParticleSystem/Updaters/UpdaterBase.h"
 
 namespace GU
 {
-
     namespace PS
     {
+        namespace AT
+        {
+            class Manager;
+        }
 
         namespace UP
         {
 
-            class PARTICLESYSTEM_EXPORT Position: public GU::PS::UP::UpdaterBase
+            class PARTICLESYSTEM_EXPORT UpdaterBase
             {
                 public:
                     /************************************************************************//**
-                    *   @brief  Constructor 
+                    *   @brief  Constructor.  
                     ****************************************************************************/
-                    Position();
+                    UpdaterBase();
                     
 
                     /************************************************************************//**
-                    *   @brief  This method updates the current position of the particle.
+                    *   @brief  This is a pure virtual method for updating an attribute.
                     *   @param  manager is a reference to the attrubute manager.
                     *   @param  deltaTime is the length of time for a single frame 
                     ****************************************************************************/
-                    virtual void update(GU::PS::AT::Manager &manager, const float &deltaTime);
-           
- 
+                    virtual void update(GU::PS::AT::Manager &manager, const float &deltaTime) = 0;
+                    
+
                     /************************************************************************//**
-                    *   @brief  Destructor 
+                    *   @brief  Destructor.
                     ****************************************************************************/
-                    virtual ~Position();
+                    virtual ~UpdaterBase();
+
             };
         }
     }
 }
-#endif // PARTICLE_SYSTEM_UPDATER_POSITION_H
+#endif // PARTICLE_SYSTEM_UPDATERS_BASE_H

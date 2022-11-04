@@ -12,7 +12,7 @@ namespace GU
                 //ctor
             }
 
-            void Manager::addUpdater(std::shared_ptr<GU::PS::UP::Base> comp)
+            void Manager::addUpdater(std::shared_ptr<GU::PS::UP::UpdaterBase> comp)
             {
                 assert(comp != nullptr);
                 data.push_back(comp);

@@ -84,7 +84,7 @@ namespace GU
 				this->addAttribute(std::static_pointer_cast<GU::PS::AT::Base>(life));
 
                 //Add updaters to class
-                std::shared_ptr<GU::PS::UP::Base> up(new GU::PS::UP::Position());
+                std::shared_ptr<GU::PS::UP::UpdaterBase> up(new GU::PS::UP::Position());
                 this->addUpdater(up);
 			}
             /************************************************************//**
