@@ -26,7 +26,9 @@
 
 #include "window_export.h"
 #include "GameUtilities/Window/WindowBase.h"
+#include "GameUtilities/Event/Events/Event.h"
 #include <Math/Vector2.h>
+#include <memory>
 
 
 namespace GU
@@ -37,8 +39,10 @@ namespace GU
         {
             public:
                 Window(const Math::Vector2<float> &size);
-                void hide() const;
-                void show() const;
+                virtual void hide() const override;
+                virtual void show() const override;
+                virtual bool hasEvent() const override;
+                virtual std::shared_ptr<GU::Evt::Event> getEvent() const override; 
                 virtual ~Window();
             private:
                 class Impl;

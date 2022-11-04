@@ -26,7 +26,8 @@
 
 #include "window_export.h"
 #include <Math/Vector2.h>
-
+#include <memory>
+#include "GameUtilities/Event/Events/Event.h"
 
 namespace GU
 {
@@ -36,8 +37,10 @@ namespace GU
         {
             public:
                 WindowBase(const Math::Vector2<float> &size);
-                void hide() const;
-                void show() const;
+                virtual void hide() const = 0;
+                virtual void show() const = 0;
+                virtual bool hasEvent() const = 0;
+                virtual std::shared_ptr<GU::Evt::Event> getEvent() const = 0;
                 virtual ~WindowBase();
         };
     }

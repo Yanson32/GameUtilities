@@ -28,6 +28,7 @@
 #include <X11/Xlib.h>
 #include "window_export.h"
 #include "GameUtilities/Window/WindowBase.h"
+#include "GameUtilities/Event/Events/Event.h"
 
 
 namespace GU
@@ -40,8 +41,10 @@ namespace GU
         {
             public:
                 WindowX11(const Math::Vector2<float> &size);
-                void hide() const;
-                void show() const;
+                virtual void hide() const override;
+                virtual void show() const override;
+                virtual bool hasEvent() const override;
+                virtual std::shared_ptr<GU::Evt::Event> getEvent() const override; 
                 virtual ~WindowX11();
             public:
                 class Impl;

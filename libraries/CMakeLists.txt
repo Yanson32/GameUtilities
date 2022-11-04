@@ -46,24 +46,34 @@ endforeach()
 add_subdirectory("include")
 add_subdirectory("src")
 
+#Find the Math library
 find_package("Math" REQUIRED)
+
+#Define dependancies for the ParticleSystem library
 target_link_libraries("ParticleSystem" PUBLIC Math::Math)
-target_link_libraries("Window" PUBLIC Math::Math)
+
 
 #Link the log target against the Core target
 target_link_libraries("Log" PUBLIC "Core")
 
-#Link the log target against the Core target
-target_link_libraries("Event" PUBLIC "Core" "Log")
+#Define dependancies for the Event library
+target_link_libraries("Event" PUBLIC "Core")
+target_link_libraries("Event" PUBLIC "Log")
 
-
+#Define the Window library dependencies
 find_package(X11)
 if(X11_FOUND)
     target_include_directories("Window" PUBLIC ${X11_INCLUDE_DIR})
     target_link_libraries("Window" PUBLIC ${X11_LIBRARIES})
     add_definitions(-DX11)
 endif()
+target_link_libraries("Window" PUBLIC Math::Math)
+target_link_libraries("Window" PUBLIC "Event")
+target_link_libraries("Window" PUBLIC "Core")
+target_link_libraries("Window" PUBLIC "Log")
 
+
+#Define dependancies for the ThreadPool library
 find_package(Threads)
 if(Threads_FOUND)
     target_link_libraries("ThreadPool" PUBLIC Threads::Threads)
@@ -107,9 +117,7 @@ include(CMakePackageConfigHelpers)
 write_basic_package_version_file("${GU_CONFIG_BUILD_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
 VERSION
 	${${PROJECT_NAME}_VERSION}
-COMPATIBILITY
-	AnyNewerVersion
-)
+COMPATIBILITY AnyNewerVersion)
 
 #Create package config file
 configure_package_config_file("${GameUtilities_SOURCE_DIR}/cmake/${PROJECT_NAME}Config.cmake.in"

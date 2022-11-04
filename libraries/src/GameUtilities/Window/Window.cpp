@@ -54,14 +54,32 @@ namespace GU
             assert(m_pimpl != nullptr);
             assert(m_pimpl->m_windowImpl != nullptr);
         }
+
+
         void Window::hide() const
         {
 
         }
+
+
         void Window::show() const
         {
 
         }
+
+
+        bool Window::hasEvent() const
+        {
+            return true;
+        }
+
+
+        std::shared_ptr<GU::Evt::Event> Window::getEvent() const
+        {
+            std::shared_ptr<GU::Evt::Event> event = nullptr;
+            return event;
+        }
+
 
         Window::~Window()
         {

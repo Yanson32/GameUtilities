@@ -94,6 +94,19 @@ namespace GU
 
         }
 
+        bool WindowX11::hasEvent() const
+        {
+            return true;
+        }
+
+
+        std::shared_ptr<GU::Evt::Event> WindowX11::getEvent() const
+        {
+            std::shared_ptr<GU::Evt::Event> event = nullptr;
+            return event;
+        }
+
+
         WindowX11::~WindowX11()
         {
             assert(m_pimpl != nullptr);

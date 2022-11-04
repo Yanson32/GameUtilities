@@ -32,18 +32,7 @@ namespace GU
         {
 
         }
-
-        void WindowBase::hide() const
-        {
-            std::cerr << "Not implimented in WindowBase" << std::endl; 
-        }
-
         
-        void WindowBase::show() const
-        {
-            std::cerr << "Not implimented in WindowBase" << std::endl; 
-        }
-
 
         WindowBase::~WindowBase()
         {
