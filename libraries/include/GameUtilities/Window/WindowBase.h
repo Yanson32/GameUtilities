@@ -41,9 +41,7 @@ namespace GU
                 WindowBase(const Math::Vector2<float> &size);
                 virtual void hide() const = 0;
                 virtual void show() const = 0;
-                virtual bool hasEvent() const = 0;
                 virtual void handleGUEvent(EnginPtr engin, GU::Evt::EventPtr event) = 0;
-                virtual std::shared_ptr<GU::Evt::Event> getEvent() const = 0;
                 virtual ~WindowBase();
         };
     }
