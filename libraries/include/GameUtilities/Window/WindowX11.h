@@ -44,6 +44,7 @@ namespace GU
                 virtual void hide() const override;
                 virtual void show() const override;
                 virtual bool hasEvent() const override;
+                virtual void handleGUEvent(EnginPtr engin, GU::Evt::EventPtr event) override;
                 virtual std::shared_ptr<GU::Evt::Event> getEvent() const override; 
                 virtual ~WindowX11();
             public:

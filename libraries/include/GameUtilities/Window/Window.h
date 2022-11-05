@@ -43,6 +43,7 @@ namespace GU
                 virtual void show() const override;
                 virtual bool hasEvent() const override;
                 virtual std::shared_ptr<GU::Evt::Event> getEvent() const override; 
+                virtual void handleGUEvent(EnginPtr engin, GU::Evt::EventPtr event) override;
                 virtual ~Window();
             private:
                 class Impl;

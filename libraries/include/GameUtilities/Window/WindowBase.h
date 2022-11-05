@@ -28,18 +28,21 @@
 #include <Math/Vector2.h>
 #include <memory>
 #include "GameUtilities/Event/Events/Event.h"
+#include "GameUtilities/Event/EventQueue.h"
+#include "GameUtilities/Event/EventHandler.h"
 
 namespace GU
 {
     namespace Win
     {
-        class WINDOW_EXPORT WindowBase
+        class WINDOW_EXPORT WindowBase: public GU::Evt::EventQueue, public GU::Evt::EventHandler
         {
             public:
                 WindowBase(const Math::Vector2<float> &size);
                 virtual void hide() const = 0;
                 virtual void show() const = 0;
                 virtual bool hasEvent() const = 0;
+                virtual void handleGUEvent(EnginPtr engin, GU::Evt::EventPtr event) = 0;
                 virtual std::shared_ptr<GU::Evt::Event> getEvent() const = 0;
                 virtual ~WindowBase();
         };

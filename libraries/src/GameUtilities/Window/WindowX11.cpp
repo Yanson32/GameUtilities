@@ -100,6 +100,12 @@ namespace GU
         }
 
 
+        void WindowX11::handleGUEvent(EnginPtr engin, GU::Evt::EventPtr event)
+        {
+            std::cout << "WindowX11::handleGUEvent Not Implimented" << std::endl;
+        }
+
+
         std::shared_ptr<GU::Evt::Event> WindowX11::getEvent() const
         {
             std::shared_ptr<GU::Evt::Event> event = nullptr;

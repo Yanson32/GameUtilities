@@ -74,6 +74,14 @@ namespace GU
         }
 
 
+        void Window::handleGUEvent(EnginPtr engin, GU::Evt::EventPtr event)
+        {
+            assert(m_pimpl != nullptr);
+            assert(m_pimpl->m_windowImpl != nullptr);
+            m_pimpl->m_windowImpl->handleGUEvent(engin, event);
+        }
+
+
         std::shared_ptr<GU::Evt::Event> Window::getEvent() const
         {
             std::shared_ptr<GU::Evt::Event> event = nullptr;
