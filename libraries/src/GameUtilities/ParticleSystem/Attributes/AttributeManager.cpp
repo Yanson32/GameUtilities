@@ -50,7 +50,7 @@ namespace GU
             ****************************************************************************/
             void AttributeManager::sendMessage(const Message &message)
             {
-                messages.push(message);
+                m_messages.push(message);
             }
 
             
@@ -61,7 +61,7 @@ namespace GU
             ****************************************************************************/
 			bool AttributeManager::hasComponent(const int &id) const
 			{
-			    for(auto it = components.begin(); it != components.end(); it++)
+			    for(auto it = m_components.begin(); it != m_components.end(); it++)
                 {
 					//assert((*it) != nullptr);
 					if((*it) != nullptr)
@@ -83,7 +83,7 @@ namespace GU
                 if(hasComponent(comp->m_id))
                     throw std::runtime_error("Component already exists");
 
-			    components.push_back(comp);
+			    m_components.push_back(comp);
 			}
             
 
@@ -95,12 +95,12 @@ namespace GU
             std::shared_ptr<GU::PS::AT::AttributeBase> AttributeManager::getComponent(const int &id) const
             {
 
-                for(std::size_t i = 0; i < components.size(); ++i)
+                for(std::size_t i = 0; i < m_components.size(); ++i)
                 {
-					assert(components[i] != nullptr);
-                    if(components[i]->m_id == id)
+					assert(m_components[i] != nullptr);
+                    if(m_components[i]->m_id == id)
                     {
-                        return components[i];
+                        return m_components[i];
                     }
                 }
                 throw std::runtime_error("Invalid component requested");
@@ -113,10 +113,10 @@ namespace GU
             ****************************************************************************/
             void AttributeManager::remove(const std::size_t &index)
 			{
-				for(std::size_t i = 0; i < components.size(); ++i)
+				for(std::size_t i = 0; i < m_components.size(); ++i)
 				{
-					assert(components[i] != nullptr);
-                    components[i]->remove(index);
+					assert(m_components[i] != nullptr);
+                    m_components[i]->remove(index);
 				}
 			}
 

@@ -113,8 +113,8 @@ namespace GU
                     ****************************************************************************/
 					virtual ~AttributeManager();
 				private:
-					std::vector<std::shared_ptr<GU::PS::AT::AttributeBase>> components;
-					std::stack<GU::PS::AT::Message> messages;
+					std::vector<std::shared_ptr<GU::PS::AT::AttributeBase>> m_components;
+					std::stack<GU::PS::AT::Message> m_messages;
 			};
 		}
 	}
