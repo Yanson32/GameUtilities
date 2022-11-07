@@ -61,12 +61,12 @@ namespace GU
 
                 assert(vel != nullptr);
                 assert(pos != nullptr);
-                assert(pos->data.size() == vel->data.size());
+                assert(pos->m_data.size() == vel->m_data.size());
 
-                for(std::size_t i = 0; i < pos->data.size(); ++i)
+                for(std::size_t i = 0; i < pos->m_data.size(); ++i)
                 {
-                    pos->data[i].first = pos->data[i].first + (vel->data[i].first * deltaTime);
-                    pos->data[i].second = pos->data[i].second + (vel->data[i].second * deltaTime);
+                    pos->m_data[i].first = pos->m_data[i].first + (vel->m_data[i].first * deltaTime);
+                    pos->m_data[i].second = pos->m_data[i].second + (vel->m_data[i].second * deltaTime);
                 }
 
             }

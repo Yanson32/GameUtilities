@@ -113,10 +113,10 @@ void sfStarburst::update(const float &deltaTime)
         std::shared_ptr<CircleAtt> cAtt = std::static_pointer_cast<CircleAtt>(this->getComponent(CIRCLE_ATT));
         assert(pos != nullptr);
         assert(cAtt != nullptr);
-        assert(pos->data.size() == cAtt->data.size());
-        for(std::size_t i = 0; i < pos->data.size(); ++i)
+        assert(pos->m_data.size() == cAtt->data.size());
+        for(std::size_t i = 0; i < pos->m_data.size(); ++i)
         {
-            cAtt->data[i].setPosition(pos->data[i].first, pos->data[i].second);
+            cAtt->data[i].setPosition(pos->m_data[i].first, pos->m_data[i].second);
         }
     }
 }

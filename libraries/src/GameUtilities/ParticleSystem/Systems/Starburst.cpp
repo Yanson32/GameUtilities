@@ -52,9 +52,9 @@ namespace GU
               
 				for (std::size_t i = 0; i < m_size; ++i)
 				{
-                    pos->data.emplace_back(0, 0);		
-					pos->data[i].first = m_position.x;
-					pos->data[i].second = m_position.y;
+                    pos->m_data.emplace_back(0, 0);		
+					pos->m_data[i].first = m_position.x;
+					pos->m_data[i].second = m_position.y;
 				}
 				
                 this->addAttribute(std::static_pointer_cast<GU::PS::AT::AttributeBase>(pos));
@@ -66,10 +66,10 @@ namespace GU
                 float degree = 360 / m_size;
 				for(size_t i = 0; i < m_size; ++i)
 				{
-                    vel->data.emplace_back(0, 0);		
+                    vel->m_data.emplace_back(0, 0);		
 					float angle = degree * i;
-					vel->data[i].first = std::sin(angle);
-					vel->data[i].second = std::cos(angle);
+					vel->m_data[i].first = std::sin(angle);
+					vel->m_data[i].second = std::cos(angle);
 				}
 
 				this->addAttribute(std::static_pointer_cast<GU::PS::AT::AttributeBase>(vel));
