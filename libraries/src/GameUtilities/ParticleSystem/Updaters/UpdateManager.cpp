@@ -23,7 +23,7 @@
 * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ***************************************************************************/
 #include "GameUtilities/ParticleSystem/Updaters/UpdateManager.h"
-#include "GameUtilities/ParticleSystem/Attributes/Manager.h"
+#include "GameUtilities/ParticleSystem/Attributes/AttributeManager.h"
 #include <cassert>
 namespace GU
 {
@@ -57,7 +57,7 @@ namespace GU
             *   @param  manager is a reference to the attrubute manager.
             *   @param  deltaTime is the length of time for a single frame 
             ****************************************************************************/
-            void UpdateManager::update(GU::PS::AT::Manager &manager, const float &deltaTime)
+            void UpdateManager::update(GU::PS::AT::AttributeManager &manager, const float &deltaTime)
             {
                 for(std::size_t i = 0; i < data.size(); ++i)
                 {

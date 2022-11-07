@@ -1,4 +1,4 @@
-set(FILES "${CMAKE_CURRENT_SOURCE_DIR}/Manager.h"
+set(FILES "${CMAKE_CURRENT_SOURCE_DIR}/AttributeManager.h"
 "${CMAKE_CURRENT_SOURCE_DIR}/AttributeBase.h"
 "${CMAKE_CURRENT_SOURCE_DIR}/LifeSpan.h"
 "${CMAKE_CURRENT_SOURCE_DIR}/Position.h"

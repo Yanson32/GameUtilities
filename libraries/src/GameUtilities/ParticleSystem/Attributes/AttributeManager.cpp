@@ -1,4 +1,4 @@
-#include "GameUtilities/ParticleSystem/Attributes/Manager.h"
+#include "GameUtilities/ParticleSystem/Attributes/AttributeManager.h"
 #include "GameUtilities/ParticleSystem/Attributes/Position.h"
 #include "GameUtilities/ParticleSystem/Attributes/Velocity.h"
 #include "GameUtilities/ParticleSystem/Attributes/LifeSpan.h"
@@ -11,17 +11,17 @@ namespace GU
 	{
 		namespace AT
 		{
-			Manager::Manager()
+			AttributeManager::AttributeManager()
 			{
 
 			}
 
-            void Manager::sendMessage(const Message &message)
+            void AttributeManager::sendMessage(const Message &message)
             {
                 messages.push(message);
             }
 
-			void Manager::remove(const std::size_t &index)
+			void AttributeManager::remove(const std::size_t &index)
 			{
 				for(std::size_t i = 0; i < components.size(); ++i)
 				{
@@ -29,7 +29,7 @@ namespace GU
                     components[i]->remove(index);
 				}
 			}
-            std::shared_ptr<GU::PS::AT::AttributeBase> Manager::getComponent(const int &id) const
+            std::shared_ptr<GU::PS::AT::AttributeBase> AttributeManager::getComponent(const int &id) const
             {
 
                 for(std::size_t i = 0; i < components.size(); ++i)
@@ -43,7 +43,7 @@ namespace GU
                 throw std::runtime_error("Invalid component requested");
             }
 
-			bool Manager::hasComponent(const int &id) const
+			bool AttributeManager::hasComponent(const int &id) const
 			{
 			    for(auto it = components.begin(); it != components.end(); it++)
                 {
@@ -57,7 +57,7 @@ namespace GU
 			}
 
 
-			void Manager::addAttribute(std::shared_ptr<GU::PS::AT::AttributeBase> comp)
+			void AttributeManager::addAttribute(std::shared_ptr<GU::PS::AT::AttributeBase> comp)
 			{
 				assert(comp != nullptr);
                 if(hasComponent(comp->m_id))
@@ -66,7 +66,7 @@ namespace GU
 			    components.push_back(comp);
 			}
 
-			Manager::~Manager()
+			AttributeManager::~AttributeManager()
 			{
 
 			}

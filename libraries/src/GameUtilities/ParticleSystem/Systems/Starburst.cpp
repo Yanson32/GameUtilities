@@ -3,7 +3,7 @@
 #include "GameUtilities/ParticleSystem/Attributes/Position.h"
 #include "GameUtilities/ParticleSystem/Attributes/Velocity.h"
 #include "GameUtilities/ParticleSystem/Attributes/LifeSpan.h"
-#include "GameUtilities/ParticleSystem/Attributes/Manager.h"
+#include "GameUtilities/ParticleSystem/Attributes/AttributeManager.h"
 
 #include "GameUtilities/ParticleSystem/Updaters/Position.h"
 //#include "GameUtilities/ParticleSystem/Updaters/LifeSpan.h"

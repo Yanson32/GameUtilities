@@ -3,7 +3,7 @@
 
 #include "particlesystem_export.h"
 //#include "GameUtilities/ParticleSystem/Systems/ParticleSystem.h"
-#include "GameUtilities/ParticleSystem/Attributes/Manager.h"
+#include "GameUtilities/ParticleSystem/Attributes/AttributeManager.h"
 #include "GameUtilities/ParticleSystem/Updaters/UpdateManager.h"
 #include "Math/Vector2.h"
 
@@ -14,7 +14,7 @@ namespace GU
         namespace SY
         {
             class PARTICLESYSTEM_EXPORT Starburst:
-                public GU::PS::AT::Manager,
+                public GU::PS::AT::AttributeManager,
                 public GU::PS::UP::UpdateManager
             {
                 public:

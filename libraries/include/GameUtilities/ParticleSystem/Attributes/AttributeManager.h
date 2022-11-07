@@ -38,16 +38,16 @@ namespace GU
 				};
 			};
 
-			class PARTICLESYSTEM_EXPORT Manager
+			class PARTICLESYSTEM_EXPORT AttributeManager
 			{
                 public:
-                    Manager();
+                    AttributeManager();
                     void sendMessage(const Message &message);
                     bool hasComponent(const int &id) const;
                     void addAttribute(std::shared_ptr<GU::PS::AT::AttributeBase> comp);
                     std::shared_ptr<GU::PS::AT::AttributeBase> getComponent(const int &id) const;
 					void remove(const std::size_t &index);
-					virtual ~Manager();
+					virtual ~AttributeManager();
 				private:
 					std::vector<std::shared_ptr<GU::PS::AT::AttributeBase>> components;
 					std::stack<GU::PS::AT::Message> messages;

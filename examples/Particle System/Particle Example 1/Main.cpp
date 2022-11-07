@@ -1,5 +1,5 @@
 #include <GameUtilities/ParticleSystem/Systems/Starburst.h>
-#include <GameUtilities/ParticleSystem/Attributes/Manager.h>
+#include <GameUtilities/ParticleSystem/Attributes/AttributeManager.h>
 #include <GameUtilities/ParticleSystem/Attributes/Position.h>
 #include <GameUtilities/ParticleSystem/Attributes/Velocity.h>
 #include <GameUtilities/ParticleSystem/Attributes/LifeSpan.h>
@@ -27,7 +27,7 @@ class CircleAtt: public GU::PS::AT::AttributeBase
 		*	@param  newSize a reference to the total number of particles in the system.
 		*	@param	newId the id of the attribute.
 		**************************************************************************************/
-        CircleAtt(GU::PS::AT::Manager& newManager, const std::size_t &newSize, const int &newId = -1);
+        CircleAtt(GU::PS::AT::AttributeManager& newManager, const std::size_t &newSize, const int &newId = -1);
 
 
 		/**********************************************************************************//**
@@ -46,7 +46,7 @@ class CircleAtt: public GU::PS::AT::AttributeBase
 *	@param  newSize a reference to the total number of particles in the system.
 *	@param	newId the id of the attribute.
 **************************************************************************************/
-CircleAtt::CircleAtt(GU::PS::AT::Manager& newManager, const std::size_t &newSize, const int &newId):
+CircleAtt::CircleAtt(GU::PS::AT::AttributeManager& newManager, const std::size_t &newSize, const int &newId):
     GU::PS::AT::AttributeBase::AttributeBase(newManager, newId),
     data(newSize)
 {

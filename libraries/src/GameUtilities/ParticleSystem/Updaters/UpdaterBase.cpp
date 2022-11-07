@@ -23,7 +23,7 @@
 * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ***************************************************************************/
 #include "GameUtilities/ParticleSystem/Updaters/UpdaterBase.h"
-#include "GameUtilities/ParticleSystem/Attributes/Manager.h"
+#include "GameUtilities/ParticleSystem/Attributes/AttributeManager.h"
 
 namespace GU
 {

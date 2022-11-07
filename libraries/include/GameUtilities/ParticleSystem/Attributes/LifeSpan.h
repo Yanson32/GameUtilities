@@ -12,7 +12,7 @@ namespace GU
 			class PARTICLESYSTEM_EXPORT LifeSpan: public GU::PS::AT::AttributeBase
 			{
 				public:
-					LifeSpan(GU::PS::AT::Manager &newManager, const std::size_t &newSize);
+					LifeSpan(GU::PS::AT::AttributeManager &newManager, const std::size_t &newSize);
 					void remove(const std::size_t &index) override;
 					GU::PS::Container<float> data;
 			};

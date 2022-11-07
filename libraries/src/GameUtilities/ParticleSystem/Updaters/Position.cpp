@@ -24,7 +24,7 @@
 ***************************************************************************/
 #include "GameUtilities/ParticleSystem/Updaters/Position.h"
 #include "GameUtilities/ParticleSystem/Attributes/Id.h"
-#include "GameUtilities/ParticleSystem/Attributes/Manager.h"
+#include "GameUtilities/ParticleSystem/Attributes/AttributeManager.h"
 #include "GameUtilities/ParticleSystem/Attributes/Velocity.h"
 #include "GameUtilities/ParticleSystem/Attributes/Position.h"
 #include <iostream>
@@ -52,7 +52,7 @@ namespace GU
             *   @param  manager is a reference to the attrubute manager.
             *   @param  deltaTime is the length of time for a single frame 
             ****************************************************************************/
-            void Position::update(GU::PS::AT::Manager &manager, const float &deltaTime)
+            void Position::update(GU::PS::AT::AttributeManager &manager, const float &deltaTime)
             {
                 typedef GU::PS::AT::Velocity Velocity; 
                 typedef GU::PS::AT::Position Position; 

@@ -23,7 +23,7 @@
 * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ***************************************************************************/
 #include "GameUtilities/ParticleSystem/Attributes/AttributeBase.h"
-#include "GameUtilities/ParticleSystem/Attributes/Manager.h"
+#include "GameUtilities/ParticleSystem/Attributes/AttributeManager.h"
 #include "GameUtilities/Core/Macros.h"
 namespace GU
 {
@@ -37,7 +37,7 @@ namespace GU
             *   @param  manager is a reference to the attrubute manager.
             *   @param  id is the unique identifier of the attribute. 
             ****************************************************************************/
-			AttributeBase::AttributeBase(GU::PS::AT::Manager &manager, const int &id):
+			AttributeBase::AttributeBase(GU::PS::AT::AttributeManager &manager, const int &id):
             m_manager(manager),
             m_id(id)
 			{

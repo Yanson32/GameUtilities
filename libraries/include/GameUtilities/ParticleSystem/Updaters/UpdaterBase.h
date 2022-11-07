@@ -32,7 +32,7 @@ namespace GU
     {
         namespace AT
         {
-            class Manager;
+            class AttributeManager;
         }
 
         namespace UP
@@ -52,7 +52,7 @@ namespace GU
                     *   @param  manager is a reference to the attrubute manager.
                     *   @param  deltaTime is the length of time for a single frame 
                     ****************************************************************************/
-                    virtual void update(GU::PS::AT::Manager &manager, const float &deltaTime) = 0;
+                    virtual void update(GU::PS::AT::AttributeManager &manager, const float &deltaTime) = 0;
                     
 
                     /************************************************************************//**

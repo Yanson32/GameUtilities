@@ -33,7 +33,7 @@ namespace GU
 	{
 		namespace AT
 		{
-            class Manager;
+            class AttributeManager;
 			class PARTICLESYSTEM_EXPORT AttributeBase
 			{
 				public:
@@ -42,7 +42,7 @@ namespace GU
                     *   @param  manager is a reference to the attrubute manager.
                     *   @param  id is the unique identifier of the attribute. 
                     ****************************************************************************/
-					AttributeBase(GU::PS::AT::Manager& manager, const int &id = -1);
+					AttributeBase(GU::PS::AT::AttributeManager& manager, const int &id = -1);
                     
 
                     /************************************************************************//**
@@ -58,7 +58,7 @@ namespace GU
 					virtual ~AttributeBase();
 				protected:
 
-                    GU::PS::AT::Manager &m_manager;
+                    GU::PS::AT::AttributeManager &m_manager;
 			    public:	
                     const int m_id = -1;
 			};
