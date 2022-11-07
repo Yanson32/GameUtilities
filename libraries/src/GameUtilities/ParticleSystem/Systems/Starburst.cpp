@@ -79,7 +79,7 @@ namespace GU
 			
                 //Initialize life container	
                 for(size_t i = 0; i  < m_size; ++i)
-					life->data.emplace_back(1);
+					life->m_data.emplace_back(1);
 
 				this->addAttribute(std::static_pointer_cast<GU::PS::AT::AttributeBase>(life));
 
