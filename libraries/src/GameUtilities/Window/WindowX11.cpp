@@ -23,11 +23,14 @@
 * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ***************************************************************************/
 #include "GameUtilities/Window/WindowX11.h"
+#include "GameUtilities/Event/Events/Keyboard/KeyboardId.h"
+#include "GameUtilities/Event/Events/Keyboard/OnKeyPressed.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <cassert>
 #include <iostream>
+#include <memory>
 
 namespace GU
 {
@@ -49,8 +52,6 @@ namespace GU
         m_pimpl(new WindowX11::Impl())
         {
 
-            const char *msg = "Hello, World!";
-
             m_pimpl->d = XOpenDisplay(NULL);
             if (m_pimpl->d == NULL) 
             {
@@ -66,18 +67,6 @@ namespace GU
             XSelectInput(m_pimpl->d, m_pimpl->w, ExposureMask | KeyPressMask);
             XMapWindow(m_pimpl->d, m_pimpl->w);
 
-            while (true) 
-            {
-                XNextEvent(m_pimpl->d, &m_pimpl->e);
-                if (m_pimpl->e.type == Expose) 
-                {
-                    XFillRectangle(m_pimpl->d, m_pimpl->w, DefaultGC(m_pimpl->d, m_pimpl->s), 20, 20, 10, 10);
-                    XDrawString(m_pimpl->d, m_pimpl->w, DefaultGC(m_pimpl->d, m_pimpl->s), 10, 50, msg, strlen(msg));
-                }
-                
-                if (m_pimpl->e.type == KeyPress)
-                    break;
-            }
 
 
         }
@@ -95,11 +84,110 @@ namespace GU
         }
 
 
-        void WindowX11::handleGUEvent(EnginPtr engin, GU::Evt::EventPtr event)
+        std::size_t WindowX11::toGUKeyboardId(const std::size_t &key)
         {
-            std::cout << "WindowX11::handleGUEvent Not Implimented" << std::endl;
+            std::cout << "Key = " << key << std::endl;
+            switch(key)
+            {
+                case 38:
+                    return GU::Evt::KeyboardId::A;
+                case 56:
+                    return GU::Evt::KeyboardId::B;
+                case 54:
+                    return GU::Evt::KeyboardId::C;
+                case 40:
+                    return GU::Evt::KeyboardId::D;
+                case 26:
+                    return GU::Evt::KeyboardId::E;
+                case 41:
+                    return GU::Evt::KeyboardId::F;
+                case 42:
+                    return GU::Evt::KeyboardId::G;
+                case 43:
+                    return GU::Evt::KeyboardId::H;
+                case 31:
+                    return GU::Evt::KeyboardId::I;
+                case 44:
+                    return GU::Evt::KeyboardId::J;
+                case 45:
+                    return GU::Evt::KeyboardId::K;
+                case 46:
+                    return GU::Evt::KeyboardId::L;
+                case 58:
+                    return GU::Evt::KeyboardId::M;
+                case 57:
+                    return GU::Evt::KeyboardId::N;
+                case 32:
+                    return GU::Evt::KeyboardId::O;
+                case 33:
+                    return GU::Evt::KeyboardId::P;
+                case 24:
+                    return GU::Evt::KeyboardId::Q;
+                case 27:
+                    return GU::Evt::KeyboardId::R;
+                case 39:
+                    return GU::Evt::KeyboardId::S;
+                case 28:
+                    return GU::Evt::KeyboardId::T;
+                case 30:
+                    return GU::Evt::KeyboardId::U;
+                case 55:
+                    return GU::Evt::KeyboardId::V;
+                case 25:
+                    return GU::Evt::KeyboardId::W;
+                case 53:
+                    return GU::Evt::KeyboardId::X;
+                case 29:
+                    return GU::Evt::KeyboardId::Y;
+                case 52:
+                    return GU::Evt::KeyboardId::Z;
+                case 10:
+                    return GU::Evt::KeyboardId::ONE;
+                case 11:
+                    return GU::Evt::KeyboardId::TWO;
+                case 12:
+                    return GU::Evt::KeyboardId::THREE;
+                case 13:
+                    return GU::Evt::KeyboardId::FOUR;
+                case 14:
+                    return GU::Evt::KeyboardId::FIVE;
+                case 15:
+                    return GU::Evt::KeyboardId::SIX;
+                case 16:
+                    return GU::Evt::KeyboardId::SEVEN;
+                case 17:
+                    return GU::Evt::KeyboardId::EIGHT;
+                case 18:
+                    return GU::Evt::KeyboardId::NINE;
+                case 19:
+                    return GU::Evt::KeyboardId::ZERO;
+                case 36:
+                    return GU::Evt::KeyboardId::RETURN;
+                case 65:
+                    return GU::Evt::KeyboardId::SPACE;
+                default:
+                {
+                    std::cerr << "Default case reached" << std::endl;
+                }
+            };
         }
 
+
+	    bool WindowX11::poll(GU::Evt::EventPtr &event)
+        {
+            while (true) 
+            {
+                XNextEvent(m_pimpl->d, &m_pimpl->e);
+                
+                if (m_pimpl->e.type == KeyPress)
+                {
+                    event = std::shared_ptr<GU::Evt::OnKeyPressed>(new GU::Evt::OnKeyPressed(toGUKeyboardId(m_pimpl->e.xkey.keycode)));
+                    return true; 
+                }
+            }
+             
+            return true;
+        }
 
         WindowX11::~WindowX11()
         {

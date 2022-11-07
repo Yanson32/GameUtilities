@@ -29,19 +29,18 @@
 #include <memory>
 #include "GameUtilities/Event/Events/Event.h"
 #include "GameUtilities/Event/EventQueue.h"
-#include "GameUtilities/Event/EventHandler.h"
 
 namespace GU
 {
     namespace Win
     {
-        class WINDOW_EXPORT WindowBase: public GU::Evt::EventQueue, public GU::Evt::EventHandler
+        class WINDOW_EXPORT WindowBase: public GU::Evt::EventQueue
         {
             public:
                 WindowBase(const Math::Vector2<float> &size);
                 virtual void hide() const = 0;
                 virtual void show() const = 0;
-                virtual void handleGUEvent(EnginPtr engin, GU::Evt::EventPtr event) = 0;
+			    virtual bool poll(GU::Evt::EventPtr &event) override = 0;
                 virtual ~WindowBase();
         };
     }

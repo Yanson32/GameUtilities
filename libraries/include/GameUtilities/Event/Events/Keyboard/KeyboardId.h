@@ -1,10 +1,10 @@
-#ifndef WINDOW_WINDOWX11_H
-#define WINDOW_WINDOWX11_H
+#ifndef KEYBOARD_ID_H
+#define KEYBOARD_ID_H
 /********************************************************************//**
-*   @author Wayne J Larson Jr.
-*   @date   10/18/22
-*   @description    This class represents a window for the X11 windowing
-*                   system.
+*   @author     Wayne J Larson Jr.
+*   @date       11/07/22
+*   @file       keyboardId.h
+*   @purpose    This file creates an enum for every key on the keyboard. 
 ************************************************************************/
 
 /*************************************************************************
@@ -25,32 +25,55 @@
 * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ***************************************************************************/
 
-#include <X11/Xlib.h>
-#include "window_export.h"
-#include "GameUtilities/Window/WindowBase.h"
-#include "GameUtilities/Event/Events/Event.h"
-
-
 namespace GU
 {
-    namespace Win
+
+    namespace Evt
     {
-
-
-        class WINDOW_EXPORT WindowX11: public WindowBase
+        enum KeyboardId
         {
-            public:
-                WindowX11(const Math::Vector2<float> &size);
-                virtual void hide() const override;
-                virtual void show() const override;
-                std::size_t toGUKeyboardId(const std::size_t &key);
-			    virtual bool poll(GU::Evt::EventPtr &event) override;
-                virtual ~WindowX11();
-            public:
-                class Impl;
-                Impl *m_pimpl = nullptr;
+            A,
+            B,
+            C,
+            D,
+            E,
+            F,
+            G,
+            H,
+            I,
+            J,
+            K,
+            L,
+            M,
+            N,
+            O,
+            P,
+            Q,
+            R,
+            S,
+            T,
+            U,
+            V,
+            W,
+            X,
+            Y,
+            Z,
+            ONE,
+            TWO,
+            THREE,
+            FOUR,
+            FIVE,
+            SIX,
+            SEVEN,
+            EIGHT,
+            NINE,
+            ZERO,
+            RETURN,
+            SPACE
         };
+
     }
 }
 
 #endif
+

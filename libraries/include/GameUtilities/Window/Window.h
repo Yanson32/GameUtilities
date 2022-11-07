@@ -41,7 +41,7 @@ namespace GU
                 Window(const Math::Vector2<float> &size);
                 virtual void hide() const override;
                 virtual void show() const override;
-                virtual void handleGUEvent(EnginPtr engin, GU::Evt::EventPtr event) override;
+			    virtual bool poll(GU::Evt::EventPtr &event) override;
                 virtual ~Window();
             private:
                 class Impl;

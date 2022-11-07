@@ -102,7 +102,7 @@ namespace GU
 			*   Return:     bool true if an event has been taken from the queue, and
 			*               false otherwise.
 			***************************************************************************/
-			bool poll(EventPtr &event);
+			virtual bool poll(EventPtr &event);
 
 
 			/***************************************************************************

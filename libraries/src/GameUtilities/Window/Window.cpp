@@ -68,13 +68,12 @@ namespace GU
         }
 
 
-        void Window::handleGUEvent(EnginPtr engin, GU::Evt::EventPtr event)
+		bool Window::poll(GU::Evt::EventPtr &event)
         {
             assert(m_pimpl != nullptr);
             assert(m_pimpl->m_windowImpl != nullptr);
-            m_pimpl->m_windowImpl->handleGUEvent(engin, event);
+            m_pimpl->m_windowImpl->poll(event);
         }
-
 
         Window::~Window()
         {

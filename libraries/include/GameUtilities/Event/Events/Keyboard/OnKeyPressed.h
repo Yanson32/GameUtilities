@@ -34,7 +34,7 @@ namespace GU
         class OnKeyPressed: public GU::Evt::Event
         {
             public:
-                OnKeyPressed(const int &key, const int &line, const char* file = "");
+                OnKeyPressed(const int &key, const int &line = -1, const char* file = "");
                 virtual ~OnKeyPressed();
                 const int m_keyId = -1;
         };
