@@ -2,7 +2,7 @@
 *   @Author     Wayne J Larson Jr.
 *   @Date       04/06/19
 *   @class      This class is the base class for all particle systems. 
-*   @file       ParticleSystem.h
+*   @file       ParticleSystem.cpp
 **************************************************************************/
 
 /*************************************************************************
