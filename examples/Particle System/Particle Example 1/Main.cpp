@@ -47,7 +47,7 @@ class CircleAtt: public GU::PS::AT::AttributeBase
 *	@param	newId the id of the attribute.
 **************************************************************************************/
 CircleAtt::CircleAtt(GU::PS::AT::Manager& newManager, const std::size_t &newSize, const int &newId):
-    GU::PS::AT::AttributeBase::AttributeBase(newManager, newSize, newId),
+    GU::PS::AT::AttributeBase::AttributeBase(newManager, newId),
     data(newSize)
 {
     

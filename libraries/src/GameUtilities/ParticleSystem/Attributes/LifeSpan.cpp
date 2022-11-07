@@ -9,7 +9,7 @@ namespace GU
 		namespace AT
 		{
 			LifeSpan::LifeSpan(GU::PS::AT::Manager &newManager, const std::size_t &newSize):
-            AttributeBase::AttributeBase(newManager, newSize, GU::PS::AT::LIFESPAN),
+            AttributeBase::AttributeBase(newManager, GU::PS::AT::LIFESPAN),
 			data(newSize)
 			{
 
