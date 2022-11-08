@@ -79,7 +79,16 @@ namespace GU
             m_pimpl->m_windowImpl->setTitle(title);
         }
 
-		bool Window::poll(GU::Evt::EventPtr &event)
+
+        void Window::close()
+        {
+            assert(m_pimpl != nullptr);
+            assert(m_pimpl->m_windowImpl != nullptr);
+            m_pimpl->m_windowImpl->close();
+        }
+
+    
+ 		bool Window::poll(GU::Evt::EventPtr &event)
         {
             assert(m_pimpl != nullptr);
             assert(m_pimpl->m_windowImpl != nullptr);

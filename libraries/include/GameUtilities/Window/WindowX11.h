@@ -46,6 +46,7 @@ namespace GU
                 std::size_t toGUKeyboardId(const std::size_t &key);
 			    virtual bool poll(GU::Evt::EventPtr &event) override;
                 void setTitle(const GU::Core::String &title);
+                virtual void close() override;
                 virtual ~WindowX11();
             public:
                 class Impl;

@@ -71,6 +71,7 @@ int main()
                     break;
                     case GU::Evt::KeyboardId::Q:
                         std::cout << "Q";
+                        win.close();
                     break;
                     case GU::Evt::KeyboardId::R:
                         std::cout << "R";

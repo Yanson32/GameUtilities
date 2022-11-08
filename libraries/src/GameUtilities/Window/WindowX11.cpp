@@ -177,6 +177,13 @@ namespace GU
         }
 
 
+        void WindowX11::close()
+        {
+            assert(m_pimpl != nullptr);        
+            XDestroyWindow(m_pimpl->d, m_pimpl->w);
+        }
+
+
 	    bool WindowX11::poll(GU::Evt::EventPtr &event)
         {
             while (true) 
