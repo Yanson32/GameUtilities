@@ -48,7 +48,7 @@ namespace GU
             /************************************************************************//**
             *   @brief  This method creates particles  
             ****************************************************************************/
-            void PointEmitter::Emit()
+            void PointEmitter::emit()
             {
                 assert(m_Parent);
                 Math::Point position = m_Parent->getPosition() + m_RelativePosition;

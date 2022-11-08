@@ -48,7 +48,7 @@ namespace GU
                     /************************************************************************//**
                     *   @brief  This method creates particles  
                     ****************************************************************************/
-                    virtual void Emit();
+                    virtual void emit() override;
             };
         }
     }
