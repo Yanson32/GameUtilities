@@ -1,6 +1,6 @@
 set(FILES "${CMAKE_CURRENT_SOURCE_DIR}/Emitter.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/PointEmitter.cpp"
-"${CMAKE_CURRENT_SOURCE_DIR}/Line.cpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/LineEmitter.cpp"
 )
 set(SUB_DIRECTORIES ""
 )

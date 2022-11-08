@@ -12,7 +12,7 @@ namespace GU
             class PARTICLESYSTEM_EXPORT Line: public Emitter
             {
                 public:
-                    Line(GU::PS::ParticleSystem *parent, const std::size_t ppf, Math::Vector relativePosition = Math::Vector());
+                    LineEmitter(GU::PS::ParticleSystem *parent, const std::size_t ppf, Math::Vector relativePosition = Math::Vector());
                     virtual void Emit() = 0;
                     virtual ~Line();
                 protected:

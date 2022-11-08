@@ -7,13 +7,13 @@ namespace GU
     {
         namespace EM
         {
-            Line::Line(GU::PS::ParticleSystem *parent, const std::size_t ppf, Math::Vector relativePosition):
+            LineEmitter::LineEmitter(GU::PS::ParticleSystem *parent, const std::size_t ppf, Math::Vector relativePosition):
             Emitter(parent, ppf, relativePosition)
             {
                 //ctor
             }
 
-            Line::~Line()
+            LineEmitter::~LineEmitter()
             {
                 //dtor
             }
