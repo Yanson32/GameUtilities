@@ -10,7 +10,6 @@ int main()
 {
     Math::Vector2<float> size(400, 400);
     GU::Win::Window win(size);
-    win.hide();
     
     std::shared_ptr<GU::Evt::Event> base; 
     while(win.poll(base))
