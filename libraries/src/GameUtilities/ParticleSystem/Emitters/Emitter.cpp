@@ -39,9 +39,9 @@ namespace GU
             *   @param  relativePosition is the relative position of the emitter. 
             ****************************************************************************/
             Emitter::Emitter(GU::PS::ParticleSystem *parent, const std::size_t ppf, Math::Vector relativePosition):
-            m_Parent(parent),
-            m_Ppf(ppf),
-            m_RelativePosition(relativePosition)
+            m_parent(parent),
+            m_ppf(ppf),
+            m_relativePosition(relativePosition)
             {
             }
 
@@ -50,9 +50,9 @@ namespace GU
             *   @brief  This method sets the relative position of the emitter. 
             *   @param  relativePosition is the new relative position of the emitter. 
             ****************************************************************************/
-            void Emitter::SetRelativePosition(const Math::Vector &relativePosition)
+            void Emitter::setRelativePosition(const Math::Vector &relativePosition)
             {
-                m_RelativePosition = relativePosition;
+                m_relativePosition = relativePosition;
             }
 
             
@@ -60,9 +60,9 @@ namespace GU
             *   @brief  This method returns the relative position of the emitter. 
             *   @return A Vector of the relative position for the Emitter. 
             ****************************************************************************/
-            Math::Vector Emitter::GetRelativePosition()const
+            Math::Vector Emitter::getRelativePosition()const
             {
-                return m_RelativePosition;
+                return m_relativePosition;
             }
 
             

@@ -52,21 +52,21 @@ namespace GU
                     /************************************************************************//**
                     *   @brief  This method creates particles  
                     ****************************************************************************/
-                    virtual void Emit() = 0;
+                    virtual void emit() = 0;
                     
                     
                     /************************************************************************//**
                     *   @brief  This method sets the relative position of the emitter. 
                     *   @param  relativePosition is the new relative position of the emitter. 
                     ****************************************************************************/
-                    void SetRelativePosition(const Math::Vector &relativePosition);
+                    void setRelativePosition(const Math::Vector &relativePosition);
                     
 
                     /************************************************************************//**
                     *   @brief  This method returns the relative position of the emitter. 
                     *   @return A Vector of the relative position for the Emitter. 
                     ****************************************************************************/
-                    Math::Vector GetRelativePosition() const;
+                    Math::Vector getRelativePosition() const;
                     
 
                     /************************************************************************//**
@@ -74,9 +74,9 @@ namespace GU
                     ****************************************************************************/
                     virtual ~Emitter();
                 protected:
-                    const unsigned m_Ppf = 0;           //Particles per frame
-                    ParticleSystem *m_Parent = nullptr;
-                    Math::Vector m_RelativePosition;
+                    const unsigned m_ppf = 0;           //Particles per frame
+                    ParticleSystem *m_parent = nullptr;
+                    Math::Vector m_relativePosition;
             };
         }
     }
