@@ -33,7 +33,7 @@ namespace GU
     {
         namespace EM
         {
-            class PARTICLESYSTEM_EXPORT Line: public Emitter
+            class PARTICLESYSTEM_EXPORT LineEmitter: public Emitter
             {
                 public:
                     /************************************************************************//**
@@ -48,13 +48,13 @@ namespace GU
                     /************************************************************************//**
                     *   @brief  This method creates particles  
                     ****************************************************************************/
-                    virtual void Emit() = 0;
+                    virtual void emit() override;
                     
 
                     /************************************************************************//**
                     *   @brief  Destructor.
                     ****************************************************************************/
-                    virtual ~Line();
+                    virtual ~LineEmitter();
                 protected:
                 private:
             };
