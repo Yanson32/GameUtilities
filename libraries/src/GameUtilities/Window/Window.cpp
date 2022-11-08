@@ -58,15 +58,26 @@ namespace GU
 
         void Window::hide() const
         {
+            assert(m_pimpl != nullptr);
+            assert(m_pimpl->m_windowImpl != nullptr);
+            m_pimpl->m_windowImpl->hide();
 
         }
 
 
         void Window::show() const
         {
-
+            assert(m_pimpl != nullptr);
+            assert(m_pimpl->m_windowImpl != nullptr);
+            m_pimpl->m_windowImpl->show();
         }
 
+        void Window::setTitle(const GU::Core::String &title)
+        {
+            assert(m_pimpl != nullptr);
+            assert(m_pimpl->m_windowImpl != nullptr);
+            m_pimpl->m_windowImpl->setTitle(title);
+        }
 
 		bool Window::poll(GU::Evt::EventPtr &event)
         {

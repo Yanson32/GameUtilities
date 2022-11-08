@@ -29,6 +29,7 @@
 #include <memory>
 #include "GameUtilities/Event/Events/Event.h"
 #include "GameUtilities/Event/EventQueue.h"
+#include "GameUtilities/Core/String.h"
 
 namespace GU
 {
@@ -40,6 +41,7 @@ namespace GU
                 WindowBase(const Math::Vector2<float> &size);
                 virtual void hide() const = 0;
                 virtual void show() const = 0;
+                virtual void setTitle(const GU::Core::String &title) = 0;
 			    virtual bool poll(GU::Evt::EventPtr &event) override = 0;
                 virtual ~WindowBase();
         };

@@ -67,22 +67,26 @@ namespace GU
             XSelectInput(m_pimpl->d, m_pimpl->w, ExposureMask | KeyPressMask);
             XMapWindow(m_pimpl->d, m_pimpl->w);
 
-
-
         }
         
 
         void WindowX11::hide() const
         {
-            
+            assert(m_pimpl != nullptr);        
+            XUnmapWindow(m_pimpl->d, m_pimpl->w);
         }
         
 
         void WindowX11::show() const
         {
-
+            assert(m_pimpl != nullptr);        
+            XMapWindow(m_pimpl->d, m_pimpl->w);
         }
 
+        void WindowX11::setTitle(const GU::Core::String &title)
+        {
+            XStoreName(m_pimpl->d, m_pimpl->w, title.c_str());
+        }
 
         std::size_t WindowX11::toGUKeyboardId(const std::size_t &key)
         {

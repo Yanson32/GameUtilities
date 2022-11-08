@@ -42,6 +42,7 @@ namespace GU
                 virtual void hide() const override;
                 virtual void show() const override;
 			    virtual bool poll(GU::Evt::EventPtr &event) override;
+                virtual void setTitle(const GU::Core::String &title);
                 virtual ~Window();
             private:
                 class Impl;
