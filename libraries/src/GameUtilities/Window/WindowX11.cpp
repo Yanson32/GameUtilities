@@ -89,7 +89,6 @@ namespace GU
 
         std::size_t WindowX11::toGUKeyboardId(const std::size_t &key)
         {
-            std::cout << "Key = " << key << std::endl;
             switch(key)
             {
                 case 38:
@@ -171,6 +170,7 @@ namespace GU
                 default:
                 {
                     std::cerr << "Default case reached" << std::endl;
+                    return key;
                 }
             };
         }

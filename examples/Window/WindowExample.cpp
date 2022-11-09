@@ -17,9 +17,10 @@ int main()
 
     while(win.isOpen())
     {
-        std::shared_ptr<GU::Evt::Event> base; 
+        std::shared_ptr<GU::Evt::Event> base = nullptr; 
         if(win.poll(base))
         {
+            assert(base != nullptr);
             switch(base->getId())
             {
                 case GU::Evt::EventId::ON_KEY_PRESSED:
@@ -143,7 +144,8 @@ int main()
                             std::cout << " ";
                         break;
                         default:
-                        { std::cout << "Error unhandled keyboard id " << std::endl;
+                        { 
+                            std::cout << "Error unhandled keyboard id " << event->m_keyId << std::endl;
                         }
                     }; 
                     std::cout << std::flush;
