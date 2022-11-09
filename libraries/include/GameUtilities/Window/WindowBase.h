@@ -44,6 +44,7 @@ namespace GU
                 virtual void setTitle(const GU::Core::String &title) = 0;
 			    virtual bool poll(GU::Evt::EventPtr &event) override = 0;
                 virtual void close() = 0;
+                virtual bool isOpen() const = 0;
                 virtual ~WindowBase();
         };
     }

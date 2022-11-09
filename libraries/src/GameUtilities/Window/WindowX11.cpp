@@ -181,6 +181,15 @@ namespace GU
         {
             assert(m_pimpl != nullptr);        
             XDestroyWindow(m_pimpl->d, m_pimpl->w);
+            m_pimpl->d = nullptr;
+        }
+
+
+        bool WindowX11::isOpen() const
+        {
+            if(m_pimpl->d == nullptr)
+                return false;
+            return true;
         }
 
 

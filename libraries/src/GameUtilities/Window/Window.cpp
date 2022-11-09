@@ -88,11 +88,20 @@ namespace GU
         }
 
     
+        bool Window::isOpen() const
+        {
+            assert(m_pimpl != nullptr);
+            assert(m_pimpl->m_windowImpl != nullptr);
+            return m_pimpl->m_windowImpl->isOpen();
+        }
+
+
  		bool Window::poll(GU::Evt::EventPtr &event)
         {
             assert(m_pimpl != nullptr);
             assert(m_pimpl->m_windowImpl != nullptr);
             m_pimpl->m_windowImpl->poll(event);
+        
         }
 
         Window::~Window()

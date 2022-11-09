@@ -44,6 +44,7 @@ namespace GU
 			    virtual bool poll(GU::Evt::EventPtr &event) override;
                 virtual void setTitle(const GU::Core::String &title);
                 virtual void close() override;
+                virtual bool isOpen() const;
                 virtual ~Window();
             private:
                 class Impl;
