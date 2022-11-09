@@ -26,6 +26,7 @@ int main()
                 case GU::Evt::EventId::ON_KEY_PRESSED:
                     std::shared_ptr<GU::Evt::OnKeyPressed> event = std::dynamic_pointer_cast<GU::Evt::OnKeyPressed>(base);  
                     assert(event != nullptr);
+                    //std::cout << "Key = " << event->m_keyId << std::endl; 
                     switch(event->m_keyId)
                     {
                         case GU::Evt::KeyboardId::A:
@@ -142,6 +143,45 @@ int main()
                         break;
                         case GU::Evt::KeyboardId::SPACE:
                             std::cout << " ";
+                        break;
+                        case GU::Evt::KeyboardId::LEFT_SHIFT:
+                            std::cout << "Left Shift";
+                        break;
+                        case GU::Evt::KeyboardId::RIGHT_SHIFT:
+                            std::cout << "Right Shift";
+                        break;
+                        case GU::Evt::KeyboardId::LEFT_CTRL:
+                            std::cout << "Left Ctrl";
+                        break;
+                        case GU::Evt::KeyboardId::RIGHT_CTRL:
+                            std::cout << "Right Ctrl";
+                        break;
+                        case GU::Evt::KeyboardId::LEFT_ALT:
+                            std::cout << "Left Alt";
+                        break;
+                        case GU::Evt::KeyboardId::RIGHT_ALT:
+                            std::cout << "Right Alt";
+                        break;
+                        case GU::Evt::KeyboardId::META:
+                            std::cout << "Meta";
+                        break;
+                        case GU::Evt::KeyboardId::ESC:
+                            std::cout << "Esc";
+                        break;
+                        case GU::Evt::KeyboardId::UP_ARROW:
+                            std::cout << "Up Arrow";
+                        break;
+                        case GU::Evt::KeyboardId::DOWN_ARROW:
+                            std::cout << "Down Arrow";
+                        break;
+                        case GU::Evt::KeyboardId::LEFT_ARROW:
+                            std::cout << "Left Arrow";
+                        break;
+                        case GU::Evt::KeyboardId::RIGHT_ARROW:
+                            std::cout << "Right Arrow";
+                        break;
+                        case GU::Evt::KeyboardId::BACKSPACE:
+                            std::cout << "Backspace";
                         break;
                         default:
                         { 

@@ -167,6 +167,32 @@ namespace GU
                     return GU::Evt::KeyboardId::RETURN;
                 case 65:
                     return GU::Evt::KeyboardId::SPACE;
+                case 50:
+                    return GU::Evt::KeyboardId::LEFT_SHIFT;
+                case 62:
+                    return GU::Evt::KeyboardId::RIGHT_SHIFT;
+                case 37:
+                    return GU::Evt::KeyboardId::LEFT_CTRL;
+                case 105:
+                    return GU::Evt::KeyboardId::RIGHT_CTRL;
+                case 64:
+                    return GU::Evt::KeyboardId::LEFT_ALT;
+                case 108:
+                    return GU::Evt::KeyboardId::RIGHT_ALT;
+                case 133:
+                    return GU::Evt::KeyboardId::META;
+                case 9:
+                    return GU::Evt::KeyboardId::ESC;
+                case 111:
+                    return GU::Evt::KeyboardId::UP_ARROW;
+                case 116:
+                    return GU::Evt::KeyboardId::DOWN_ARROW;
+                case 113:
+                    return GU::Evt::KeyboardId::LEFT_ARROW;
+                case 114:
+                    return GU::Evt::KeyboardId::RIGHT_ARROW;
+                case 22:
+                    return GU::Evt::KeyboardId::BACKSPACE;
                 default:
                 {
                     std::cerr << "Default case reached" << std::endl;

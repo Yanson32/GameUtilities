@@ -69,7 +69,20 @@ namespace GU
             NINE,
             ZERO,
             RETURN,
-            SPACE
+            SPACE,
+            LEFT_SHIFT, 
+            RIGHT_SHIFT,
+            LEFT_CTRL,
+            RIGHT_CTRL,
+            LEFT_ALT,
+            RIGHT_ALT,
+            META,
+            ESC,
+            UP_ARROW,
+            DOWN_ARROW,
+            RIGHT_ARROW,
+            LEFT_ARROW,
+            BACKSPACE 
         };
 
     }
