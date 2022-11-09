@@ -48,6 +48,8 @@ namespace GU
                 void setTitle(const GU::Core::String &title);
                 virtual void close() override;
                 virtual bool isOpen() const;
+                void setSize(const Math::Vector2<float> &size);
+                virtual void setPosition(const Math::Vector2<float> &position);
                 virtual ~WindowX11();
             public:
                 class Impl;

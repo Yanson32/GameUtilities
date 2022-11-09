@@ -65,7 +65,6 @@ namespace GU
                         BlackPixel(m_pimpl->d, m_pimpl->s), WhitePixel(m_pimpl->d, m_pimpl->s));
            
             XSelectInput(m_pimpl->d, m_pimpl->w, ExposureMask | KeyPressMask);
-            XMapWindow(m_pimpl->d, m_pimpl->w);
 
         }
         
@@ -187,6 +186,7 @@ namespace GU
 
         bool WindowX11::isOpen() const
         {
+            assert(m_pimpl != nullptr);
             if(m_pimpl->d == nullptr)
                 return false;
             return true;
@@ -209,6 +209,22 @@ namespace GU
             return true;
         }
 
+        void WindowX11::setSize(const Math::Vector2<float> &size)
+        {
+            XWindowAttributes xwa;
+            XGetWindowAttributes(m_pimpl->d, m_pimpl->w, &xwa);
+            XMoveResizeWindow(m_pimpl->d, m_pimpl->w, xwa.x, xwa.y, size.x, size.y);
+        }
+
+
+        void WindowX11::setPosition(const Math::Vector2<float> &position)
+        {
+            XWindowAttributes xwa;
+            XGetWindowAttributes(m_pimpl->d, m_pimpl->w, &xwa);
+            XMoveResizeWindow(m_pimpl->d, m_pimpl->w, position.x, position.y, xwa.width, xwa.height);
+        }
+
+    
         WindowX11::~WindowX11()
         {
             assert(m_pimpl != nullptr);

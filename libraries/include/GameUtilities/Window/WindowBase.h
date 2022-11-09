@@ -45,6 +45,8 @@ namespace GU
 			    virtual bool poll(GU::Evt::EventPtr &event) override = 0;
                 virtual void close() = 0;
                 virtual bool isOpen() const = 0;
+                virtual void setSize(const Math::Vector2<float> &size) = 0;
+                virtual void setPosition(const Math::Vector2<float> &position) = 0;
                 virtual ~WindowBase();
         };
     }

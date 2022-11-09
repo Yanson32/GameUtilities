@@ -10,7 +10,11 @@ int main()
 {
     Math::Vector2<float> size(400, 400);
     GU::Win::Window win(size);
-    
+    win.setTitle("Example");
+    win.setSize({800, 600});
+    win.setPosition({500, 200});
+    win.show();    
+
     while(win.isOpen())
     {
         std::shared_ptr<GU::Evt::Event> base; 

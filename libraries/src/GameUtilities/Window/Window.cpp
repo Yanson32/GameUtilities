@@ -104,6 +104,22 @@ namespace GU
         
         }
 
+        void Window::setSize(const Math::Vector2<float> &size)
+        {
+            assert(m_pimpl != nullptr);
+            assert(m_pimpl->m_windowImpl != nullptr);
+            m_pimpl->m_windowImpl->setSize(size);
+        }
+
+        
+        void Window::setPosition(const Math::Vector2<float> &position)
+        {
+            assert(m_pimpl != nullptr);
+            assert(m_pimpl->m_windowImpl != nullptr);
+            m_pimpl->m_windowImpl->setPosition(position);
+        }
+
+
         Window::~Window()
         {
             assert(m_pimpl != nullptr);
