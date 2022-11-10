@@ -72,10 +72,10 @@ namespace GU
                 ***************************************************************************/
 				virtual ~impl();
 			private:
-				std::queue<EventPtr> eventQueue;        /*!< Queue data structure for the events */ 
+				std::queue<EventPtr> m_eventQueue;        /*!< Queue data structure for the events */ 
 
 				#ifdef MULTITHREAD
-					mutable std::mutex eventQueueLock;  /*!< Mutex for the queue */ 
+					mutable std::mutex m_eventQueueLock;  /*!< Mutex for the queue */ 
 				#endif
 		};
 
@@ -97,10 +97,10 @@ namespace GU
 		{
 			assert(event != nullptr);
 			#ifdef MULTITHREAD
-				std::lock_guard<std::mutex> lock(eventQueueLock);
+				std::lock_guard<std::mutex> lock(m_eventQueueLock);
 			#endif
 
-			eventQueue.push(event);
+			m_eventQueue.push(event);
 		}
 
         
@@ -111,7 +111,7 @@ namespace GU
         ***************************************************************************/
 		bool EventQueue::impl::empty() const
 		{
-			return eventQueue.empty();
+			return m_eventQueue.empty();
 		}
 
         
@@ -126,14 +126,14 @@ namespace GU
 		bool EventQueue::impl::poll(EventPtr &event)
 		{
 			#ifdef MULTITHREAD
-				std::lock_guard<std::mutex> lock(eventQueueLock);
+				std::lock_guard<std::mutex> lock(m_eventQueueLock);
 			#endif
 
-			if (!eventQueue.empty())
+			if (!m_eventQueue.empty())
 			{
-				event = eventQueue.front();
+				event = m_eventQueue.front();
 				assert(event != nullptr);
-				eventQueue.pop();
+				m_eventQueue.pop();
 				return true;
 			}
 			return false;
