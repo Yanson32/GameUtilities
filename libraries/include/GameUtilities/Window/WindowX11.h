@@ -53,7 +53,7 @@ namespace GU
                 virtual ~WindowX11();
             public:
                 class Impl;
-                Impl *m_pimpl = nullptr;
+                Impl *m_pimpl = nullptr;    /*!< Pointer to the class implimentation */
         };
     }
 }
