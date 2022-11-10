@@ -1,7 +1,7 @@
 /*********************************************************************************//**
 *	@author	        Wayne J Larson Jr.
 *	@date 	        02/08/17
-*	@class          This class creates a queue for pushing and popping events. 
+*	@class          EventQueue creates a queue for pushing and popping events. 
 *	@file           EventQueue.cpp 
 *************************************************************************************/
 

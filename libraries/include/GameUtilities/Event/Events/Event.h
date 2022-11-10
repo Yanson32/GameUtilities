@@ -3,8 +3,9 @@
 /*********************************************************************************//**
 *	@author	Wayne J Larson Jr.
 *	@date 	12/10/17
-*	@class  This class is a base class for all events and should not be instantiated.
+*	@class  Event 
 *   @file   Event.h
+*	@brief  This class is the base class for all events and should not be instantiated.
 *************************************************************************************/
 
 /*************************************************************************
@@ -33,7 +34,6 @@ namespace GU
     namespace Evt
     {
         const int ALL = -1;
-
         class EVENT_EXPORT Event
         {
             public:

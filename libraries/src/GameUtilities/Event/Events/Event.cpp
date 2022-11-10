@@ -1,8 +1,9 @@
 /*********************************************************************************//**
 *	@author	Wayne J Larson Jr.
 *	@date 	12/10/17
-*	@class  This class is a base class for all events and should not be instantiated.
+*	@class  Event 
 *   @file   Event.cpp
+*	@brief  This class is the base class for all events and should not be instantiated.
 *************************************************************************************/
 
 /*************************************************************************
