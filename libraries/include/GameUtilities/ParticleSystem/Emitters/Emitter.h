@@ -74,9 +74,9 @@ namespace GU
                     ****************************************************************************/
                     virtual ~Emitter();
                 protected:
-                    const unsigned m_ppf = 0;           //Particles per frame
-                    ParticleSystem *m_parent = nullptr;
-                    Math::Vector m_relativePosition;
+                    const unsigned m_ppf = 0;               /*!< Particles emitter per frame */
+                    ParticleSystem *m_parent = nullptr;     /*!< The particle system the emitter belongs to */ 
+                    Math::Vector m_relativePosition;        /*!< The position of the emitter relative to the particle system */
             };
         }
     }

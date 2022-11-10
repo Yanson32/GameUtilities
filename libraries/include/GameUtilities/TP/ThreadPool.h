@@ -55,7 +55,7 @@ namespace GU
                 void waitForTask();
 
                 class Impl;
-                Impl *m_pimpl = nullptr; 
+                Impl *m_pimpl = nullptr;       /*!< pointer to the class implimentation */ 
         };
     }
 }

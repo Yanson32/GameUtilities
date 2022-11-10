@@ -67,10 +67,8 @@ namespace GU
                     ****************************************************************************/
                     virtual ~UpdateManager();
 
-                protected:
-
                 private:
-                    std::vector<std::shared_ptr<GU::PS::UP::UpdaterBase>> data;
+                    std::vector<std::shared_ptr<GU::PS::UP::UpdaterBase>> data;    /*!< A vector of updater pointers */  
             };
         }
     }

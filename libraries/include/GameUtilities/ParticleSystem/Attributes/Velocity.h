@@ -52,7 +52,7 @@ namespace GU
                     ****************************************************************************/
 					void remove(const std::size_t &index) override;
                 public:
-					GU::PS::Container<std::pair<float, float>> m_data;
+					GU::PS::Container<std::pair<float, float>> m_data;  /*!< Velocity attribute for all particles */ 
 
 			};
 		}

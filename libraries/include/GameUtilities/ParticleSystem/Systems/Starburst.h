@@ -70,8 +70,8 @@ namespace GU
                     ****************************************************************/
                     void setMagnitude(const unsigned magnitude);
                 public:
-					std::size_t m_size = 10;
-                    Math::Vector2<float> m_position;
+					std::size_t m_size = 10;            /*!< The number of particles in the system */
+                    Math::Vector2<float> m_position;    /*!< The position of the particle system */
             };
         }
     }
