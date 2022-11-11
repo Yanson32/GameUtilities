@@ -65,7 +65,7 @@ namespace GU
                 {
 					//assert((*it) != nullptr);
 					if((*it) != nullptr)
-                    if((*it)->m_id == id)
+                    if((*it)->m_attributeId == id)
                         return true;
                 }
 
@@ -80,7 +80,7 @@ namespace GU
 			void AttributeManager::addAttribute(std::shared_ptr<GU::PS::AT::AttributeBase> comp)
 			{
 				assert(comp != nullptr);
-                if(hasComponent(comp->m_id))
+                if(hasComponent(comp->m_attributeId))
                     throw std::runtime_error("Component already exists");
 
 			    m_components.push_back(comp);
@@ -98,7 +98,7 @@ namespace GU
                 for(std::size_t i = 0; i < m_components.size(); ++i)
                 {
 					assert(m_components[i] != nullptr);
-                    if(m_components[i]->m_id == id)
+                    if(m_components[i]->m_attributeId == id)
                     {
                         return m_components[i];
                     }

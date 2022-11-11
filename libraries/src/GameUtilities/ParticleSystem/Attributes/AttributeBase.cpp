@@ -39,7 +39,7 @@ namespace GU
             ****************************************************************************/
 			AttributeBase::AttributeBase(GU::PS::AT::AttributeManager &manager, const int &id):
             m_manager(manager),
-            m_id(id)
+            m_attributeId(id)
 			{
 			}
 

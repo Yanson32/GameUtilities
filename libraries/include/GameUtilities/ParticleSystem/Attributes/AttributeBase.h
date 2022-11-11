@@ -60,7 +60,7 @@ namespace GU
 
                     GU::PS::AT::AttributeManager &m_manager;
 			    public:	
-                    const int m_id = -1;
+                    const int m_attributeId = -1;
 			};
 		}
 	}
