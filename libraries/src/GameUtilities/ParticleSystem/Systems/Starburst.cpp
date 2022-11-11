@@ -1,9 +1,10 @@
 /**************************************************************************
 *   @Author     Wayne J Larson Jr.
 *   @Date       04/06/19
-*   @class      This class creates a particle system in which all the
-*               particles start at a point and radiate out from the middle. 
 *   @file       StarBurst.h
+*   @class      AttributeManager 
+*   @brief      This class creates a particle system in which all the
+*               particles start at a point and radiate out from the middle. 
 **************************************************************************/
 
 /*************************************************************************
