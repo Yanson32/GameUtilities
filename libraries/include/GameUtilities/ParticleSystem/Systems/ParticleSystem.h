@@ -86,7 +86,10 @@ namespace GU
 
                 GU::PS::CP::Manager manager;
             private:
+                /// The position of the particle system
                 Math::Point m_Position;
+
+                /// A vector of pointers to emitters
                 std::vector<std::unique_ptr<GU::PS::EM::Emitter>> m_Emitters;
         };
 

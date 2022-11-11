@@ -54,6 +54,7 @@ namespace GU
                     ****************************************************************************/
 					void remove(const std::size_t &index) override;
                 public:
+                    /// This container contains the lifespan attributes for all particles in the particle system
 					GU::PS::Container<float> m_data;
 			};
 		}

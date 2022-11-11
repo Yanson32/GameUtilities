@@ -52,7 +52,8 @@ namespace GU
                     ****************************************************************************/
 					void remove(const std::size_t &index) override;
                 public:
-					GU::PS::Container<std::pair<float, float>> m_data;
+					/// A container of position attributes for all particles in the system 
+                    GU::PS::Container<std::pair<float, float>> m_data;  
 			};
 		}
 	}

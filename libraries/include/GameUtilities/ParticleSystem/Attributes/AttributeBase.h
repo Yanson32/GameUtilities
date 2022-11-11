@@ -58,9 +58,9 @@ namespace GU
 					virtual ~AttributeBase();
 				protected:
 
-                    GU::PS::AT::AttributeManager &m_manager;
+                    GU::PS::AT::AttributeManager &m_manager;    /*!< Reference to the attribute manager class for the particle system*/ 
 			    public:	
-                    const int m_attributeId = -1;
+                    const int m_attributeId = -1;               /*!< Unique id for the attribute */ 
 			};
 		}
 	}
