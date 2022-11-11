@@ -43,7 +43,7 @@ namespace GU
         *   @brief  Chanes the position of the particle system.
         *   @param  position the new position of the particle system.
         ****************************************************************/
-        void ParticleSystem::setPosition(const Math::Point &position)
+        void ParticleSystem::setPosition(const Math::Vector2<float> &position)
         {
 /*             m_Position = position;
             for(std::size_t i = 0; i < particles.position.size(); ++i)
@@ -58,7 +58,7 @@ namespace GU
         *           particle system.
         *   @return The current position of the particle system
         ****************************************************************/
-        Math::Point ParticleSystem::getPosition() const
+        Math::Vector2<float> ParticleSystem::getPosition() const
         {
             return m_Position;
         }

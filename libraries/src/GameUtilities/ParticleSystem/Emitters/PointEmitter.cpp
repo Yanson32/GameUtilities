@@ -38,7 +38,9 @@ namespace GU
             *   @param  ppf (particles per frame) is the number of particles in the system.
             *   @param  relativePosition is the relative position of the emitter. 
             ****************************************************************************/
-            PointEmitter::PointEmitter(GU::PS::ParticleSystem *parent, const std::size_t ppf, Math::Vector relativePosition):
+            PointEmitter::PointEmitter(GU::PS::ParticleSystem *parent, 
+            const std::size_t ppf, 
+            Math::Vector2<float> relativePosition):
             Emitter(parent, ppf, relativePosition)
             {
                 //ctor
@@ -51,7 +53,7 @@ namespace GU
             void PointEmitter::emit()
             {
                 assert(m_Parent);
-                Math::Point position = m_Parent->getPosition() + m_RelativePosition;
+                Math::Vector2<float> position = m_Parent->getPosition() + m_RelativePosition;
                 for(std::size_t i = 0; i < m_Ppf; ++i)
                 {
                     //m_Parent->particles.position.emplace_back<Math::Point>(position.m_x, position.m_y);

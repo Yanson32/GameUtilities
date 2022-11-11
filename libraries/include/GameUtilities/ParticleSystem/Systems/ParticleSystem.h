@@ -26,9 +26,9 @@
 ***************************************************************************/
 
 #include "particlesystem_export.h"
-#include "GameUtilities/ParticleSystem/Attributes/Manager.h"
-//#include "GameUtilities/ParticleSystem/Emitters/Emitter.h"
-#include "Math/Point.h"
+#include "GameUtilities/ParticleSystem/Attributes/AttributeManager.h"
+#include "GameUtilities/ParticleSystem/Emitters/Emitter.h"
+#include "Math/Vector2.h"
 namespace GU
 {
     namespace PS
@@ -54,7 +54,7 @@ namespace GU
                 *   @brief  Chanes the position of the particle system.
                 *   @param  position the new position of the particle system.
                 ****************************************************************/
-                void setPosition(const Math::Point &position);
+                void setPosition(const Math::Vector2<float> &position);
 
 
                 /************************************************************//**
@@ -81,13 +81,13 @@ namespace GU
                 *           particle system.
                 *   @return The current position of the particle system
                 ****************************************************************/
-                Math::Point getPosition() const;
+                Math::Vector2<float> getPosition() const;
 
 
-                GU::PS::CP::Manager manager;
+                //GU::PS::CP::Manager manager;
             private:
                 /// The position of the particle system
-                Math::Point m_Position;
+                Math::Vector2<float> m_Position;
 
                 /// A vector of pointers to emitters
                 std::vector<std::unique_ptr<GU::PS::EM::Emitter>> m_Emitters;

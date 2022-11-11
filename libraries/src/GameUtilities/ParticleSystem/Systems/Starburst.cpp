@@ -25,7 +25,7 @@
 * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ***************************************************************************/
 #include "GameUtilities/ParticleSystem/Systems/Starburst.h"
-//#include "GameUtilities/ParticleSystem/Emitters/PointEmitter.h"
+#include "GameUtilities/ParticleSystem/Emitters/PointEmitter.h"
 #include "GameUtilities/ParticleSystem/Attributes/Position.h"
 #include "GameUtilities/ParticleSystem/Attributes/Velocity.h"
 #include "GameUtilities/ParticleSystem/Attributes/LifeSpan.h"

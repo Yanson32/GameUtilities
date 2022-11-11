@@ -46,7 +46,7 @@ namespace GU
                     *   @param  ppf (particles per frame) is the number of particles in the system.
                     *   @param  relativePosition is the relative position of the emitter. 
                     ****************************************************************************/
-                    Emitter(GU::PS::ParticleSystem *parent, const std::size_t ppf, Math::Vector relativePosition = Math::Vector());
+                    Emitter(GU::PS::ParticleSystem *parent, const std::size_t ppf, Math::Vector2<float> relativePosition = Math::Vector2<float>());
                     
 
                     /************************************************************************//**
@@ -59,14 +59,14 @@ namespace GU
                     *   @brief  This method sets the relative position of the emitter. 
                     *   @param  relativePosition is the new relative position of the emitter. 
                     ****************************************************************************/
-                    void setRelativePosition(const Math::Vector &relativePosition);
+                    void setRelativePosition(const Math::Vector2<float> &relativePosition);
                     
 
                     /************************************************************************//**
                     *   @brief  This method returns the relative position of the emitter. 
                     *   @return A Vector of the relative position for the Emitter. 
                     ****************************************************************************/
-                    Math::Vector getRelativePosition() const;
+                    Math::Vector2<float> getRelativePosition() const;
                     
 
                     /************************************************************************//**
@@ -74,9 +74,9 @@ namespace GU
                     ****************************************************************************/
                     virtual ~Emitter();
                 protected:
-                    const unsigned m_ppf = 0;               /*!< Particles emitter per frame */
-                    ParticleSystem *m_parent = nullptr;     /*!< The particle system the emitter belongs to */ 
-                    Math::Vector m_relativePosition;        /*!< The position of the emitter relative to the particle system */
+                    const unsigned m_ppf = 0;                   /*!< Particles emitter per frame */
+                    ParticleSystem *m_parent = nullptr;         /*!< The particle system the emitter belongs to */ 
+                    Math::Vector2<float> m_relativePosition;    /*!< The position of the emitter relative to the particle system */
             };
         }
     }
