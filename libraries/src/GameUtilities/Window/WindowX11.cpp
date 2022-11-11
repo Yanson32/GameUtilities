@@ -66,8 +66,23 @@ namespace GU
            
             XSelectInput(m_pimpl->d, m_pimpl->w, ExposureMask | KeyPressMask);
 
+            #ifdef DEBUG
+                synchronize(true); 
+            #endif
         }
         
+        
+        /********************************************************************//**
+        *   @breif  This method sets the x window application's synchronize 
+        *           mode. Setting synchronize to true will cause the windows
+        *           debugging messages to appear in the order they were created.
+        *           synchronize mode is recommended for debugging only. 
+        *   @param  synch when set to true will turn on synchronous behavior.
+        ************************************************************************/
+        void WindowX11::synchronize(const bool &synch)
+        {
+            XSynchronize(m_pimpl->d, synch);            
+        }
 
         void WindowX11::hide() const
         {

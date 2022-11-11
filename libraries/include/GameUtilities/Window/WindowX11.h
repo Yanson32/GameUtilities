@@ -50,6 +50,16 @@ namespace GU
                 virtual bool isOpen() const;
                 void setSize(const Math::Vector2<float> &size);
                 virtual void setPosition(const Math::Vector2<float> &position);
+                
+
+                /********************************************************************//**
+                *   @breif  This method sets the x window application's synchronize 
+                *           mode. Setting synchronize to true will cause the windows
+                *           debugging messages to appear in the order they were created.
+                *           synchronize mode is recommended for debugging only. 
+                *   @param  synch when set to true will turn on synchronous behavior.
+                ************************************************************************/
+                void synchronize(const bool &synch);
                 virtual ~WindowX11();
             public:
                 class Impl;
