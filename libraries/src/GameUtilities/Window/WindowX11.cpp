@@ -1,8 +1,9 @@
 /********************************************************************//**
 *   @author Wayne J Larson Jr.
 *   @date   10/18/22
-*   @description    This class represents a window for the X11 windowing
-*                   system.
+*   @class  WindowX11
+*   @file   WindowX11.cpp 
+*   @brief  This class represents a window for the X11 windowing system.
 ************************************************************************/
 
 /*************************************************************************
@@ -47,6 +48,10 @@ namespace GU
         };
         
             
+        /********************************************************************//**
+        *   @brief  Constructor. 
+        *   @param  size is the size of the window. 
+        ************************************************************************/
         WindowX11::WindowX11(const Math::Vector2<float> &size):
         WindowBase::WindowBase(size), 
         m_pimpl(new WindowX11::Impl())
@@ -73,7 +78,7 @@ namespace GU
         
         
         /********************************************************************//**
-        *   @breif  This method sets the x window application's synchronize 
+        *   @brief  This method sets the x window application's synchronize 
         *           mode. Setting synchronize to true will cause the windows
         *           debugging messages to appear in the order they were created.
         *           synchronize mode is recommended for debugging only. 
@@ -84,6 +89,10 @@ namespace GU
             XSynchronize(m_pimpl->d, synch);            
         }
 
+        
+        /********************************************************************//**
+        *   @brief  This method hides the window.
+        ************************************************************************/
         void WindowX11::hide() const
         {
             assert(m_pimpl != nullptr);        
@@ -91,17 +100,33 @@ namespace GU
         }
         
 
+        /********************************************************************//**
+        *   @brief  This method displays the window. 
+        ************************************************************************/
         void WindowX11::show() const
         {
             assert(m_pimpl != nullptr);        
             XMapWindow(m_pimpl->d, m_pimpl->w);
         }
 
+        
+        /********************************************************************//**
+        *   @brief  Set the window's title. 
+        *   @param  title is the new title for the window.
+        ************************************************************************/
         void WindowX11::setTitle(const GU::Core::String &title)
         {
             XStoreName(m_pimpl->d, m_pimpl->w, title.c_str());
         }
 
+        
+        /********************************************************************//**
+        *   @brief  This method converts a XWindow keyboard key to a GU key
+        *           id. 
+        *   @param  key is the XWindow keyboard key.
+        *   @return An equivelent keyboard key to the input key but for the GU
+        *           library. 
+        ************************************************************************/
         std::size_t WindowX11::toGUKeyboardId(const std::size_t &key)
         {
             switch(key)
@@ -217,6 +242,9 @@ namespace GU
         }
 
 
+        /********************************************************************//**
+        *   @brief  This method closes the window. 
+        ************************************************************************/
         void WindowX11::close()
         {
             assert(m_pimpl != nullptr);        
@@ -225,15 +253,12 @@ namespace GU
         }
 
 
-        bool WindowX11::isOpen() const
-        {
-            assert(m_pimpl != nullptr);
-            if(m_pimpl->d == nullptr)
-                return false;
-            return true;
-        }
-
-
+        /********************************************************************//**
+        *   @brief  This method gets the next window event. 
+        *   @param  event is a pointer to the next window event. 
+        *   @return True when the event pointer is pointing to a valid event
+        *           and false otherwise. 
+        ************************************************************************/
 	    bool WindowX11::poll(GU::Evt::EventPtr &event)
         {
             while (true) 
@@ -249,7 +274,26 @@ namespace GU
              
             return true;
         }
+        
 
+        /********************************************************************//**
+        *   @brief  This method returns true when the window is open. 
+        *   @return True if the window is open and false otherwise. 
+        ************************************************************************/
+        bool WindowX11::isOpen() const
+        {
+            assert(m_pimpl != nullptr);
+            if(m_pimpl->d == nullptr)
+                return false;
+            return true;
+        }
+
+
+        /********************************************************************//**
+        *   @brief  This method sets the size of the window. 
+        *   @param  size is the new size of the window. size.x is the width
+        *           and size.y is the height. 
+        ************************************************************************/
         void WindowX11::setSize(const Math::Vector2<float> &size)
         {
             XWindowAttributes xwa;
@@ -258,6 +302,11 @@ namespace GU
         }
 
 
+        /********************************************************************//**
+        *   @brief  This method sets the position of the window. 
+        *   @param  position is the new position of the window. position.x is
+        *           the width and position.y is the height. 
+        ************************************************************************/
         void WindowX11::setPosition(const Math::Vector2<float> &position)
         {
             XWindowAttributes xwa;
@@ -266,6 +315,9 @@ namespace GU
         }
 
     
+        /********************************************************************//**
+        *   @brief  Destructor. 
+        ************************************************************************/
         WindowX11::~WindowX11()
         {
             assert(m_pimpl != nullptr);
