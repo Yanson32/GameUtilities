@@ -1,7 +1,9 @@
 /********************************************************************//**
 *   @author Wayne J Larson Jr.
 *   @date   10/18/22
-*   @description   This class represents a window 
+*   @class  Window
+*   @file   Window.cpp
+*   @brief  This class represents a window 
 ************************************************************************/
 
 /*************************************************************************
@@ -47,6 +49,11 @@ namespace GU
             
         }
 
+        
+        /********************************************************************//**
+        *   @brief  Constructor. 
+        *   @param  size is the size of the window. 
+        ************************************************************************/
         Window::Window(const Math::Vector2<float> &size):
         WindowBase::WindowBase(size),
         m_pimpl(new Window::Impl(size))
@@ -56,6 +63,9 @@ namespace GU
         }
 
 
+        /********************************************************************//**
+        *   @brief  This method hides the window.
+        ************************************************************************/
         void Window::hide() const
         {
             assert(m_pimpl != nullptr);
@@ -65,6 +75,9 @@ namespace GU
         }
 
 
+        /********************************************************************//**
+        *   @brief  This method displays the window. 
+        ************************************************************************/
         void Window::show() const
         {
             assert(m_pimpl != nullptr);
@@ -72,6 +85,25 @@ namespace GU
             m_pimpl->m_windowImpl->show();
         }
 
+        
+        /********************************************************************//**
+        *   @brief  This method gets the next window event. 
+        *   @param  event is a pointer to the next window event. 
+        *   @return True when the event pointer is pointing to a valid event
+        *           and false otherwise. 
+        ************************************************************************/
+ 		bool Window::poll(GU::Evt::EventPtr &event)
+        {
+            assert(m_pimpl != nullptr);
+            assert(m_pimpl->m_windowImpl != nullptr);
+            m_pimpl->m_windowImpl->poll(event);
+        }
+        
+
+        /********************************************************************//**
+        *   @brief  Set the window's title. 
+        *   @param  title is the new title for the window.
+        ************************************************************************/
         void Window::setTitle(const GU::Core::String &title)
         {
             assert(m_pimpl != nullptr);
@@ -80,6 +112,9 @@ namespace GU
         }
 
 
+        /********************************************************************//**
+        *   @brief  This method closes the window. 
+        ************************************************************************/
         void Window::close()
         {
             assert(m_pimpl != nullptr);
@@ -88,6 +123,10 @@ namespace GU
         }
 
     
+        /********************************************************************//**
+        *   @brief  This method returns true when the window is open. 
+        *   @return True if the window is open and false otherwise. 
+        ************************************************************************/
         bool Window::isOpen() const
         {
             assert(m_pimpl != nullptr);
@@ -96,14 +135,11 @@ namespace GU
         }
 
 
- 		bool Window::poll(GU::Evt::EventPtr &event)
-        {
-            assert(m_pimpl != nullptr);
-            assert(m_pimpl->m_windowImpl != nullptr);
-            m_pimpl->m_windowImpl->poll(event);
-        
-        }
-
+        /********************************************************************//**
+        *   @brief  This method sets the size of the window. 
+        *   @param  size is the new size of the window. size.x is the width
+        *           and size.y is the height. 
+        ************************************************************************/
         void Window::setSize(const Math::Vector2<float> &size)
         {
             assert(m_pimpl != nullptr);
@@ -112,6 +148,11 @@ namespace GU
         }
 
         
+        /********************************************************************//**
+        *   @brief  This method sets the position of the window. 
+        *   @param  position is the new position of the window. position.x is
+        *           the width and position.y is the height. 
+        ************************************************************************/
         void Window::setPosition(const Math::Vector2<float> &position)
         {
             assert(m_pimpl != nullptr);
@@ -120,6 +161,9 @@ namespace GU
         }
 
 
+        /********************************************************************//**
+        *   @brief  Destructor. 
+        ************************************************************************/
         Window::~Window()
         {
             assert(m_pimpl != nullptr);
