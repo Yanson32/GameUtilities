@@ -24,7 +24,9 @@
 * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ***************************************************************************/
 #include "GameUtilities/Window/Window.h"
-#include "GameUtilities/Window/WindowX11.h"
+#ifdef X11 
+    #include "GameUtilities/Window/WindowX11.h"
+#endif
 #include <memory>
 #include <cassert>
 
