@@ -1,7 +1,9 @@
 /********************************************************************//**
 *   @author Wayne J Larson Jr.
 *   @date   10/18/22
-*   @description   This class the base class for all windows.
+*   @class  WindowBase
+*   @file   WindowBase.cpp
+*   @brief This class the base class for all windows.
 ************************************************************************/
 
 /*************************************************************************
@@ -28,12 +30,20 @@ namespace GU
 {
     namespace Win
     {
+        
+        /********************************************************************//**
+        *   @brief  Constructor. 
+        *   @param  size is the size of the window. 
+        ************************************************************************/
         WindowBase::WindowBase(const Math::Vector2<float> &size)
         {
 
         }
         
 
+        /********************************************************************//**
+        *   @brief  Destructor. 
+        ************************************************************************/
         WindowBase::~WindowBase()
         {
 
