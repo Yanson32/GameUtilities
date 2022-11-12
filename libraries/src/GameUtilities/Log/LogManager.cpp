@@ -98,6 +98,7 @@ namespace GU
                 /*********************************************************************************//**
                 *	@brief  This method returns the log formatter currently being used by the Impl log 
                 *           manager. 
+                *   @return A pointer to the LogFormatter
                 *************************************************************************************/
 				std::shared_ptr<LogFormatter> getFormatter();
                 
@@ -227,6 +228,7 @@ namespace GU
         /*********************************************************************************//**
         *	@brief  This method returns the log formatter currently being used by the Impl log 
         *           manager. 
+        *   @return A pointer to the LogFormatter
         *************************************************************************************/
 		std::shared_ptr<LogFormatter> LogManager::Impl::getFormatter()
 		{
@@ -331,6 +333,7 @@ namespace GU
         /*********************************************************************************//**
         *	@brief  This method returns the log formatter currently being used by the log 
         *           manager. 
+        *   @return A pointer to the LogFormatter
         *************************************************************************************/
         std::shared_ptr<LogFormatter> LogManager::getFormatter()
         {
