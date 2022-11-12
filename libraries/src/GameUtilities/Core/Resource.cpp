@@ -1,9 +1,11 @@
-#include "GameUtilities/Core/Resource.h"
 /*********************************************************************************//**
-*	@author:	Wayne J Larson Jr.
-*   @date:      09/16/2022
-*   @purpose:   This class is the base class for all resources 
+*	@author  Wayne J Larson Jr.
+*   @date    09/16/2022
+*   @class   Resource
+*   @file    Resource.cpp
+*   @brief   This class is the base class for all resources 
 *************************************************************************************/
+
 /*************************************************************************
 *                           COPYRIGHT NOTICE
 * GameUtilities is a toolkit for making 2d video games.
@@ -21,6 +23,7 @@
 * You should have received a copy of the GNU General Public License
 * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ***************************************************************************/
+#include "GameUtilities/Core/Resource.h"
 
 namespace GU
 {
