@@ -56,7 +56,7 @@ namespace GU
                 *************************************************************************************/
   				virtual ~LogFileTarget();
   			private:
-  				const GU::Core::String m_path;
+  				const GU::Core::String m_path;      /**< Is the full path to the file */
   		};
 	}
 }
