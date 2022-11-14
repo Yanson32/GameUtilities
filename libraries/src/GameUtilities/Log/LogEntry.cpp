@@ -1,3 +1,10 @@
+/*********************************************************************************//**
+*	@author	Wayne J Larson Jr.
+*	@date 	5/18/22
+*   @class  LogEntry
+*   @file   LogEntry.cpp
+*	@brief  The LogEntry class contains all data for a single log entry.  
+*************************************************************************************/
 #include "GameUtilities/Log/LogEntry.h"
 #include "GameUtilities/Log/Component/LogComponent.h"
 #include <vector>
@@ -61,6 +68,7 @@ namespace GU
         
         /*********************************************************************************//**
         *	@brief  This method is used to add a LogComponent to the LogEvent. 
+        *   @param  component is a pointer to the LogComponent to be added.
         *************************************************************************************/
         void LogEntry::add(std::shared_ptr<GU::Log::LogComponent> component)
         {
@@ -81,6 +89,10 @@ namespace GU
         }
 
 
+        /*********************************************************************************//**
+        *	@brief  This method returns a unique identifier for the LogEntry. 
+        *   @return The unique identifier for the LogEntry.
+        *************************************************************************************/
         int LogEntry::getId() const
         {
             assert(m_pimpl != nullptr);

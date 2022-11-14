@@ -1,10 +1,11 @@
 #ifndef GAMEUTILITIES_LOG_ENTRY_H
 #define GAMEUTILITIES_LOG_ENTRY_H
 /*********************************************************************************//**
-*	@author	        Wayne J Larson Jr.
-*	@date 	        5/18/22
-*	@description    The LogEntry class represents a log entry. It contains all data
-*   `               needed to generate a log entry.
+*	@author	Wayne J Larson Jr.
+*	@date 	5/18/22
+*   @class  LogEntry
+*   @file   LogEntry.h
+*	@brief  The LogEntry class contains all data for a single log entry.  
 *************************************************************************************/
 #include "log_export.h"
 #include "GameUtilities/Log/Component/LogComponent.h"
@@ -18,12 +19,15 @@ namespace GU
             public:
                 /*********************************************************************************//**
                 *	@brief  Constructor 
+                *   @param  id is the unique identifier for the LogEntry.
+                *   @param  type is the 
                 *************************************************************************************/
                 LogEntry(const int &id = -1, const int &type = -1);
                 
 
                 /*********************************************************************************//**
                 *	@brief  This method is used to add a LogComponent to the LogEvent. 
+                *   @param  component is a pointer to the LogComponent to be added.
                 *************************************************************************************/
                 void add(std::shared_ptr<GU::Log::LogComponent> component);
                 
@@ -31,6 +35,8 @@ namespace GU
                 /*********************************************************************************//**
                 *	@brief  This method is for convinience it uses perfect forwarding to add a 
                 *           LogComponet to the entry.
+                *   @tparam Type is a subclass of the LogComponent class.
+                *   @param  args is the arguments required by the LogComponent subclass. 
                 *************************************************************************************/
                 template<typename Type, typename... Args>
                 void add(Args&&... args);
@@ -42,8 +48,16 @@ namespace GU
                 *************************************************************************************/
                 std::size_t size() const;
                 
+                /*********************************************************************************//**
+                *	@brief  This method returns a unique identifier for the LogEntry. 
+                *   @return The unique identifier for the LogEntry.
+                *************************************************************************************/
                 int getId() const;
+                
+
                 int getType() const;
+                
+
                 /*********************************************************************************//**
                 *	@brief  This method returns a pointer to a LogComponent at the given index. 
                 *   @param  index is the index of the LogComponent to be returned. 
@@ -58,13 +72,15 @@ namespace GU
                 virtual ~LogEntry();
             private:
                 class Impl;
-                Impl* m_pimpl = nullptr;
+                Impl* m_pimpl = nullptr;    /**< Pointer to class implimentation */
         };
 
         
         /*********************************************************************************//**
-        *	@brief  This method is for convinience it uses perfect forwarding to add a 
+        *	brief   This method is for convinience it uses perfect forwarding to add a 
         *           LogComponet to the entry.
+        *   tparam  Type is a subclass of the LogComponent class.
+        *   param   args is the arguments required by the LogComponent subclass. 
         *************************************************************************************/
         template<typename Type, typename... Args>
         void LogEntry::add(Args&&... args)
