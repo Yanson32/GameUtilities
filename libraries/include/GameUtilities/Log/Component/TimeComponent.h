@@ -1,9 +1,11 @@
 #ifndef GU_LOG_TIMECOMPONENT_H
 #define GU_LOG_TIMECOMPONENT_H
 /*********************************************************************************//**
-*	@author	Wayne J Larson Jr.
-* @date 5/24/2022
-* @description  This class represents the time component for the log system 
+*   @author	Wayne J Larson Jr.
+*   @date   5/24/2022
+*   @class  TimeComponent
+*   @file   TimeComponent.h
+*   @brief  This class represents the time component for the log system 
 *************************************************************************************/
 
 #include "log_export.h"
@@ -51,9 +53,9 @@ namespace GU
                 *************************************************************************************/
                 GU::Core::String format();
             public:
-                int m_hours;
-                int m_minutes;
-                int m_seconds;
+                int m_hours;        /**< The total number of hours */
+                int m_minutes;      /**< The total number of minutes */
+                int m_seconds;      /**< The total number of seconds */
       };
     }
 }

@@ -1,3 +1,10 @@
+/*********************************************************************************//**
+*   @author	Wayne J Larson Jr.
+*   @date   5/24/2022
+*   @class  TimeComponent
+*   @file   TimeComponent.cpp
+*   @brief  This class represents the time component for the log system 
+*************************************************************************************/
 #include "GameUtilities/Log/Component/TimeComponent.h"
 #include "GameUtilities/Core/Macros.h"
 #include <sstream>
