@@ -2,8 +2,6 @@
 *   @author Wayne J Larson Jr.
 *   @date   10/18/22
 *   @class  WindowBase
-*   @file   WindowBase.cpp
-*   @brief This class the base class for all windows.
 ************************************************************************/
 
 /*************************************************************************

@@ -3,9 +3,7 @@
 /********************************************************************//**
 *   @author Wayne J Larson Jr.
 *   @date   10/18/22
-*   @class  WindowBase
 *   @file   WindowBase.h
-*   @brief This class the base class for all windows.
 ************************************************************************/
 
 /*************************************************************************
@@ -37,6 +35,10 @@ namespace GU
 {
     namespace Win
     {
+        /********************************************************************//**
+        *   @class  WindowBase
+        *   @brief This class the base class for all windows.
+        ************************************************************************/
         class WINDOW_EXPORT WindowBase: public GU::Evt::EventQueue
         {
             public:
