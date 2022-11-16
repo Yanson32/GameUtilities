@@ -3,9 +3,7 @@
 /*********************************************************************************//**
 *	@author	 Wayne J Larson Jr.
 *	@date 	 5/20/22
-*   @class   LogManager
 *   @file    LogManager.h
-*	@brief   The purpose of this class is to write log entries to a log file. 
 *************************************************************************************/
 
 /*************************************************************************
@@ -36,6 +34,10 @@ namespace GU
 {
     namespace Log
     {
+        /*********************************************************************************//**
+        *   @class   LogManager
+        *	@brief   The purpose of this class is to write log entries to a log file. 
+        *************************************************************************************/
         class LOG_EXPORT LogManager
   	    {
   	        public:
