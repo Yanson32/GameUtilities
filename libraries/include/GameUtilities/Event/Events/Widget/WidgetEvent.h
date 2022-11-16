@@ -1,9 +1,9 @@
 #ifndef GAMEUTILITIES_EVENT_WIDGET_H
 #define GAMEUTILITIES_EVENT_WIDGET_H
 /**************************************************************************
-*   @Author:     Wayne J Larson Jr.
-*   @Date:       10/01/22
-*   @Purpose:    This event is created when text changes. 
+*   @Author Wayne J Larson Jr.
+*   @Date   10/01/22
+*   @file   WidgetEvent.h
 **************************************************************************/
 
 /*************************************************************************
@@ -31,14 +31,36 @@ namespace GU
 {
     namespace Evt
     {
+        
+        /******************************************************************//**
+        *   @class  WidgetEvent
+        *   @brief  This class is the base class for all widget events.
+        **********************************************************************/
         class EVENT_EXPORT WidgetEvent: public GU::Evt::Event
         {
             public:
-                WidgetEvent(std::shared_ptr<void> parent, const int &widgetId, const int &eventId, const int &line = 0, const char* file = nullptr);
+                /******************************************************************//**
+                *   @brief Constructor
+                *   @param parent is the widget where the event originated.
+                *   @param widgetId Is a unique identifier for the widget that created the event.
+                *   @param eventId  Is a unique identifier for the event. 
+                *   @param line is the line in source code where the event originated.
+                *   @param file is the source code file where the event originated.
+                **********************************************************************/
+                WidgetEvent(std::shared_ptr<void> parent, 
+                const int &widgetId, 
+                const int &eventId, 
+                const int &line = 0, 
+                const char* file = nullptr);
+                
+                
+                /******************************************************************//**
+                *   @brief  Destructor. 
+                **********************************************************************/
                 virtual ~WidgetEvent();
             public:
-                std::shared_ptr<void> m_parent = nullptr;
-                const int m_widgetId = -1;
+                std::shared_ptr<void> m_parent = nullptr; /**< Pointer to the widget where the event originated*/
+                const int m_widgetId = -1;                /**< Unique identifier for the widgit that generated the event */
         };
     }
 
