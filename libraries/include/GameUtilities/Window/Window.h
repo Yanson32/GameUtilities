@@ -3,9 +3,7 @@
 /********************************************************************//**
 *   @author Wayne J Larson Jr.
 *   @date   10/18/22
-*   @class  Window
 *   @file   Window.h
-*   @brief  This class represents a window 
 ************************************************************************/
 
 /*************************************************************************
@@ -37,6 +35,11 @@ namespace GU
 {
     namespace Win
     {
+        
+        /********************************************************************//**
+        *   @class  Window
+        *   @brief  This class represents a window 
+        ************************************************************************/
         class WINDOW_EXPORT Window: public WindowBase
         {
             public:
