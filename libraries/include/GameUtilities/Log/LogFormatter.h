@@ -3,9 +3,7 @@
 /*********************************************************************************//**
 *	@author	 Wayne J Larson Jr.
 *	@date 	 5/19/22
-*   @class   LogFormatter
 *   @file    LogFormatter.h
-*	@brief   This class is used to format log entries.
 *************************************************************************************/
 
 /*************************************************************************
@@ -37,6 +35,10 @@ namespace GU
     {   
 
         class LogComponent;
+        /*********************************************************************************//**
+        *   @class   LogFormatter
+        *	@brief   This class is used to format log entries.
+        *************************************************************************************/
   		class LOG_EXPORT LogFormatter
   		{
   	        public:
