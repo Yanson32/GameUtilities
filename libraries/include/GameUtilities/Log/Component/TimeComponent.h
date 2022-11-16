@@ -3,9 +3,7 @@
 /*********************************************************************************//**
 *   @author	Wayne J Larson Jr.
 *   @date   5/24/2022
-*   @class  TimeComponent
 *   @file   TimeComponent.h
-*   @brief  This class represents the time component for the log system 
 *************************************************************************************/
 
 /*************************************************************************
@@ -36,6 +34,10 @@ namespace GU
 {
     namespace Log
     {
+        /*********************************************************************************//**
+        *   @class  TimeComponent
+        *   @brief  This class represents the time component for the log system 
+        *************************************************************************************/
         struct LOG_EXPORT TimeComponent: public LogComponent
         {
             
