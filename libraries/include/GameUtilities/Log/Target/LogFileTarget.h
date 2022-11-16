@@ -3,9 +3,7 @@
 /*********************************************************************************//**
 *	@author	Wayne J Larson Jr.
 *	@date 	5/27/22
-*   @class  LogFileTarget
 *   @file   LogFileTarget.h
-*	@brief  This class defines a log target that will write logs to a file 
 *************************************************************************************/
 
 /*************************************************************************
@@ -33,6 +31,10 @@ namespace GU
 {
     namespace Log
     {
+        /*********************************************************************************//**
+        *   @class  LogFileTarget
+        *	@brief  This class defines a log target that will write logs to a file 
+        *************************************************************************************/
   		class LOG_EXPORT LogFileTarget: public LogTarget
   		{
   			public:
