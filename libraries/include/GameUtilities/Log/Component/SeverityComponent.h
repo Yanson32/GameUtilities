@@ -3,9 +3,7 @@
 /*********************************************************************************//**
 *   @author	Wayne J Larson Jr.
 *   @date   4/8/2022
-*   @class  SeverityComponent
 *   @file   SeverityComponent.h
-*   @brief  This class defines the severity of a log message.
 *************************************************************************************/
 
 /*************************************************************************
@@ -35,6 +33,10 @@ namespace GU
 {
     namespace Log
     {
+        /*********************************************************************************//**
+        *   @class  SeverityComponent
+        *   @brief  This class defines the severity of a log message.
+        *************************************************************************************/
         struct LOG_EXPORT SeverityComponent: public LogComponent
         {
             /*************************************************************//**
