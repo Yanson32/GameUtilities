@@ -3,9 +3,7 @@
 /********************************************************************//**
 *   @author Wayne J Larson Jr.
 *   @date   10/18/22
-*   @class  WindowX11
 *   @file   WindowX11.h
-*   @brief  This class represents a window for the X11 windowing system.
 ************************************************************************/
 
 /*************************************************************************
@@ -38,6 +36,10 @@ namespace GU
     {
 
 
+        /********************************************************************//**
+        *   @class  WindowX11
+        *   @brief  This class represents a window for the X11 windowing system.
+        ************************************************************************/
         class WINDOW_EXPORT WindowX11: public WindowBase
         {
             public:
