@@ -1,10 +1,7 @@
 /*********************************************************************************//**
 *	@author	Wayne J Larson Jr.
 *   @date   4/8/2022
-*   @class  LineComponent
-*   @file   LineComponent.h
-*   @brief  This class defines a LogComponent that represents the line number
-*           where the log message originated from.
+*   @file   LineComponent.cpp
 *************************************************************************************/
 
 /*************************************************************************
