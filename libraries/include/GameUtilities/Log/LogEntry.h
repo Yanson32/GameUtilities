@@ -3,9 +3,7 @@
 /*********************************************************************************//**
 *	@author	Wayne J Larson Jr.
 *	@date 	5/18/22
-*   @class  LogEntry
 *   @file   LogEntry.h
-*	@brief  The LogEntry class contains all data for a single log entry.  
 *************************************************************************************/
 
 /*************************************************************************
@@ -32,6 +30,10 @@ namespace GU
 {
     namespace Log
     {
+        /*********************************************************************************//**
+        *   @class  LogEntry
+        *	@brief  The LogEntry class contains all data for a single log entry.  
+        *************************************************************************************/
         class LOG_EXPORT LogEntry
         {
             public:
