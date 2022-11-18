@@ -3,9 +3,7 @@
 /*********************************************************************************//**
 *	@author	Wayne J Larson Jr.
 *   @date   4/8/2022
-*   @class  LogComponent
-*   @file   LogComponent.y
-*   @brief  This class is used to define a file where the log originated
+*   @file   FileComponent.h
 *************************************************************************************/
 
 /*************************************************************************
@@ -34,6 +32,10 @@ namespace GU
 {
     namespace Log
     {
+        /*********************************************************************************//**
+        *   @class  FileComponent
+        *   @brief  This class is used to define a file where the log originated
+        *************************************************************************************/
       struct LOG_EXPORT FileComponent: public LogComponent
       {
 

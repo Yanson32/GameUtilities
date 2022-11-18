@@ -1,9 +1,7 @@
 /*********************************************************************************//**
 *	@author	Wayne J Larson Jr.
 *   @date   4/8/2022
-*   @class  LogComponent
-*   @file   LogComponent.cpp
-*   @brief  This class is used to define a file where the log originated
+*   @file   FileComponent.cpp
 *************************************************************************************/
 
 /*************************************************************************
