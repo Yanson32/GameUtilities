@@ -1,9 +1,9 @@
 #ifndef EVENT_ON_TEXT_CHANGED_H
 #define EVENT_ON_TEXT_CHANGED_H
-/**************************************************************************
-*   @Author:     Wayne J Larson Jr.
-*   @Date:       08/31/22
-*   @Purpose:    This event is created when text changes. 
+/**********************************************************************//**
+*   @author Wayne J Larson Jr.
+*   @date   08/31/22
+*   @file   OnTextChanged.h
 **************************************************************************/
 
 /*************************************************************************
@@ -32,13 +32,33 @@ namespace GU
     namespace Evt
     {
 
+        /*********************************************************************//***
+        *   @class  OnTextChanged
+        *   @brief  This event is created when text changes. 
+        **************************************************************************/
         class OnTextChanged: public GU::Evt::WidgetEvent
         {
             public:
-                OnTextChanged(std::shared_ptr<void> parent, const int &widgetId, const GU::Core::String &text, const int &line = -1, const char* file = "");
+                /*********************************************************************//***
+                *   @brief Constructor. 
+                *   @param parent is the widget where the event originated from.
+                *   @param widgetId is the id of the widget where the event originated.
+                *   @param text is the new text.
+                *   @param line is the line in source code where the event originated.  
+                *   @param file is the source code file where the event originated from.
+                **************************************************************************/
+                OnTextChanged(std::shared_ptr<void> parent, 
+                const int &widgetId, 
+                const GU::Core::String &text, 
+                const int &line = -1, 
+                const char* file = "");
 
+                /**********************************************************************//**
+                *   @brief Destructor.
+                **************************************************************************/
                 virtual ~OnTextChanged();
-                const GU::Core::String m_text = "";
+            public:
+                const GU::Core::String m_text = "";     /**< The updated text */
         };
     }
 }
