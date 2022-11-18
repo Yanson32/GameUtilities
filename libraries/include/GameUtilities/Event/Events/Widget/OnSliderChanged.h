@@ -1,9 +1,9 @@
 #ifndef GAMEUTILITIES_ON_SLIDER_CHANGED_H
 #define GAMEUTILITIES_ON_SLIDER_CHANGED_H
 /**************************************************************************
-*   @Author:     Wayne J Larson Jr.
-*   @Date:       05/10/22
-*   @Purpose:    This event is created when a slider changes it's value. 
+*   @author Wayne J Larson Jr.
+*   @date   05/10/22
+*   @file   OnSliderChanged.h
 **************************************************************************/
 
 /*************************************************************************
@@ -32,6 +32,10 @@ namespace GU
     namespace Evt
     {
 
+        /**************************************************************************
+        *   @class OnSliderChanged
+        *   @brief This event is created when a slider changes it's value. 
+        **************************************************************************/
 		class EVENT_EXPORT OnSliderChanged: public WidgetEvent
 		{
 			public:
