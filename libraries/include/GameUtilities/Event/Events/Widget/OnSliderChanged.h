@@ -1,6 +1,6 @@
 #ifndef GAMEUTILITIES_ON_SLIDER_CHANGED_H
 #define GAMEUTILITIES_ON_SLIDER_CHANGED_H
-/**************************************************************************
+/**********************************************************************//**
 *   @author Wayne J Larson Jr.
 *   @date   05/10/22
 *   @file   OnSliderChanged.h
@@ -32,28 +32,29 @@ namespace GU
     namespace Evt
     {
 
-        /**************************************************************************
+        /**********************************************************************//**
         *   @class OnSliderChanged
         *   @brief This event is created when a slider changes it's value. 
         **************************************************************************/
 		class EVENT_EXPORT OnSliderChanged: public WidgetEvent
 		{
 			public:
-                /**************************************************************************
-                *   @breif  Constructor
-                *   @param  id of the slider.
+                /**********************************************************************//**
+                *   @brief  Constructor
+                *   @param  widgetId of the slider.
+                *   @param  parent is a pointer to the widget where the event originated.
                 *   @param  value is the current value of the slider
                 *   @param  line is where the event was generated in code.
                 *   @param  file is the file where the event was generated.
                 **************************************************************************/
 				OnSliderChanged(std::shared_ptr<void> parent, const int &widgetId, const int &sliderPos, const int &line = 0, const char* file = "");
 				
-                /**************************************************************************
-                *   @breif  Deconstructor 
+                /**********************************************************************//**
+                *   @brief  Deconstructor 
                 **************************************************************************/
                 virtual ~OnSliderChanged();
 			public:
-                int m_sliderPos = 0;
+                int m_sliderPos = 0;    /**< The current position of the slider */
 		};
 	}
 }

@@ -1,4 +1,4 @@
-/**************************************************************************
+/**********************************************************************//**
 *   @author Wayne J Larson Jr.
 *   @date   05/10/22
 *   @file   OnSliderChanged.cpp
@@ -28,9 +28,10 @@ namespace GU
 {
     namespace Evt
     {
-        /**************************************************************************
-        *   @breif  Constructor
-        *   @param  id of the slider.
+        /**********************************************************************//**
+        *   @brief  Constructor
+        *   @param  widgetId of the slider.
+        *   @param  parent is a pointer to the widget where the event originated.
         *   @param  value is the current value of the slider
         *   @param  line is where the event was generated in code.
         *   @param  file is the file where the event was generated.
@@ -44,8 +45,8 @@ namespace GU
 		}
 
         
-        /**************************************************************************
-        *   @breif  Deconstructor 
+        /**********************************************************************//**
+        *   @brief  Deconstructor 
         **************************************************************************/
 		OnSliderChanged::~OnSliderChanged()
 		{
