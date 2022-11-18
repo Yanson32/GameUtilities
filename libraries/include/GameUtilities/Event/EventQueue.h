@@ -3,7 +3,6 @@
 /*********************************************************************************//**
 *	@author	        Wayne J Larson Jr.
 *	@date 	        02/08/17
-*	@class          EventQueue creates a queue for pushing and popping events. 
 *	@file           EventQueue.h 
 *************************************************************************************/
 
@@ -32,6 +31,10 @@ namespace GU
 	namespace Evt
 	{
 		typedef std::shared_ptr<Event> EventPtr;
+        /*********************************************************************************//**
+        *	@brief EventQueue creates a queue for pushing and popping events. 
+        *	@class EventQueue 
+        *************************************************************************************/
 		class EVENT_EXPORT EventQueue
 		{
 		public:
