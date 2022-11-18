@@ -12,7 +12,7 @@ namespace GU
     namespace Evt
     {
 
-        /*********************************************************************//***
+        /**********************************************************************//**
         *   @brief Constructor. 
         *   @param parent is the widget where the event originated from.
         *   @param widgetId is the id of the widget where the event originated.
