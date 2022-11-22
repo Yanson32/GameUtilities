@@ -1,7 +1,7 @@
-/**************************************************************************
-*   @Author:     Wayne J Larson Jr.
-*   @Date:       10/01/22
-*   @Purpose:    This event is generated when collision has ended.
+/**********************************************************************//**
+*   @author Wayne J Larson Jr.
+*   @date   10/01/22
+*   @file   OnEndCollision.cpp
 **************************************************************************/
 
 /*************************************************************************
@@ -30,8 +30,12 @@ namespace GU
     namespace Evt
     {
 
-        /**************************************************************************
-        *   Constructor
+        /**********************************************************************//**
+        *   @brief  Constructor.
+        *   @param  obj1 is a pointer to a physics object involved in collision.
+        *   @param  obj2 is a pointer to a physics object involved in collision.
+        *   @param  line is the source code line number that generated the event.
+        *   @param  file is the source code file that generated the event
         **************************************************************************/
         OnEndCollision::OnEndCollision(void *obj1, void *obj2, const int &line, const char* file):
         Event(static_cast<int>(GU::Evt::EventId::ON_END_COLLISION), line, file),
@@ -42,7 +46,7 @@ namespace GU
         }
 
         
-        /**************************************************************************
+        /**********************************************************************//**
         *   Destructor
         **************************************************************************/
         OnEndCollision::~OnEndCollision()
