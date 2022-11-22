@@ -1,7 +1,7 @@
-/**************************************************************************
-*   @Author:     Wayne J Larson Jr.
-*   @Date:       10/10/22
-*   @Purpose:    This event is generated when something is focused. 
+/**********************************************************************//**
+*   @author Wayne J Larson Jr.
+*   @date   10/10/22
+*   @file   OnStartFocus.h
 **************************************************************************/
 
 /*************************************************************************
@@ -29,8 +29,11 @@ namespace GU
     namespace Evt
     {
 
-        /**************************************************************************
-        *   Constructor
+        /**********************************************************************//**
+        *   @brief  Constructor.
+        *   @param  focusId is a unique id for the entity to be focused. 
+        *   @param  line is the source code line number that generated the event.
+        *   @param  file is the source code file that generated the event
         **************************************************************************/
         OnStartFocus::OnStartFocus(const int &focusId, const int &line, const char* file):
         Event(static_cast<int>(GU::Evt::EventId::ON_FOCUS), line, file),
@@ -40,8 +43,8 @@ namespace GU
         }
 
         
-        /**************************************************************************
-        *   Destructor
+        /**********************************************************************//**
+        *   @brief Destructor
         **************************************************************************/
         OnStartFocus::~OnStartFocus()
         {
