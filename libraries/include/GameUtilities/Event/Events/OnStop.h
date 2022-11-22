@@ -1,9 +1,9 @@
 #ifndef GAMEUTILITIES_EVENT_ONSTOP_H
 #define GAMEUTILITIES_EVENT_ONSTOP_H
-/**************************************************************************
-*   @Author:     Wayne J Larson Jr.
-*   @Date:       10/01/22
-*   @Purpose:    This event is generates when something is stopped. 
+/**********************************************************************//**
+*   @author Wayne J Larson Jr.
+*   @date   10/01/22
+*   @file   OnStop.h
 **************************************************************************/
 
 /*************************************************************************
@@ -32,21 +32,28 @@ namespace GU
     namespace Evt
     {
 
+        /**********************************************************************//**
+        *   @class  OnStop
+        *   @brief  This event is generates when something is stopped. 
+        **************************************************************************/
         class EVENT_EXPORT OnStop : public Event
         {
             public:
-                /**************************************************************************
-                *   Constructor
+                /**********************************************************************//**
+                *   @brief  Constructor.
+                *   @param  stopId is a unique id for the entity to be stopped. 
+                *   @param  line is the source code line number that generated the event.
+                *   @param  file is the source code file that generated the event
                 **************************************************************************/
                 OnStop(const int &stopId, const int &line, const char* file = "");
 
                 
-                /**************************************************************************
+                /**********************************************************************//**
                 *   Destructor
                 **************************************************************************/
                 virtual ~OnStop(); 
             private:
-                const int m_stopId = -1;
+                const int m_stopId = -1;        /**< A unique id for the entity to be stopped */
         };
 
     }

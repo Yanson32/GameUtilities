@@ -1,7 +1,7 @@
-/**************************************************************************
-*   Author:     Wayne J Larson Jr.
-*   Date:       10/01/22
-*   Purpose:    This event is generates when something is stopped. 
+/**********************************************************************//**
+*   @author Wayne J Larson Jr.
+*   @date   10/01/22
+*   @file   OnStop.h
 **************************************************************************/
 #include "event_export.h"
 #include "GameUtilities/Event/Events/OnStop.h"
@@ -13,8 +13,11 @@ namespace GU
     namespace Evt
     {
 
-        /**************************************************************************
-        *   Constructor
+        /**********************************************************************//**
+        *   @brief  Constructor.
+        *   @param  stopId is a unique id for the entity to be stopped. 
+        *   @param  line is the source code line number that generated the event.
+        *   @param  file is the source code file that generated the event
         **************************************************************************/
         OnStop::OnStop(const int &stopId, const int &line, const char* file):
         Event(static_cast<int>(GU::Evt::EventId::ON_STOP), line, file),
@@ -24,7 +27,7 @@ namespace GU
         }
 
         
-        /**************************************************************************
+        /**********************************************************************//**
         *   Destructor
         **************************************************************************/
         OnStop::~OnStop()
