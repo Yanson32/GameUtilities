@@ -1,7 +1,7 @@
-/**************************************************************************
-*   Author:     Wayne J Larson Jr.
-*   Date:       10/01/22
-*   Purpose:    This event is generated when something resumes. 
+/**********************************************************************//**
+*   @author Wayne J Larson Jr.
+*   @date   10/01/22
+*   @file   OnResume.cpp
 **************************************************************************/
 #include "event_export.h"
 #include "GameUtilities/Event/Events/OnResume.h"
@@ -13,8 +13,11 @@ namespace GU
     namespace Evt
     {
 
-        /**************************************************************************
-        *   Constructor
+        /**********************************************************************//**
+        *   @brief  Constructor.
+        *   @param  resumeId is a unique identifier for the entity to be resumed. 
+        *   @param  line is the source code line number that generated the event.
+        *   @param  file is the source code file that generated the event
         **************************************************************************/
         OnResume::OnResume(const int &resumeId, const int &line, const char* file):
         Event(static_cast<int>(GU::Evt::EventId::ON_RESUME), line, file),
@@ -24,8 +27,8 @@ namespace GU
         }
 
         
-        /**************************************************************************
-        *   Destructor
+        /**********************************************************************//**
+        *   @brief  Destructor
         **************************************************************************/
         OnResume::~OnResume()
         {
