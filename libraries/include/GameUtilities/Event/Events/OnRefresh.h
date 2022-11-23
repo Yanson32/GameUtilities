@@ -1,9 +1,9 @@
 #ifndef GAMEUTILITIES_EVENT_ONREFRESH_H
 #define GAMEUTILITIES_EVENT_ONREFRESH_H
-/**************************************************************************
-*   @Author:     Wayne J Larson Jr.
-*   @Date:       10/01/22
-*   @Purpose:    This event is generates when something is refreshed. 
+/**********************************************************************//**
+*   @author Wayne J Larson Jr.
+*   @date   10/01/22
+*   @file   OnRefresh.h
 **************************************************************************/
 
 /*************************************************************************
@@ -32,21 +32,28 @@ namespace GU
     namespace Evt
     {
 
+        /**********************************************************************//**
+        *   @class  OnRefresh
+        *   @brief  This event is generates when something is refreshed. 
+        **************************************************************************/
         class EVENT_EXPORT OnRefresh : public Event
         {
             public:
-                /**************************************************************************
-                *   Constructor
+                /**********************************************************************//**
+                *   @brief  Constructor.
+                *   @param  refreshId is a unique identifier for the entity to be refreshed. 
+                *   @param  line is the source code line number that generated the event.
+                *   @param  file is the source code file that generated the event
                 **************************************************************************/
                 OnRefresh(const int &refreshId, const int &line, const char* file = "");
 
                 
-                /**************************************************************************
-                *   Destructor
+                /**********************************************************************//**
+                *   @brief  Destructor
                 **************************************************************************/
                 virtual ~OnRefresh(); 
             private:
-                const int m_refreshId = -1;
+                const int m_refreshId = -1;     /**< A unique identifier for the entity to be refreshed.*/
         };
 
     }
