@@ -13,8 +13,11 @@ namespace GU
     namespace Evt
     {
 
-        /**************************************************************************
-        *   Constructor
+        /**********************************************************************//**
+        *   @brief  Constructor.
+        *   @param  pauseId is a unique id for the entity to be paused. 
+        *   @param  line is the line in code where the event was generated.
+        *   @param  file is the file were the event was generated.
         **************************************************************************/
         OnPause::OnPause(const int &pauseId, const int &line, const char* file):
         Event(static_cast<int>(GU::Evt::EventId::ON_PAUSE), line, file),
@@ -24,8 +27,8 @@ namespace GU
         }
 
         
-        /**************************************************************************
-        *   Destructor
+        /**********************************************************************//**
+        *   @brief  Destructor
         **************************************************************************/
         OnPause::~OnPause()
         {
