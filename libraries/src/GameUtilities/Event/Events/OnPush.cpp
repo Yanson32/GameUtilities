@@ -1,7 +1,7 @@
-/**************************************************************************
-*   @Author:     Wayne J Larson Jr.
-*   @Date:       10/10/22
-*   @Purpose:    This event is generated when something is pushed. 
+/**********************************************************************//**
+*   @author Wayne J Larson Jr.
+*   @date   10/10/22
+*   @file   OnPush.cpp
 **************************************************************************/
 
 /*************************************************************************
@@ -30,8 +30,11 @@ namespace GU
     namespace Evt
     {
 
-        /**************************************************************************
-        *   Constructor
+        /**********************************************************************//**
+        *   @brief  Constructor.
+        *   @param  pushId is a unique identifier for the entity to be pushed. 
+        *   @param  line is the source code line number that generated the event.
+        *   @param  file is the source code file that generated the event
         **************************************************************************/
         OnPush::OnPush(const int &pushId, const int &line, const char* file):
         Event(static_cast<int>(GU::Evt::EventId::ON_PUSH), line, file),
@@ -41,8 +44,8 @@ namespace GU
         }
 
         
-        /**************************************************************************
-        *   Destructor
+        /*********************************************************************//***
+        *   @brief  Destructor
         **************************************************************************/
         OnPush::~OnPush()
         {
