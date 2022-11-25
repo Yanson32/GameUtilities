@@ -1,10 +1,8 @@
-/*******************************************************//**
+/******************************************************************//**
 *   @author Wayne J Larson Jr.
 *   @date   5/20/19
-*   @brief  The changestate class is a subclass of the
-*           Event class and is used to signal a change
-*           in the games state.
-***********************************************************/
+*   @file   OnChangeState.h
+**********************************************************************/
 
 /*************************************************************************
 *                           COPYRIGHT NOTICE
@@ -32,6 +30,11 @@ namespace GU
 {
     namespace Evt
     {
+        /******************************************************************//**
+        *   @class  OnChangeState
+        *   @brief  The changestate class is a subclass of the Event class 
+        *           and is used to signal a change in the games state.
+        **********************************************************************/
 		class EVENT_EXPORT OnChangeState: public Event
 		{
 			public:
@@ -49,7 +52,7 @@ namespace GU
                 ***********************************************************/
 				virtual ~OnChangeState();
             public:
-                const int m_stateId;
+                const int m_stateId;    /**< A unique identifier for the new state */
 		};
 	}
 }
