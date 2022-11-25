@@ -3,7 +3,7 @@
 /********************************************************************//**
 *   @author Wayne J Larson Jr.
 *   @date   5/20/22
-*   @description    This event is generated when a log event is created 
+*   @file   OnLog.h
 ************************************************************************/
 
 /*************************************************************************
@@ -34,32 +34,46 @@ namespace GU
 
     namespace Evt
     {
-        /**************************************************************************
-        *   Author:     Wayne J Larson Jr.
-        *   Date:       11/14/20
-        *   Purpose:    This is an abstract base class used to define a listener
-        *               object. Which can then be registered to receive events.
-        **************************************************************************/
 
+        /********************************************************************//**
+        *   @class  OnLog 
+        *   @brief  This event is generated when a log event is created 
+        ************************************************************************/
         class EVENT_EXPORT OnLog : public Event
         {
             public:
-                /**************************************************************************
-                *   Constructor
+                /**********************************************************************//**
+                *   @brief  Constructor.
+                *   @param  msg is the string to be written to the log file.
+                *   @param  severity indicated the log messages importance. 
+                *   @param  line is the source code line number that generated the event.
+                *   @param  file is the source code file that generated the event
                 **************************************************************************/
                 OnLog(const GU::Core::String &msg, const int  &severity, const int &line, const char* file = "");
 
+                
+                /**********************************************************************//**
+                *   @brief  This method returns the message to be logged. 
+                *   @return The log message 
+                **************************************************************************/
                 GU::Core::String getMessage() const;
+
+                
+                /**********************************************************************//**
+                *   @brief  This method return the severity (importance) of the log message. 
+                *   @return The log message 
+                **************************************************************************/
                 int getSeverity() const;
 
-                /**************************************************************************
-                *   Destructor
+
+                /**********************************************************************//**
+                *   @brief  Destructor
                 **************************************************************************/
                 virtual ~OnLog();
 
             private:
-                const int m_severity = -1;
-                GU::Core::String m_msg;
+                const int m_severity = -1;      /**< The importance of the log message */
+                GU::Core::String m_msg;         /**< The message to be logged */
         };
 
     }
