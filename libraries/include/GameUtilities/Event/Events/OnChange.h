@@ -1,9 +1,9 @@
 #ifndef GAMEUTILITIES_EVENT_ONCHANGE_H
 #define GAMEUTILITIES_EVENT_ONCHANGE_H
 /**************************************************************************
-*   @Author:     Wayne J Larson Jr.
-*   @Date:       10/08/22
-*   @Purpose:    This event is generated when something is changed. 
+*   @author Wayne J Larson Jr.
+*   @date   10/08/22
+*   @file   OnChange.h
 **************************************************************************/
 
 /*************************************************************************
@@ -32,21 +32,28 @@ namespace GU
     namespace Evt
     {
 
+        /**************************************************************************
+        *   @class  OnChange
+        *   @brief  This event is generated when something is changed. 
+        **************************************************************************/
         class EVENT_EXPORT OnChange: public Event
         {
             public:
-                /**************************************************************************
-                *   Constructor
-                **************************************************************************/
+                /******************************************************************//**
+                *   @brief  Constructor
+                *   @param  changeId a unique identifier of the entity to be changed.
+                *   @param  line the line where the event originates from
+                *   @param  file the file where the event originates from
+                **********************************************************************/
                 OnChange(const int &changeId, const int &line, const char* file = "");
 
                 
-                /**************************************************************************
-                *   Destructor
+                /**********************************************************************//**
+                *   @brief  Destructor
                 **************************************************************************/
                 virtual ~OnChange(); 
             private:
-                const int m_changeId = -1;
+                const int m_changeId = -1;      /**< A unique identifier for the entity to be changed.*/
         };
 
     }

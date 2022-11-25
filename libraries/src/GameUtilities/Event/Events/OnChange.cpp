@@ -1,7 +1,7 @@
 /**************************************************************************
-*   @Author:     Wayne J Larson Jr.
-*   @Date:       10/08/22
-*   @Purpose:    This event is generated when something is changed. 
+*   @author Wayne J Larson Jr.
+*   @date   10/08/22
+*   @file   OnChange.cpp
 **************************************************************************/
 
 /*************************************************************************
@@ -30,9 +30,12 @@ namespace GU
     namespace Evt
     {
 
-        /**************************************************************************
-        *   Constructor
-        **************************************************************************/
+        /******************************************************************//**
+        *   @brief  Constructor
+        *   @param  changeId a unique identifier of the entity to be changed.
+        *   @param  line the line where the event originates from
+        *   @param  file the file where the event originates from
+        **********************************************************************/
         OnChange::OnChange(const int &changeId, const int &line, const char* file):
         Event(static_cast<int>(GU::Evt::EventId::ON_CHANGE), line, file),
         m_changeId(changeId)
@@ -41,8 +44,8 @@ namespace GU
         }
 
         
-        /**************************************************************************
-        *   Destructor
+        /**********************************************************************//**
+        *   @brief  Destructor
         **************************************************************************/
         OnChange::~OnChange()
         {
