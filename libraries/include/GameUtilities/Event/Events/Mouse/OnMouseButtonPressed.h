@@ -1,10 +1,9 @@
 #ifndef GAMEUTILITIES_EVNT_MOUSE_ON_MOUSEBUTTONPRESSED_H
 #define GAMEUTILITIES_EVNT_MOUSE_ON_MOUSEBUTTONPRESSED_H
-/**************************************************************************
-*   @Author:     Wayne J Larson Jr.
-*   @Date:       09/30/22
-*   @Purpose:    This event should be generated when the user presses a 
-*               mouse button. 
+/**********************************************************************//**
+*   @author Wayne J Larson Jr.
+*   @date   09/30/22
+*   @file   OnMousButtonPressed.h
 **************************************************************************/
 
 /*************************************************************************
@@ -33,13 +32,30 @@ namespace GU
 {
     namespace Evt
     {
+        /**********************************************************************//**
+        *   @class  OnMouseButtonPressed
+        *   @brief  This event should be generated when the user presses a 
+        *           mouse button. 
+        **************************************************************************/
         class EVENT_EXPORT OnMouseButtonPressed: public GU::Evt::Event
         {
             public:
+                /******************************************************************//**
+                *   @brief Constructor
+                *   @param pos is the location of the mouse when the button pressed 
+                *          event was triggered. 
+                *   @param line the line where the event originates from
+                *   @param file the file where the event originates from
+                **********************************************************************/
                 OnMouseButtonPressed(const Math::Vector2<float> &pos, const int &line, const char* file = "");
+                
+
+                /******************************************************************//**
+                *   @brief  Destructor 
+                **********************************************************************/
                 virtual ~OnMouseButtonPressed();
             public:
-                const Math::Vector2<float> m_pos;
+                const Math::Vector2<float> m_pos;       /**< The location fo the mouse when the button was released */
         };
     }
 }
