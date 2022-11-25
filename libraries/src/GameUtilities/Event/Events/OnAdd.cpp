@@ -1,7 +1,7 @@
-/**************************************************************************
-*   @Author:     Wayne J Larson Jr.
-*   @Date:       10/10/22
-*   @Purpose:    This event is generated when something is added. 
+/**********************************************************************//**
+*   @author Wayne J Larson Jr.
+*   @date   10/10/22
+*   @file   OnAdd.cpp
 **************************************************************************/
 
 /*************************************************************************
@@ -29,9 +29,12 @@ namespace GU
     namespace Evt
     {
 
-        /**************************************************************************
-        *   Constructor
-        **************************************************************************/
+        /******************************************************************//**
+        *   @brief  Constructor
+        *   @param  addId a unique identifier of the entity to be added.
+        *   @param  line the line where the event originates from
+        *   @param  file the file where the event originates from
+        **********************************************************************/
         OnAdd::OnAdd(const int &addId, const int &line, const char* file):
         Event(static_cast<int>(GU::Evt::EventId::ON_ADD), line, file),
         m_addId(addId)
@@ -40,8 +43,8 @@ namespace GU
         }
 
         
-        /**************************************************************************
-        *   Destructor
+        /**********************************************************************//**
+        *   @brief  Destructor
         **************************************************************************/
         OnAdd::~OnAdd()
         {
