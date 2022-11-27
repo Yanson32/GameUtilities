@@ -69,7 +69,7 @@ namespace GU
                 /**********************************************************************//**
                 *	@brief	Event class constructor is not public to prevent it from
                 *         	being instantiated accidentally.
-                *   @param 	id the id of the event.
+                *   @param 	eventId the unique identifier of the event.
                 *   @param  line is the line in source code where the event originated from.
                 *   @param  file is the source file where the event originated from
                 **************************************************************************/
@@ -78,7 +78,6 @@ namespace GU
 
                 /**********************************************************************//**
                 *	@brief  The copy constructor is deleted.	
-                *   @param  An object of the Event class to be copied. 
                 **************************************************************************/
                 Event(const Event&) = delete;
                 
