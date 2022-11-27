@@ -1,10 +1,9 @@
 #ifndef GAMEUTILITIES_ONCLICK_H
 #define GAMEUTILITIES_ONCLICK_H
-/**************************************************************************
-*   Author:     Wayne J Larson Jr.
-*   Date:       05/13/22
-*   Purpose:    This class is a subclass of the event class. This event
-*               is generated when the user clicks on something. 
+/**********************************************************************//**
+*   @author Wayne J Larson Jr.
+*   @date   05/13/22
+*   @file   OnClick.h
 **************************************************************************/
 
 /*************************************************************************
@@ -30,22 +29,29 @@ namespace GU
 {
     namespace Evt
     {
+        /**********************************************************************//**
+        *   @class  OnClick
+        *   @brief  This class is a subclass of the event class. This event
+        *           is generated when the user clicks on something. 
+        **************************************************************************/
         class EVENT_EXPORT OnClick: public Event
         {
             public:
-                /**************************************************************************
-                *   @brief  Constructor
-                *   @param  id is the unique id of the button that was clicked 
-                **************************************************************************/
+                /******************************************************************//**
+                *   @brief  Constructor.
+                *   @param  buttonId is the unique id of the widget that was clicked.
+                *   @param  line the line where the event originates from.
+                *   @param  file the file where the event originates from.
+                **********************************************************************/
                 OnClick(const int &buttonId, const int &line = -1, const char* file = "");
                 
 
-                /**************************************************************************
+                /**********************************************************************//**
                 *   @brief  Destructor 
                 **************************************************************************/
                 virtual ~OnClick();
             public:
-                const int m_buttonId;
+                const int m_buttonId;       /**< A unique identifier of the widget that was clicked */
         };
     }
 }
