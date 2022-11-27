@@ -1,10 +1,9 @@
 #ifndef GAMEUTILITIES_EVNT_MOUSE_ON_DOUBLECLICK_H
 #define GAMEUTILITIES_EVNT_MOUSE_ON_DOUBLECLICK_H
-/**************************************************************************
-*   @Author:     Wayne J Larson Jr.
-*   @Date:       09/30/22
-*   @Purpose:    The OnDoubleClick event should be generated when the 
-*                user clicks twice quickly.
+/**********************************************************************//**
+*   @author Wayne J Larson Jr.
+*   @date   09/30/22
+*   @file   OnDoubleClick.h
 **************************************************************************/
 
 /*************************************************************************
@@ -31,13 +30,31 @@ namespace GU
 {
     namespace Evt
     {
+        /**********************************************************************//**
+        *   @class  OnDoubleClick
+        *   @brief  The OnDoubleClick event should be generated when the 
+        *           user clicks twice quickly.
+        **************************************************************************/
         class EVENT_EXPORT OnDoubleClick: public GU::Evt::Event
         {
             public:
+                /******************************************************************//**
+                *   @brief  Constructor
+                *   @param  widgetId is a unique identifier for the entity that generated
+                *           the double click event.
+                *   @param  line the line where the event originates from
+                *   @param  file the file where the event originates from
+                **********************************************************************/
                 OnDoubleClick(const int &widgetId, const int &line, const char* file = "");
+                
+
+                /******************************************************************//**
+                *   @brief  Destructor
+                **********************************************************************/
                 virtual ~OnDoubleClick();
             public:
-                const int m_widgetId = -1;
+                /// A unique identifier for the entity that generated the double click event 
+                const int m_widgetId = -1; 
         };
     }
 }
