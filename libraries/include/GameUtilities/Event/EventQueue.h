@@ -39,7 +39,7 @@ namespace GU
 		{
 		public:
 			/***********************************************************************//**
-			*   @breif Constructor 
+			*   @brief Constructor 
 			***************************************************************************/
 			EventQueue();
 
@@ -68,24 +68,23 @@ namespace GU
 			
 			/***********************************************************************//**
 			*   @brief  This method adds an event to the event queue.
-			*   @param  EventPtr a pointer to an event to be added.
+			*   @param  event is a pointer to an event to be added.
 			***************************************************************************/
 			void post(EventPtr event);
 
 
-			/***********************************************************************//**
-			*   @breif  This method adds an event to the event queue. The event
-			*           will be constructed internally based on the input parameters
-			*   @param  typename Type the type of event to be constructed.
-			*           typename.. Args an arbitrary type, and number of arguments
-			*           passed to the constructor of the event.
-			***************************************************************************/
+            /***********************************************************************//**
+            *   brief This method adds an event to the event queue. The event
+            *         will be constructed internally based on the input parameters
+            *   tparam typename the type of event to be constructed.
+            *   @param args is the arguments needed to construct the type passed.
+            ***************************************************************************/
 			template<typename Type, typename... Args>
 			void post(Args&&... args);
 
 
 			/***********************************************************************//**
-			*   @breif  This method returns a boolean value indicating whether
+			*   @brief  This method returns a boolean value indicating whether
 			*           there is an event in the queue or not.
 			*   @return bool true if there is an event in the queue.
 			***************************************************************************/
@@ -94,7 +93,7 @@ namespace GU
 
 			/***********************************************************************//**
 			*   @brief  This method is used to remove an event from the queue.
-			*   @param  EventPtr a pointer to the event taken from the queue.
+			*   @param  event is a pointer to the event taken from the queue.
 			*           This will be a = to nullptr if there are no events to be
 			*           removed.
 			*   @return bool true if an event has been taken from the queue, and
@@ -115,11 +114,10 @@ namespace GU
 
 
 		/***********************************************************************//**
-		*   breif This method adds an event to the event queue. The event
+		*   brief This method adds an event to the event queue. The event
 		*         will be constructed internally based on the input parameters
-		*   param typename Type the type of event to be constructed.
-		*         typename.. Args an arbitrary type, and number of arguments
-		*         passed to the constructor of the event.
+		*   tparam typename the type of event to be constructed.
+        *   @param args is the arguments needed to construct the type passed.
 		***************************************************************************/
 		template<typename T, typename... Args>
 		void EventQueue::post(Args&&... args)

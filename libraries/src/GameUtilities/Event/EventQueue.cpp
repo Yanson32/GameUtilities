@@ -35,20 +35,20 @@ namespace GU
 		{
 			public:
                 /***********************************************************************//**
-                *   @breif Constructor 
+                *   @brief Constructor 
                 ***************************************************************************/
 				impl();
                 
 
                 /***********************************************************************//**
                 *   @brief  This method adds an event to the event queue.
-                *   @param  EventPtr a pointer to an event to be added.
+                *   @param  event is a pointer to an event to be added.
                 ***************************************************************************/
 				void post(EventPtr event);
                 
 
                 /***********************************************************************//**
-                *   @breif  This method returns a boolean value indicating whether
+                *   @brief  This method returns a boolean value indicating whether
                 *           there is an event in the queue or not.
                 *   @return bool true if there is an event in the queue.
                 ***************************************************************************/
@@ -57,7 +57,7 @@ namespace GU
 
                 /***********************************************************************//**
                 *   @brief  This method is used to remove an event from the queue.
-                *   @param  EventPtr a pointer to the event taken from the queue.
+                *   @param  event is a pointer to the event taken from the queue.
                 *           This will be a = to nullptr if there are no events to be
                 *           removed.
                 *   @return bool true if an event has been taken from the queue, and
@@ -80,7 +80,7 @@ namespace GU
 
         
         /***********************************************************************//**
-        *   @breif Constructor 
+        *   @brief Constructor 
         ***************************************************************************/
 		EventQueue::impl::impl()
 		{
@@ -90,7 +90,7 @@ namespace GU
         
         /***********************************************************************//**
         *   @brief  This method adds an event to the event queue.
-        *   @param  EventPtr a pointer to an event to be added.
+        *   @param  event is a pointer to an event to be added.
         ***************************************************************************/
 		void EventQueue::impl::post(EventPtr event)
 		{
@@ -104,7 +104,7 @@ namespace GU
 
         
         /***********************************************************************//**
-        *   @breif  This method returns a boolean value indicating whether
+        *   @brief  This method returns a boolean value indicating whether
         *           there is an event in the queue or not.
         *   @return bool true if there is an event in the queue.
         ***************************************************************************/
@@ -116,7 +116,7 @@ namespace GU
         
         /***********************************************************************//**
         *   @brief  This method is used to remove an event from the queue.
-        *   @param  EventPtr a pointer to the event taken from the queue.
+        *   @param  event is a pointer to the event taken from the queue.
         *           This will be a = to nullptr if there are no events to be
         *           removed.
         *   @return bool true if an event has been taken from the queue, and
@@ -149,7 +149,7 @@ namespace GU
 		
 
         /***********************************************************************//**
-		*   @breif Constructor 
+		*   @brief Constructor 
 		***************************************************************************/
         EventQueue::EventQueue(): pimpl(new EventQueue::impl)
         {
@@ -195,7 +195,7 @@ namespace GU
         
         /***********************************************************************//**
         *   @brief  This method adds an event to the event queue.
-        *   @param  EventPtr a pointer to an event to be added.
+        *   @param  event is a pointer to an event to be added.
         ***************************************************************************/
         void EventQueue::post(EventPtr event)
         {
@@ -205,7 +205,7 @@ namespace GU
 
 
         /***********************************************************************//**
-        *   @breif  This method returns a boolean value indicating whether
+        *   @brief  This method returns a boolean value indicating whether
         *           there is an event in the queue or not.
         *   @return bool true if there is an event in the queue.
         ***************************************************************************/
@@ -218,7 +218,7 @@ namespace GU
 
         /***********************************************************************//**
         *   @brief  This method is used to remove an event from the queue.
-        *   @param  EventPtr a pointer to the event taken from the queue.
+        *   @param  event is a pointer to the event taken from the queue.
         *           This will be a = to nullptr if there are no events to be
         *           removed.
         *   @return bool true if an event has been taken from the queue, and
