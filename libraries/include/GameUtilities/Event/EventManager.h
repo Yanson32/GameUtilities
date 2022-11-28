@@ -1,10 +1,9 @@
 #ifndef GAMEUTILITIES_EVENT_MANAGER_H
 #define GAMEUTILITIES_EVENT_MANAGER_H
 /*********************************************************************************//**
-*	@author	        Wayne J Larson Jr.
-*	@date 	        12/10/17
-*	@description    This class is usded as the central location where the games events
-*			        are managed.
+*	@author	Wayne J Larson Jr.
+*	@date 	12/10/17
+*   @file   EventManager.h
 *************************************************************************************/
 
 /*************************************************************************
@@ -33,39 +32,45 @@ namespace GU
     namespace Evt
     {
 
+        /*********************************************************************************//**
+        *   @class  EventManager
+        *	@brief  This class is usded as the central location where the games events
+        *			are managed.
+        *************************************************************************************/
         class EVENT_EXPORT EventManager: public Evt::EventQueue, public Evt::Dispatcher
         {
             public:
-                /**************************************************************************
+                /**********************************************************************//**
                 *	@brief	Constructor
                 **************************************************************************/
                 EventManager();
 
 
-                /**************************************************************************
+                /**********************************************************************//**
                 *	@brief  This method returns a static instance of the EventManager class.	
+                *   @return An instance of the EventManager class.
                 **************************************************************************/
                 static EventManager& inst();
                 
 
-                /**************************************************************************
+                /**********************************************************************//**
                 *	@brief	Destructor
                 **************************************************************************/
                 virtual ~EventManager();
 
             private:
-                /**************************************************************************
+                /**********************************************************************//**
                 *	@brief  deleted assignment operator.
-                *   @param  An instance of the EventManger class to be copied.
+                *   @return An instance of the EventManger class to be copied.
                 **************************************************************************/
                 EventManager operator = (const EventManager eventManager) = delete;
                 
 
-                /**************************************************************************
+                /**********************************************************************//**
                 *	@brief  deleted copy constructor.
-                *   @param  An instance of the EventManger class to be copied.
+                *   @param  eventManager is an instance of the EventManger class to be copied.
                 **************************************************************************/
-                EventManager(const EventManager &EventManager) = delete;
+                EventManager(const EventManager &eventManager) = delete;
         };
 
     }
