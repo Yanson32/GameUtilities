@@ -1,9 +1,9 @@
 #ifndef QUADTREE_H
 #define QUADTREE_H
-/**************************************************************************
-*   Author:     Wayne J Larson Jr.
-*   Date:       13/09/22
-*   Purpose:    This class represents a axis aligned bounding box. 
+/**********************************************************************//**
+*   @author Wayne J Larson Jr.
+*   @date   13/09/22
+*   @file   QuadTree.h
 **************************************************************************/
 
 /*************************************************************************
@@ -34,30 +34,33 @@ namespace GU
 {
     namespace Data 
     {
+        /**********************************************************************//**
+        *   @class  QuadTree
+        *   @brief  This class represents a axis aligned bounding box. 
+        **************************************************************************/
         class DATA_EXPORT QuadTree
         {
             public:
-                /****************************************************************************************
+                /************************************************************************************//**
                 *   @brief      Constructor 
                 *   @param      origin is the starting point of the QuadTree. 
                 *   @param      width is the width of the QuadTree.
                 *   @param      height is the height of the QuadTree.
-                *   @param      currentLevel assignes an integer to each level of the QuadTree to limit
-                *               how deep the QuadTree can go and avoid infinite QuadTrees.
+                *   @param      currentSplit this number should be incremented every time the QuadTree 
+                *               splits. 
+                *   @param      maxSplit is the maximum number of times the QuadTree can split. 
                 *   @param      maxObjects is the maximum number of objects any QuadTree can store 
                 *               before splitting.
-                *   @param      maxLevel is the maximum number of levels a QuadTree can have. A level
-                *               being the number of nested QuadTrees.
                 ****************************************************************************************/
                 QuadTree(const Math::Vector2<float> &origin, 
                 const float &width, 
                 const float &height, 
                 const int currentLevel, 
-                const int &maxObjects = 5, 
-                const int maxLevel = 5);
+                const int maxLevel = 5,
+                const int &maxObjects = 5);
                 
 
-                /****************************************************************************************
+                /************************************************************************************//**
                 *   @brief      This method inserts a shared pointer to an object into the QuadTree. 
                 *   @param      object is a pointer to a PhysicsObject. The QuadTree will store the object
                 *               for collision detection later.  
@@ -65,7 +68,7 @@ namespace GU
                 void insert(const std::shared_ptr<PhysicsObject> object);
 
 
-                /****************************************************************************************
+                /*************************************************************************************//**
                 *   @brief      This method determines if the AABB intersects the QuadTree. 
                 *   @param      aabb will be checked for collision against the QuadTree.
                 *   @return     True if collision is detected and false otherwise. 
@@ -73,7 +76,7 @@ namespace GU
                 bool intersects(const AABB &aabb) const;
                 
 
-                /****************************************************************************************
+                /************************************************************************************//**
                 *   @brief      This method gathers any objects in the QuadTree that are colliding with
                 *               the input AABB. 
                 *   @param      aabb will be checked for collision against all objects in the QuadTree. 
@@ -83,7 +86,7 @@ namespace GU
                 std::vector<std::shared_ptr<PhysicsObject>> query(const AABB &aabb) const;
                 
 
-                /****************************************************************************************
+                /************************************************************************************//**
                 *   @brief      This method gathers any objects in the QuadTree that are colliding with
                 *               the input AABB. 
                 *   @param      aabb will be checked for collision against all objects in the QuadTree. 
@@ -93,18 +96,18 @@ namespace GU
                 std::vector<GU::Data::AABB> getAllBounds() const;
                 
     
-                /****************************************************************************************
+                /************************************************************************************//**
                 *   @brief      Destructor 
                 ****************************************************************************************/
                 virtual ~QuadTree();
             private:
-                /****************************************************************************************
+                /************************************************************************************//**
                 *   @brief      This method will split the current QuadTree into 4 QuadTrees. 
                 ****************************************************************************************/
                 void split();
                 
                 
-                /****************************************************************************************
+                /************************************************************************************//**
                 *   @brief      This method creates QuadTree from the current QuadTree but the bounds of 
                 *               new QuadTree will be equivalent to the top left quadrant of the current
                 *               QuadTree.
@@ -113,7 +116,7 @@ namespace GU
                 std::shared_ptr<QuadTree> getTopLeftQuadrant() const;
                 
 
-                /****************************************************************************************
+                /************************************************************************************//**
                 *   @brief      This method creates QuadTree from the current QuadTree but the bounds of 
                 *               new QuadTree will be equivalent to the top right quadrant of the current
                 *               QuadTree.
@@ -122,7 +125,7 @@ namespace GU
                 std::shared_ptr<QuadTree> getTopRightQuadrant() const;
                 
 
-                /****************************************************************************************
+                /************************************************************************************//**
                 *   @brief      This method creates QuadTree from the current QuadTree but the bounds of 
                 *               new QuadTree will be equivalent to the bottom left quadrant of the current
                 *               QuadTree.
@@ -131,7 +134,7 @@ namespace GU
                 std::shared_ptr<QuadTree> getBottomLeftQuadrant() const;
                 
 
-                /****************************************************************************************
+                /************************************************************************************//**
                 *   @brief      This method creates QuadTree from the current QuadTree but the bounds of 
                 *               new QuadTree will be equivalent to the bottom right quadrant of the current
                 *               QuadTree.
@@ -139,12 +142,23 @@ namespace GU
                 ****************************************************************************************/
                 std::shared_ptr<QuadTree> getBottomRightQuadrant() const;
             protected: 
+                /// Vector of QuadTree objects one for each quadrant (top, left, right, bottom)
                 std::vector<std::shared_ptr<QuadTree>> m_quadrants;
+
+                /// Vector of pointers to PhysicsObject these objects will be used to check for collision.
                 std::vector<std::shared_ptr<PhysicsObject>> m_data;
+
+                /// The bounding box for the current QuadTree object
                 GU::Data::AABB m_bounds;
-                const int m_currentLevel;
-                const std::size_t m_max;
-                const int m_maxLevel;
+
+                /// The number of times the QuadTree has split into quadtrants. 
+                const int m_currentSplit;
+               
+                /// The maximum number of times the QuadTree can split into quadrants.
+                const int m_maxSplit;
+                
+                /// The maximum number of objects a QuadTree can hold before splitting into quadrants.
+                const std::size_t m_maxObjects;
         };
     }
 }
