@@ -1,5 +1,27 @@
-#include "GameUtilities/Engin/Engin.h"
+/*********************************************************************************//**
+*	@author	Wayne J Larson Jr.
+*	@date 12/10/17
+*   @file Engin.cpp
+*************************************************************************************/
 
+/*************************************************************************
+*                           COPYRIGHT NOTICE
+* GameUtilities is a toolkit for making 2d video games.
+* Copyright (C) 2018 Wayne J Larson Jr. 
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License version 3 as 
+* published by the Free Software Foundation.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+* 
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see <https://www.gnu.org/licenses/>.
+***************************************************************************/
+#include "GameUtilities/Engin/Engin.h"
 #include <cassert>
 #include <stack>
 
@@ -20,23 +42,39 @@ namespace GU
 			public:
 				typedef GU::Engin::Engin::StatePtr StatePtr; //pointer to gamestate
 
+                
+                /*********************************************************************************//**
+                *   @brief	Default constructor
+                *************************************************************************************/
                 Impl();
 
+                
+                /*********************************************************************************//**
+                *   @brief	Destructor:
+                *************************************************************************************/
                 virtual ~Impl();
 
-				//stack of states the state on the top of the stack is the current state
+            public:
+				///stack of states the state on the top of the stack is the current state
 				std::stack<StatePtr> m_states;
 
-				//true while the game is running and false otherwise
+				///true while the game is running and false otherwise
 				bool m_running = true;
 		};
 
 
+        /*********************************************************************************//**
+        *   @brief	Default constructor
+        *************************************************************************************/
         Engin::Impl::Impl()
         {
 
         }
 
+
+        /*********************************************************************************//**
+        *   @brief	Destructor:
+        *************************************************************************************/
         Engin::Impl::~Impl()
         {
 
@@ -53,7 +91,10 @@ namespace GU
         }
 
 
-
+        /*********************************************************************************//**
+        *   @brief  Move constructor. 
+        *   @param  param is the Engin object to be moved. 
+        *************************************************************************************/
         Engin::Engin(Engin&& param)
         {
             if(m_pimpl)
@@ -64,6 +105,11 @@ namespace GU
         }
 
 
+        /*********************************************************************************//**
+        *   @brief  Move assignment operator. 
+        *   @param  param is the Engin object to be moved. 
+        *   @return A reference to the current Engin object.
+        *************************************************************************************/
         Engin& Engin::operator=(Engin&& param)
         {
             assert(m_pimpl != nullptr);
@@ -73,6 +119,7 @@ namespace GU
 			return *this;
         }
 
+
         /*********************************************************************************//**
         *	@brief	Push a new state onto the stack.
         *   @param	state a pointer to a GameState object.
@@ -80,7 +127,6 @@ namespace GU
         void Engin::push(StatePtr state)
         {
             assert(m_pimpl != nullptr);
-
 			if (!m_pimpl->m_states.empty())
 			{
 				m_pimpl->m_states.top()->pause();
@@ -152,8 +198,7 @@ namespace GU
 
         /*********************************************************************************//**
         *   @brief	This method is used to end the game.
-        *
-        *	@return	After calling this method IsRunning() returns false.
+        *	@post   After calling this method IsRunning() returns false.
         *************************************************************************************/
         void Engin::quit()
         {
@@ -161,6 +206,11 @@ namespace GU
 			m_pimpl->m_running = false;
         }
 
+        
+        /*********************************************************************************//**
+        *   @brief  This method returns true when there are no states stored in the engin
+        *	@return	True when there are no states stored in the engin and false otherwise.
+        *************************************************************************************/
         bool Engin::empty() const
         {
             assert(m_pimpl != nullptr);
@@ -195,16 +245,10 @@ namespace GU
 			assert(!m_pimpl->m_states.empty());
 
 			///Call the current states Update method.
-			m_pimpl->m_states.top()->update(this, deltaTime);
-        }
-
+			m_pimpl->m_states.top()->update(this, deltaTime); }
 
         /*********************************************************************************//**
-        *   @brief	Remove any existing GameState objects from the stack, and push
-        *           A new GameState object onto the stack. The new state will be
-        *           created internally the user specifies the type of state, and
-        *           passes any arguments needed by the states constructor.
-        *   @param  StatePtr a pointer to a GameState object.
+        *   @brief  This method draws a single frame of the game.	
         *   @param  deltaTime is the time the previous frame took
         *************************************************************************************/
         void Engin::draw(const float &deltaTime)
@@ -217,11 +261,16 @@ namespace GU
         }
 
         
+        /*********************************************************************************//**
+        *   @brief  This method returns the number of states currently stored in the engin.	
+        *   @return The number of states currently stored in the engin. 
+        *************************************************************************************/
         int Engin::size() const
         {
             assert(m_pimpl != nullptr);
             return m_pimpl->m_states.size();
         }
+
 
         /*********************************************************************************//**
         *   @brief	Destructor:
