@@ -1,9 +1,9 @@
 #ifndef RECTANGLE_H
 #define RECTANGLE_H
-/**************************************************************************
-*   Author:     Wayne J Larson Jr.
-*   Date:       13/09/22
-*   Purpose:    This class represents a rectangle 
+/**********************************************************************//**
+*   @author Wayne J Larson Jr.
+*   @date   13/09/22
+*   @file   Rectangle.h
 **************************************************************************/
 
 /*************************************************************************
@@ -31,44 +31,48 @@ namespace GU
     namespace Data
     {
         class AABB;
+        /**********************************************************************//**
+        *   @class  Rectangle
+        *   @brief  This class represents a rectangle 
+        **************************************************************************/
         class DATA_EXPORT Rectangle
         {
             public:
-                /****************************************************************************************
-                *   @purpose    Constructor.
-                *   @param      origin the starting point of the rectangle.
-                *   @param      width the width of the rectangle.
-                *   @param      height the height of the rectangle.
-                *   @param      angle is the angle of the rectangle. 
+                /************************************************************************************//**
+                *   @brief Constructor.
+                *   @param origin the starting point of the rectangle.
+                *   @param width the width of the rectangle.
+                *   @param height the height of the rectangle.
+                *   @param angle is the angle of the rectangle. 
                 ****************************************************************************************/
                 Rectangle(const Math::Vector2<float> &origin, const float &width, const float &height, const float &angle = 0);
                 
 
-                /****************************************************************************************
-                *   @purpose    This method checks if the two rectangles are overlapping. 
-                *   @param      rectangle is checked to determine if the two rectangles are intersecting.
-                *   @return     True if the two rectangles are intersecting and false otherwise. 
+                /************************************************************************************//**
+                *   @brief  This method checks if the two rectangles are overlapping. 
+                *   @param  rectangle is checked to determine if the two rectangles are intersecting.
+                *   @return True if the two rectangles are intersecting and false otherwise. 
                 ****************************************************************************************/
                 bool intersects(const Rectangle &rectangle) const;
                 
 
-                /****************************************************************************************
-                *   @purpose    This method checks if the rectangle overlaps a bounding box. 
-                *   @param      aabb is checked to determine if it is overlapping the rectangle.  
-                *   @return     True if the rectangle and AABB  are intersecting and false otherwise. 
+                /************************************************************************************//**
+                *   @brief  This method checks if the rectangle overlaps a bounding box. 
+                *   @param  aabb is checked to determine if it is overlapping the rectangle.  
+                *   @return True if the rectangle and AABB  are intersecting and false otherwise. 
                 ****************************************************************************************/
                 bool intersects(const AABB &aabb) const;
                 
 
-                /****************************************************************************************
-                *   @purpose    Destructor 
+                /************************************************************************************//**
+                *   @brief Destructor 
                 ****************************************************************************************/
                 virtual ~Rectangle();
             public:
-                Math::Vector2<float> m_origin;
-                float m_width = 0;
-                float m_height = 0;
-                float m_angle = 0;
+                Math::Vector2<float> m_origin;      /**< The strating point of the Rectangle */
+                float m_width = 0;                  /**< The width of the Rectangle */
+                float m_height = 0;                 /**< The height of the Rectangle */
+                float m_angle = 0;                  /**< The angle of the Rectangle */
         };
     }
 }
