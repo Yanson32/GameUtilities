@@ -32,7 +32,7 @@ namespace GU
     {
         /*********************************************************************************//**
         *	@class RGBA
-        *	@breif This class represents a color with a red, green, blue, and alpha channel.  
+        *	@brief This class represents a color with a red, green, blue, and alpha channel.  
         *************************************************************************************/
         class DATA_EXPORT RGBA
         {
