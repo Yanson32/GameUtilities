@@ -1,3 +1,26 @@
+/*********************************************************************************//**
+*	@author Wayne J Larson Jr.
+*   @date   8/7/2021
+*   @file   String.cpp
+*************************************************************************************/
+
+/*************************************************************************
+*                           COPYRIGHT NOTICE
+* GameUtilities is a toolkit for making 2d video games.
+* Copyright (C) 2018 Wayne J Larson Jr. 
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License version 3 as 
+* published by the Free Software Foundation.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+* 
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see <https://www.gnu.org/licenses/>.
+***************************************************************************/
 #include "GameUtilities/Core/String.h"
 #include <limits>
 #include <string>
@@ -23,32 +46,20 @@ namespace GU
 
         std::size_t String::npos = std::numeric_limits<std::size_t>::max();
 
+        /***************************************************************//**
+        * @brief Constructor
+        *******************************************************************/
         String::String():
         pimpl(new String::Impl())
         {
           assert(pimpl != nullptr);
         }
+        
 
-String::operator const char*() const
-{
-  return pimpl->m_data.c_str();
-}
-        /**************************************************************
-        * @brief: Constructor
-        * @param: data is a string of characters
-        **************************************************************/
-        String::String(const String &data):
-        pimpl(new String::Impl())
-        {
-          assert(pimpl != nullptr);
-          pimpl->m_data = data.pimpl->m_data;
-        }
-
-
-        /**************************************************************
-        * @brief: Constructor
-        * @param: data is a string of characters
-        **************************************************************/
+        /***************************************************************//**
+        * @brief Constructor
+        * @param data is a string of characters
+        *******************************************************************/
         String::String(const std::string &data):
         pimpl(new String::Impl())
         {
@@ -57,23 +68,45 @@ String::operator const char*() const
           pimpl->m_data = data;
         }
 
-
-        /**************************************************************
-        * @brief: Constructor
-        * @param: data is a string of characters
-        **************************************************************/
+        
+        /***************************************************************//**
+        * @brief Constructor
+        * @param data is a pointer to a string of characters
+        *******************************************************************/
         String::String(const char* data):
         pimpl(new String::Impl)
         {
           assert(pimpl != nullptr);
           pimpl->m_data = std::string(data);
         }
-
-
-        /**************************************************************
-        * @brief: Deep copy assignment operator
-        * @param: data is a string of characters
-        **************************************************************/
+       
+ 
+        /***************************************************************//**
+        * @brief Copy constructor
+        * @param data is the String object to be copied. 
+        *******************************************************************/
+        String::String(const String &data):
+        pimpl(new String::Impl())
+        {
+          assert(pimpl != nullptr);
+          pimpl->m_data = data.pimpl->m_data;
+        }
+       
+ 
+        /***************************************************************//**
+        * @brief  This method allows the String to be cast to a const char* 
+        * @return A pointer to the string of characters 
+        *******************************************************************/
+        String::operator const char*() const
+        {
+          return pimpl->m_data.c_str();
+        }
+        
+        
+        /***************************************************************//**
+        * @brief copy assignment operator
+        * @param data is the String object to be copied. 
+        *******************************************************************/
         String String::operator=(const String &data)
         {
           assert(pimpl != nullptr);
@@ -86,15 +119,22 @@ String::operator const char*() const
           return pimpl->m_data;
         }
 
+        
+        /***************************************************************//**
+        * @brief assignment operator
+        * @param data is a pointer to the data to be assigned 
+        *******************************************************************/
         String String::operator=(const char* data)
         {
           assert(pimpl != nullptr);
           return pimpl->m_data = data;
         }
-        /**************************************************************
-        * @brief: Equality operator
-        * @param: data is a string of characters
-        **************************************************************/
+
+
+        /***************************************************************//**
+        * @brief Equality operator
+        * @param data is a String object to be checked for equality. 
+        *******************************************************************/
         bool String::operator==(const String &data)
         {
           assert(pimpl != nullptr);
@@ -102,10 +142,13 @@ String::operator const char*() const
         }
 
 
-        /**************************************************************
-        * @brief: Less then equal
-        * @param: data is a string of characters
-        **************************************************************/
+        /***************************************************************//**
+        * @brief  Less than or equal to operator 
+        * @param  data is a String object to be checked if it is less than or 
+        *         equal to this object. 
+        * @return True if data is less than or equal to the this object
+        *         and false otherwise. 
+        *******************************************************************/
         bool String::operator<=(const String &data)
         {
           assert(pimpl != nullptr);
@@ -113,21 +156,27 @@ String::operator const char*() const
         }
 
 
-        /**************************************************************
-        * @brief: Greater then equal
-        * @param: data is a string of characters
-        **************************************************************/
+        /***************************************************************//**
+        * @brief  Greater than or equal to operator
+        * @param  data is a String object to be checked if it is greater
+        *         than or equal to this object. 
+        * @return True if data is greater than or equal to the this object. 
+        *         and false otherwise
+        *******************************************************************/
         bool String::operator>=(const String &data)
         {
           assert(pimpl != nullptr);
           return this->pimpl->m_data >= data.pimpl->m_data;
         }
 
-
-        /**************************************************************
-        * @brief: Not equal
-        * @param: data is a string of characters
-        **************************************************************/
+        
+        /***************************************************************//**
+        * @brief  Not equal to operator
+        * @param  data is a String object that will be checked to see if 
+        *         it is not equal to the this object.
+        * @return True if data is not equal to the this object and false
+        *         otherwise.
+        *******************************************************************/
         bool String::operator!=(const String &data)
         {
           assert(pimpl != nullptr);
@@ -135,6 +184,13 @@ String::operator const char*() const
         }
 
 
+        /***************************************************************//**
+        * @brief  Addition operator
+        * @param  data is a String object that will be added to the this 
+        *         object. 
+        * @return A string that is equal to data concatinated to the this
+        *         object.
+        *******************************************************************/
         GU::Core::String String::operator+(const String &data)
         {
           assert(pimpl != nullptr);
@@ -142,18 +198,25 @@ String::operator const char*() const
         }
 
 
-        GU::Core::String String::operator+=(const String &data)
+        /***************************************************************//**
+        * @brief  Concatinate operator
+        * @param  data is a String object that will be concatinated to the 
+        *         this object. 
+        * @return A a reference to this object. 
+        *******************************************************************/
+        GU::Core::String& String::operator+=(const String &data)
         {
           assert(pimpl != nullptr);
-          return this->pimpl->m_data += data.pimpl->m_data;
+          this->pimpl->m_data += data.pimpl->m_data;
+          return *this;
         }
 
 
-        /**************************************************************
-        * @brief: This method returns the number of characters in the
+        /***************************************************************//**
+        * @brief  This method returns the number of characters in the
         *         string
-        * @return: The number of characters in the string
-        **************************************************************/
+        * @return The number of characters in the string
+        *******************************************************************/
         std::size_t String::size() const
         {
           assert(pimpl != nullptr);
@@ -161,11 +224,11 @@ String::operator const char*() const
         }
 
 
-        /**************************************************************
-        * @brief: This method returns the number of characters in the
-        *         string
-        * @return: The number of characters in the string
-        **************************************************************/
+        /***************************************************************//**
+        * @brief This method returns the number of characters in the
+        *         string.
+        * @return The number of characters in the string.
+        *******************************************************************/
         std::size_t String::length() const
         {
           assert(pimpl != nullptr);
@@ -173,11 +236,11 @@ String::operator const char*() const
         }
 
 
-        /**************************************************************
-        * @brief: This method returns the number of characters in the
-        *         string
-        * @return: The number of characters in the string
-        **************************************************************/
+        /***************************************************************//**
+        * @brief  This method returns a pointer to the beginning of the 
+        *         string data. 
+        * @return A char pointer equal to the String object.
+        *******************************************************************/
         const char * String::c_str() const
         {
           assert(pimpl != nullptr);
@@ -185,12 +248,10 @@ String::operator const char*() const
         }
 
 
-        /**************************************************************
-        * @brief: This method returns an std::string equal to the
-        *         current string value.
-        * @return: A string of characters equal to the current string
-        *          value.
-        **************************************************************/
+        /***************************************************************//**
+        * @brief This method returns a std::string equal to the this object.
+        * @return A string equal to the this object. 
+        *******************************************************************/
         std::string String::toStdString() const
         {
           assert(pimpl != nullptr);
@@ -198,9 +259,9 @@ String::operator const char*() const
         }
 
 
-        /**************************************************************
-        * @brief: This method removes all characters from the string
-        **************************************************************/
+        /***************************************************************//**
+        * @brief This method removes all characters from the string
+        *******************************************************************/
         void String::clear() noexcept
         {
           assert(pimpl != nullptr);
@@ -208,11 +269,11 @@ String::operator const char*() const
         }
 
 
-        /**************************************************************
-        * @brief:  This method returns a boolean true value when the
-        *          string is empty.
-        * @return: A boolean true if the string is empty.
-        **************************************************************/
+        /***************************************************************//**
+        * @brief  This method returns a boolean true value when the
+        *         string is empty.
+        * @return A boolean true if the string is empty and false otherwise.
+        *******************************************************************/
         bool String::empty() const
         {
           assert(pimpl != nullptr);
@@ -220,10 +281,10 @@ String::operator const char*() const
         }
 
 
-        /**************************************************************
-        * @brief:  This method changes the size of the string.
-        * @param:  n is the new size of the string
-        **************************************************************/
+        /***************************************************************//**
+        * @brief  This method changes the size of the string.
+        * @param  n is the new size of the string
+        *******************************************************************/
         void String::resize (size_t n)
         {
           assert(pimpl != nullptr);

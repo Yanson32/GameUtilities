@@ -1,5 +1,28 @@
 #ifndef GAMEUTILITIES_STRING_H
 #define GAMEUTILITIES_STRING_H
+/*********************************************************************************//**
+*	@author Wayne J Larson Jr.
+*   @date   8/7/2021
+*   @file   String.h
+*************************************************************************************/
+
+/*************************************************************************
+*                           COPYRIGHT NOTICE
+* GameUtilities is a toolkit for making 2d video games.
+* Copyright (C) 2018 Wayne J Larson Jr. 
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License version 3 as 
+* published by the Free Software Foundation.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+* 
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see <https://www.gnu.org/licenses/>.
+***************************************************************************/
 #include <cstring>
 #include "core_export.h"
 #include <string>
@@ -8,126 +31,172 @@ namespace GU
 {
     namespace Core
     {
+        /*********************************************************************************//**
+        *   @class  String
+        *   @brief  This class represents a string of characters.
+        *************************************************************************************/
         class CORE_EXPORT String
         {
             public:
+                /***************************************************************//**
+                * @brief Constructor
+                *******************************************************************/
                 String();
-                /**************************************************************
-                * @brief: Constructor
-                * @param: data is a string of characters
-                **************************************************************/
-                String(const std::string &data);
 
-                operator const char*() const;
-                /**************************************************************
-                * @brief: Constructor
-                * @param: data is a string of characters
-                **************************************************************/
+
+                /***************************************************************//**
+                * @brief Constructor
+                * @param data is a string of characters
+                *******************************************************************/
+                String(const std::string &data);
+                
+
+                /***************************************************************//**
+                * @brief Constructor
+                * @param data is a pointer to a string of characters
+                *******************************************************************/
                 String(const char* data);
 
-
-                /**************************************************************
-                * @brief: Constructor
-                * @param: data is a string of characters
-                **************************************************************/
+                
+                /***************************************************************//**
+                * @brief Copy constructor
+                * @param data is the String object to be copied. 
+                *******************************************************************/
                 String(const String &data);
 
 
-                /**************************************************************
-                * @brief: Deep copy assignment operator
-                * @param: data is a string of characters
-                **************************************************************/
+                /***************************************************************//**
+                * @brief  This method allows the String to be cast to a const char* 
+                * @return A pointer to the string of characters 
+                *******************************************************************/
+                operator const char*() const;
+                
+    
+                /***************************************************************//**
+                * @brief copy assignment operator
+                * @param data is the String object to be copied. 
+                *******************************************************************/
                 String operator=(const String &data);
 
+                
+                /***************************************************************//**
+                * @brief assignment operator
+                * @param data is a pointer to the data to be assigned 
+                *******************************************************************/
                 String operator=(const char* data);
 
-                /**************************************************************
-                * @brief: Equality operator
-                * @param: data is a string of characters
-                **************************************************************/
+
+                /***************************************************************//**
+                * @brief Equality operator
+                * @param data is a String object to be checked for equality. 
+                *******************************************************************/
                 bool operator==(const String &data);
 
 
-                /**************************************************************
-                * @brief: Less then equal
-                * @param: data is a string of characters
-                **************************************************************/
+                /***************************************************************//**
+                * @brief  Less than or equal to operator 
+                * @param  data is a String object to be checked if it is less than or 
+                *         equal to this object. 
+                * @return True if data is less than or equal to the this object
+                *         and false otherwise. 
+                *******************************************************************/
                 bool operator<=(const String &data);
 
 
-                /**************************************************************
-                * @brief: Greater then equal
-                * @param: data is a string of characters
-                **************************************************************/
+                /***************************************************************//**
+                * @brief  Greater than or equal to operator
+                * @param  data is a String object to be checked if it is greater
+                *         than or equal to this object. 
+                * @return True if data is greater than or equal to the this object. 
+                *         and false otherwise
+                *******************************************************************/
                 bool operator>=(const String &data);
 
 
-                /**************************************************************
-                * @brief: Not equal
-                * @param: data is a string of characters
-                **************************************************************/
+                /***************************************************************//**
+                * @brief  Not equal to operator
+                * @param  data is a String object that will be checked to see if 
+                *         it is not equal to the this object.
+                * @return True if data is not equal to the this object and false
+                *         otherwise.
+                *******************************************************************/
                 bool operator!=(const String &data);
 
 
+                /***************************************************************//**
+                * @brief  Addition operator
+                * @param  data is a String object that will be added to the this 
+                *         object. 
+                * @return A string that is equal to data concatinated to the this
+                *         object.
+                *******************************************************************/
                 GU::Core::String operator+(const String &data);
-                GU::Core::String operator+=(const String &data);
-                /**************************************************************
-                * @brief: This method returns the number of characters in the
+                
+                
+                /***************************************************************//**
+                * @brief  Concatinate operator
+                * @param  data is a String object that will be concatinated to the 
+                *         this object. 
+                * @return A a reference to this object. 
+                *******************************************************************/
+                GU::Core::String& operator+=(const String &data);
+                
+
+                /***************************************************************//**
+                * @brief  This method returns the number of characters in the
                 *         string
-                * @return: The number of characters in the string
-                **************************************************************/
+                * @return The number of characters in the string
+                *******************************************************************/
                 std::size_t size() const;
 
 
-                /**************************************************************
-                * @brief: This method returns the number of characters in the
-                *         string
-                * @return: The number of characters in the string
-                **************************************************************/
+                /***************************************************************//**
+                * @brief This method returns the number of characters in the
+                *         string.
+                * @return The number of characters in the string.
+                *******************************************************************/
                 std::size_t length() const;
 
 
-                /**************************************************************
-                * @brief: This method returns the number of characters in the
-                *         string
-                * @return: The number of characters in the string
-                **************************************************************/
+                /***************************************************************//**
+                * @brief  This method returns a pointer to the beginning of the 
+                *         string data. 
+                * @return A char pointer equal to the String object.
+                *******************************************************************/
                 const char * c_str() const;
 
 
-                /**************************************************************
-                * @brief: This method returns an std::string equal to the
-                *         current string value.
-                * @return: A string of characters equal to the current string
-                *          value.
-                **************************************************************/
+                /***************************************************************//**
+                * @brief This method returns a std::string equal to the this object.
+                * @return A string equal to the this object. 
+                *******************************************************************/
                 std::string toStdString() const;
 
 
-                /**************************************************************
-                * @brief: This method removes all characters from the string
-                **************************************************************/
+                /***************************************************************//**
+                * @brief This method removes all characters from the string
+                *******************************************************************/
                 void clear() noexcept;
 
 
-                /**************************************************************
-                * @brief:  This method returns a boolean true value when the
-                *          string is empty.
-                * @return: A boolean true if the string is empty.
-                **************************************************************/
+                /***************************************************************//**
+                * @brief  This method returns a boolean true value when the
+                *         string is empty.
+                * @return A boolean true if the string is empty and false otherwise.
+                *******************************************************************/
                 bool empty() const;
 
 
-                /**************************************************************
-                * @brief:  This method changes the size of the string.
-                * @param:  n is the new size of the string
-                **************************************************************/
+                /***************************************************************//**
+                * @brief  This method changes the size of the string.
+                * @param  n is the new size of the string
+                *******************************************************************/
                 void resize (size_t n);
 
 
                 /**************************************************************
                 * @brief:  This method changes the size of the string.
-                * @param:  n is the new size of the string\
+                * @param:  n is the new size of the string
                 * @param:  c if the new size is bigger the new characters will
                 *          be initialized to this value.
                 **************************************************************/
