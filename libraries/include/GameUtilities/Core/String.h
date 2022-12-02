@@ -194,161 +194,163 @@ namespace GU
                 void resize (size_t n);
 
 
-                /**************************************************************
-                * @brief:  This method changes the size of the string.
-                * @param:  n is the new size of the string
-                * @param:  c if the new size is bigger the new characters will
-                *          be initialized to this value.
-                **************************************************************/
+                /***************************************************************//**
+                * @brief This method changes the size of the string.
+                * @param n is the new size of the string
+                * @param c if the new size is bigger the new characters will
+                *        be initialized to this value.
+                *******************************************************************/
                 void resize (size_t n, char c);
 
 
-                /**************************************************************
-                * @brief:  This method changes the capacity of the string.
-                *          capacity is the number of characters the string
-                *          can hold.
-                * @return: The current capacity of the string
-                **************************************************************/
+                /***************************************************************//**
+                * @brief  This method changes the capacity of the string.
+                *         capacity is the number of characters the string
+                *         can hold.
+                * @return The current capacity of the string
+                *******************************************************************/
                 size_t capacity() const;
 
 
-                /**************************************************************
-                * @brief:  This method returns a caracter at the given position
-                *          in the string.
-                * @param:  pos The position of the caracter ot be returned.
-                * @return: The character at the position passed to pos.
-                **************************************************************/
+                /***************************************************************//**
+                * @brief  This method returns a caracter at the given position
+                *         in the string.
+                * @param  pos The position of the caracter ot be returned.
+                * @return The character at the position passed to pos.
+                *******************************************************************/
                 char& operator[] (size_t pos);
 
 
-                /**************************************************************
-                * @brief:  This method returns a caracter at the given position
-                *          in the string.
-                * @param:  pos The position of the caracter ot be returned.
-                * @return: The character at the position passed to pos.
-                **************************************************************/
+                /***************************************************************//**
+                * @brief  This method returns a caracter at the given position
+                *         in the string.
+                * @param  pos The position of the caracter ot be returned.
+                * @return The character at the position passed to pos.
+                *******************************************************************/
                 const char& operator[] (size_t pos) const;
 
 
-                /**************************************************************
-                * @brief:  This method returns a caracter at the given position
-                *          in the string.
-                * @param:  pos The position of the caracter ot be returned.
-                * @return: The character at the position passed to pos.
-                **************************************************************/
+                /***************************************************************//**
+                * @brief  This method returns a caracter at the given position
+                *         in the string. This method will throw an error if
+                *         the character does not exist.
+                * @param  pos The position of the caracter to be returned.
+                * @return The character at the position passed to pos.
+                *******************************************************************/
                 char& at (size_t pos);
 
 
-                /**************************************************************
-                * @brief:  This method returns a caracter at the given position
-                *          in the string.
-                * @param:  pos The position of the caracter ot be returned.
-                * @return: The character at the position passed to pos.
-                **************************************************************/
+                /***************************************************************//**
+                * @brief  This method returns a caracter at the given position
+                *         in the string. This method will throw an error if
+                *         the character does not exist.
+                * @param  pos The position of the caracter ot be returned.
+                * @return The character at the position passed to pos.
+                *******************************************************************/
                 const char& at (size_t pos) const;
 
 
-                /**************************************************************
-                * @brief:  This method returns the last character in the string
-                * @return: The last character in the string.
-                **************************************************************/
+                /***************************************************************//**
+                * @brief  This method returns the last character in the string
+                * @return The last character in the string.
+                *******************************************************************/
                 char& back();
 
 
-                /**************************************************************
-                * @brief:  This method returns the last character in the string
-                * @return: The last character in the string.
-                **************************************************************/
+                /***************************************************************//**
+                * @brief  This method returns the last character in the string
+                * @return The last character in the string.
+                *******************************************************************/
                 const char& back() const;
 
 
-                /**************************************************************
-                * @brief:  This method returns the first character in the string
-                * @return: The first character in the string.
-                **************************************************************/
+                /***************************************************************//**
+                * @brief  This method returns the first character in the string
+                * @return The first character in the string.
+                *******************************************************************/
                 char& front();
 
 
-                /**************************************************************
-                * @brief:  This method returns the first character in the string
-                * @return: The first character in the string.
-                **************************************************************/
+                /***************************************************************//**
+                * @brief  This method returns the first character in the string
+                * @return The first character in the string.
+                *******************************************************************/
                 const char& front() const;
 
 
-                /**************************************************************
-                * @brief:  This method appends the input string to the current
-                *          string.
-                * @param:  str a string to be appended to the current string.
-                * @return: A reference to the updated string..
-                **************************************************************/
+                /***************************************************************//**
+                * @brief  This method appends the input string to the current
+                *         string.
+                * @param  str a string to be appended to the current string.
+                * @return A reference to the updated string..
+                *******************************************************************/
                 String& operator+= (const std::string& str);
 
 
-                /**************************************************************
-                * @brief:  This method appends the input string to the current
-                *          string.
-                * @param:  s a string to be appended to the current string.
-                * @return: A reference to the updated string..
-                **************************************************************/
+                /***************************************************************//**
+                * @brief  This method appends the input string to the current
+                *         string.
+                * @param  s a string to be appended to the current string.
+                * @return A reference to the updated string.
+                *******************************************************************/
                 String& operator+= (const char* s);
 
 
-                /**************************************************************
-                * @brief:  This method appends the input string to the current
-                *          string.
-                * @param:  c a string to be appended to the current string.
-                * @return: A reference to the updated string..
-                **************************************************************/
+                /***************************************************************//**
+                * @brief  This method appends the input string to the current
+                *         string.
+                * @param  c a string to be appended to the current string.
+                * @return A reference to the updated string..
+                *******************************************************************/
                 String& operator+= (char c);
 
 
-                /**************************************************************
-                * @brief:  This method appends the input string to the current
-                *          string.
-                * @param:  str a string to be appended to the current string.
-                * @return: A reference to the updated string..
-                **************************************************************/
+                /***************************************************************//**
+                * @brief  This method appends the input string to the current
+                *         string.
+                * @param  str a string to be appended to the current string.
+                * @return A reference to the updated string..
+                *******************************************************************/
                 String& append (const std::string& str);
 
 
-                /**************************************************************
-                * @brief:  This method appends the input string to the current
-                *          string.
-                * @param:  str a string to be appended to the current string.
-                * @param:  subpos the first character in str to be copied.
-                * @param:  sublen the length of the string to be copied from str
-                * @return: A reference to the updated string..
-                **************************************************************/
+                /***************************************************************//**
+                * @brief  This method appends the input string to the current
+                *         string.
+                * @param  str a string to be appended to the current string.
+                * @param  subpos the first character in str to be copied.
+                * @param  sublen the length of the string to be copied from str
+                * @return A reference to the updated string..
+                *******************************************************************/
                 String& append (const std::string& str, size_t subpos, size_t sublen);
 
 
-                /**************************************************************
-                * @brief:  This method appends the input string to the current
-                *          string.
-                * @param:  s a pointer to the string to be appended.
-                * @return: A reference to the updated string..
-                **************************************************************/
+                /***************************************************************//**
+                * @brief  This method appends the input string to the current
+                *         string.
+                * @param  s a pointer to the string to be appended.
+                * @return A reference to the updated string..
+                *******************************************************************/
                 String& append (const char* s);
 
 
-                /**************************************************************
-                * @brief:  This method appends the input string to the current
-                *          string.
-                * @param:  s a pointer to the string to be appended.
-                * @param:  The number of characters to be appended.
-                * @return: A reference to the updated string..
-                **************************************************************/
+                /***************************************************************//**
+                * @brief  This method appends the input string to the current
+                *         string.
+                * @param  s a pointer to the string to be appended.
+                * @param  n The number of characters to be appended.
+                * @return A reference to the updated string.
+                *******************************************************************/
                 String& append (const char* s, size_t n);
 
 
-                /**************************************************************
-                * @brief:  This method appends the character c n times to the
-                *          current string.
-                * @param:  n is the number of characters to be appended.
-                * @param:  c the character to be appended.
-                * @return: A reference to the updated string..
-                **************************************************************/
+                /***************************************************************//**
+                * @brief  This method appends the character c n times to the
+                *         current string.
+                * @param  n is the number of characters to be appended.
+                * @param  c the character to be appended.
+                * @return A reference to the updated string..
+                *******************************************************************/
                 String& append (size_t n, char c);
 
 
