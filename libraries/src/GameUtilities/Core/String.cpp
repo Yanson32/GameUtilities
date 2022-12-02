@@ -532,15 +532,15 @@ namespace GU
         }
 
 
-        /**************************************************************
-        * @brief:  This method appends a string starting at first
-        *          and ending at last to the current string.
-        * @param:  first iterator pointing to the first character to
-        *          be appended.
-        * @param:  last iterator pointing to one past the last character
-        *          in the string to be appended.
-        * @return: A reference to the updated string..
-        **************************************************************/
+        /***************************************************************//**
+        * @brief  This method appends a string starting at first
+        *         and ending at last to the current string.
+        * @param  first iterator pointing to the first character to
+        *         be appended.
+        * @param  last iterator pointing to one past the last character
+        *         in the string to be appended.
+        * @return A reference to the updated string.
+        ******************************************************************/
         template <class InputIterator>
         String& String::append (InputIterator first, InputIterator last)
         {
@@ -550,11 +550,10 @@ namespace GU
         }
 
 
-        /**************************************************************
-        * @brief:  This method adds a character to the end of the string.
-        * @param:  c the character to be added.
-        * @return: A reference to the updated string.
-        **************************************************************/
+        /**************************************************************//**
+        * @brief  This method adds a character to the end of the string.
+        * @param  c the character to be added.
+        ******************************************************************/
         void String::push_back (char c)
         {
           assert(pimpl != nullptr);
@@ -562,11 +561,11 @@ namespace GU
         }
 
 
-        /**************************************************************
-        * @brief:  Replace the current string with a new string.
-        * @param:  str the string to be assigned.
-        * @return: A reference to the updated string.
-        **************************************************************/
+        /**************************************************************//**
+        * @brief  Replace the current string with a new string.
+        * @param  str the string to be assigned.
+        * @return A reference to the updated string.
+        ******************************************************************/
         String& String::assign (const std::string& str)
         {
           assert(pimpl != nullptr);
@@ -575,14 +574,14 @@ namespace GU
         }
 
 
-        /**************************************************************
-        * @brief:  Replace the current string with the substring of a
-        *          new string.
-        * @param:  str the string to be assigned.
-        * @param:  subpos index to the beggining of the string in str.
-        * @param:  sublen the length of the substring.
-        * @return: A reference to the updated string.
-        **************************************************************/
+        /**************************************************************//**
+        * @brief  Replace the current string with the substring of a
+        *         new string.
+        * @param  str the string to be assigned.
+        * @param  subpos index to the beggining of the string in str.
+        * @param  sublen the length of the substring.
+        * @return A reference to the updated string.
+        ******************************************************************/
         String& String::assign (const std::string& str, size_t subpos, size_t sublen)
         {
           assert(pimpl != nullptr);
@@ -591,11 +590,11 @@ namespace GU
         }
 
 
-        /**************************************************************
-        * @brief:  Replace the current string with the new string.
-        * @param:  s the new string to be assigned.
-        * @return: A reference to the updated string.
-        **************************************************************/
+        /**************************************************************//**
+        * @brief  Replace the current string with the new string.
+        * @param  s the new string to be assigned.
+        * @return A reference to the updated string.
+        ******************************************************************/
         String& String::assign (const char* s)
         {
           assert(pimpl != nullptr);
@@ -604,12 +603,12 @@ namespace GU
         }
 
 
-        /**************************************************************
-        * @brief:  Replace the current string with the new string.
-        * @param:  s the new string to be assigned.
-        * @param:  n the size of the new string.
-        * @return: A reference to the updated string.
-        **************************************************************/
+        /**************************************************************//**
+        * @brief  Replace the current string with the new string.
+        * @param  s the new string to be assigned.
+        * @param  n the size of the new string.
+        * @return A reference to the updated string.
+        ******************************************************************/
         String& String::assign (const char* s, size_t n)
         {
           assert(pimpl != nullptr);
@@ -618,12 +617,12 @@ namespace GU
         }
 
 
-        /**************************************************************
-        * @brief:  Replace the current string with n number of c characters.
-        * @param:  n the number of characters to be assigned.
-        * @param:  c the character to be assigned.
-        * @return: A reference to the updated string.
-        **************************************************************/
+        /**************************************************************//**
+        * @brief  Replace the current string with n number of c characters.
+        * @param  n the number of characters to be assigned.
+        * @param  c the character to be assigned.
+        * @return A reference to the updated string.
+        ******************************************************************/
         String& String::assign (size_t n, char c)
         {
           assert(pimpl != nullptr);
@@ -632,13 +631,13 @@ namespace GU
         }
 
 
-        /**************************************************************
-        * @brief:  Replace the current string with the string starting
-        *          at first and ending at last
-        * @param:  first the first character in the string to be assigned.
-        * @param:  last the last character in the string to be assigned.
-        * @return: A reference to the updated string.
-        **************************************************************/
+        /**************************************************************//**
+        * @brief  Replace the current string with the string starting
+        *         at first and ending at last
+        * @param  first the first character in the string to be assigned.
+        * @param  last the last character in the string to be assigned.
+        * @return A reference to the updated string.
+        ******************************************************************/
         template <class InputIterator>
         String& String::assign (InputIterator first, InputIterator last)
         {
@@ -648,10 +647,10 @@ namespace GU
         }
 
 
-        /**************************************************************
-        * @brief:  This changes the strings capacity.
-        * @param:  n the new capacity
-        **************************************************************/
+        /**************************************************************//**
+        * @brief  This changes the strings capacity.
+        * @param  n the new capacity
+        ******************************************************************/
         void String::reserve (size_t n)
         {
           assert(pimpl != nullptr);
@@ -659,9 +658,9 @@ namespace GU
         }
 
 
-        /**************************************************************
-        * @brief:  Shring the strings capacity to fit it's size.
-        **************************************************************/
+        /**************************************************************//**
+        * @brief  Shrink the strings capacity to fit it's size.
+        ******************************************************************/
         void String::shrink_to_fit()
         {
           assert(pimpl != nullptr);
@@ -669,12 +668,12 @@ namespace GU
         }
 
 
-        /**************************************************************
-        * @brief:  Erase len characters starting at pos
-        * @param:  pos where to start erasing
-        * @param:  len the number of characters to be erased
-        * @return: A reference to the updated string.
-        **************************************************************/
+        /**************************************************************//**
+        * @brief  Erase len characters starting at pos
+        * @param  pos where to start erasing
+        * @param  len the number of characters to be erased
+        * @return A reference to the updated string.
+        ******************************************************************/
         String& String::erase (size_t pos, size_t len)
         {
           assert(pimpl != nullptr);
@@ -716,17 +715,16 @@ namespace GU
         //}
 
 
-        /**************************************************************
-        * @brief:  Replace len characters starting at pos with the
-        *          characters in str starting at subpos  and ending
-        *          at sublen.
-        * @param:  pos where to start replacing.
-        * @param:  len the number of characters to be replaced.
-        * @param:  str the string to get a substring from.
-        * @param:  subpos the start position of the substring.
-        * @param:  sublen the size of the substring.
-        * @return: A reference to the updated string.
-        **************************************************************/
+        /**************************************************************//**
+        * @brief  Replace len characters starting at pos with the characters 
+        *         in str starting at subpos  and ending at sublen.
+        * @param  pos where to start replacing.
+        * @param  len the number of characters to be replaced.
+        * @param  str the string to get a substring from.
+        * @param  subpos the start position of the substring.
+        * @param  sublen the size of the substring.
+        * @return A reference to the updated string.
+        ******************************************************************/
         String& String::replace (size_t pos, size_t len, const std::string& str, size_t subpos, size_t sublen)
         {
           assert(pimpl != nullptr);
