@@ -106,6 +106,7 @@ namespace GU
         /***************************************************************//**
         * @brief copy assignment operator
         * @param data is the String object to be copied. 
+        * @return A copy of the updated string.
         *******************************************************************/
         String String::operator=(const String &data)
         {
@@ -121,8 +122,9 @@ namespace GU
 
         
         /***************************************************************//**
-        * @brief assignment operator
-        * @param data is a pointer to the data to be assigned 
+        * @brief  assignment operator
+        * @param  data is a pointer to the data to be assigned 
+        * @return A copy of the updated string. 
         *******************************************************************/
         String String::operator=(const char* data)
         {
@@ -134,6 +136,7 @@ namespace GU
         /***************************************************************//**
         * @brief Equality operator
         * @param data is a String object to be checked for equality. 
+        * @return True if this object and the passed object are equal 
         *******************************************************************/
         bool String::operator==(const String &data)
         {
@@ -694,13 +697,13 @@ namespace GU
         //}
 
 
-        /**************************************************************
-        * @brief:  Replace len characters starting at pos with str.
-        * @param:  pos where to start replacing.
-        * @param:  len the number of characters to be replaced.
-        * @param:  str the string to replace the substring with.
-        * @return: A reference to the updated string.
-        **************************************************************/
+        /**************************************************************//**
+        * @brief  Replace len characters starting at pos with str.
+        * @param  pos where to start replacing.
+        * @param  len the number of characters to be replaced.
+        * @param  str the string to replace the substring with.
+        * @return A reference to the updated string.
+        ******************************************************************/
         String& String::replace (size_t pos, size_t len, const std::string& str)
         {
           assert(pimpl != nullptr);
@@ -713,6 +716,8 @@ namespace GU
         //{
 
         //}
+        
+
 
 
         /**************************************************************//**
@@ -733,13 +738,13 @@ namespace GU
         }
 
 
-        /**************************************************************
-        * @brief:  Replace len characters starting at pos with s.
-        * @param:  pos where to start replacing.
-        * @param:  len the number of characters to be replaced.
-        * @param:  s the string used to replace the substring.
-        * @return: A reference to the updated string.
-        **************************************************************/
+        /**************************************************************//**
+        * @brief  Replace len characters starting at pos with s.
+        * @param  pos where to start replacing.
+        * @param  len the number of characters to be replaced.
+        * @param  s the string used to replace the substring.
+        * @return A reference to the updated string.
+        ******************************************************************/
         String& String::replace (size_t pos, size_t len, const char* s)
         {
           assert(pimpl != nullptr);
