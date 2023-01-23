@@ -829,7 +829,22 @@ namespace GU
                 int compare (size_t pos, size_t len, const std::string& str, size_t subpos, size_t sublen) const;
                 int compare (const char* s) const;
                 int compare (size_t pos, size_t len, const char* s) const;
+                
+
+                /**********************************************************//**
+                * @brief  This method compares a substring of the current 
+                *         string object starting at (pos) and ending at (pos) 
+                *         + (len) against a string (s) of size (n) 
+                * @param  pos the starting position of the substring in the 
+                *         current string object. 
+                * @param  len the length of the substring.
+                * @param  s the string the current string will be compared to. 
+                * @param  n The size of the string the current string will be 
+                *         compared to.
+                * @return The substring found.
+                **************************************************************/
                 int compare (size_t pos, size_t len, const char* s, size_t n) const;
+
 
                 /**************************************************************
                 * @brief: Destructor.
