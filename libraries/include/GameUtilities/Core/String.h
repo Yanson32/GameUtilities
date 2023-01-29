@@ -495,27 +495,27 @@ namespace GU
 
 
                 /**************************************************************
-                * @brief:  Replace len characters starting at pos with n
-                *          characters starting at s.
-                * @param:  pos where to start replacing.
-                * @param:  len the number of characters to be replaced.
-                * @param:  s the string used to replace the substring.
-                * @param:  n the lengh of the substring.
-                * @return: A reference to the updated string.
+                * @brief  Replace len characters starting at pos with n
+                *         characters starting at s.
+                * @param  pos where to start replacing.
+                * @param  len the number of characters to be replaced.
+                * @param  s the string used to replace the substring.
+                * @param  n the lengh of the substring.
+                * @return A reference to the updated string.
                 **************************************************************/
                 String& replace (size_t pos, size_t len, const char* s, size_t n);
                 //String& replace (const_iterator i1, const_iterator i2, const char* s, size_t n);
 
 
                 /**************************************************************
-                * @brief:  Replace len characters starting at pos with n
-                *          characters of type c.
-                * @param:  pos where to start replacing.
-                * @param:  len the number of characters to be replaced.
-                * @param:  s the string used to replace the substring.
-                * @param:  n the lengh of the substring.
-                * @param:  c the character to fill with.
-                * @return: A reference to the updated string.
+                * @brief  Replace len characters starting at pos with n
+                *         characters of type c.
+                * @param  pos where to start replacing.
+                * @param  len the number of characters to be replaced.
+                * @param  s the string used to replace the substring.
+                * @param  n the lengh of the substring.
+                * @param  c the character to fill with.
+                * @return A reference to the updated string.
                 **************************************************************/
                 String& replace (size_t pos, size_t len, size_t n, char c);
                 //String& replace (const_iterator i1, const_iterator i2, size_t n, char c);
@@ -526,308 +526,391 @@ namespace GU
 
 
                 /**************************************************************
-                * @brief:  swap the characters in the current string with the
-                *          characters in str.
-                * @param:  str the string to swap the current string with
+                * @brief swap the characters in the current string with the
+                *        characters in str.
+                * @param str the string to swap the current string with
                 **************************************************************/
                 void swap (std::string& str);
 
 
                 /**************************************************************
-                * @brief:  Remove the last character in the string.
+                * @brief Remove the last character in the string.
                 **************************************************************/
                 void pop_back();
 
 
                 /**************************************************************
-                * @brief:  Get the current string in c string form.
-                * @return: A pointer to the current string of data.
+                * @brief  Get the current string in c string form.
+                * @return A pointer to the current string of data.
                 **************************************************************/
                 const char* data() const noexcept;
                 //allocator_type get_allocator() const noexcept;
 
 
                 /**************************************************************
-                * @brief:  Copy a substring from the current string into s
-                *          starting at position pos and ending at pos + len.
-                * @param:  s the pointer to store the copied string.
-                * @param:  len the number of characters to be copied.
-                * @param:  pos the position in the current string to start
-                *          copying
-                * @return: The number of characters copied into s.
+                * @brief  Copy a substring from the current string into s
+                *         starting at position pos and ending at pos + len.
+                * @param  s the pointer to store the copied string.
+                * @param  len the number of characters to be copied.
+                * @param  pos the position in the current string to start
+                *         copying
+                * @return The number of characters copied into s.
                 **************************************************************/
                 size_t copy (char* s, size_t len, size_t pos = 0) const;
 
 
                 /**************************************************************
-                * @brief:  Find a string str in the current string
-                *          starting at position pos.
-                * @param:  str the string to be found
-                * @param:  pos the position to start looking for str.
-                * @return: The position of the first character of the first match.
-                *          in the current string or npos;
+                * @brief  Find a string str in the current string
+                *         starting at position pos.
+                * @param  str the string to be found
+                * @param  pos the position to start looking for str.
+                * @return The position of the first character of the first match.
+                *         in the current string or npos;
                 **************************************************************/
                 size_t find (const std::string& str, size_t pos = 0) const noexcept;
 
 
                 /**************************************************************
-                * @brief:  Find a string s in the current string
-                *          starting at position pos.
-                * @param:  s the string to be found
-                * @param:  pos the position to start looking for s.
-                * @return: The position of the first character of the first match.
-                *          in the current string or npos;
+                * @brief  Find a string s in the current string
+                *         starting at position pos.
+                * @param  s the string to be found
+                * @param  pos the position to start looking for s.
+                * @return The position of the first character of the first match.
+                *         in the current string or npos;
                 **************************************************************/
                 size_t find (const char* s, size_t pos = 0) const;
                 //size_t find (const char* s, size_t pos, size_type n) const;
 
 
                 /**************************************************************
-                * @brief:  Find a character c in the current string starting
-                *          at position pos.
-                * @param:  c the character to be found
-                * @param:  pos the position to start looking for c.
-                * @return: The position of the first character of the first match.
-                *          in the current string or npos;
+                * @brief  Find a character c in the current string starting
+                *         at position pos.
+                * @param  c the character to be found
+                * @param  pos the position to start looking for c.
+                * @return The position of the first character of the first match.
+                *         in the current string or npos;
                 **************************************************************/
                 size_t find (char c, size_t pos = 0) const noexcept;
 
                 /**************************************************************
-                * @brief:  Find the string str at pos in reverse order.
-                * @param:  str the string to be found.
-                * @param:  pos the position to start looking for str.
-                * @return: The position of the first character of the first match.
-                *          in the current string or npos;
+                * @brief  Find the string str at pos in reverse order.
+                * @param  str the string to be found.
+                * @param  pos the position to start looking for str.
+                * @return The position of the first character of the first match.
+                *         in the current string or npos;
                 **************************************************************/
                 size_t rfind (const std::string& str, size_t pos = npos) const noexcept;
 
 
                 /**************************************************************
-                * @brief:  Find the string s at pos in reverse order.
-                * @param:  s the string to be found.
-                * @param:  pos the position to start looking for s.
-                * @return: The position of the first character of the first match.
-                *          in the current string or npos;
+                * @brief  Find the string s at pos in reverse order.
+                * @param  s the string to be found.
+                * @param  pos the position to start looking for s.
+                * @return The position of the first character of the first match.
+                *         in the current string or npos;
                 **************************************************************/
                 size_t rfind (const char* s, size_t pos = npos) const;
 
 
                 /**************************************************************
-                * @brief:  Find the string s at pos with length n in reverse order.
-                * @param:  s the string to be found.
-                * @param:  pos the position to start looking for s.
-                * @param:  n the length of the string.
-                * @return: The position of the first character of the first match.
-                *          in the current string or npos;
+                * @brief  Find the string s at pos with length n in reverse order.
+                * @param  s the string to be found.
+                * @param  pos the position to start looking for s.
+                * @param  n the length of the string.
+                * @return The position of the first character of the first match.
+                *         in the current string or npos;
                 **************************************************************/
                 size_t rfind (const char* s, size_t pos, size_t n) const;
 
 
                 /**************************************************************
-                * @brief:  Find the character c at pos in reverse order.
-                * @param:  c the character to be found.
-                * @param:  pos the position to start looking for c.
-                * @return: The position of the first character of the first match.
-                *          in the current string or npos;
+                * @brief  Find the character c at pos in reverse order.
+                * @param  c the character to be found.
+                * @param  pos the position to start looking for c.
+                * @return The position of the first character of the first match.
+                *         in the current string or npos;
                 **************************************************************/
                 size_t rfind (char c, size_t pos = npos) const noexcept;
 
 
                 /**************************************************************
-                * @brief:  Find the first character that matches any character
-                *          in str.
-                * @param:  str the characters to search for
-                * @param:  pos the position to start looking for str.
-                * @return: The position of the first character of the first match.
-                *          in the current string or npos;
+                * @brief  Find the first character that matches any character
+                *         in str.
+                * @param  str the characters to search for
+                * @param  pos the position to start looking for str.
+                * @return The position of the first character of the first match.
+                *         in the current string or npos;
                 **************************************************************/
                 size_t find_first_of (const std::string& str, size_t pos = 0) const noexcept;
 
 
                 /**************************************************************
-                * @brief:  Find the first character that matches any character
-                *          in s starting at position pos.
-                * @param:  s the characters to search for
-                * @param:  pos the position to start looking for s.
-                * @return: The position of the first character of the first match.
-                *          in the current string or npos;
+                * @brief  Find the first character that matches any character
+                *         in s starting at position pos.
+                * @param  s the characters to search for
+                * @param  pos the position to start looking for s.
+                * @return The position of the first character of the first match.
+                *         in the current string or npos;
                 **************************************************************/
                 size_t find_first_of (const char* s, size_t pos = 0) const;
 
 
                 /**************************************************************
-                * @brief:  Find the first character that matches any character
-                *          in s starting at position pos and ending at position
-                *          pos + n.
-                * @param:  s the characters to search for
-                * @param:  pos the position to start looking for s.
-                * @param:  n the number of the characters to search
-                * @return: The position of the first character of the first match.
-                *          in the current string or npos;
+                * @brief  Find the first character that matches any character
+                *         in s starting at position pos and ending at position
+                *         pos + n.
+                * @param  s the characters to search for
+                * @param  pos the position to start looking for s.
+                * @param  n the number of the characters to search
+                * @return The position of the first character of the first match.
+                *         in the current string or npos;
                 **************************************************************/
                 size_t find_first_of (const char* s, size_t pos, size_t n) const;
 
 
                 /**************************************************************
-                * @brief:  Find the first instance of character c starting at
-                *          position pos.
-                * @param:  c the character to search for
-                * @param:  pos the position to start looking for c.
-                * @return: The position of the first character of the first match.
-                *          in the current string or npos;
+                * @brief  Find the first instance of character c starting at
+                *         position pos.
+                * @param  c the character to search for
+                * @param  pos the position to start looking for c.
+                * @return The position of the first character of the first match.
+                *         in the current string or npos;
                 **************************************************************/
                 size_t find_first_of (char c, size_t pos = 0) const noexcept;
 
 
                 /**************************************************************
-                * @brief:  Find the last instance of any character that matches
-                *          a character in str starting at position pos.
-                * @param:  str the characters to search for
-                * @param:  pos the position to start looking for str.
-                * @return: The position of the first character of the first match.
-                *          in the current string or npos;
+                * @brief  Find the last instance of any character that matches
+                *         a character in str starting at position pos.
+                * @param  str the characters to search for
+                * @param  pos the position to start looking for str.
+                * @return The position of the first character of the first match.
+                *         in the current string or npos;
                 **************************************************************/
                 size_t find_last_of (const std::string& str, size_t pos = npos) const noexcept;
 
 
                 /**************************************************************
-                * @brief:  Find the last instance of any character that matches
-                *          a character in s starting at position pos.
-                * @param:  s the characters to search for
-                * @param:  pos the position to start looking for s.
-                * @return: The position of the first character of the first match.
-                *          in the current string or npos;
+                * @brief  Find the last instance of any character that matches
+                *         a character in s starting at position pos.
+                * @param  s the characters to search for
+                * @param  pos the position to start looking for s.
+                * @return The position of the first character of the first match.
+                *         in the current string or npos;
                 **************************************************************/
                 size_t find_last_of (const char* s, size_t pos = npos) const;
 
 
                 /**************************************************************
-                * @brief:  Find the last instance of any character that matches
-                *          a character in s starting at position pos and ending
-                *          at pos + n.
-                * @param:  s the characters to search for
-                * @param:  pos the position to start looking for s.
-                * @param:  n the number of characters to search
-                * @return: The position of the first character of the first match.
-                *          in the current string or npos;
+                * @brief  Find the last instance of any character that matches
+                *         a character in s starting at position pos and ending
+                *         at pos + n.
+                * @param  s the characters to search for
+                * @param  pos the position to start looking for s.
+                * @param  n the number of characters to search
+                * @return The position of the first character of the first match.
+                *         in the current string or npos;
                 **************************************************************/
                 size_t find_last_of (const char* s, size_t pos, size_t n) const;
 
 
                 /**************************************************************
-                * @brief:  Find the last instance of character c starting
-                *          at position pos.
-                * @param:  c the character to search for
-                * @param:  pos the position to start looking for c.
-                * @return: The position of the first character of the first match.
-                *          in the current string or npos;
+                * @brief  Find the last instance of character c starting
+                *         at position pos.
+                * @param  c the character to search for
+                * @param  pos the position to start looking for c.
+                * @return The position of the first character of the first match.
+                *         in the current string or npos;
                 **************************************************************/
                 size_t find_last_of (char c, size_t pos = npos) const noexcept;
 
 
                 /**************************************************************
-                * @brief:  Find the first instance of any character not in str.
-                *          starting at position pos.
-                * @param:  str the characters not to search for
-                * @param:  pos the position to start looking for str.
-                * @return: The position of the first character of the first match.
-                *          in the current string or npos;
+                * @brief  Find the first instance of any character not in str.
+                *         starting at position pos.
+                * @param  str the characters not to search for
+                * @param  pos the position to start looking for str.
+                * @return The position of the first character of the first match.
+                *         in the current string or npos;
                 **************************************************************/
                 size_t find_first_not_of (const std::string& str, size_t pos = 0) const noexcept;
 
 
                 /**************************************************************
-                * @brief:  Find the first instance of any character not in s.
-                *          starting at position pos.
-                * @param:  s the characters not to search for
-                * @param:  pos the position to start looking for s.
-                * @return: The position of the first character of the first match.
-                *          in the current string or npos;
+                * @brief  Find the first instance of any character not in s.
+                *         starting at position pos.
+                * @param  s the characters not to search for
+                * @param  pos the position to start looking for s.
+                * @return The position of the first character of the first match.
+                *         in the current string or npos;
                 **************************************************************/
                 size_t find_first_not_of (const char* s, size_t pos = 0) const;
 
 
                 /**************************************************************
-                * @brief:  Find the first instance of any character not in s.
-                *          starting at position pos and ending at pos + n.
-                * @param:  s the characters not to search for
-                * @param:  pos the position to start looking for s.
-                * @param:  n the number of characters to be searched
-                * @return: The position of the first character of the first match.
-                *          in the current string or npos;
+                * @brief  Find the first instance of any character not in s.
+                *         starting at position pos and ending at pos + n.
+                * @param  s the characters not to search for
+                * @param  pos the position to start looking for s.
+                * @param  n the number of characters to be searched
+                * @return The position of the first character of the first match.
+                *         in the current string or npos;
                 **************************************************************/
                 size_t find_first_not_of (const char* s, size_t pos, size_t n) const;
 
 
                 /**************************************************************
-                * @brief:  Find the first instance of characte not in c.
-                *          starting at position pos.
-                * @param:  c the characters not to search for
-                * @param:  pos the position to start looking for c.
-                * @return: The position of the first character of the first match.
-                *          in the current string or npos;
+                * @brief  Find the first instance of characte not in c.
+                *         starting at position pos.
+                * @param  c the characters not to search for
+                * @param  pos the position to start looking for c.
+                * @return The position of the first character of the first match.
+                *         in the current string or npos;
                 **************************************************************/
                 size_t find_first_not_of (char c, size_t pos = 0) const noexcept;
 
 
                 /**************************************************************
-                * @brief:  Find the last instance of character not in c.
-                *          starting at position pos.
-                * @param:  c the characters not to search for
-                * @param:  pos the position to start looking for c.
-                * @return: The position of the first character of the first match.
-                *          in the current string or npos;
+                * @brief  Find the last instance of character not in c.
+                *         starting at position pos.
+                * @param  c the characters not to search for
+                * @param  pos the position to start looking for c.
+                * @return The position of the first character of the first match.
+                *         in the current string or npos;
                 **************************************************************/
                 size_t find_last_not_of (const std::string& str, size_t pos = npos) const noexcept;
 
 
                 /**************************************************************
-                * @brief:  Find the last instance of any character not in s.
-                *          starting at position pos.
-                * @param:  s the characters not to search for
-                * @param:  pos the position to start looking for s.
-                * @return: The position of the first character of the first match.
-                *          in the current string or npos;
+                * @brief  Find the last instance of any character not in s.
+                *         starting at position pos.
+                * @param  s the characters not to search for
+                * @param  pos the position to start looking for s.
+                * @return The position of the first character of the first match.
+                *         in the current string or npos;
                 **************************************************************/
                 size_t find_last_not_of (const char* s, size_t pos = npos) const;
 
 
                 /**************************************************************
-                * @brief:  Find the last instance of any character not in s.
-                *          starting at position pos and ending at position pos + n.
-                * @param:  s the characters not to search for
-                * @param:  pos the position to start looking for s.
-                * @param:  n the max number of characters to be searched.
-                * @return: The position of the first character of the first match.
-                *          in the current string or npos;
+                * @brief  Find the last instance of any character not in s.
+                *         starting at position pos and ending at position pos + n.
+                * @param  s the characters not to search for
+                * @param  pos the position to start looking for s.
+                * @param  n the max number of characters to be searched.
+                * @return The position of the first character of the first match.
+                *         in the current string or npos;
                 **************************************************************/
                 size_t find_last_not_of (const char* s, size_t pos, size_t n) const;
 
 
                 /**************************************************************
-                * @brief:  Find the last instance of any character other than c.
-                *          starting at position pos .
-                * @param:  c the character not to search for
-                * @param:  pos the position to start looking for c.
-                * @return: The position of the first character of the first match.
-                *          in the current string or npos;
+                * @brief  Find the last instance of any character other than c.
+                *         starting at position pos .
+                * @param  c the character not to search for
+                * @param  pos the position to start looking for c.
+                * @return The position of the first character of the first match.
+                *         in the current string or npos;
                 **************************************************************/
                 size_t find_last_not_of (char c, size_t pos = npos) const noexcept;
 
 
-                /**************************************************************
-                * @brief:  Find a substring starting at position pos and
-                *          ending at position pos + len .
-                * @param:  pos the position to start looking.
-                * @param:  len the max length of the substring.
-                * @return: The substring found.
+                /**********************************************************//**
+                * @brief  Find a substring starting at position pos and
+                *         ending at position pos + len .
+                * @param  pos the position to start looking.
+                * @param  len the max length of the substring.
+                * @return The substring found.
                 **************************************************************/
                 String substr (size_t pos = 0, size_t len = npos) const;
 
+                
+                /**********************************************************//**
+                * @brief  This method compares the current string object 
+                *         against the (str) parameter.
+                * @param  str the string the current string will be compared to. 
+                * @return 0 if the strings are equal 
+                *         <0 if the value of the first character that does not
+                *         match is lower or all characters match but (s) is
+                *         shorter.
+                *         >0 if the value of the first character that does not
+                *         match is greater or all characters match but (s) is 
+                *         longer. 
+                **************************************************************/
                 int compare (const std::string& str) const noexcept;
+                
+
+                /**********************************************************//**
+                * @brief  This method compares a substring of the current 
+                *         string object against the (str) parameter.
+                * @param  pos the starting position of the substring in the 
+                *         current string object. 
+                * @param  len the length of the substring.
+                * @param  str the string the current string will be compared to. 
+                * @return 0 if the strings are equal 
+                *         <0 if the value of the first character that does not
+                *         match is lower or all characters match but (s) is
+                *         shorter.
+                *         >0 if the value of the first character that does not
+                *         match is greater or all characters match but (s) is 
+                *         longer. 
+                **************************************************************/
                 int compare (size_t pos, size_t len, const std::string& str) const;
+
+
+                /**********************************************************//**
+                * @brief  This method compares a substring of the current 
+                *         string object against a substring of the (str) 
+                *         parameter.
+                * @param  pos the starting position of the substring in the 
+                *         current string object. 
+                * @param  len the length of the substring.
+                * @param  str the string the current string will be compared to. 
+                * @param  subpos the starting postion of the substring in the 
+                *         (str) object. 
+                * @param  sublen the length of the substring in (str).
+                * @return 0 if the strings are equal 
+                *         <0 if the value of the first character that does not
+                *         match is lower or all characters match but (s) is
+                *         shorter.
+                *         >0 if the value of the first character that does not
+                *         match is greater or all characters match but (s) is 
+                *         longer. 
+                **************************************************************/
                 int compare (size_t pos, size_t len, const std::string& str, size_t subpos, size_t sublen) const;
+
+
+                /**********************************************************//**
+                * @brief  This method compares the current string object
+                *         against string (s).
+                * @param  s the string the current string will be compared to.
+                * @return 0 if the strings are equal 
+                *         <0 if the value of the first character that does not
+                *         match is lower or all characters match but (s) is
+                *         shorter.
+                *         >0 if the value of the first character that does not
+                *         match is greater or all characters match but (s) is 
+                *         longer. 
+                **************************************************************/
                 int compare (const char* s) const;
+                
+
+                /**********************************************************//**
+                * @brief  This method compares a substring of the current 
+                *         string object starting at (pos) and ending at (pos) 
+                *         + (len) against a string (s).
+                * @param  pos the starting position of the substring in the 
+                *         current string object. 
+                * @param  len the length of the substring.
+                * @param  s the string the current string will be compared to. 
+                * @return 0 if the strings are equal 
+                *         <0 if the value of the first character that does not
+                *         match is lower or all characters match but (s) is
+                *         shorter.
+                *         >0 if the value of the first character that does not
+                *         match is greater or all characters match but (s) is 
+                *         longer. 
+                **************************************************************/
                 int compare (size_t pos, size_t len, const char* s) const;
                 
 
@@ -841,7 +924,13 @@ namespace GU
                 * @param  s the string the current string will be compared to. 
                 * @param  n The size of the string the current string will be 
                 *         compared to.
-                * @return The substring found.
+                * @return 0 if the strings are equal 
+                *         <0 if the value of the first character that does not
+                *         match is lower or all characters match but (s) is
+                *         shorter.
+                *         >0 if the value of the first character that does not
+                *         match is greater or all characters match but (s) is 
+                *         longer. 
                 **************************************************************/
                 int compare (size_t pos, size_t len, const char* s, size_t n) const;
 

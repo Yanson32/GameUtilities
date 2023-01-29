@@ -104,8 +104,8 @@ namespace GU
         
         
         /***************************************************************//**
-        * @brief copy assignment operator
-        * @param data is the String object to be copied. 
+        * @brief  copy assignment operator
+        * @param  data is the String object to be copied. 
         * @return A copy of the updated string.
         *******************************************************************/
         String String::operator=(const String &data)
@@ -134,8 +134,8 @@ namespace GU
 
 
         /***************************************************************//**
-        * @brief Equality operator
-        * @param data is a String object to be checked for equality. 
+        * @brief  Equality operator
+        * @param  data is a String object to be checked for equality. 
         * @return True if this object and the passed object are equal 
         *******************************************************************/
         bool String::operator==(const String &data)
@@ -228,7 +228,7 @@ namespace GU
 
 
         /***************************************************************//**
-        * @brief This method returns the number of characters in the
+        * @brief  This method returns the number of characters in the
         *         string.
         * @return The number of characters in the string.
         *******************************************************************/
@@ -252,7 +252,7 @@ namespace GU
 
 
         /***************************************************************//**
-        * @brief This method returns a std::string equal to the this object.
+        * @brief  This method returns a std::string equal to the this object.
         * @return A string equal to the this object. 
         *******************************************************************/
         std::string String::toStdString() const
@@ -285,8 +285,8 @@ namespace GU
 
 
         /***************************************************************//**
-        * @brief  This method changes the size of the string.
-        * @param  n is the new size of the string
+        * @brief This method changes the size of the string.
+        * @param n is the new size of the string
         *******************************************************************/
         void String::resize (size_t n)
         {
@@ -554,8 +554,8 @@ namespace GU
 
 
         /**************************************************************//**
-        * @brief  This method adds a character to the end of the string.
-        * @param  c the character to be added.
+        * @brief This method adds a character to the end of the string.
+        * @param c the character to be added.
         ******************************************************************/
         void String::push_back (char c)
         {
@@ -651,8 +651,8 @@ namespace GU
 
 
         /**************************************************************//**
-        * @brief  This changes the strings capacity.
-        * @param  n the new capacity
+        * @brief This changes the strings capacity.
+        * @param n the new capacity
         ******************************************************************/
         void String::reserve (size_t n)
         {
@@ -662,7 +662,7 @@ namespace GU
 
 
         /**************************************************************//**
-        * @brief  Shrink the strings capacity to fit it's size.
+        * @brief Shrink the strings capacity to fit it's size.
         ******************************************************************/
         void String::shrink_to_fit()
         {
@@ -1227,7 +1227,7 @@ namespace GU
         }
 
 
-        /**************************************************************
+        /**********************************************************//**
         * @brief  Find a substring starting at position pos and
         *         ending at position pos + len .
         * @param  pos the position to start looking.
@@ -1240,6 +1240,19 @@ namespace GU
           return pimpl->m_data.substr(pos, len);
         }
 
+        
+        /**********************************************************//**
+        * @brief  This method compares the current string object 
+        *         against the (str) parameter.
+        * @param  str the string the current string will be compared to. 
+        * @return 0 if the strings are equal 
+        *         <0 if the value of the first character that does not
+        *         match is lower or all characters match but (s) is
+        *         shorter.
+        *         >0 if the value of the first character that does not
+        *         match is greater or all characters match but (s) is 
+        *         longer. 
+        **************************************************************/
         int String::compare (const std::string& str) const noexcept
         {
           assert(pimpl != nullptr);
@@ -1247,6 +1260,21 @@ namespace GU
         }
 
 
+        /**********************************************************//**
+        * @brief  This method compares a substring of the current 
+        *         string object against the (str) parameter.
+        * @param  pos the starting position of the substring in the 
+        *         current string object. 
+        * @param  len the length of the substring.
+        * @param  str the string the current string will be compared to. 
+        * @return 0 if the strings are equal 
+        *         <0 if the value of the first character that does not
+        *         match is lower or all characters match but (s) is
+        *         shorter.
+        *         >0 if the value of the first character that does not
+        *         match is greater or all characters match but (s) is 
+        *         longer. 
+        **************************************************************/
         int String::compare (size_t pos, size_t len, const std::string& str) const
         {
           assert(pimpl != nullptr);
@@ -1254,6 +1282,25 @@ namespace GU
         }
 
 
+        /**********************************************************//**
+        * @brief  This method compares a substring of the current 
+        *         string object against a substring of the (str) 
+        *         parameter.
+        * @param  pos the starting position of the substring in the 
+        *         current string object. 
+        * @param  len the length of the substring.
+        * @param  str the string the current string will be compared to. 
+        * @param  subpos the starting postion of the substring in the 
+        *         (str) object. 
+        * @param  sublen the length of the substring in (str).
+        * @return 0 if the strings are equal 
+        *         <0 if the value of the first character that does not
+        *         match is lower or all characters match but (s) is
+        *         shorter.
+        *         >0 if the value of the first character that does not
+        *         match is greater or all characters match but (s) is 
+        *         longer. 
+        **************************************************************/
         int String::compare (size_t pos, size_t len, const std::string& str, size_t subpos, size_t sublen) const
         {
           assert(pimpl != nullptr);
@@ -1261,6 +1308,18 @@ namespace GU
         }
 
 
+        /**********************************************************//**
+        * @brief  This method compares the current string object
+        *         against string (s).
+        * @param  s the string the current string will be compared to.
+        * @return 0 if the strings are equal 
+        *         <0 if the value of the first character that does not
+        *         match is lower or all characters match but (s) is
+        *         shorter.
+        *         >0 if the value of the first character that does not
+        *         match is greater or all characters match but (s) is 
+        *         longer. 
+        **************************************************************/
         int String::compare (const char* s) const
         {
           assert(pimpl != nullptr);
@@ -1268,6 +1327,22 @@ namespace GU
         }
 
 
+        /**********************************************************//**
+        * @brief  This method compares a substring of the current 
+        *         string object starting at (pos) and ending at (pos) 
+        *         + (len) against a string (s).
+        * @param  pos the starting position of the substring in the 
+        *         current string object. 
+        * @param  len the length of the substring.
+        * @param  s the string the current string will be compared to. 
+        * @return 0 if the strings are equal 
+        *         <0 if the value of the first character that does not
+        *         match is lower or all characters match but (s) is
+        *         shorter.
+        *         >0 if the value of the first character that does not
+        *         match is greater or all characters match but (s) is 
+        *         longer. 
+        **************************************************************/
         int String::compare (size_t pos, size_t len, const char* s) const
         {
           assert(pimpl != nullptr);
@@ -1285,7 +1360,13 @@ namespace GU
         * @param  s the string the current string will be compared to. 
         * @param  n The size of the string the current string will be 
         *         compared to.
-        * @return The substring found.
+        * @return 0 if the strings are equal 
+        *         <0 if the value of the first character that does not
+        *         match is lower or all characters match but (s) is
+        *         shorter.
+        *         >0 if the value of the first character that does not
+        *         match is greater or all characters match but (s) is 
+        *         longer. 
         **************************************************************/
         int String::compare (size_t pos, size_t len, const char* s, size_t n) const
         {
