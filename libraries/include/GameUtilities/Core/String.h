@@ -494,7 +494,7 @@ namespace GU
                 //String& replace (const_iterator i1, const_iterator i2, const char* s);
 
 
-                /**************************************************************
+                /**********************************************************//**
                 * @brief  Replace len characters starting at pos with n
                 *         characters starting at s.
                 * @param  pos where to start replacing.
@@ -507,7 +507,7 @@ namespace GU
                 //String& replace (const_iterator i1, const_iterator i2, const char* s, size_t n);
 
 
-                /**************************************************************
+                /**********************************************************//**
                 * @brief  Replace len characters starting at pos with n
                 *         characters of type c.
                 * @param  pos where to start replacing.
@@ -525,7 +525,7 @@ namespace GU
                 //String& replace (const_iterator i1, const_iterator i2, initializer_list<char> il);
 
 
-                /**************************************************************
+                /**********************************************************//**
                 * @brief swap the characters in the current string with the
                 *        characters in str.
                 * @param str the string to swap the current string with
@@ -533,13 +533,13 @@ namespace GU
                 void swap (std::string& str);
 
 
-                /**************************************************************
+                /**********************************************************//**
                 * @brief Remove the last character in the string.
                 **************************************************************/
                 void pop_back();
 
 
-                /**************************************************************
+                /**********************************************************//**
                 * @brief  Get the current string in c string form.
                 * @return A pointer to the current string of data.
                 **************************************************************/
@@ -547,7 +547,7 @@ namespace GU
                 //allocator_type get_allocator() const noexcept;
 
 
-                /**************************************************************
+                /**********************************************************//**
                 * @brief  Copy a substring from the current string into s
                 *         starting at position pos and ending at pos + len.
                 * @param  s the pointer to store the copied string.
@@ -559,7 +559,7 @@ namespace GU
                 size_t copy (char* s, size_t len, size_t pos = 0) const;
 
 
-                /**************************************************************
+                /**********************************************************//**
                 * @brief  Find a string str in the current string
                 *         starting at position pos.
                 * @param  str the string to be found
@@ -570,7 +570,7 @@ namespace GU
                 size_t find (const std::string& str, size_t pos = 0) const noexcept;
 
 
-                /**************************************************************
+                /**********************************************************//**
                 * @brief  Find a string s in the current string
                 *         starting at position pos.
                 * @param  s the string to be found
@@ -582,7 +582,7 @@ namespace GU
                 //size_t find (const char* s, size_t pos, size_type n) const;
 
 
-                /**************************************************************
+                /**********************************************************//**
                 * @brief  Find a character c in the current string starting
                 *         at position pos.
                 * @param  c the character to be found
@@ -592,7 +592,7 @@ namespace GU
                 **************************************************************/
                 size_t find (char c, size_t pos = 0) const noexcept;
 
-                /**************************************************************
+                /***********************************************************//**
                 * @brief  Find the string str at pos in reverse order.
                 * @param  str the string to be found.
                 * @param  pos the position to start looking for str.
@@ -602,7 +602,7 @@ namespace GU
                 size_t rfind (const std::string& str, size_t pos = npos) const noexcept;
 
 
-                /**************************************************************
+                /**********************************************************//**
                 * @brief  Find the string s at pos in reverse order.
                 * @param  s the string to be found.
                 * @param  pos the position to start looking for s.
@@ -612,7 +612,7 @@ namespace GU
                 size_t rfind (const char* s, size_t pos = npos) const;
 
 
-                /**************************************************************
+                /**********************************************************//**
                 * @brief  Find the string s at pos with length n in reverse order.
                 * @param  s the string to be found.
                 * @param  pos the position to start looking for s.
@@ -623,7 +623,7 @@ namespace GU
                 size_t rfind (const char* s, size_t pos, size_t n) const;
 
 
-                /**************************************************************
+                /**********************************************************//**
                 * @brief  Find the character c at pos in reverse order.
                 * @param  c the character to be found.
                 * @param  pos the position to start looking for c.
@@ -633,7 +633,7 @@ namespace GU
                 size_t rfind (char c, size_t pos = npos) const noexcept;
 
 
-                /**************************************************************
+                /**********************************************************//**
                 * @brief  Find the first character that matches any character
                 *         in str.
                 * @param  str the characters to search for
@@ -644,7 +644,7 @@ namespace GU
                 size_t find_first_of (const std::string& str, size_t pos = 0) const noexcept;
 
 
-                /**************************************************************
+                /**********************************************************//**
                 * @brief  Find the first character that matches any character
                 *         in s starting at position pos.
                 * @param  s the characters to search for
@@ -655,7 +655,7 @@ namespace GU
                 size_t find_first_of (const char* s, size_t pos = 0) const;
 
 
-                /**************************************************************
+                /**********************************************************//**
                 * @brief  Find the first character that matches any character
                 *         in s starting at position pos and ending at position
                 *         pos + n.
@@ -668,7 +668,7 @@ namespace GU
                 size_t find_first_of (const char* s, size_t pos, size_t n) const;
 
 
-                /**************************************************************
+                /**********************************************************//**
                 * @brief  Find the first instance of character c starting at
                 *         position pos.
                 * @param  c the character to search for
@@ -679,7 +679,7 @@ namespace GU
                 size_t find_first_of (char c, size_t pos = 0) const noexcept;
 
 
-                /**************************************************************
+                /**********************************************************//**
                 * @brief  Find the last instance of any character that matches
                 *         a character in str starting at position pos.
                 * @param  str the characters to search for
@@ -690,7 +690,7 @@ namespace GU
                 size_t find_last_of (const std::string& str, size_t pos = npos) const noexcept;
 
 
-                /**************************************************************
+                /**********************************************************//**
                 * @brief  Find the last instance of any character that matches
                 *         a character in s starting at position pos.
                 * @param  s the characters to search for
@@ -701,7 +701,7 @@ namespace GU
                 size_t find_last_of (const char* s, size_t pos = npos) const;
 
 
-                /**************************************************************
+                /**********************************************************//**
                 * @brief  Find the last instance of any character that matches
                 *         a character in s starting at position pos and ending
                 *         at pos + n.
@@ -714,7 +714,7 @@ namespace GU
                 size_t find_last_of (const char* s, size_t pos, size_t n) const;
 
 
-                /**************************************************************
+                /**********************************************************//**
                 * @brief  Find the last instance of character c starting
                 *         at position pos.
                 * @param  c the character to search for
@@ -725,7 +725,7 @@ namespace GU
                 size_t find_last_of (char c, size_t pos = npos) const noexcept;
 
 
-                /**************************************************************
+                /**********************************************************//**
                 * @brief  Find the first instance of any character not in str.
                 *         starting at position pos.
                 * @param  str the characters not to search for
@@ -736,7 +736,7 @@ namespace GU
                 size_t find_first_not_of (const std::string& str, size_t pos = 0) const noexcept;
 
 
-                /**************************************************************
+                /**********************************************************//**
                 * @brief  Find the first instance of any character not in s.
                 *         starting at position pos.
                 * @param  s the characters not to search for
@@ -747,7 +747,7 @@ namespace GU
                 size_t find_first_not_of (const char* s, size_t pos = 0) const;
 
 
-                /**************************************************************
+                /**********************************************************//**
                 * @brief  Find the first instance of any character not in s.
                 *         starting at position pos and ending at pos + n.
                 * @param  s the characters not to search for
@@ -759,7 +759,7 @@ namespace GU
                 size_t find_first_not_of (const char* s, size_t pos, size_t n) const;
 
 
-                /**************************************************************
+                /**********************************************************//**
                 * @brief  Find the first instance of characte not in c.
                 *         starting at position pos.
                 * @param  c the characters not to search for
@@ -770,7 +770,7 @@ namespace GU
                 size_t find_first_not_of (char c, size_t pos = 0) const noexcept;
 
 
-                /**************************************************************
+                /**********************************************************//**
                 * @brief  Find the last instance of character not in c.
                 *         starting at position pos.
                 * @param  c the characters not to search for
@@ -781,7 +781,7 @@ namespace GU
                 size_t find_last_not_of (const std::string& str, size_t pos = npos) const noexcept;
 
 
-                /**************************************************************
+                /**********************************************************//**
                 * @brief  Find the last instance of any character not in s.
                 *         starting at position pos.
                 * @param  s the characters not to search for
@@ -792,7 +792,7 @@ namespace GU
                 size_t find_last_not_of (const char* s, size_t pos = npos) const;
 
 
-                /**************************************************************
+                /**********************************************************//**
                 * @brief  Find the last instance of any character not in s.
                 *         starting at position pos and ending at position pos + n.
                 * @param  s the characters not to search for
@@ -804,7 +804,7 @@ namespace GU
                 size_t find_last_not_of (const char* s, size_t pos, size_t n) const;
 
 
-                /**************************************************************
+                /**********************************************************//**
                 * @brief  Find the last instance of any character other than c.
                 *         starting at position pos .
                 * @param  c the character not to search for
