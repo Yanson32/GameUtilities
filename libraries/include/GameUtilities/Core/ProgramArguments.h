@@ -25,6 +25,8 @@
 ***************************************************************************/
 #include <string>
 #include "GameUtilities/Core/String.h"
+#include <memory>
+
 namespace GU 
 {
     namespace Core 
@@ -33,12 +35,12 @@ namespace GU
         class ProgramArguments
         {
             public:
-                typedef void(*Callback)(void*);
+                typedef void(*Callback)(std::shared_ptr<void>);
                 ProgramArguments();
                 ProgramArguments(int argc, char **argv);
-                bool add(const std::string &key, const char &shortKey = '\0', Callback callback = nullptr);
-                bool add(const std::string &key, const char &shortKey, std::pair<Callback, void*> data);
-                bool setData(const GU::Core::String &key, void* data);
+                bool add(const std::string &key, const char &shortKey, Callback callback);
+                bool add(const std::string &key, const char &shortKey, std::pair<Callback, std::shared_ptr<void>> data);
+                bool setData(const GU::Core::String &key, std::shared_ptr<void> data);
                 void parse(int argc, char **argv);
                 bool isLongKey(const std::string &key) const;
                 bool isShortKey(const std::string &key) const;

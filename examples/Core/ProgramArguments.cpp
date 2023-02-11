@@ -8,13 +8,13 @@ struct Data
     
 };
 
-void badass(void* params)
+void badass(std::shared_ptr<void> params)
 {
 
     if(params == nullptr)
         throw std::runtime_error("Parameter cannot be null"); 
     
-    Data *data = static_cast<Data*>(params);
+    std::shared_ptr<Data> data = std::static_pointer_cast<Data>(params);
    
     if(data == nullptr)
         throw std::runtime_error("Could not cast void pointer");
@@ -30,7 +30,7 @@ void badass(void* params)
     
 }
 
-void help(void* params)
+void help(std::shared_ptr<void> params)
 {
     std::cout << "--help            Display help text" << std::endl;
     std::cout << "--version, -v     Display program version" << std::endl;
@@ -47,28 +47,26 @@ int main(int argc, char **argv)
 
     
     //Add version option
-    if(!arguments.add("--version", 'v', [](void*){ std::cout << "version = 0.0.0.1" << std::endl;}))
+    if(!arguments.add("--version", 'v', [](std::shared_ptr<void> data = nullptr){ std::cout << "version = 0.0.0.1" << std::endl;}))
         throw std::runtime_error("Error: Unable to add key");
 
     //Positional Argumnets
     for(std::size_t i = 0; i < arguments.positionalSize(); ++i)
         std::cout << "Positional Arguments [" << i << "] " << arguments[i] << std::endl;
 
-    Data *data = new Data();
    
-    std::pair<GU::Core::ProgramArguments::Callback, void*> dataPair;
+    std::shared_ptr<Data> data(new Data());
+   
+    std::pair<GU::Core::ProgramArguments::Callback, std::shared_ptr<void>> dataPair;
     dataPair.first = badass;
     dataPair.second = data; 
+    
     //Add version option
     if(!arguments.add("--badass", 'b', dataPair))
         throw std::runtime_error("Error: Unable to add key");
 
     //Execute callback functions
     arguments.run();
-         
-    delete data;
-    data = nullptr;
-
-
+    
     return 0;
 }

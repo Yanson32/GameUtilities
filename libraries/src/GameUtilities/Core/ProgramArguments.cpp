@@ -46,7 +46,7 @@ namespace GU
                 std::vector<char> m_shortArgs;
                 bool keyExists(const std::string key) const;
                 bool shortKeyExists(const char key) const;
-                std::vector<std::pair<ProgramArguments::Callback, void*>> m_keyData;
+                std::vector<std::pair<ProgramArguments::Callback, std::shared_ptr<void>>> m_keyData;
                 
         };
 
@@ -136,7 +136,7 @@ namespace GU
         }
 
 
-        bool ProgramArguments::add(const std::string &key, const char &shortKey, std::pair<Callback, void*> data)
+        bool ProgramArguments::add(const std::string &key, const char &shortKey, std::pair<Callback, std::shared_ptr<void>> data)
         {
             //m_pimpl cannot be a nullptr 
             assert(m_pimpl != nullptr);
@@ -167,7 +167,7 @@ namespace GU
 
         bool ProgramArguments::add(const std::string &key, const char &shortKey, Callback callback)
         {
-            std::pair<Callback, void*> data;
+            std::pair<Callback, std::shared_ptr<void>> data;
             data.first = callback;
             data.second = nullptr;
             
@@ -175,7 +175,7 @@ namespace GU
 
         }
 
-        bool ProgramArguments::setData(const GU::Core::String &key, void* data)
+        bool ProgramArguments::setData(const GU::Core::String &key, std::shared_ptr<void> data)
         {
 
         }
@@ -271,7 +271,7 @@ namespace GU
 
         ProgramArguments::~ProgramArguments()
         {
-            if(m_pimpl == nullptr)
+            if(m_pimpl != nullptr)
             {
                 delete m_pimpl;
                 m_pimpl = nullptr;
