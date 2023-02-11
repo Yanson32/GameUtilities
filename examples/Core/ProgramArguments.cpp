@@ -4,7 +4,7 @@
 
 struct Data
 {
-    std::string item_1 = "This is item 1";
+    std::string item_1 = "This is a cool item";
     bool cool = true;
     
 };
@@ -34,6 +34,7 @@ void help(std::shared_ptr<void> params)
     UNUSED(params);
     std::cout << "--help            Display help text" << std::endl;
     std::cout << "--version, -v     Display program version" << std::endl;
+    std::cout << "--cool, -c        Do somthing cool" << std::endl;
 }
 
 
