@@ -5,6 +5,7 @@ set(FILES
 "${CMAKE_CURRENT_SOURCE_DIR}/Paths.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/ResourceManager.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/Resource.cpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/ProgramArguments.cpp"
 )
 
 set(RELATIVE_PATH "src/GameUtilities/Core")
