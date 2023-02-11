@@ -235,7 +235,9 @@ namespace GU
                     key.erase(std::remove(key.begin(), key.end(), '-'));
                     
                     for(std::size_t i = 0; i < key.size(); ++i)
-                        m_pimpl->m_shortArgs.push_back(key[0]); 
+                    {
+                        m_pimpl->m_shortArgs.push_back(key[i]); 
+                    }
 
                 }
                 else
