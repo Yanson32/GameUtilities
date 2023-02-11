@@ -1,14 +1,15 @@
 #include "GameUtilities/Core/ProgramArguments.h"
+#include "GameUtilities/Core/Macros.h"
 #include <iostream>
 
 struct Data
 {
     std::string item_1 = "This is item 1";
-    bool badass = true;
+    bool cool = true;
     
 };
 
-void badass(std::shared_ptr<void> params)
+void cool(std::shared_ptr<void> params)
 {
 
     if(params == nullptr)
@@ -19,19 +20,18 @@ void badass(std::shared_ptr<void> params)
     if(data == nullptr)
         throw std::runtime_error("Could not cast void pointer");
     
-    std::cout << "Inside badass" << std::endl;
-    
     std::cout << data->item_1 << std::endl;
     
-    if(data->badass)
-        std::cout << "I'm a badass" << std::endl;
+    if(data->cool)
+        std::cout << "Do cool thing" << std::endl;
     else
-        std::cout << "I'm a pussy" << std::endl;
+        std::cout << "Dont do cool thing" << std::endl;
     
 }
 
 void help(std::shared_ptr<void> params)
 {
+    UNUSED(params);
     std::cout << "--help            Display help text" << std::endl;
     std::cout << "--version, -v     Display program version" << std::endl;
 }
@@ -47,7 +47,10 @@ int main(int argc, char **argv)
 
     
     //Add version option
-    if(!arguments.add("--version", 'v', [](std::shared_ptr<void> data = nullptr){ std::cout << "version = 0.0.0.1" << std::endl;}))
+    if(!arguments.add("--version", 'v', [](std::shared_ptr<void> data = nullptr){ 
+        UNUSED(data);
+        std::cout << "version = 0.0.0.1" << std::endl;
+    }))
         throw std::runtime_error("Error: Unable to add key");
 
     //Positional Argumnets
@@ -58,11 +61,11 @@ int main(int argc, char **argv)
     std::shared_ptr<Data> data(new Data());
    
     std::pair<GU::Core::ProgramArguments::Callback, std::shared_ptr<void>> dataPair;
-    dataPair.first = badass;
+    dataPair.first = cool;
     dataPair.second = data; 
     
     //Add version option
-    if(!arguments.add("--badass", 'b', dataPair))
+    if(!arguments.add("--cool", 'c', dataPair))
         throw std::runtime_error("Error: Unable to add key");
 
     //Execute callback functions
