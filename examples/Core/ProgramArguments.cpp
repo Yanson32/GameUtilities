@@ -35,12 +35,17 @@ void help(std::shared_ptr<void> params)
     std::cout << "--help            Display help text" << std::endl;
     std::cout << "--version, -v     Display program version" << std::endl;
     std::cout << "--cool, -c        Do somthing cool" << std::endl;
+    std::cout << "--log_file=, -l   Sets the log file path" << std::endl;
 }
 
+void log(std::shared_ptr<void> params)
+{
+    std::cout << "Log File" << std::endl;
+}
 
 int main(int argc, char **argv)
 {
-    GU::Core::ProgramArguments arguments(argc, argv);
+    GU::Core::ProgramArguments arguments;
     
     //Add help option 
     if(!arguments.add("--help", '\0', help))
@@ -53,11 +58,6 @@ int main(int argc, char **argv)
         std::cout << "version = 0.0.0.1" << std::endl;
     }))
         throw std::runtime_error("Error: Unable to add key");
-
-    //Positional Argumnets
-    for(std::size_t i = 0; i < arguments.positionalSize(); ++i)
-        std::cout << "Positional Arguments [" << i << "] " << arguments[i] << std::endl;
-
    
     std::shared_ptr<Data> data(new Data());
    
@@ -65,9 +65,19 @@ int main(int argc, char **argv)
     dataPair.first = cool;
     dataPair.second = data; 
     
-    //Add version option
+    //Add cool option
     if(!arguments.add("--cool", 'c', dataPair))
         throw std::runtime_error("Error: Unable to add key");
+    
+    //Add log file 
+    if(!arguments.add("--log_file=", 'l', log))
+        throw std::runtime_error("Error: Unable to add key");
+    
+    arguments.parse(argc, argv);
+    
+    //Positional Argumnets
+    for(std::size_t i = 0; i < arguments.positionalSize(); ++i)
+        std::cout << "Positional Arguments [" << i << "] " << arguments[i] << std::endl;
 
     //Execute callback functions
     arguments.run();

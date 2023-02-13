@@ -45,13 +45,13 @@ namespace GU
                 std::map<const char, const std::size_t> m_shortKeyMap; 
 
                 ///vector of positional arguments
-                std::vector<std::string> m_positional;
+                std::vector<std::string> m_positionalArgs;
 
                 ///vector of long program options
                 std::vector<std::string> m_longArgs;
 
                 ///vector of key value pair program options 
-                std::vector<std::pair<std::string, std::string>> m_keyValue;
+                std::vector<std::pair<std::string, std::string>> m_keyValueArgs;
 
                 ///vector of short program options
                 std::vector<char> m_shortArgs;
@@ -162,7 +162,7 @@ namespace GU
             if(shortKey != '\0')
                 if(!m_pimpl->shortKeyExists(shortKey))
                     m_pimpl->m_shortKeyMap.insert(std::make_pair(shortKey, index));
-            
+           
 
             return m_pimpl->m_keyMap.insert(std::make_pair(key, index)).second;
         }
@@ -215,20 +215,27 @@ namespace GU
             {
                 std::string key(argv[i]);
                 
-                if(isKeyValue(key))
+                if(isLongKey(key))
                 {
+                    if(isKeyValue(key))
+                    {
 
-                    if(key.find_first_of('=') + 1 >= key.size())
-                        throw std::runtime_error("Key value pair is not valid");
-         
-                    std::string tempKey = key.substr(0, key.find_first_of('='));
-                    std::string tempValue = key.substr(key.find_first_of('=') + 1, key.size());
-                    std::pair<std::string, std::string> val(tempKey, tempValue); 
-                    m_pimpl->m_keyValue.push_back(val);
-                }
-                else if(isLongKey(key))
-                {
-                    m_pimpl->m_longArgs.push_back(key);
+                        std::cout << "is key value " << key << std::endl;
+ 
+                        if(key.find_first_of('=') + 1 >= key.size())
+                            throw std::runtime_error("Key value pair is not valid");
+             
+                        std::string tempKey = key.substr(0, key.find_first_of('=') + 1);
+                        std::string tempValue = key.substr(key.find_first_of('=') + 1, key.size());
+                        std::pair<std::string, std::string> val(tempKey, tempValue); 
+                        m_pimpl->m_keyValueArgs.push_back(val);
+                        
+                    }
+                    else
+                    {
+                        m_pimpl->m_longArgs.push_back(key);
+                    }
+                    
                 }
                 else if(isShortKey(key))
                 {
@@ -242,7 +249,7 @@ namespace GU
                 }
                 else
                 {
-                    m_pimpl->m_positional.push_back(key);
+                    m_pimpl->m_positionalArgs.push_back(key);
                 }
             } 
         }
@@ -259,19 +266,28 @@ namespace GU
             {
                 if(m_pimpl->keyExists(m_pimpl->m_longArgs[i]))
                 {
+
                     std::size_t index = m_pimpl->m_keyMap[m_pimpl->m_longArgs[i]];
                     m_pimpl->m_keyData[index].first(m_pimpl->m_keyData[index].second);
                 }
                 else
                 {
-                    std::runtime_error("invalid long key");
+                    throw std::runtime_error("invalid long key");
                 }
             }
 
+            
             //Handle key value pairs
-            for(std::size_t i = 0; i < m_pimpl->m_keyValue.size(); ++i)
+            for(std::size_t i = 0; i < m_pimpl->m_keyValueArgs.size(); ++i)
             {
-                std::cout << "Key = " << m_pimpl->m_keyValue[i].first << " value = " << m_pimpl->m_keyValue[i].second << std::endl;
+               
+                if(m_pimpl->keyExists(m_pimpl->m_keyValueArgs[i].first))            
+                {
+                    
+                    std::size_t index = m_pimpl->m_keyMap[m_pimpl->m_keyValueArgs[i].first];
+                    m_pimpl->m_keyData[index].first(m_pimpl->m_keyData[index].second);
+                }
+                
             }
            
             
@@ -299,7 +315,7 @@ namespace GU
         ***************************************************************************/
         std::size_t ProgramArguments::positionalSize() const
         {
-            return m_pimpl->m_positional.size();
+            return m_pimpl->m_positionalArgs.size();
         }
         
 
@@ -310,8 +326,8 @@ namespace GU
         ***************************************************************************/
         std::string& ProgramArguments::operator [](const std::size_t &index)
         {
-            assert(index < m_pimpl->m_positional.size());
-            return m_pimpl->m_positional[index];
+            assert(index < m_pimpl->m_positionalArgs.size());
+            return m_pimpl->m_positionalArgs[index];
         }
 
         
@@ -322,8 +338,8 @@ namespace GU
         ***************************************************************************/
         std::string ProgramArguments::operator [](const std::size_t &index) const
         {
-            assert(index < m_pimpl->m_positional.size());
-            return m_pimpl->m_positional[index];
+            assert(index < m_pimpl->m_positionalArgs.size());
+            return m_pimpl->m_positionalArgs[index];
         }
 
         
