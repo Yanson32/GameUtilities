@@ -271,7 +271,7 @@ namespace GU
                 }
                 else
                 {
-                    throw std::runtime_error("invalid long key");
+                    throw std::runtime_error("Invalid long key");
                 }
             }
 
@@ -285,6 +285,10 @@ namespace GU
                     
                     std::size_t index = m_pimpl->m_keyMap[m_pimpl->m_keyValueArgs[i].first];
                     m_pimpl->m_keyData[index].first(m_pimpl->m_keyData[index].second);
+                }
+                else
+                {
+                    throw std::runtime_erro("Invalid Key Value Pair");
                 }
                 
             }
