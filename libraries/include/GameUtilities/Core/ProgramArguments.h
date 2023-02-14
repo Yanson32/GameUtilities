@@ -37,7 +37,6 @@ namespace GU
             public:
                 typedef void(*Callback)(std::shared_ptr<void>);
 
-
                 /***********************************************************************//**
                 *   @brief  Constructor
                 ***************************************************************************/
@@ -156,7 +155,8 @@ namespace GU
                 *   @return True is returned if the key is a valid key value pair.
                 ***************************************************************************/
                 bool isKeyValue(const std::string &key) const;
-
+                
+                bool isPositional(const std::string &key) const;
                 class Impl;
                 Impl *m_pimpl = nullptr;
         };

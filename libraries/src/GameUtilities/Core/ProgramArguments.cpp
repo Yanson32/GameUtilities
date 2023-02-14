@@ -28,6 +28,8 @@
 #include <iostream>
 #include <vector>
 #include <stdexcept>
+#include <cctype>
+
 namespace GU 
 {
     namespace Core 
@@ -247,9 +249,15 @@ namespace GU
                     }
 
                 }
-                else
+                else if(isPositional(key))
                 {
                     m_pimpl->m_positionalArgs.push_back(key);
+                }
+                else
+                {
+                    std::string msg = "Unable to parse program arguments ";
+                    msg += key;
+                    throw std::runtime_error(msg); 
                 }
             } 
         }
@@ -409,9 +417,49 @@ namespace GU
             if(key.find('=') != std::string::npos)
                 return false;
 
+            for(std::size_t i = 1; i < key.size(); ++i)
+            {
+                if(!isalpha(key[i]))
+                    return false;
+            }
+
             return true;
         }
 
+        bool ProgramArguments::isPositional(const std::string &key) const
+        {
+
+            //Make sure the key was not supposed to be a long option
+            if(key.size() > 2)
+            {
+                if(key[0] == '-' || key[1] == '-')
+                    return false;
+            }
+
+            //Make sure the key was not supposed to be a short option
+            if(key.size() > 1)
+            {
+                if(key[0] == '-')
+                    return false;
+            } 
+
+            for(std::size_t i = 0; i < key.size(); ++i)
+            {
+                if(isalpha(key[i]))
+                    continue;
+
+                if(isdigit(key[i]))
+                    continue;
+
+                if(key[i] == '_')
+                    continue;
+
+                return false;
+            }
+
+
+            return true; 
+        }
 
         /***********************************************************************//**
         *   @brief  Destructor. 
