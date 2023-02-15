@@ -32,10 +32,16 @@ namespace GU
     namespace Core 
     {
 
+        struct ArgumentData
+        {
+            std::shared_ptr<void> data; 
+            std::string value;
+        };
+
         class ProgramArguments
         {
             public:
-                typedef void(*Callback)(std::shared_ptr<void>);
+                typedef void(*Callback)(ArgumentData);
 
                 /***********************************************************************//**
                 *   @brief  Constructor
@@ -62,7 +68,7 @@ namespace GU
                 *           and the second parameter a void shared_ptr of user defined data.
                 *   @return True if the option wass added and false otherwise.
                 ***************************************************************************/
-                bool add(const std::string &key, const char &shortKey, std::pair<Callback, std::shared_ptr<void>> data);
+                bool add(const std::string &key, const char &shortKey, std::pair<Callback, ArgumentData> data);
 
     
                 /***********************************************************************//**
@@ -160,6 +166,8 @@ namespace GU
                 class Impl;
                 Impl *m_pimpl = nullptr;
         };
+
+    
     }
 }
 #endif

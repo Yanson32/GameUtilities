@@ -35,8 +35,6 @@ namespace GU
     namespace Core 
     {
 
-        typedef std::pair<const std::string, const char> keytype;
-
         class ProgramArguments::Impl
         {
             public:
@@ -52,14 +50,12 @@ namespace GU
                 ///vector of long program options
                 std::vector<std::string> m_longArgs;
 
-                ///vector of key value pair program options 
-                std::vector<std::pair<std::string, std::string>> m_keyValueArgs;
 
                 ///vector of short program options
                 std::vector<char> m_shortArgs;
 
                 ///Vector of data associated with each key
-                std::vector<std::pair<ProgramArguments::Callback, std::shared_ptr<void>>> m_keyData;
+                std::vector<std::pair<ProgramArguments::Callback, ArgumentData>> m_keyData;
                
                  
                 /***********************************************************************//**
@@ -140,7 +136,7 @@ namespace GU
         *           and the second parameter a void shared_ptr of user defined data.
         *   @return True if the option wass added and false otherwise.
         ***************************************************************************/
-        bool ProgramArguments::add(const std::string &key, const char &shortKey, std::pair<Callback, std::shared_ptr<void>> data)
+        bool ProgramArguments::add(const std::string &key, const char &shortKey, std::pair<Callback, ArgumentData> data)
         {
             //m_pimpl cannot be a nullptr 
             assert(m_pimpl != nullptr);
@@ -183,9 +179,10 @@ namespace GU
         ***************************************************************************/
         bool ProgramArguments::add(const std::string &key, const char &shortKey, Callback callback)
         {
-            std::pair<Callback, std::shared_ptr<void>> data;
+            ArgumentData argument;
+            std::pair<Callback, ArgumentData> data;
             data.first = callback;
-            data.second = nullptr;
+            data.second.data = nullptr;
             
             return add(key, shortKey, data);
 
@@ -222,15 +219,15 @@ namespace GU
                     if(isKeyValue(key))
                     {
 
-                        std::cout << "is key value " << key << std::endl;
  
                         if(key.find_first_of('=') + 1 >= key.size())
                             throw std::runtime_error("Key value pair is not valid");
              
                         std::string tempKey = key.substr(0, key.find_first_of('=') + 1);
                         std::string tempValue = key.substr(key.find_first_of('=') + 1, key.size());
-                        std::pair<std::string, std::string> val(tempKey, tempValue); 
-                        m_pimpl->m_keyValueArgs.push_back(val);
+                        m_pimpl->m_longArgs.push_back(tempKey);
+                        std::size_t index = m_pimpl->m_keyMap[tempKey];
+                        m_pimpl->m_keyData[index].second.value = tempValue;
                         
                     }
                     else
@@ -283,24 +280,6 @@ namespace GU
                 }
             }
 
-            
-            //Handle key value pairs
-            for(std::size_t i = 0; i < m_pimpl->m_keyValueArgs.size(); ++i)
-            {
-               
-                if(m_pimpl->keyExists(m_pimpl->m_keyValueArgs[i].first))            
-                {
-                    
-                    std::size_t index = m_pimpl->m_keyMap[m_pimpl->m_keyValueArgs[i].first];
-                    m_pimpl->m_keyData[index].first(m_pimpl->m_keyData[index].second);
-                }
-                else
-                {
-                    throw std::runtime_error("Invalid key value pair");
-                }
-                
-            }
-           
             
             //Handle short arguments 
             for(std::size_t i = 0; i < m_pimpl->m_shortArgs.size(); ++i)

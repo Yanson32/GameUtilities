@@ -9,13 +9,13 @@ struct Data
     
 };
 
-void cool(std::shared_ptr<void> params)
+void cool(GU::Core::ArgumentData params)
 {
 
-    if(params == nullptr)
+    if(params.data == nullptr)
         throw std::runtime_error("Parameter cannot be null"); 
     
-    std::shared_ptr<Data> data = std::static_pointer_cast<Data>(params);
+    std::shared_ptr<Data> data = std::static_pointer_cast<Data>(params.data);
    
     if(data == nullptr)
         throw std::runtime_error("Could not cast void pointer");
@@ -29,7 +29,7 @@ void cool(std::shared_ptr<void> params)
     
 }
 
-void help(std::shared_ptr<void> params)
+void help(GU::Core::ArgumentData params)
 {
     UNUSED(params);
     std::cout << "--help            Display help text" << std::endl;
@@ -38,9 +38,9 @@ void help(std::shared_ptr<void> params)
     std::cout << "--log_file=, -l   Sets the log file path" << std::endl;
 }
 
-void log(std::shared_ptr<void> params)
+void log(GU::Core::ArgumentData params)
 {
-    std::cout << "Log File" << std::endl;
+    std::cout << "Log file is " << params.value << std::endl;
 }
 
 int main(int argc, char **argv)
@@ -53,17 +53,17 @@ int main(int argc, char **argv)
 
     
     //Add version option
-    if(!arguments.add("--version", 'v', [](std::shared_ptr<void> data = nullptr){ 
-        UNUSED(data);
+    if(!arguments.add("--version", 'v', [](GU::Core::ArgumentData params){ 
+        UNUSED(params);
         std::cout << "version = 0.0.0.1" << std::endl;
     }))
         throw std::runtime_error("Error: Unable to add key");
    
     std::shared_ptr<Data> data(new Data());
    
-    std::pair<GU::Core::ProgramArguments::Callback, std::shared_ptr<void>> dataPair;
+    std::pair<GU::Core::ProgramArguments::Callback, GU::Core::ArgumentData> dataPair;
     dataPair.first = cool;
-    dataPair.second = data; 
+    dataPair.second.data = data; 
     
     //Add cool option
     if(!arguments.add("--cool", 'c', dataPair))
