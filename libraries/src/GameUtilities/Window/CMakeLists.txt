@@ -1,7 +1,10 @@
 set(FILES   "${CMAKE_CURRENT_SOURCE_DIR}/Window.cpp"
             "${CMAKE_CURRENT_SOURCE_DIR}/WindowBase.cpp"
-            "${CMAKE_CURRENT_SOURCE_DIR}/WindowX11.cpp"
 )
+
+if(UNIX)
+    list(APPEND FILES "${CMAKE_CURRENT_SOURCE_DIR}/WindowX11.cpp")
+endif()
 
 set(RELATIVE_PATH "src/GameUtilities/Window")
 
