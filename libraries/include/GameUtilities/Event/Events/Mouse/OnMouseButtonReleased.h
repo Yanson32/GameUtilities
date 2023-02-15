@@ -25,7 +25,7 @@
 * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ***************************************************************************/
 #include "event_export.h"
-#include "GameUtilities/Event/Event.h"
+#include "GameUtilities/Event/Events/Event.h"
 #include <Math/Vector2.h>
 
 namespace GU

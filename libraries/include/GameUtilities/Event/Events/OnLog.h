@@ -25,7 +25,7 @@
 ***************************************************************************/
 #include "event_export.h"
 #include <memory>
-#include "GameUtilities/Event/Event.h"
+#include "GameUtilities/Event/Events/Event.h"
 #include "GameUtilities/Log/LogType.h"
 #include "GameUtilities/Core/String.h"
 

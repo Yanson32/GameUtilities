@@ -24,7 +24,7 @@
 #ifndef GAMEUTILITIES_ONCHANGESTATE_H
 #define GAMEUTILITIES_ONCHANGESTATE_H
 #include "event_export.h"
-#include "GameUtilities/Event/Event.h"
+#include "GameUtilities/Event/Events/Event.h"
 
 namespace GU
 {

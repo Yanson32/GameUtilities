@@ -2,7 +2,7 @@
 #define GAMEUTILITIES_EVENT_LISTENER_H
 #include "event_export.h"
 #include <memory>
-#include "GameUtilities/Event/Event.h"
+#include "GameUtilities/Event/Events/Event.h"
 
 namespace GU
 {
