@@ -69,6 +69,17 @@ namespace GU
                 *   @return True if the option wass added and false otherwise.
                 ***************************************************************************/
                 bool add(const std::string &key, const char &shortKey, std::pair<Callback, ArgumentData> data);
+                
+
+                /***********************************************************************//**
+                *   @brief  This method adds a program option.
+                *   @param  key is the program long option it should begin with -- eg --help.
+                *   @param  callback is a function pointer that will be called when either
+                *           the long or short option is passed to the program and the run 
+                *           method is called. 
+                *   @return True if the option wass added and false otherwise.
+                ***************************************************************************/
+                bool add(const std::string &key, Callback callback);
 
     
                 /***********************************************************************//**

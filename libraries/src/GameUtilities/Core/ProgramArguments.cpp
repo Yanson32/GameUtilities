@@ -158,11 +158,34 @@ namespace GU
 
             //Add short key if the null character is not passed
             if(shortKey != '\0')
-                if(!m_pimpl->shortKeyExists(shortKey))
-                    m_pimpl->m_shortKeyMap.insert(std::make_pair(shortKey, index));
-           
+            {
+                if(isalpha(shortKey))
+                {
+                    if(!m_pimpl->shortKeyExists(shortKey))
+                        m_pimpl->m_shortKeyMap.insert(std::make_pair(shortKey, index));
+                }
+                else
+                {
+                    std::cout << "-" << shortKey << " Short key must be a letter" << std::endl;
+                    return false; 
+                } 
+            }
 
             return m_pimpl->m_keyMap.insert(std::make_pair(key, index)).second;
+        }
+        
+
+        /***********************************************************************//**
+        *   @brief  This method adds a program option.
+        *   @param  key is the program long option it should begin with -- eg --help.
+        *   @param  callback is a function pointer that will be called when either
+        *           the long or short option is passed to the program and the run 
+        *           method is called. 
+        *   @return True if the option wass added and false otherwise.
+        ***************************************************************************/
+        bool ProgramArguments::add(const std::string &key, Callback data)
+        {
+            return add(key, '\0', data);
         }
 
         

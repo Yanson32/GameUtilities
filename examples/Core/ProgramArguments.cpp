@@ -70,7 +70,7 @@ int main(int argc, char **argv)
         throw std::runtime_error("Error: Unable to add key");
     
     //Add log file 
-    if(!arguments.add("--log_file=", 'l', log))
+    if(!arguments.add("--log_file=", log))
         throw std::runtime_error("Error: Unable to add key");
     
     arguments.parse(argc, argv);
