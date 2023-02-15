@@ -59,6 +59,7 @@ target_link_libraries("Log" PUBLIC "Core")
 #Define dependancies for the Event library
 target_link_libraries("Event" PUBLIC "Core")
 target_link_libraries("Event" PUBLIC "Log")
+target_link_libraries("Event" PUBLIC Math::Math)
 
 #Define the Window library dependencies
 find_package(X11)
