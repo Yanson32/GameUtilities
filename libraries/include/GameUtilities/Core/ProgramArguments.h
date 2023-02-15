@@ -146,6 +146,23 @@ namespace GU
                 
 
                 /***********************************************************************//**
+                *   @brief  This method returns the number of keys passed to the program.
+                *           a key being a string that starts with a -- or a -.
+                *   @return The number of keys passed to the program.
+                ***************************************************************************/
+                std::size_t keyCount() const;
+                
+
+                /***********************************************************************//**
+                *   @brief  This method returns a key that was passed to the program.
+                *           a key being a string that starts with a -- or a -.
+                *   @param  i the index of the program argument.
+                *   @return A pair containing the key value data. 
+                ***************************************************************************/
+                std::pair<std::string, ArgumentData> getKey(const std::size_t i) const;
+                
+
+                /***********************************************************************//**
                 *   @brief  Destructor. 
                 ***************************************************************************/
                 virtual ~ProgramArguments();

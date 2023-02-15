@@ -29,6 +29,7 @@
 #include <vector>
 #include <stdexcept>
 #include <cctype>
+#include <iterator>
 
 namespace GU 
 {
@@ -41,18 +42,12 @@ namespace GU
                 ///Map of keys
                 std::map<const std::string, const std::size_t> m_keyMap; 
            
-                ///Map of short keys 
-                std::map<const char, const std::size_t> m_shortKeyMap; 
-
                 ///vector of positional arguments
                 std::vector<std::string> m_positionalArgs;
 
                 ///vector of long program options
-                std::vector<std::string> m_longArgs;
+                std::vector<std::string> m_keyArgs;
 
-
-                ///vector of short program options
-                std::vector<char> m_shortArgs;
 
                 ///Vector of data associated with each key
                 std::vector<std::pair<ProgramArguments::Callback, ArgumentData>> m_keyData;
@@ -64,15 +59,9 @@ namespace GU
                 *   @return True if the key is in the key map and False otherwise 
                 ***************************************************************************/
                 bool keyExists(const std::string key) const;
+                bool keyExists(const char key) const;
                 
 
-                /***********************************************************************//**
-                *   @brief  This method returns true if the short key is in the correct key
-                *           map. 
-                *   @return True if the key is in the key map and False otherwise 
-                ***************************************************************************/
-                bool shortKeyExists(const char key) const;
-                
         };
 
         
@@ -83,25 +72,18 @@ namespace GU
         ***************************************************************************/
         bool ProgramArguments::Impl::keyExists(const std::string key) const
         {
-           
             if(m_keyMap.find(key) == m_keyMap.end())
                 return false;
+
             return true;
         }
 
-        
-        /***********************************************************************//**
-        *   @brief  This method returns true if the short key is in the correct key
-        *           map. 
-        *   @return True if the key is in the key map and False otherwise 
-        ***************************************************************************/
-        bool ProgramArguments::Impl::shortKeyExists(const char key) const
+        bool ProgramArguments::Impl::keyExists(const char key) const
         {
-            if(m_shortKeyMap.find(key) == m_shortKeyMap.end())
-                return false;
-            return true;
+            std::string temp;
+            temp.push_back(key);
+            return keyExists(temp);
         }
-
         
         /***********************************************************************//**
         *   @brief  Constructor
@@ -161,8 +143,10 @@ namespace GU
             {
                 if(isalpha(shortKey))
                 {
-                    if(!m_pimpl->shortKeyExists(shortKey))
-                        m_pimpl->m_shortKeyMap.insert(std::make_pair(shortKey, index));
+                    std::string temp("-");
+                    temp.push_back(shortKey);
+                    if(!m_pimpl->keyExists(temp))
+                        m_pimpl->m_keyMap.insert(std::make_pair(temp, index));
                 }
                 else
                 {
@@ -248,14 +232,14 @@ namespace GU
              
                         std::string tempKey = key.substr(0, key.find_first_of('=') + 1);
                         std::string tempValue = key.substr(key.find_first_of('=') + 1, key.size());
-                        m_pimpl->m_longArgs.push_back(tempKey);
+                        m_pimpl->m_keyArgs.push_back(tempKey);
                         std::size_t index = m_pimpl->m_keyMap[tempKey];
                         m_pimpl->m_keyData[index].second.value = tempValue;
                         
                     }
                     else
                     {
-                        m_pimpl->m_longArgs.push_back(key);
+                        m_pimpl->m_keyArgs.push_back(key);
                     }
                     
                 }
@@ -265,7 +249,9 @@ namespace GU
                     
                     for(std::size_t i = 0; i < key.size(); ++i)
                     {
-                        m_pimpl->m_shortArgs.push_back(key[i]); 
+                        std::string temp("-");
+                        temp += key[i];
+                        m_pimpl->m_keyArgs.push_back(temp); 
                     }
 
                 }
@@ -289,36 +275,64 @@ namespace GU
         ***************************************************************************/
         void ProgramArguments::run() const
         {
+
+
             //Handle long arguments
-            for(std::size_t i = 0; i < m_pimpl->m_longArgs.size(); ++i)
+            for(std::size_t i = 0; i < m_pimpl->m_keyArgs.size(); ++i)
             {
-                if(m_pimpl->keyExists(m_pimpl->m_longArgs[i]))
+                if(m_pimpl->keyExists(m_pimpl->m_keyArgs[i]))
                 {
-                    std::size_t index = m_pimpl->m_keyMap[m_pimpl->m_longArgs[i]];
+                    std::size_t index = m_pimpl->m_keyMap[m_pimpl->m_keyArgs[i]];
                     m_pimpl->m_keyData[index].first(m_pimpl->m_keyData[index].second);
                 }
                 else
                 {
-                    throw std::runtime_error("Invalid long key");
+                    if(isShortKey(m_pimpl->m_keyArgs[i]))
+                    {
+                        if(m_pimpl->keyExists(m_pimpl->m_keyArgs[i]))
+                        {
+                            std::string shortKey = m_pimpl->m_keyArgs[i];
+                            std::size_t index = m_pimpl->m_keyMap[shortKey];
+                            m_pimpl->m_keyData[index].first(m_pimpl->m_keyData[index].second);
+                            break;
+                        }
+                    }
+                    throw std::runtime_error(m_pimpl->m_keyArgs[i] + " is not a valid key");
                 }
             }
 
-            
-            //Handle short arguments 
-            for(std::size_t i = 0; i < m_pimpl->m_shortArgs.size(); ++i)
-            {
-                if(m_pimpl->shortKeyExists(m_pimpl->m_shortArgs[i]))
-                {
-                    std::size_t index = m_pimpl->m_shortKeyMap[m_pimpl->m_shortArgs[i]];
-                    m_pimpl->m_keyData[index].first(m_pimpl->m_keyData[index].second);
-                }
-                else
-                {
-                    throw std::runtime_error("Invalid Short Key");
-                }
-            }
         }
 
+        
+        /***********************************************************************//**
+        *   @brief  This method returns the number of keys passed to the program.
+        *           a key being a string that starts with a -- or a -.
+        *   @return The number of keys passed to the program.
+        ***************************************************************************/
+        std::size_t ProgramArguments::keyCount() const
+        {
+            return m_pimpl->m_keyArgs.size();
+        }
+
+
+        /***********************************************************************//**
+        *   @brief  This method returns a key that was passed to the program.
+        *           a key being a string that starts with a -- or a -.
+        *   @param  i the index of the program argument.
+        *   @return A pair containing the key value data. 
+        ***************************************************************************/
+        std::pair<std::string, ArgumentData> ProgramArguments::getKey(const std::size_t i) const
+        {
+            if(i >= m_pimpl->m_keyArgs.size())
+                throw std::runtime_error("Invalid Index");
+            
+            std::string key = m_pimpl->m_keyArgs[i];
+            ArgumentData arg = m_pimpl->m_keyData[m_pimpl->m_keyMap[key]].second;
+            std::pair<std::string, ArgumentData> data(key, arg);
+
+            return data; 
+            
+        }
         
         /***********************************************************************//**
         *   @brief  This method returns the number of positional arguments

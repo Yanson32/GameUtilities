@@ -1,15 +1,16 @@
 #include "GameUtilities/Core/ProgramArguments.h"
 #include "GameUtilities/Core/Macros.h"
 #include <iostream>
+#include <iomanip>
 
 struct Data
 {
-    std::string item_1 = "This is a cool item";
-    bool cool = true;
+    std::string item_1 = "This is user defined data item 1";
+    bool userbool = true;
     
 };
 
-void cool(GU::Core::ArgumentData params)
+void userData(GU::Core::ArgumentData params)
 {
 
     if(params.data == nullptr)
@@ -22,10 +23,10 @@ void cool(GU::Core::ArgumentData params)
     
     std::cout << data->item_1 << std::endl;
     
-    if(data->cool)
-        std::cout << "Do cool thing" << std::endl;
+    if(data->userbool)
+        std::cout << "Do user defined thing" << std::endl;
     else
-        std::cout << "Dont do cool thing" << std::endl;
+        std::cout << "Dont do user defined thing" << std::endl;
     
 }
 
@@ -34,7 +35,7 @@ void help(GU::Core::ArgumentData params)
     UNUSED(params);
     std::cout << "--help            Display help text" << std::endl;
     std::cout << "--version, -v     Display program version" << std::endl;
-    std::cout << "--cool, -c        Do somthing cool" << std::endl;
+    std::cout << "--user, -u        Do some user defined thing" << std::endl;
     std::cout << "--log_file=, -l   Sets the log file path" << std::endl;
 }
 
@@ -58,15 +59,17 @@ int main(int argc, char **argv)
         std::cout << "version = 0.0.0.1" << std::endl;
     }))
         throw std::runtime_error("Error: Unable to add key");
-   
+  
+
+    //User data 
     std::shared_ptr<Data> data(new Data());
    
     std::pair<GU::Core::ProgramArguments::Callback, GU::Core::ArgumentData> dataPair;
-    dataPair.first = cool;
+    dataPair.first = userData;
     dataPair.second.data = data; 
     
-    //Add cool option
-    if(!arguments.add("--cool", 'c', dataPair))
+    //Add user defined option
+    if(!arguments.add("--user", 'u', dataPair))
         throw std::runtime_error("Error: Unable to add key");
     
     //Add log file 
@@ -75,12 +78,35 @@ int main(int argc, char **argv)
     
     arguments.parse(argc, argv);
     
-    //Positional Argumnets
-    for(std::size_t i = 0; i < arguments.positionalSize(); ++i)
-        std::cout << "Positional Arguments [" << i << "] " << arguments[i] << std::endl;
-
     //Execute callback functions
     arguments.run();
+
+
+    //Loop over all keys
+    if(arguments.keyCount() > 0 )
+    {
+        std::cout << "\nLoop over all the keys" << std::endl;    
+
+        for(std::size_t i = 0; i < arguments.keyCount(); ++i)
+        {
+            std::pair<std::string, GU::Core::ArgumentData> data = arguments.getKey(i);
+            std::cout << "Key = " << std::setw(20) << std::left << data.first;
+            if(!data.second.value.empty())
+                std::cout << " value = " << data.second.value << std::endl;
+            else
+                std::cout << std::endl;
+        }
     
+    }
+
+
+    //Positional Argumnets
+    if(arguments.positionalSize() > 0)
+    {
+        std::cout << "\nLoop over all positional arguments" << std::endl;    
+
+        for(std::size_t i = 0; i < arguments.positionalSize(); ++i)
+            std::cout << "Positional Arguments [" << i << "] " << arguments[i] << std::endl;
+    }
     return 0;
 }
