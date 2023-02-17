@@ -180,6 +180,28 @@ namespace GU
           return this->pimpl->m_data >= data.pimpl->m_data;
         }
 
+        std::string::iterator String::begin() noexcept
+        {
+            return std::begin(this->pimpl->m_data);
+        }
+
+
+        std::string::const_iterator String::begin() const noexcept
+        {
+            return std::begin(this->pimpl->m_data);
+        }
+        
+
+        std::string::iterator String::end() noexcept
+        {
+            return std::end(this->pimpl->m_data);
+        }
+
+
+        std::string::const_iterator String::end() const noexcept
+        {
+            return std::end(this->pimpl->m_data);
+        }
         
         /***************************************************************//**
         * @brief  Not equal to operator

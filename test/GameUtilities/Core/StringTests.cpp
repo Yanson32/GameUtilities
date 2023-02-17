@@ -44,3 +44,17 @@ TEST_CASE( "String class not equal operator", "[String::Unequal]" )
     REQUIRE( test1  != test3);
 }
 
+TEST_CASE( "String class foreach loop", "[String::Foreach]" ) 
+{
+    GU::Core::String test("123456");
+
+    int count = 1;
+
+    for(auto &element: test)
+    {
+        REQUIRE(element == static_cast<char>(count + '0'));
+
+        count += 1;
+    }
+}
+

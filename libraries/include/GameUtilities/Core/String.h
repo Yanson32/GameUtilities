@@ -26,6 +26,7 @@
 #include <cstring>
 #include "core_export.h"
 #include <string>
+#include <iterator>
 
 namespace GU
 {
@@ -153,6 +154,12 @@ namespace GU
                 *******************************************************************/
                 std::size_t size() const;
 
+                std::string::iterator begin() noexcept;
+
+
+                std::string::const_iterator begin() const noexcept;
+                std::string::iterator end() noexcept;
+                std::string::const_iterator end() const noexcept;
 
                 /***************************************************************//**
                 * @brief This method returns the number of characters in the
