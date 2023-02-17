@@ -27,6 +27,7 @@
 #include "core_export.h"
 #include <string>
 #include <iterator>
+#include <initializer_list>
 
 namespace GU
 {
@@ -466,8 +467,8 @@ namespace GU
                 * @return A reference to the updated string.
                 ******************************************************************/
                 String& erase (size_t pos = 0, size_t len = npos);
-                //iterator erase (const_iterator p);
-                //iterator erase (const_iterator first, const_iterator last);
+                std::string::iterator erase (std::string::const_iterator p);
+                std::string::iterator erase (std::string::const_iterator first, std::string::const_iterator last);
 
 
                 /**************************************************************//**
@@ -480,7 +481,7 @@ namespace GU
                 String& replace (size_t pos, size_t len, const std::string& str);
 
 
-                //String& replace (const_iterator i1, const_iterator i2, const string& str);
+                String& replace (std::string::const_iterator i1, std::string::const_iterator i2, const std::string& str);
 
 
                 /**************************************************************//**
@@ -504,7 +505,7 @@ namespace GU
                 * @return A reference to the updated string.
                 ******************************************************************/
                 String& replace (size_t pos, size_t len, const char* s);
-                //String& replace (const_iterator i1, const_iterator i2, const char* s);
+                String& replace (std::string::const_iterator i1, std::string::const_iterator i2, const char* s);
 
 
                 /**********************************************************//**
@@ -517,7 +518,7 @@ namespace GU
                 * @return A reference to the updated string.
                 **************************************************************/
                 String& replace (size_t pos, size_t len, const char* s, size_t n);
-                //String& replace (const_iterator i1, const_iterator i2, const char* s, size_t n);
+                String& replace (std::string::const_iterator i1, std::string::const_iterator i2, const char* s, size_t n);
 
 
                 /**********************************************************//**
@@ -531,11 +532,13 @@ namespace GU
                 * @return A reference to the updated string.
                 **************************************************************/
                 String& replace (size_t pos, size_t len, size_t n, char c);
-                //String& replace (const_iterator i1, const_iterator i2, size_t n, char c);
-                //template <class InputIterator>
-                //String& replace (const_iterator i1, const_iterator i2,
-                //                   InputIterator first, InputIterator last);
-                //String& replace (const_iterator i1, const_iterator i2, initializer_list<char> il);
+                String& replace (std::string::const_iterator i1, std::string::const_iterator i2, size_t n, char c);
+                template <class InputIterator>
+                String& replace (std::string::const_iterator i1, 
+                                std::string::const_iterator i2, 
+                                InputIterator first, 
+                                InputIterator last);
+                String& replace (std::string::const_iterator i1, std::string::const_iterator i2, std::initializer_list<char> il);
 
 
                 /**********************************************************//**
@@ -557,7 +560,7 @@ namespace GU
                 * @return A pointer to the current string of data.
                 **************************************************************/
                 const char* data() const noexcept;
-                //allocator_type get_allocator() const noexcept;
+                std::string::allocator_type get_allocator() const noexcept;
 
 
                 /**********************************************************//**
@@ -592,7 +595,7 @@ namespace GU
                 *         in the current string or npos;
                 **************************************************************/
                 size_t find (const char* s, size_t pos = 0) const;
-                //size_t find (const char* s, size_t pos, size_type n) const;
+                size_t find (const char* s, size_t pos, std::string::size_type n) const;
 
 
                 /**********************************************************//**

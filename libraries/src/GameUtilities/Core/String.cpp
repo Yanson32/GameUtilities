@@ -148,8 +148,7 @@ namespace GU
         bool String::operator==(const char* data) const
         {
           assert(pimpl != nullptr);
-          std::cout << "const char String equality" << std::endl;
-          return this->pimpl->m_data.c_str() == data;
+          return this->pimpl->m_data == String(data);
         }
 
 
@@ -764,16 +763,18 @@ namespace GU
         }
 
 
-        //iterator String::erase (const_iterator p)
-        //{
+        std::string::iterator String::erase (std::string::const_iterator p)
+        {
+            assert(pimpl != nullptr);
+            return pimpl->m_data.erase(p);             
+        }
 
-        //}
 
-
-        //iterator String::erase (const_iterator first, const_iterator last)
-        //{
-
-        //}
+        std::string::iterator String::erase (std::string::const_iterator first, std::string::const_iterator last)
+        {
+            assert(pimpl != nullptr);
+            return pimpl->m_data.erase(first, last);             
+        }
 
 
         /**************************************************************//**
@@ -785,16 +786,19 @@ namespace GU
         ******************************************************************/
         String& String::replace (size_t pos, size_t len, const std::string& str)
         {
-          assert(pimpl != nullptr);
-          pimpl->m_data.replace(pos, len, str);
-          return *this;
+            assert(pimpl != nullptr);
+            pimpl->m_data.replace(pos, len, str);
+            return *this;
         }
 
 
-        //String& String::replace (const_iterator i1, const_iterator i2, const string& str)
-        //{
+        String& String::replace (std::string::const_iterator i1, std::string::const_iterator i2, const std::string& str)
+        {
+            assert(pimpl != nullptr);
+            pimpl->m_data.replace(i1, i2, str);
+            return *this;
 
-        //}
+        }
         
 
 
@@ -832,10 +836,12 @@ namespace GU
         }
 
 
-        //String& String::replace (const_iterator i1, const_iterator i2, const char* s)
-        //{
-
-        //}
+        String& String::replace (std::string::const_iterator i1, std::string::const_iterator i2, const char* s)
+        {
+          assert(pimpl != nullptr);
+          pimpl->m_data.replace(i1, i2, s);
+          return *this;
+        }
 
 
         /**********************************************************//**
@@ -855,10 +861,12 @@ namespace GU
         }
 
 
-        //String& String::replace (const_iterator i1, const_iterator i2, const char* s, size_t n)
-        //{
-
-      //  }
+        String& String::replace (std::string::const_iterator i1, std::string::const_iterator i2, const char* s, size_t n)
+        {
+          assert(pimpl != nullptr);
+          pimpl->m_data.replace(i1, i2, s, n);
+          return *this;
+        }
 
         /**********************************************************//**
         * @brief  Replace len characters starting at pos with n
@@ -872,28 +880,37 @@ namespace GU
         **************************************************************/
         String& String::replace (size_t pos, size_t len, size_t n, char c)
         {
-          assert(pimpl != nullptr);
-          pimpl->m_data.replace(pos, len, n, c);
-          return *this;
+            assert(pimpl != nullptr);
+            pimpl->m_data.replace(pos, len, n, c);
+            return *this;
         }
 
 
-        //String& String::replace (const_iterator i1, const_iterator i2, size_t n, char c)
-        //{
+        String& String::replace (std::string::const_iterator i1, std::string::const_iterator i2, size_t n, char c)
+        {
+            assert(pimpl != nullptr);
+            pimpl->m_data.replace(i1, i2, n, c);
+            return *this;
+        }
 
-        //}
 
+        template <class InputIterator>
+        String& String::replace (std::string::const_iterator i1, 
+                                std::string::const_iterator i2, 
+                                InputIterator first, 
+                                InputIterator last)
+        {
+            assert(pimpl != nullptr);
+            pimpl->m_data.replace(i1, i2, first, last);
+            return *this;
+        }
 
-        //template <class InputIterator>
-        //String& String::replace (const_iterator i1, const_iterator i2, InputIterator first, InputIterator last)
-      //  {
-
-        //}
-
-        //String& String::replace (const_iterator i1, const_iterator i2, initializer_list<char> il)
-        //{
-
-        //}
+        String& String::replace (std::string::const_iterator i1, std::string::const_iterator i2, std::initializer_list<char> il)
+        {
+            assert(pimpl != nullptr);
+            pimpl->m_data.replace(i1, i2, il);
+            return *this;
+        }
 
 
         /**********************************************************//**
@@ -929,10 +946,11 @@ namespace GU
         }
 
 
-        //allocator_type String::get_allocator() const noexcept
-        //{
-
-        //}
+        std::string::allocator_type String::get_allocator() const noexcept
+        {
+          assert(pimpl != nullptr);
+          return pimpl->m_data.get_allocator();
+        }
 
 
         /**********************************************************//**
@@ -981,10 +999,11 @@ namespace GU
         }
 
 
-        //size_t String::find (const char* s, size_t pos, size_type n) const
-        //{
-
-        //}
+        size_t String::find (const char* s, size_t pos, std::string::size_type n) const
+        {
+          assert(pimpl != nullptr);
+          return pimpl->m_data.find(s, pos, n);
+        }
 
 
         /**********************************************************//**

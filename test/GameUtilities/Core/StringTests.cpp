@@ -11,25 +11,25 @@ TEST_CASE( "String class default constructor", "[String::DefaultConstructor]" )
 TEST_CASE( "String class single argument constructor", "[String::SingleConstructor]" ) 
 {
     GU::Core::String test1("Hello");
-    REQUIRE( test1  == GU::Core::String("Hello"));
+    REQUIRE( test1.compare(GU::Core::String("Hello")) == 0);
 }
 
 TEST_CASE( "String class copy constructor", "[String::Copy]" ) 
 {
     GU::Core::String test1("Hello");
     GU::Core::String test2 = test1;
-    REQUIRE( test1  == GU::Core::String("Hello"));
+    REQUIRE( test1.compare(GU::Core::String("Hello")) == 0);
 }
 
 TEST_CASE( "String class equality operator", "[String::Equality]" ) 
 {
     GU::Core::String test1("Hello");
     GU::Core::String test2("Hello");
-    REQUIRE( test1  == GU::Core::String("Hello"));
     REQUIRE( test1  == test2);
 
-    const char* const test3 = "Hello";
-    REQUIRE( test1  == test3);
+    const char* test3 = "Hello";
+    REQUIRE(test1 == test3);
+
 }
 
 TEST_CASE( "String class not equal operator", "[String::Unequal]" ) 
@@ -141,5 +141,21 @@ TEST_CASE( "String class reverse fol loop", "[String::ReverseForeach]" )
         count -= 1;
 
     }
+}
+
+TEST_CASE( "String class erase method", "[String::erase]" ) 
+{
+    GU::Core::String test("123456");
+
+    test.erase(0, 1);
+
+    REQUIRE(test.compare("23456") == 0);
+
+
+    GU::Core::String test2("123456");
+
+    test2.erase(3);
+    REQUIRE(test2.compare("123") == 0);
+
 }
 
