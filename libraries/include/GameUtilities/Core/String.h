@@ -155,12 +155,17 @@ namespace GU
                 std::size_t size() const;
 
                 std::string::iterator begin() noexcept;
-
-
                 std::string::const_iterator begin() const noexcept;
+                std::string::const_iterator cbegin() const noexcept;
+                std::string::reverse_iterator rbegin() noexcept;
+                std::string::const_reverse_iterator rbegin() const noexcept;
+                std::string::const_reverse_iterator crbegin() const noexcept;
                 std::string::iterator end() noexcept;
                 std::string::const_iterator end() const noexcept;
-
+                std::string::const_iterator cend() const noexcept;
+                std::string::const_reverse_iterator crend() const noexcept;
+                std::string::reverse_iterator rend() noexcept;
+                std::string::const_reverse_iterator rend() const noexcept;
                 /***************************************************************//**
                 * @brief This method returns the number of characters in the
                 *         string.

@@ -191,6 +191,28 @@ namespace GU
             return std::begin(this->pimpl->m_data);
         }
         
+        std::string::reverse_iterator String::rbegin() noexcept
+        {
+            return std::rbegin(this->pimpl->m_data);
+        }
+
+
+        std::string::const_reverse_iterator String::rbegin() const noexcept
+        {
+            return std::rbegin(this->pimpl->m_data);
+        }
+        
+    
+        std::string::const_iterator String::cbegin() const noexcept
+        {
+            return std::cbegin(this->pimpl->m_data);
+        }
+
+        std::string::const_reverse_iterator String::crbegin() const noexcept
+        {
+            return std::crbegin(this->pimpl->m_data);
+        }
+
 
         std::string::iterator String::end() noexcept
         {
@@ -203,6 +225,33 @@ namespace GU
             return std::end(this->pimpl->m_data);
         }
         
+
+        std::string::const_iterator String::cend() const noexcept
+        {
+            return std::cend(this->pimpl->m_data);
+        }
+
+
+        std::string::reverse_iterator String::rend() noexcept
+        {
+            return std::rend(this->pimpl->m_data);
+        }
+
+
+        std::string::const_reverse_iterator String::rend() const noexcept
+        {
+            return std::rend(this->pimpl->m_data);
+        }
+        
+        std::string::const_reverse_iterator String::crend() const noexcept
+        {
+            return std::crend(this->pimpl->m_data);
+        }
+
+
+        
+
+
         /***************************************************************//**
         * @brief  Not equal to operator
         * @param  data is a String object that will be checked to see if 
