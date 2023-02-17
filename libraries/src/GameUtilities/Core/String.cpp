@@ -138,10 +138,18 @@ namespace GU
         * @param  data is a String object to be checked for equality. 
         * @return True if this object and the passed object are equal 
         *******************************************************************/
-        bool String::operator==(const String &data)
+        bool String::operator==(const String &data) const
         {
           assert(pimpl != nullptr);
           return this->pimpl->m_data == data.pimpl->m_data;
+        }
+
+
+        bool String::operator==(const char* data) const
+        {
+          assert(pimpl != nullptr);
+          std::cout << "const char String equality" << std::endl;
+          return this->pimpl->m_data.c_str() == data;
         }
 
 
@@ -152,7 +160,7 @@ namespace GU
         * @return True if data is less than or equal to the this object
         *         and false otherwise. 
         *******************************************************************/
-        bool String::operator<=(const String &data)
+        bool String::operator<=(const String &data) const
         {
           assert(pimpl != nullptr);
           return this->pimpl->m_data <= data.pimpl->m_data;
@@ -166,7 +174,7 @@ namespace GU
         * @return True if data is greater than or equal to the this object. 
         *         and false otherwise
         *******************************************************************/
-        bool String::operator>=(const String &data)
+        bool String::operator>=(const String &data) const
         {
           assert(pimpl != nullptr);
           return this->pimpl->m_data >= data.pimpl->m_data;
@@ -180,7 +188,7 @@ namespace GU
         * @return True if data is not equal to the this object and false
         *         otherwise.
         *******************************************************************/
-        bool String::operator!=(const String &data)
+        bool String::operator!=(const String &data) const
         {
           assert(pimpl != nullptr);
           return this->pimpl->m_data != data.pimpl->m_data;
@@ -194,7 +202,7 @@ namespace GU
         * @return A string that is equal to data concatinated to the this
         *         object.
         *******************************************************************/
-        GU::Core::String String::operator+(const String &data)
+        GU::Core::String String::operator+(const String &data) const
         {
           assert(pimpl != nullptr);
           return this->pimpl->m_data + data.pimpl->m_data;

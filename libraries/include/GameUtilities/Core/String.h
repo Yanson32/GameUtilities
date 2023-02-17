@@ -93,7 +93,8 @@ namespace GU
                 * @param  data is a String object to be checked for equality. 
                 * @return True if this object and the passed object are equal 
                 *******************************************************************/
-                bool operator==(const String &data);
+                bool operator==(const String &data) const;
+                bool operator==(const char* data) const;
 
 
                 /***************************************************************//**
@@ -103,7 +104,7 @@ namespace GU
                 * @return True if data is less than or equal to the this object
                 *         and false otherwise. 
                 *******************************************************************/
-                bool operator<=(const String &data);
+                bool operator<=(const String &data) const;
 
 
                 /***************************************************************//**
@@ -113,7 +114,7 @@ namespace GU
                 * @return True if data is greater than or equal to the this object. 
                 *         and false otherwise
                 *******************************************************************/
-                bool operator>=(const String &data);
+                bool operator>=(const String &data) const;
 
 
                 /***************************************************************//**
@@ -123,7 +124,7 @@ namespace GU
                 * @return True if data is not equal to the this object and false
                 *         otherwise.
                 *******************************************************************/
-                bool operator!=(const String &data);
+                bool operator!=(const String &data) const;
 
 
                 /***************************************************************//**
@@ -133,7 +134,7 @@ namespace GU
                 * @return A string that is equal to data concatinated to the this
                 *         object.
                 *******************************************************************/
-                GU::Core::String operator+(const String &data);
+                GU::Core::String operator+(const String &data) const;
                 
                 
                 /***************************************************************//**
