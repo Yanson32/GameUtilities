@@ -73,7 +73,6 @@ namespace GU
                 *******************************************************************/
                 operator const char*() const;
                 
-    
                 /***************************************************************//**
                 * @brief  copy assignment operator
                 * @param  data is the String object to be copied. 
