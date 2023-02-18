@@ -145,6 +145,12 @@ namespace GU
         }
 
 
+        /***************************************************************//**
+        * @brief  Equality operator
+        * @param  data is a pointer to a string of characters to be checked
+        *         against for equality. 
+        * @return True if this object and the passed object are equal 
+        *******************************************************************/
         bool String::operator==(const char* data) const
         {
           assert(pimpl != nullptr);
@@ -179,76 +185,136 @@ namespace GU
           return this->pimpl->m_data >= data.pimpl->m_data;
         }
 
+        
+        /***************************************************************//**
+        * @brief  This method returns an iterator to the beginning of the
+        *         string. 
+        * @return An iterator to the beginning of the string. 
+        *******************************************************************/
         std::string::iterator String::begin() noexcept
         {
             return std::begin(this->pimpl->m_data);
         }
 
 
+        /***************************************************************//**
+        * @brief  This method returns a const iterator to the beginning of 
+        *         the string. 
+        * @return An iterator to the beginning of the string. 
+        *******************************************************************/
         std::string::const_iterator String::begin() const noexcept
         {
             return std::begin(this->pimpl->m_data);
         }
         
+        /***************************************************************//**
+        * @brief  This method returns a const iterator to the beginning of 
+        *         the string. 
+        * @return An iterator to the beginning of the string. 
+        *******************************************************************/
+        std::string::const_iterator String::cbegin() const noexcept
+        {
+            return std::cbegin(this->pimpl->m_data);
+        }
+        
+
+        /***************************************************************//**
+        * @brief  This method returns a reverse iterator to the end of 
+        *         the string. 
+        * @return A reverse iterator to the end of the string. 
+        *******************************************************************/
         std::string::reverse_iterator String::rbegin() noexcept
         {
             return std::rbegin(this->pimpl->m_data);
         }
 
 
+        /***************************************************************//**
+        * @brief  This method returns a const reverse iterator to the end of 
+        *         the string. 
+        * @return A const reverse iterator to the end of the string. 
+        *******************************************************************/
         std::string::const_reverse_iterator String::rbegin() const noexcept
         {
             return std::rbegin(this->pimpl->m_data);
         }
         
     
-        std::string::const_iterator String::cbegin() const noexcept
-        {
-            return std::cbegin(this->pimpl->m_data);
-        }
 
+        /***************************************************************//**
+        * @brief  This method returns a const reverse iterator to the end of 
+        *         the string. 
+        * @return A const reverse iterator to the end of the string. 
+        *******************************************************************/
         std::string::const_reverse_iterator String::crbegin() const noexcept
         {
             return std::crbegin(this->pimpl->m_data);
         }
 
 
+        /***************************************************************//**
+        * @brief  This method returns an iterator to one past the end of 
+        *         the string. 
+        * @return An iterator to one past the end of the string. 
+        *******************************************************************/
         std::string::iterator String::end() noexcept
         {
             return std::end(this->pimpl->m_data);
         }
 
 
+        /***************************************************************//**
+        * @brief  This method returns a const iterator to one past the end of 
+        *         the string. 
+        * @return A const iterator to one past the end of the string. 
+        *******************************************************************/
         std::string::const_iterator String::end() const noexcept
         {
             return std::end(this->pimpl->m_data);
         }
         
-
+        
+        /***************************************************************//**
+        * @brief  This method returns a const iterator to one past the end of 
+        *         the string. 
+        * @return A const iterator to one past the end of the string. 
+        *******************************************************************/
         std::string::const_iterator String::cend() const noexcept
         {
             return std::cend(this->pimpl->m_data);
         }
-
-
+        
+        /***************************************************************//**
+        * @brief  This method returns a reverse iterator to one past the end of 
+        *         the string. 
+        * @return A reverse iterator to one past the end of the string. 
+        *******************************************************************/
         std::string::reverse_iterator String::rend() noexcept
         {
             return std::rend(this->pimpl->m_data);
         }
 
 
+        /***************************************************************//**
+        * @brief  This method returns a const reverse iterator to one past 
+        *         the end of the string. 
+        * @return A const reverse iterator to one past the end of the string. 
+        *******************************************************************/
         std::string::const_reverse_iterator String::rend() const noexcept
         {
             return std::rend(this->pimpl->m_data);
         }
         
+        
+        /***************************************************************//**
+        * @brief  This method returns a const reverse iterator to one past 
+        *         the end of the string. 
+        * @return A const reverse iterator to one past the end of the string. 
+        *******************************************************************/
         std::string::const_reverse_iterator String::crend() const noexcept
         {
             return std::crend(this->pimpl->m_data);
         }
-
-
-        
 
 
         /***************************************************************//**
@@ -763,6 +829,11 @@ namespace GU
         }
 
 
+        /**************************************************************//**
+        * @brief  Erase all characters starting at p 
+        * @param  p an iterator to the first erased character 
+        * @return An iterator to the first erased charater or String::end()
+        ******************************************************************/
         std::string::iterator String::erase (std::string::const_iterator p)
         {
             assert(pimpl != nullptr);
@@ -770,6 +841,12 @@ namespace GU
         }
 
 
+        /**************************************************************//**
+        * @brief  Erase all characters starting at first and ending at last. 
+        * @param  first an iterator to the first erased character.
+        * @param  last an iterator to the last erased character.
+        * @return An iterator to the first erased charater or String::end()
+        ******************************************************************/
         std::string::iterator String::erase (std::string::const_iterator first, std::string::const_iterator last)
         {
             assert(pimpl != nullptr);

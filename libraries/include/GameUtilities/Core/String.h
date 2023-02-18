@@ -96,6 +96,14 @@ namespace GU
                 * @return True if this object and the passed object are equal 
                 *******************************************************************/
                 bool operator==(const String &data) const;
+
+
+                /***************************************************************//**
+                * @brief  Equality operator
+                * @param  data is a pointer to a string of characters to be checked
+                *         against for equality. 
+                * @return True if this object and the passed object are equal 
+                *******************************************************************/
                 bool operator==(const char* data) const;
 
 
@@ -154,19 +162,104 @@ namespace GU
                 * @return The number of characters in the string
                 *******************************************************************/
                 std::size_t size() const;
+                
 
+                /***************************************************************//**
+                * @brief  This method returns an iterator to the beginning of the
+                *         string. 
+                * @return An iterator to the beginning of the string. 
+                *******************************************************************/
                 std::string::iterator begin() noexcept;
+                
+
+                /***************************************************************//**
+                * @brief  This method returns a const iterator to the beginning of 
+                *         the string. 
+                * @return An iterator to the beginning of the string. 
+                *******************************************************************/
                 std::string::const_iterator begin() const noexcept;
+                
+
+                /***************************************************************//**
+                * @brief  This method returns a const iterator to the beginning of 
+                *         the string. 
+                * @return An iterator to the beginning of the string. 
+                *******************************************************************/
                 std::string::const_iterator cbegin() const noexcept;
+                
+
+                /***************************************************************//**
+                * @brief  This method returns a reverse iterator to the end of 
+                *         the string. 
+                * @return A reverse iterator to the end of the string. 
+                *******************************************************************/
                 std::string::reverse_iterator rbegin() noexcept;
+                
+
+                /***************************************************************//**
+                * @brief  This method returns a const reverse iterator to the end of 
+                *         the string. 
+                * @return A const reverse iterator to the end of the string. 
+                *******************************************************************/
                 std::string::const_reverse_iterator rbegin() const noexcept;
+                
+
+                /***************************************************************//**
+                * @brief  This method returns a const reverse iterator to the end of 
+                *         the string. 
+                * @return A const reverse iterator to the end of the string. 
+                *******************************************************************/
                 std::string::const_reverse_iterator crbegin() const noexcept;
+                
+
+                /***************************************************************//**
+                * @brief  This method returns an iterator to one past the end of 
+                *         the string. 
+                * @return An iterator to one past the end of the string. 
+                *******************************************************************/
                 std::string::iterator end() noexcept;
+                
+
+                /***************************************************************//**
+                * @brief  This method returns a const iterator to one past the end of 
+                *         the string. 
+                * @return A const iterator to one past the end of the string. 
+                *******************************************************************/
                 std::string::const_iterator end() const noexcept;
+                
+
+                /***************************************************************//**
+                * @brief  This method returns a const iterator to one past the end of 
+                *         the string. 
+                * @return A const iterator to one past the end of the string. 
+                *******************************************************************/
                 std::string::const_iterator cend() const noexcept;
-                std::string::const_reverse_iterator crend() const noexcept;
+                
+
+                /***************************************************************//**
+                * @brief  This method returns a reverse iterator to one past the end of 
+                *         the string. 
+                * @return A reverse iterator to one past the end of the string. 
+                *******************************************************************/
                 std::string::reverse_iterator rend() noexcept;
+                
+
+                /***************************************************************//**
+                * @brief  This method returns a const reverse iterator to one past 
+                *         the end of the string. 
+                * @return A const reverse iterator to one past the end of the string. 
+                *******************************************************************/
                 std::string::const_reverse_iterator rend() const noexcept;
+                
+                
+                /***************************************************************//**
+                * @brief  This method returns a const reverse iterator to one past 
+                *         the end of the string. 
+                * @return A const reverse iterator to one past the end of the string. 
+                *******************************************************************/
+                std::string::const_reverse_iterator crend() const noexcept;
+                
+
                 /***************************************************************//**
                 * @brief This method returns the number of characters in the
                 *         string.
@@ -467,7 +560,22 @@ namespace GU
                 * @return A reference to the updated string.
                 ******************************************************************/
                 String& erase (size_t pos = 0, size_t len = npos);
+                
+
+                /**************************************************************//**
+                * @brief  Erase all characters starting at p 
+                * @param  p an iterator to the first erased character 
+                * @return An iterator to the first erased charater or String::end()
+                ******************************************************************/
                 std::string::iterator erase (std::string::const_iterator p);
+                
+
+                /**************************************************************//**
+                * @brief  Erase all characters starting at first and ending at last. 
+                * @param  first an iterator to the first erased character.
+                * @param  last an iterator to the last erased character.
+                * @return An iterator to the first erased charater or String::end()
+                ******************************************************************/
                 std::string::iterator erase (std::string::const_iterator first, std::string::const_iterator last);
 
 
@@ -481,6 +589,14 @@ namespace GU
                 String& replace (size_t pos, size_t len, const std::string& str);
 
 
+                
+                /**************************************************************//**
+                * @brief  Replace len characters starting at pos with str.
+                * @param  pos where to start replacing.
+                * @param  len the number of characters to be replaced.
+                * @param  str the string to replace the substring with.
+                * @return A reference to the updated string.
+                ******************************************************************/
                 String& replace (std::string::const_iterator i1, std::string::const_iterator i2, const std::string& str);
 
 

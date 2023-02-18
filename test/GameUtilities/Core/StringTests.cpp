@@ -156,6 +156,10 @@ TEST_CASE( "String class erase method", "[String::erase]" )
 
     test2.erase(3);
     REQUIRE(test2.compare("123") == 0);
+    
+    GU::Core::String test3("123456");
 
+    auto iter = test3.erase(test3.begin() + 2); 
+    std::cout << "iter = " << (*iter) << std::endl;
 }
 
