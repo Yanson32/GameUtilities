@@ -223,6 +223,72 @@ TEST_CASE( "String class length method", "[String::Length]" )
     REQUIRE(test3.length() == 11);
 }
 
+TEST_CASE( "String class clear method", "[String::Clear]" ) 
+{
+    GU::Core::String test1("Hello");
+    test1.clear();
+    REQUIRE( test1.length() == 0);
+    REQUIRE( test1.size() == 0);
+}
+
+TEST_CASE( "String class empty method", "[String::Empty]" ) 
+{
+    GU::Core::String test1;
+    REQUIRE( test1.empty());
+}
+
+TEST_CASE( "String class resize method", "[String::Resize]" ) 
+{
+    GU::Core::String test1;
+    test1.resize(10);
+    REQUIRE( test1.size() == 10);
+    REQUIRE( test1.length() == 10);
+
+    GU::Core::String test2;
+    test2.resize(10, 'a');
+    REQUIRE( test2.size() == 10);
+    REQUIRE( test2.length() == 10);
+    REQUIRE( test2 == "aaaaaaaaaa");
+}
+
+TEST_CASE( "String class capacity method", "[String::Capacity]" ) 
+{
+    GU::Core::String test1;
+    test1.reserve(50);
+    REQUIRE( test1.capacity() == 50);
+}
+
+TEST_CASE( "String class subscript operator", "[String::Subscript]" ) 
+{
+    GU::Core::String test1("Hello World");
+    REQUIRE(test1[0] == 'H');
+    REQUIRE(test1[4] == 'o');
+    REQUIRE(test1[10] == 'd');
+    REQUIRE_NOTHROW(test1[100]);
+    
+    GU::Core::String test2("Hello World");
+    REQUIRE(test2[0] == 'H');
+    REQUIRE(test2[4] == 'o');
+    REQUIRE(test2[10] == 'd');
+    REQUIRE_NOTHROW(test2[100]);
+}
+
+TEST_CASE( "String class at operator", "[String::at]" ) 
+{
+    GU::Core::String test1("Hello World");
+    REQUIRE(test1.at(0) == 'H');
+    REQUIRE(test1.at(4) == 'o');
+    REQUIRE(test1.at(10) == 'd');
+    REQUIRE_THROWS_AS(test1.at(100), std::out_of_range);
+
+    const GU::Core::String test2("Hello World");
+    REQUIRE(test2.at(0) == 'H');
+    REQUIRE(test2.at(4) == 'o');
+    REQUIRE(test2.at(10) == 'd');
+    REQUIRE_THROWS_AS(test2.at(100), std::out_of_range);
+    
+}
+
 TEST_CASE( "String class c_str method", "[String::c_str]" ) 
 {
     GU::Core::String test1("Hello");
@@ -235,6 +301,101 @@ TEST_CASE( "String class toStdString method", "[String::toStdString]" )
     GU::Core::String test1("Hello");
     std::string test2 = test1.toStdString(); 
     REQUIRE( test2 == "Hello");
+}
+
+TEST_CASE( "String class back method", "[String::back]" ) 
+{
+    GU::Core::String test1("Hello");
+    REQUIRE( test1.back() == 'o');
+
+    const GU::Core::String test2("Hello");
+    REQUIRE( test2.back() == 'o');
+}
+
+TEST_CASE( "String class front method", "[String::front]" ) 
+{
+    GU::Core::String test1("Hello");
+    REQUIRE( test1.front() == 'H');
+
+    const GU::Core::String test2("Hello");
+    REQUIRE( test2.front() == 'H');
+}
+
+TEST_CASE( "String class front append", "[String::append]" ) 
+{
+    //Append 
+    GU::Core::String test1("Hello");
+    GU::Core::String world(" World");
+    test1.append(world);
+    REQUIRE(test1 == "Hello World");
+    REQUIRE(test1.size() == 11);
+
+    //Append substring char
+    GU::Core::String test2("Hello");
+    test2.append("Hello World", 5, 6);
+    REQUIRE(test2 == "Hello World");
+    REQUIRE(test2.size() == 11);
+    REQUIRE_THROWS_AS(test2.append("Hello World", 11, 10), std::out_of_range);   
+
+ 
+    GU::Core::String test3("Hello");
+    test3.append("Hello World", 5, GU::Core::String::npos);
+    REQUIRE(test3 == "Hello World");
+    REQUIRE(test3.size() == 11);
+
+    GU::Core::String test4("Hello");
+    test4.append(" World");
+    REQUIRE(test4 == "Hello World");
+    REQUIRE(test4.size() == 11);
+
+    GU::Core::String test5("Hello");
+    test5.append(" World Hello World Hello World", 6);
+    REQUIRE(test5 == "Hello World");
+    REQUIRE(test5.size() == 11);
+
+    GU::Core::String test6("Hello");
+    test6.append(5, 'W');
+    REQUIRE(test6 == "HelloWWWWW");
+    REQUIRE(test6.size() == 10);
+   
+    //Append range 
+    GU::Core::String test7("Hello");
+    GU::Core::String test8(" World");
+    //test7.append(test8.begin(), test8.end());
+    REQUIRE(test7 == "Hello World");
+    REQUIRE(test7.size() == 11);
+    
+    //Append initializer list 
+    GU::Core::String test9("Hello");
+    test9.append({' ', 'W', 'o', 'r', 'l', 'd'});
+    REQUIRE(test9 == "Hello World");
+    REQUIRE(test9.size() == 11);
+}
+
+TEST_CASE( "String class push_back", "[String::push_back]" ) 
+{
+    GU::Core::String test;
+    test.push_back('H');
+    test.push_back('e');
+    test.push_back('l');
+    test.push_back('l');
+    test.push_back('o');
+    REQUIRE(test.size() == 5);
+    REQUIRE(test == "Hello");
+}
+
+TEST_CASE( "String class assign", "[String::assign]" ) 
+{
+    GU::Core::String test("Hello");
+    GU::Core::String test2("World");
+    test.assign(test2);
+    REQUIRE(test == "World");
+    REQUIRE(test2 == "World");
+
+    //Copy substring
+    GU::Core::String test3("Hello");
+    test3.assign(test2, 0, 4);
+    REQUIRE(test3 == "Worl");
     
 }
 
