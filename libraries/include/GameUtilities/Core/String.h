@@ -488,7 +488,7 @@ namespace GU
                 * @param  str the string to be assigned.
                 * @return A reference to the updated string.
                 ******************************************************************/
-                String& assign (const std::string& str);
+                String& assign (const GU::Core::String& str);
 
 
                 /**************************************************************//**
@@ -499,7 +499,7 @@ namespace GU
                 * @param  sublen the length of the substring.
                 * @return A reference to the updated string.
                 ******************************************************************/
-                String& assign (const std::string& str, size_t subpos, size_t sublen);
+                String& assign (const GU::Core::String& str, size_t subpos, size_t sublen);
 
 
                 /**************************************************************//**
@@ -538,6 +538,7 @@ namespace GU
                 template <class InputIterator>
                 String& assign (InputIterator first, InputIterator last);
 
+                GU::Core::String& assign (std::initializer_list<char> il);
 
                 /**************************************************************//**
                 * @brief  This changes the strings capacity.

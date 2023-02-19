@@ -713,7 +713,7 @@ namespace GU
         * @param  str the string to be assigned.
         * @return A reference to the updated string.
         ******************************************************************/
-        String& String::assign (const std::string& str)
+        String& String::assign (const GU::Core::String& str)
         {
           assert(pimpl != nullptr);
           pimpl->m_data.assign(str);
@@ -729,10 +729,10 @@ namespace GU
         * @param  sublen the length of the substring.
         * @return A reference to the updated string.
         ******************************************************************/
-        String& String::assign (const std::string& str, size_t subpos, size_t sublen)
+        String& String::assign (const GU::Core::String& str, size_t subpos, size_t sublen)
         {
           assert(pimpl != nullptr);
-          pimpl->m_data.assign(str, subpos, sublen);
+          pimpl->m_data.assign(str.toStdString(), subpos, sublen);
           return *this;
         }
 
@@ -793,6 +793,13 @@ namespace GU
           return *this;
         }
 
+
+        GU::Core::String& String::assign (std::initializer_list<char> il)
+        {
+            assert(pimpl != nullptr);
+            pimpl->m_data.assign(il);
+            return *this;
+        }
 
         /**************************************************************//**
         * @brief This changes the strings capacity.

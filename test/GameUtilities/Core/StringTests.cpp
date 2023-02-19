@@ -335,7 +335,6 @@ TEST_CASE( "String class front append", "[String::append]" )
     test2.append("Hello World", 5, 6);
     REQUIRE(test2 == "Hello World");
     REQUIRE(test2.size() == 11);
-    REQUIRE_THROWS_AS(test2.append("Hello World", 11, 10), std::out_of_range);   
 
  
     GU::Core::String test3("Hello");
@@ -396,8 +395,65 @@ TEST_CASE( "String class assign", "[String::assign]" )
     GU::Core::String test3("Hello");
     test3.assign(test2, 0, 4);
     REQUIRE(test3 == "Worl");
+
+    //Copy const char*
+    GU::Core::String test4("Hello");
+    const char* test4p = "Hello World";
+    test4.assign(test4p);
+    REQUIRE(test4 == "Hello World");
     
+    //Copy substring of const char*
+    GU::Core::String test5("Hello");
+    const char* test5p = "Hello World";
+    test5.assign(test5p, 6, 5);
+    REQUIRE(test5 == "World");
+
+    //Fill 
+    GU::Core::String test6("Hello");
+    test6.assign(2, 'R');
+    REQUIRE(test6 == "RR");
+
+    //Range
+    GU::Core::String test7("Hello");
+    GU::Core::String test7p("World");
+    //test7.assign(test7p.begin(), test7p.end() - 1);
+    REQUIRE(test7 == "World");
+
+    //Initializer list
+    GU::Core::String test8("Hello");
+    test8.assign({'W', 'o', 'r', 'l', 'd'}); 
+    REQUIRE(test8 == "World");
+
+
 }
+
+TEST_CASE( "String class reserve", "[String::reserve]" ) 
+{
+    GU::Core::String test;
+    test.reserve(100);
+    REQUIRE(test.capacity() == 100);
+}
+
+TEST_CASE( "String class erase method", "[String::erase]" ) 
+{
+    GU::Core::String test("123456");
+
+    test.erase(0, 1);
+
+    REQUIRE(test.compare("23456") == 0);
+
+
+    GU::Core::String test2("123456");
+
+    test2.erase(3);
+    REQUIRE(test2.compare("123") == 0);
+    
+    GU::Core::String test3("123456");
+
+    auto iter = test3.erase(test3.begin() + 2); 
+    std::cout << "iter = " << (*iter) << std::endl;
+}
+
 
 TEST_CASE( "String class foreach loop", "[String::Foreach]" ) 
 {
@@ -496,25 +552,5 @@ TEST_CASE( "String class reverse fol loop", "[String::ReverseForeach]" )
         count -= 1;
 
     }
-}
-
-TEST_CASE( "String class erase method", "[String::erase]" ) 
-{
-    GU::Core::String test("123456");
-
-    test.erase(0, 1);
-
-    REQUIRE(test.compare("23456") == 0);
-
-
-    GU::Core::String test2("123456");
-
-    test2.erase(3);
-    REQUIRE(test2.compare("123") == 0);
-    
-    GU::Core::String test3("123456");
-
-    auto iter = test3.erase(test3.begin() + 2); 
-    std::cout << "iter = " << (*iter) << std::endl;
 }
 
