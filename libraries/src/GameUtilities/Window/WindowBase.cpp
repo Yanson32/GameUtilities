@@ -22,6 +22,7 @@
 * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ***************************************************************************/
 #include "GameUtilities/Window/WindowBase.h"
+#include "GameUtilities/Core/Macros.h"
 #include <iostream>
 
 namespace GU
@@ -35,7 +36,7 @@ namespace GU
         ************************************************************************/
         WindowBase::WindowBase(const Math::Vector2<float> &size)
         {
-
+            UNUSED(size);
         }
         
 

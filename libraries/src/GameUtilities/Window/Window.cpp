@@ -97,6 +97,7 @@ namespace GU
             assert(m_pimpl != nullptr);
             assert(m_pimpl->m_windowImpl != nullptr);
             m_pimpl->m_windowImpl->poll(event);
+            return true;
         }
         
 

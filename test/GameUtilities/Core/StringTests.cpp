@@ -449,7 +449,7 @@ TEST_CASE( "String class erase method", "[String::erase]" )
    
     //Range 
     GU::Core::String test3("123456");
-    auto iter = test3.erase(test3.begin(), test3.begin() + 2); 
+    test3.erase(test3.begin(), test3.begin() + 2); 
     REQUIRE(test3 == "3456");
 }
 

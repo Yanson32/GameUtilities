@@ -205,9 +205,9 @@ namespace GU
         bool ProgramArguments::setData(const std::string &key, std::shared_ptr<void> data)
         {
             assert(m_pimpl != nullptr);
-            if(!m_pimpl->keyExists(key)); 
+            if(!m_pimpl->keyExists(key))
                 return false;
-            
+ 
             m_pimpl->m_keyData[m_pimpl->m_keyMap[key]].second.data = data; 
 
             return true;
