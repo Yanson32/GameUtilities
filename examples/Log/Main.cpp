@@ -18,10 +18,10 @@ int main()
 	manager.add(target);
 
 	//Set log formatter
-	GU::Log::LogFormatter logFormatter;
-	logFormatter.add<GU::Log::DateComponent>();
-	logFormatter.add<GU::Log::SeverityComponent>();
-	logFormatter.add<GU::Log::MsgComponent>();
+	std::shared_ptr<GU::Log::LogFormatter> logFormatter(new GU::Log::LogFormatter);
+	logFormatter->add<GU::Log::DateComponent>();
+	logFormatter->add<GU::Log::SeverityComponent>();
+	logFormatter->add<GU::Log::MsgComponent>();
 	manager.set(logFormatter);
 
 	//Create log entry
