@@ -102,7 +102,7 @@ namespace GU
                 *   @param  data is a void shared pointer of user defined data. 
                 *   @return True is return if the data is set and false otherwise.
                 ***************************************************************************/
-                bool setData(const GU::Core::String &key, std::shared_ptr<void> data);
+                bool setData(const std::string &key, std::shared_ptr<void> data);
                 
 
                 /***********************************************************************//**

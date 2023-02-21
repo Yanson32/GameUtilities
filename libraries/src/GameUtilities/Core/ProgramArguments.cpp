@@ -202,9 +202,15 @@ namespace GU
         *   @param  data is a void shared pointer of user defined data. 
         *   @return True is return if the data is set and false otherwise.
         ***************************************************************************/
-        bool ProgramArguments::setData(const GU::Core::String &key, std::shared_ptr<void> data)
+        bool ProgramArguments::setData(const std::string &key, std::shared_ptr<void> data)
         {
+            assert(m_pimpl != nullptr);
+            if(!m_pimpl->keyExists(key)); 
+                return false;
+            
+            m_pimpl->m_keyData[m_pimpl->m_keyMap[key]].second.data = data; 
 
+            return true;
         }
     
         
