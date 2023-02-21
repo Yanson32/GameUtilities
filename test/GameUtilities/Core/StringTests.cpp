@@ -436,24 +436,92 @@ TEST_CASE( "String class reserve", "[String::reserve]" )
 
 TEST_CASE( "String class erase method", "[String::erase]" ) 
 {
+    //Sequence 
     GU::Core::String test("123456");
-
     test.erase(0, 1);
-
     REQUIRE(test.compare("23456") == 0);
 
 
+    //Character
     GU::Core::String test2("123456");
-
-    test2.erase(3);
-    REQUIRE(test2.compare("123") == 0);
-    
+    test2.erase(test2.begin() + 3);
+    REQUIRE(test2 == "12356");
+   
+    //Range 
     GU::Core::String test3("123456");
-
-    auto iter = test3.erase(test3.begin() + 2); 
-    std::cout << "iter = " << (*iter) << std::endl;
+    auto iter = test3.erase(test3.begin(), test3.begin() + 2); 
+    REQUIRE(test3 == "3456");
 }
 
+TEST_CASE( "String class replace method ", "[String::replace]" ) 
+{
+    //Replace a substring
+    GU::Core::String test("123456");
+    test.replace(1, 4, GU::Core::String("987"));
+    REQUIRE(test == "19876");
+    REQUIRE_THROWS_AS(test.replace(20, 4, GU::Core::String("987")), std::out_of_range);
+    
+
+    //Replace a substring pointed to by iterators
+    GU::Core::String test2("123456");
+    test2.replace(test2.begin(), test2.begin() + 3, GU::Core::String("987"));
+    REQUIRE(test2 == "987456");
+
+
+    //Replace substring with substring
+    GU::Core::String test3("123456");
+    test3.replace(2, 2, "987654321", 0, 2);
+    REQUIRE(test3 == GU::Core::String("129856"));
+    REQUIRE_THROWS_AS(test3.replace(2, 2, "987654321", 0, 2), std::out_of_range);
+    
+
+    //Replace a substring 
+    GU::Core::String test4("123456");
+    test4.replace(1, 4, "987");
+    REQUIRE(test4 == "19876");
+    
+    
+    //Replace a substring pointed to by iterators with const char*
+    GU::Core::String test5("123456");
+    test5.replace(test5.begin(), test5.begin() + 3, "987");
+    REQUIRE(test5 == "987456");
+
+
+    //Replace a substring with the first characters of a const char*
+    GU::Core::String test6("123456");
+    test6.replace(1, 3, "987", 2);
+    REQUIRE(test6 == "19856");
+   
+ 
+    //Replace a substring pointed to  by iterators with the first characters of a const char*
+    GU::Core::String test7("123456");
+    test7.replace(test7.begin() + 1, test7.begin() + 4, "987", 2);
+    REQUIRE(test7 == "19856");
+    
+
+    //Replace a substring with fill characters
+    GU::Core::String test8("123456");
+    test8.replace(3, 3, 3, 'c');
+    REQUIRE(test8 == "123ccc");
+   
+ 
+    //Replace a substring pointed to by iterators with fill characters
+    GU::Core::String test9("123456");
+    test9.replace(test9.begin() + 3, test9.begin() + 6, 3, 'c');
+    REQUIRE(test9 == "123ccc");
+   
+ 
+    GU::Core::String test10("123456");
+    GU::Core::String test11("987");
+    //test10.replace(test10.begin(), test10.end(), test11.begin(), test11.end());
+    REQUIRE(test10 == "987");
+    
+
+    //Replace a substring pointed to by iterators with initializer list 
+    GU::Core::String test12("123456");
+    test12.replace(test12.begin() + 3, test12.begin() + 6, {'9', '8', '7'});
+    REQUIRE(test12 == "123987");
+}
 
 TEST_CASE( "String class foreach loop", "[String::Foreach]" ) 
 {
