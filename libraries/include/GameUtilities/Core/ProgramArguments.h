@@ -26,19 +26,20 @@
 #include <string>
 #include "GameUtilities/Core/String.h"
 #include <memory>
+#include "core_export.h"
 
 namespace GU 
 {
     namespace Core 
     {
 
-        struct ArgumentData
+        struct CORE_EXPORT ArgumentData
         {
             std::shared_ptr<void> data; 
             std::string value;
         };
 
-        class ProgramArguments
+        class CORE_EXPORT ProgramArguments
         {
             public:
                 typedef void(*Callback)(ArgumentData);
