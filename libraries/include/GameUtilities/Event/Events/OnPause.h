@@ -1,9 +1,9 @@
 #ifndef GAMEUTILITIES_EVENT_ONPAUSE_H
 #define GAMEUTILITIES_EVENT_ONPAUSE_H
-/**************************************************************************
-*   @Author:        Wayne J Larson Jr.
-*   @Date:          10/01/22
-*   @description:   This event is generates when something is paused. 
+/**********************************************************************//**
+*   @author Wayne J Larson Jr.
+*   @date   10/01/22
+*   @file   OnPause.h
 **************************************************************************/
 
 /*************************************************************************
@@ -24,7 +24,7 @@
 * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ***************************************************************************/
 #include "event_export.h"
-#include "GameUtilities/Event/Event.h"
+#include "GameUtilities/Event/Events/Event.h"
 
 namespace GU
 {
@@ -32,21 +32,28 @@ namespace GU
     namespace Evt
     {
 
+        /**********************************************************************//**
+        *   @class  OnPause
+        *   @brief  This event is generates when something is paused. 
+        **************************************************************************/
         class EVENT_EXPORT OnPause : public Event
         {
             public:
-                /**************************************************************************
-                *   Constructor
+                /**********************************************************************//**
+                *   @brief  Constructor.
+                *   @param  pauseId is a unique id for the entity to be paused. 
+                *   @param  line is the line in code where the event was generated.
+                *   @param  file is the file were the event was generated.
                 **************************************************************************/
                 OnPause(const int &pauseId, const int &line, const char* file = "");
 
                 
-                /**************************************************************************
-                *   Destructor
+                /**********************************************************************//**
+                *   @brief  Destructor
                 **************************************************************************/
                 virtual ~OnPause(); 
             private:
-                const int m_pauseId = -1;
+                const int m_pauseId = -1;       /**< A unique identifier of the entity to be paused. */
         };
 
     }

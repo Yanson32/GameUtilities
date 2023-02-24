@@ -154,7 +154,7 @@ Math::Vector2<float> Shape::getPosition() const
 ************************************************************************/
 void  Shape::setGlobalCoordinate(const Math::Vector2<float> &coordinate, const std::size_t &index)
 {
-    assert(index >= 0 && index < getVertexCount());
+    assert(index < getVertexCount());
     Math::Vector2<float> temp = m_position - coordinate;
     temp.x = -temp.x;
     temp.y = -temp.y; 
@@ -171,7 +171,7 @@ void  Shape::setGlobalCoordinate(const Math::Vector2<float> &coordinate, const s
 ************************************************************************/
 Math::Vector2<float> Shape::getGlobalCoordinate(const std::size_t &index) const
 {
-    assert(index >= 0 && index < getVertexCount());
+    assert(index < getVertexCount());
 
     return getLocalCoordinate(index) + m_position; 
 }
@@ -186,7 +186,7 @@ Math::Vector2<float> Shape::getGlobalCoordinate(const std::size_t &index) const
 ************************************************************************/
 void  Shape::setLocalCoordinate(const Math::Vector2<float> &coordinate, const std::size_t &index)
 {
-   assert(index >= 0 && index < getVertexCount()); 
+   assert(index < getVertexCount()); 
 
     m_shape.setPoint(index, {coordinate.x, coordinate.y});
 }
@@ -200,7 +200,7 @@ void  Shape::setLocalCoordinate(const Math::Vector2<float> &coordinate, const st
 ************************************************************************/
 Math::Vector2<float>  Shape::getLocalCoordinate(const std::size_t &index) const
 {
-    assert(index >= 0 && index < getVertexCount());
+    assert(index < getVertexCount());
 
     return {m_shape.getPoint(index).x, m_shape.getPoint(index).y};
 }
@@ -269,7 +269,7 @@ Math::Line<float> Shape::getEdge(const std::size_t &index) const
 ***************************************************************************************/
 void Shape::draw (sf::RenderTarget &target, sf::RenderStates states) const
 {
-   target.draw(m_shape); 
+   target.draw(m_shape, states); 
 }
 
 

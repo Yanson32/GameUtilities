@@ -3,6 +3,7 @@
 #include "GameUtilities/Data/Rectangle.h"
 #include "GameUtilities/Data/PhysicsObject.h"
 #include "GameUtilities/Data/AABB.h"
+#include "GameUtilities/Core/Macros.h"
 #include "Math/Vector2.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
@@ -45,7 +46,7 @@ float Ball::getRadius() const
 
 void Ball::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
-   target.draw(m_circle); 
+    target.draw(m_circle, states); 
 }
 
 

@@ -9,6 +9,7 @@ set(FILES	"${CMAKE_CURRENT_SOURCE_DIR}/FrameRate.h"
 		    "${CMAKE_CURRENT_SOURCE_DIR}/RAIIStream.h"
 		    "${CMAKE_CURRENT_SOURCE_DIR}/ResourceManager.h"
 		    "${CMAKE_CURRENT_SOURCE_DIR}/Resource.h"
+		    "${CMAKE_CURRENT_SOURCE_DIR}/ProgramArguments.h"
 
 )
 

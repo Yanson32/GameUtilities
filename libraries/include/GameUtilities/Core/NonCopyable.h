@@ -1,15 +1,40 @@
 #ifndef NONCOPYABLE_H
 #define NONCOPYABLE_H
+/*********************************************************************************//**
+*	@author  Wayne J Larson Jr.
+*   @date    11/24/2019
+*   @file    NonCopyable.h
+*************************************************************************************/
 
-
-class NonCopyable
+namespace GU
 {
-    public:
-        NonCopyable(){};
-    private:
-        NonCopyable(const NonCopyable&) = delete;
-        NonCopyable& operator = (const NonCopyable&) = delete;
+    namespace Core
+    {
 
-};
+        /*********************************************************************************//**
+        *	@brief This class is inherited by other classes that don't want to be copyable. 
+        *   @class NonCopyable
+        *************************************************************************************/
+        class NonCopyable
+        {
+            public:
+                /*********************************************************************************//**
+                *	@brief  Constructor. 
+                *************************************************************************************/
+                NonCopyable(){};
+            private:
+                /*********************************************************************************//**
+                *	@brief  Deleted copy constructor. 
+                *************************************************************************************/
+                NonCopyable(const NonCopyable&) = delete;
+                
 
+                /*********************************************************************************//**
+                *	@brief  Deleted assignment operator. 
+                *************************************************************************************/
+                NonCopyable& operator = (const NonCopyable&) = delete;
+
+        };
+    }
+}
 #endif // NONCOPYABLE_H

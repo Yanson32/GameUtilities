@@ -1,13 +1,22 @@
+/**************************************************************************
+*   @author Wayne J Larson Jr.
+*   @date   05/07/22
+*   @file   OnItemSelected.cpp
+**************************************************************************/
 #include "GameUtilities/Event/Events/Widget/OnItemSelected.h"
 #include "GameUtilities/Event/EventId.h"
 namespace GU
 {
     namespace Evt
     {
-        /**************************************************************************
+        /**********************************************************************//**
         *   @brief  Constructor   
-        *   @param  newComboId is the id of the combo box
-        *   @param  newIndex is the index of the data element that has changed. 
+        *   @param  parent is a pointer to the widget where the event originated.
+        *   @param  widgetId is the id of the combo box
+        *   @param  index is the index of the currently selected element. 
+        *   @param  text is the currently selected text.
+        *   @param  line is the line number in source code where the event originated.
+        *   @param  file is the source code file where the event originated.
         **************************************************************************/
         OnItemSelected::OnItemSelected(std::shared_ptr<void> parent, 
         const int &widgetId, 

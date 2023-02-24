@@ -1,7 +1,7 @@
-/**************************************************************************
-*   @Author:     Wayne J Larson Jr.
-*   @Date:       10/01/22
-*   @Purpose:    This event is generated when collision has started.
+/**********************************************************************//**
+*   @author Wayne J Larson Jr.
+*   @date   10/01/22
+*   @file   OnStartCollision.cpp
 **************************************************************************/
 
 /*************************************************************************
@@ -30,9 +30,13 @@ namespace GU
     namespace Evt
     {
 
-        /**************************************************************************
-        *   Constructor
-        **************************************************************************/
+        /**************************************************************************//**
+        *   @brief Constructor
+        *   @param obj1 is a pointer to an object involved in a collision.
+        *   @param obj2 is a pointer to an object involved in a collision.
+        *   @param line is the line number of the source code that generated the event.
+        *   @param file is the source code file where the event was generated.
+        ******************************************************************************/
         OnStartCollision::OnStartCollision(void *obj1, void *obj2, const int &line, const char* file):
         Event(static_cast<int>(GU::Evt::EventId::ON_START_COLLISION), line, file),
         m_obj1(obj1),
@@ -42,7 +46,7 @@ namespace GU
         }
 
         
-        /**************************************************************************
+        /**********************************************************************//**
         *   Destructor
         **************************************************************************/
         OnStartCollision::~OnStartCollision()

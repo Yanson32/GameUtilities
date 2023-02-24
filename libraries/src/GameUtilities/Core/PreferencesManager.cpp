@@ -126,8 +126,8 @@ namespace GU
 
 
     /*********************************************************************************//**
-    *	@brief: Constructor
-    * @param: path is the full path to the preferences file
+    *	@brief Constructor
+    *   @param path is the full path to the preferences file
     *************************************************************************************/
     PreferencesManager::PreferencesManager(const GU::Core::String &path):
     pimpl(new PreferencesManager::Impl(path))
@@ -137,9 +137,9 @@ namespace GU
 
 
     /*********************************************************************************//**
-    *	@brief: This function writes an int value to the preferences file.
-    * @param: name is a unique identifyer for the data.
-    * @param: data is the data to be written to the preferences file.
+    *	@brief This function writes an int value to the preferences file.
+    *   @param name is a unique identifyer for the data.
+    *   @param data is the data to be written to the preferences file.
     *************************************************************************************/
     void PreferencesManager::write(const GU::Core::String &name, const int &data)
     {
@@ -157,9 +157,9 @@ namespace GU
 
 
     /*********************************************************************************//**
-    *	@brief: This function writes a float value to the preferences file.
-    * @param: name is a unique identifyer for the data.
-    * @param: data is the data to be written to the preferences file.
+    *	@brief This function writes a float value to the preferences file.
+    *   @param name is a unique identifyer for the data.
+    *   @param data is the data to be written to the preferences file.
     *************************************************************************************/
     void PreferencesManager::write(const GU::Core::String &name, const float &data)
     {
@@ -177,9 +177,9 @@ namespace GU
 
 
     /*********************************************************************************//**
-    *	@brief: This function writes a GU::Core::String value to the preferences file.
-    * @param: name is a unique identifyer for the data.
-    * @param: data is the data to be written to the preferences file.
+    *	@brief This function writes a GU::Core::String value to the preferences file.
+    *   @param name is a unique identifyer for the data.
+    *   @param data is the data to be written to the preferences file.
     *************************************************************************************/
     void PreferencesManager::write(const GU::Core::String &name, const GU::Core::String &data)
     {
@@ -197,12 +197,12 @@ namespace GU
 
 
     /*********************************************************************************//**
-    *	@brief:  This function reads an int value from the preferences file.
-    * @param:  name is a unique identifyer for the data.
-    * @param:  defaultValue is the value to be returned if the value could not
-    *          be read from the preferences file.
-    * @return: The value read from the preferences file or the default value
-    *          if the value could not be read.
+    *	@brief  This function reads an int value from the preferences file.
+    *   @param  name is a unique identifyer for the data.
+    *   @param  defaultValue is the value to be returned if the value could not
+    *           be read from the preferences file.
+    *   @return The value read from the preferences file or the default value
+    *           if the value could not be read.
     *************************************************************************************/
     int PreferencesManager::read(const GU::Core::String &name, const int &defaultValue)
     {
@@ -212,12 +212,12 @@ namespace GU
 
 
     /*********************************************************************************//**
-    *	@brief:  This function reads an float value from the preferences file.
-    * @param:  name is a unique identifyer for the data.
-    * @param:  defaultValue is the value to be returned if the value could not
-    *          be read from the preferences file.
-    * @return: The value read from the preferences file or the default value
-    *          if the value could not be read.
+    *	@brief  This function reads an float value from the preferences file.
+    *   @param  name is a unique identifyer for the data.
+    *   @param  defaultValue is the value to be returned if the value could not
+    *           be read from the preferences file.
+    *   @return The value read from the preferences file or the default value
+    *           if the value could not be read.
     *************************************************************************************/
     float PreferencesManager::read(const GU::Core::String &name, const float &defaultValue)
     {
@@ -227,12 +227,12 @@ namespace GU
 
 
     /*********************************************************************************//**
-    *	@brief:  This function reads an GU::Core::String value from the preferences file.
-    * @param:  name is a unique identifyer for the data.
-    * @param:  defaultValue is the value to be returned if the value could not
-    *          be read from the preferences file.
-    * @return: The value read from the preferences file or the default value
-    *          if the value could not be read.
+    *	@brief  This function reads an GU::Core::String value from the preferences file.
+    *   @param  name is a unique identifyer for the data.
+    *   @param  defaultValue is the value to be returned if the value could not
+    *           be read from the preferences file.
+    *   @return The value read from the preferences file or the default value
+    *           if the value could not be read.
     *************************************************************************************/
     GU::Core::String PreferencesManager::read(const GU::Core::String &name, const GU::Core::String &defaultValue)
     {
@@ -242,7 +242,7 @@ namespace GU
 
 
     /*********************************************************************************//**
-    *	@brief: Destructor
+    *	@brief Destructor
     *************************************************************************************/
     PreferencesManager::~PreferencesManager()
     {

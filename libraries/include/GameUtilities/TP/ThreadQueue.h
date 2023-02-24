@@ -29,9 +29,9 @@ namespace GU
 
                 /********************************************************************//**
                 *   @brief  Add a task to the queue
-                *   @param  A unique pointer to a task to be completed.
+                *   @param  task A unique pointer to a task to be completed.
                 ************************************************************************/
-                void add(std::unique_ptr<ThreadPoolTask> newTask);
+                void add(std::unique_ptr<ThreadPoolTask> task);
 
 
                 /********************************************************************//**
@@ -61,7 +61,7 @@ namespace GU
                 virtual ~ThreadPoolQueue();
             private:
                 class Impl;
-                Impl *m_pimpl = nullptr;
+                Impl *m_pimpl = nullptr;    /*!< pointer to the class implimentation */ 
         };
     }
 }

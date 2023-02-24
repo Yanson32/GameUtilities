@@ -3,7 +3,7 @@ set(FILES
 "${CMAKE_CURRENT_SOURCE_DIR}/Dispatcher.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/EventQueue.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/Listener.cpp"
-
+"${CMAKE_CURRENT_SOURCE_DIR}/EventHandler.cpp"
 )
 
 set(RELATIVE_PATH "src/GameUtilities/Event")

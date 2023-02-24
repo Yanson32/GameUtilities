@@ -25,14 +25,14 @@ namespace GU
 
         /********************************************************************//**
         *   @brief  Add a task to the queue
-        *   @param  A unique pointer to a task to be completed.
+        *   @param  task A unique pointer to a task to be completed.
         ************************************************************************/
-        void ThreadPoolQueue::add(std::unique_ptr<ThreadPoolTask> newTask)
+        void ThreadPoolQueue::add(std::unique_ptr<ThreadPoolTask> task)
         {
             assert(m_pimpl != nullptr);
             std::lock_guard<std::mutex> lock(m_pimpl->mutex);
-            assert(newTask != nullptr);
-            m_pimpl->taskQueue.push(std::move(newTask));
+            assert(task != nullptr);
+            m_pimpl->taskQueue.push(std::move(task));
         }
 
 

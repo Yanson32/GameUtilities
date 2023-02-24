@@ -1,10 +1,9 @@
 #ifndef GAMEUTILITIES_ONPLAYSOUND_H
 #define GAMEUTILITIES_ONPLAYSOUND_H
-/**************************************************************************
-*   @Author:    Wayne J Larson Jr.
-*   @Date:      5/08/22
-*   @Purpose:    This class is a subclass of the event class. This event
-*               is generated to indicate that a sound should be played. 
+/**********************************************************************//**
+*   @author Wayne J Larson Jr.
+*   @date   5/08/22
+*   @file   OnPlaySound.h
 **************************************************************************/
 
 /*************************************************************************
@@ -25,31 +24,36 @@
 * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ***************************************************************************/
 #include "event_export.h"
-#include "GameUtilities/Event/Event.h"
+#include "GameUtilities/Event/Events/Event.h"
 
 namespace GU
 {
     namespace Evt
     {
 
+        /**********************************************************************//**
+        *   @class  OnPlaySound
+        *   @brief  This class is a subclass of the event class. This event
+        *           is generated to indicate that a sound should be played. 
+        **************************************************************************/
 		class EVENT_EXPORT OnPlaySound: public Event
 		{
 			public:
-                /**************************************************************************
+                /**********************************************************************//**
                 *   @brief  Constructor
-                *   @param  id is the unique identifier for the sound.
+                *   @param  soundId is the unique identifier for the sound.
                 *   @param  line is the line number where the event originated from
                 *   @param  file is the file where the event originated from
                 **************************************************************************/
 				OnPlaySound(const int &soundId, const int &line = 0, const char* file= "");
                 
                 
-                /**************************************************************************
+                /**********************************************************************//**
                 *   @brief  Destructor 
                 **************************************************************************/
 				virtual ~OnPlaySound();
             public:
-				int m_soundId;
+				int m_soundId;      /**< Is a unique identifier for the sound. */
 		};
 	}
 }

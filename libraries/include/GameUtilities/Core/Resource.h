@@ -1,11 +1,11 @@
 #ifndef GAMEUTILITIES_RESOURCE_H
 #define GAMEUTILITIES_RESOURCE_H
-
 /*********************************************************************************//**
-*	@author	Wayne J Larson Jr.
-*   @date 09/16/2022
-*   @purpose:   This class is the base class for all resources 
+*	@author  Wayne J Larson Jr.
+*   @date    09/16/2022
+*   @file    Resource.h
 *************************************************************************************/
+
 /*************************************************************************
 *                           COPYRIGHT NOTICE
 * GameUtilities is a toolkit for making 2d video games.
@@ -34,6 +34,10 @@ namespace GU
     namespace Core
     {
 
+        /*********************************************************************************//**
+        *   @class   Resource
+        *   @brief   This class is the base class for all resources 
+        *************************************************************************************/
         class CORE_EXPORT Resource
         {
             public:

@@ -2,8 +2,8 @@
 #define GAMEUTILITIES_EVENT_EVENTQUEUE_H
 /*********************************************************************************//**
 *	@author	        Wayne J Larson Jr.
-*	@date 	        12/10/18
-*	@description    This class creates a queue for pushing and popping events. 
+*	@date 	        02/08/17
+*	@file           EventQueue.h 
 *************************************************************************************/
 
 /*************************************************************************
@@ -23,7 +23,7 @@
 * You should have received a copy of the GNU General Public License
 * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ***************************************************************************/
-#include "GameUtilities/Event/Event.h"
+#include "GameUtilities/Event/Events/Event.h"
 #include "event_export.h"
 
 namespace GU
@@ -31,97 +31,93 @@ namespace GU
 	namespace Evt
 	{
 		typedef std::shared_ptr<Event> EventPtr;
-
-		/***************************************************************************
-		*   Author:     Wayne J Larson Jr.
-		*   Date:       2/8/17
-		*   Purpose:    This class provides a queue for events.
-		***************************************************************************/
+        /*********************************************************************************//**
+        *	@brief EventQueue creates a queue for pushing and popping events. 
+        *	@class EventQueue 
+        *************************************************************************************/
 		class EVENT_EXPORT EventQueue
 		{
 		public:
-			/***************************************************************************
-			*   @breif: Constructor 
+			/***********************************************************************//**
+			*   @brief Constructor 
 			***************************************************************************/
 			EventQueue();
 
 		
-        	/***************************************************************************
-			*   @brief: Copy constructor 
-            *   @param: queue the EventQueue to be copied
+        	/***********************************************************************//**
+			*   @brief Copy constructor 
+            *   @param queue the EventQueue to be copied
 			***************************************************************************/
 			EventQueue(const EventQueue &queue);
 
 			
-        	/***************************************************************************
-			*   @brief: Move constructor.
-            *   @param: param the EventQueue to be moved. 
+        	/***********************************************************************//**
+			*   @brief Move constructor.
+            *   @param param the EventQueue to be moved. 
 			***************************************************************************/
 			EventQueue(EventQueue&& param);
 
             
-            /***************************************************************************
-			*   @brief:     Assignment operator.
-            *   @param:     param is the EventQueue to be copied.
-            *   @return:    A reference to the updated EventQueue. 
+            /***********************************************************************//**
+			*   @brief  Assignment operator.
+            *   @param  param is the EventQueue to be copied.
+            *   @return A reference to the updated EventQueue. 
 			***************************************************************************/
 			EventQueue& operator=(EventQueue&& param);
 
 			
-			/***************************************************************************
-			*   Purpose:    This method adds an event to the event queue.
-			*   Input:      EventPtr a pointer to an event to be added.
+			/***********************************************************************//**
+			*   @brief  This method adds an event to the event queue.
+			*   @param  event is a pointer to an event to be added.
 			***************************************************************************/
 			void post(EventPtr event);
 
 
-			/***************************************************************************
-			*   Purpose:    This method adds an event to the event queue. The event
-			*               will be constructed internally based on the input parameters
-			*   Input:      typename Type the type of event to be constructed.
-			*               typename.. Args an arbitrary type, and number of arguments
-			*               passed to the constructor of the event.
-			***************************************************************************/
+            /***********************************************************************//**
+            *   brief This method adds an event to the event queue. The event
+            *         will be constructed internally based on the input parameters
+            *   tparam typename the type of event to be constructed.
+            *   @param args is the arguments needed to construct the type passed.
+            ***************************************************************************/
 			template<typename Type, typename... Args>
 			void post(Args&&... args);
 
 
-			/***************************************************************************
-			*   Purpose:    This method returns a boolean value indicating whether
-			*               there is an event in the queue or not.
-			*   Return:     bool true if there is an event in the queue.
+			/***********************************************************************//**
+			*   @brief  This method returns a boolean value indicating whether
+			*           there is an event in the queue or not.
+			*   @return bool true if there is an event in the queue.
 			***************************************************************************/
 			bool empty() const;
 
 
-			/***************************************************************************
-			*   Purpose:    This method is used to remove an event from the queue.
-			*   Input:      EventPtr a pointer to the event taken from the queue.
-			*               This will be a = to nullptr if there are no events to be
-			*               removed.
-			*   Return:     bool true if an event has been taken from the queue, and
-			*               false otherwise.
+			/***********************************************************************//**
+			*   @brief  This method is used to remove an event from the queue.
+			*   @param  event is a pointer to the event taken from the queue.
+			*           This will be a = to nullptr if there are no events to be
+			*           removed.
+			*   @return bool true if an event has been taken from the queue, and
+			*           false otherwise.
 			***************************************************************************/
-			bool poll(EventPtr &event);
+			virtual bool poll(EventPtr &event);
 
 
-			/***************************************************************************
-			*   Virtual destructor:
+			/***********************************************************************//**
+			*   @brief Destructor.
 			***************************************************************************/
 			virtual ~EventQueue();
 		private:
 
 			class impl;
-			impl* pimpl = nullptr;
+			impl* pimpl = nullptr;  /*!< Pointer to the class implimentation */
 		};
 
 
-		/***************************************************************************
-		*   Purpose:    This method adds an event to the event queue. The event
-		*               will be constructed internally based on the input parameters
-		*   Input:      typename Type the type of event to be constructed.
-		*               typename.. Args an arbitrary type, and number of arguments
-		*               passed to the constructor of the event.
+		/***********************************************************************//**
+		*   brief This method adds an event to the event queue. The event
+		*         will be constructed internally based on the input parameters
+		*   tparam typename the type of event to be constructed.
+        *   @param args is the arguments needed to construct the type passed.
 		***************************************************************************/
 		template<typename T, typename... Args>
 		void EventQueue::post(Args&&... args)

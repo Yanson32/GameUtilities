@@ -18,7 +18,7 @@ int main()
 	manager.add(target);
 
 	//Set log formatter
-	std::shared_ptr<GU::Log::LogFormatter> logFormatter(new GU::Log::LogFormatter);
+	std::shared_ptr<GU::Log::LogFormatter> logFormatter = std::shared_ptr<GU::Log::LogFormatter>(new GU::Log::LogFormatter());
 	logFormatter->add<GU::Log::DateComponent>();
 	logFormatter->add<GU::Log::SeverityComponent>();
 	logFormatter->add<GU::Log::MsgComponent>();

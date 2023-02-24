@@ -1,5 +1,5 @@
-set(FILES 	"${CMAKE_CURRENT_SOURCE_DIR}/Base.cpp"
-			"${CMAKE_CURRENT_SOURCE_DIR}/Manager.cpp"
+set(FILES 	"${CMAKE_CURRENT_SOURCE_DIR}/UpdaterBase.cpp"
+			"${CMAKE_CURRENT_SOURCE_DIR}/UpdateManager.cpp"
 			"${CMAKE_CURRENT_SOURCE_DIR}/Position.cpp"
 )
 set(SUB_DIRECTORIES ""

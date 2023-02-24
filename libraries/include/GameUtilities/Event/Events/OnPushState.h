@@ -3,8 +3,7 @@
 /*******************************************************//**
 *   @author Wayne J Larson Jr.
 *   @date   5/17/22
-*   @brief  The PushState event will be generated when a new
-*           state should be added to the stack. 
+*   @file   OnPushState.h
 ***********************************************************/
 
 /*************************************************************************
@@ -25,12 +24,17 @@
 * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ***************************************************************************/
 #include "event_export.h"
-#include "GameUtilities/Event/Event.h"
+#include "GameUtilities/Event/Events/Event.h"
 
 namespace GU
 {
     namespace Evt
     {
+        /*******************************************************//**
+        *   @class  OnPushState
+        *   @brief  The PushState event will be generated when a new
+        *           state should be added to the stack. 
+        ***********************************************************/
 		class EVENT_EXPORT OnPushState: public Event
 		{
 			public:
@@ -50,7 +54,7 @@ namespace GU
                 ***********************************************************/
 				virtual ~OnPushState();
 			public:	
-                const int m_stateId;
+                const int m_stateId;        /**< A unique identifier for the state */
 		};
 	}
 }

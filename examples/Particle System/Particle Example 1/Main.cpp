@@ -1,11 +1,10 @@
 #include <GameUtilities/ParticleSystem/Systems/Starburst.h>
-#include <GameUtilities/ParticleSystem/Attributes/Manager.h>
+#include <GameUtilities/ParticleSystem/Attributes/AttributeManager.h>
 #include <GameUtilities/ParticleSystem/Attributes/Position.h>
 #include <GameUtilities/ParticleSystem/Attributes/Velocity.h>
 #include <GameUtilities/ParticleSystem/Attributes/LifeSpan.h>
-#include <GameUtilities/ParticleSystem/Attributes/Base.h>
 #include <GameUtilities/ParticleSystem/Attributes/Id.h>
-#include <GameUtilities/ParticleSystem/Attributes/Base.h>
+#include <GameUtilities/ParticleSystem/Attributes/AttributeBase.h>
 #include <GameUtilities/ParticleSystem/Container.h>
 #include <Math/Vector2.h>
 #include <SFML/Graphics.hpp>
@@ -18,7 +17,7 @@ const int CIRCLE_ATT = 3;	///CircleAtt's id
 *	@brief	sf::CircleShape attribute. for drawing particles with sfml.
 *	@class	CircleAtt
 ************************************************************************************/
-class CircleAtt: public GU::PS::AT::Base
+class CircleAtt: public GU::PS::AT::AttributeBase
 {
     public:
 
@@ -28,7 +27,7 @@ class CircleAtt: public GU::PS::AT::Base
 		*	@param  newSize a reference to the total number of particles in the system.
 		*	@param	newId the id of the attribute.
 		**************************************************************************************/
-        CircleAtt(GU::PS::AT::Manager& newManager, const std::size_t &newSize, const int &newId = -1);
+        CircleAtt(GU::PS::AT::AttributeManager& newManager, const std::size_t &newSize, const int &newId = -1);
 
 
 		/**********************************************************************************//**
@@ -47,16 +46,17 @@ class CircleAtt: public GU::PS::AT::Base
 *	@param  newSize a reference to the total number of particles in the system.
 *	@param	newId the id of the attribute.
 **************************************************************************************/
-CircleAtt::CircleAtt(GU::PS::AT::Manager& newManager, const std::size_t &newSize, const int &newId):
-    GU::PS::AT::Base::Base(newManager, newSize, newId),
+CircleAtt::CircleAtt(GU::PS::AT::AttributeManager& newManager, const std::size_t &newSize, const int &newId):
+    GU::PS::AT::AttributeBase::AttributeBase(newManager, newId),
     data(newSize)
 {
-
+    
+    
     for(std::size_t i = 0; i < newSize; ++i)
     {
-        sf::CircleShape &circle = data[i];
-        circle.setFillColor(sf::Color::Green);
-        circle.setRadius(5);
+        data.emplace_back<sf::CircleShape>(sf::CircleShape());
+        data[i].setFillColor(sf::Color::Green);
+        data[i].setRadius(5);
     }
 
 }
@@ -113,10 +113,10 @@ void sfStarburst::update(const float &deltaTime)
         std::shared_ptr<CircleAtt> cAtt = std::static_pointer_cast<CircleAtt>(this->getComponent(CIRCLE_ATT));
         assert(pos != nullptr);
         assert(cAtt != nullptr);
-        assert(pos->data.size() == cAtt->data.size());
-        for(std::size_t i = 0; i < pos->data.size(); ++i)
+        assert(pos->m_data.size() == cAtt->data.size());
+        for(std::size_t i = 0; i < pos->m_data.size(); ++i)
         {
-            cAtt->data[i].setPosition(pos->data[i].first, pos->data[i].second);
+            cAtt->data[i].setPosition(pos->m_data[i].first, pos->m_data[i].second);
         }
     }
 }
@@ -134,7 +134,7 @@ void sfStarburst::draw(sf::RenderTarget& target, sf::RenderStates states) const
         std::shared_ptr<CircleAtt> att = std::static_pointer_cast<CircleAtt>(this->getComponent(CIRCLE_ATT));
         for(std::size_t i = 0; i < att->data.size(); ++i)
         {
-            target.draw(att->data[i]);
+            target.draw(att->data[i], states);
         }
     }
 }

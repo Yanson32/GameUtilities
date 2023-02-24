@@ -12,6 +12,7 @@ set(SUB_DIRECTORIES
 "Log"
 "Data"
 "Algorithm"
+"Window"
 )
 
 #Add subdirectories

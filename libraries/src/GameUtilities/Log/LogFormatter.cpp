@@ -1,3 +1,26 @@
+/*********************************************************************************//**
+*	@author	 Wayne J Larson Jr.
+*	@date 	 5/19/22
+*   @file    LogFormatter.cpp
+*************************************************************************************/
+
+/*************************************************************************
+*                           COPYRIGHT NOTICE
+* GameUtilities is a toolkit for making 2d video games.
+* Copyright (C) 2018 Wayne J Larson Jr. 
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License version 3 as 
+* published by the Free Software Foundation.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+* 
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see <https://www.gnu.org/licenses/>.
+***************************************************************************/
 #include "GameUtilities/Log/LogFormatter.h"
 #include "GameUtilities/Log/Component/LogComponent.h"
 #include "GameUtilities/Log/Component/Components.h"
@@ -142,6 +165,7 @@ namespace GU
 
         /*********************************************************************************//**
         *	@brief  This method return a component with the given id.
+        *   @param  component is a pointer to a LogComponent subclass.
         *   @return A pointer to the log component with the given id. 
         *************************************************************************************/
         std::shared_ptr<LogComponent> LogFormatter::getComponent(const componentId &component) const

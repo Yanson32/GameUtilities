@@ -1,9 +1,9 @@
 #ifndef GAMEUTILITIES_EVENT_ONADD_H
 #define GAMEUTILITIES_EVENT_ONADD_H
-/**************************************************************************
-*   @Author:     Wayne J Larson Jr.
-*   @Date:       10/10)/22
-*   @Purpose:    This event is generated when something is added. 
+/**********************************************************************//**
+*   @author Wayne J Larson Jr.
+*   @date   10/10/22
+*   @file   OnAdd.h
 **************************************************************************/
 
 /*************************************************************************
@@ -24,7 +24,7 @@
 * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ***************************************************************************/
 #include "event_export.h"
-#include "GameUtilities/Event/Event.h"
+#include "GameUtilities/Event/Events/Event.h"
 
 namespace GU
 {
@@ -32,21 +32,28 @@ namespace GU
     namespace Evt
     {
 
+        /**********************************************************************//**
+        *   @class  OnAdd
+        *   @brief  This event is generated when something is added. 
+        **************************************************************************/
         class EVENT_EXPORT OnAdd : public Event
         {
             public:
-                /**************************************************************************
-                *   Constructor
-                **************************************************************************/
+                /******************************************************************//**
+                *   @brief  Constructor
+                *   @param  addId a unique identifier of the entity to be added.
+                *   @param  line the line where the event originates from
+                *   @param  file the file where the event originates from
+                **********************************************************************/
                 OnAdd(const int &addId, const int &line, const char* file = "");
 
                 
-                /**************************************************************************
-                *   Destructor
+                /**********************************************************************//**
+                *   @brief  Destructor
                 **************************************************************************/
                 virtual ~OnAdd(); 
             private:
-                const int m_addId = -1;
+                const int m_addId = -1;     /**< A unique identifier of the entity to be added. */
         };
 
     }

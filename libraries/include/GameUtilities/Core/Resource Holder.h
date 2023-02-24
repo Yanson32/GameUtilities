@@ -14,7 +14,7 @@ namespace GU
     namespace Core 
     {
         template <typename Resource, typename Identifier>
-        class ResourceHolder: NonCopyable
+        class ResourceHolder: GU::Core::NonCopyable
         {
             public:
                 void                load(Identifier id, const std::string& filename);

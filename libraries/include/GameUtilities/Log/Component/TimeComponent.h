@@ -1,11 +1,28 @@
 #ifndef GU_LOG_TIMECOMPONENT_H
 #define GU_LOG_TIMECOMPONENT_H
 /*********************************************************************************//**
-*	@author	Wayne J Larson Jr.
-* @date 5/24/2022
-* @description  This class represents the time component for the log system 
+*   @author	Wayne J Larson Jr.
+*   @date   5/24/2022
+*   @file   TimeComponent.h
 *************************************************************************************/
 
+/*************************************************************************
+*                           COPYRIGHT NOTICE
+* GameUtilities is a toolkit for making 2d video games.
+* Copyright (C) 2018 Wayne J Larson Jr. 
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License version 3 as 
+* published by the Free Software Foundation.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+* 
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see <https://www.gnu.org/licenses/>.
+***************************************************************************/
 #include "log_export.h"
 #include "GameUtilities/Core/String.h"
 #include "GameUtilities/Log/Component/LogComponent.h"
@@ -17,6 +34,10 @@ namespace GU
 {
     namespace Log
     {
+        /*********************************************************************************//**
+        *   @class  TimeComponent
+        *   @brief  This class represents the time component for the log system 
+        *************************************************************************************/
         struct LOG_EXPORT TimeComponent: public LogComponent
         {
             
@@ -29,7 +50,7 @@ namespace GU
 
                 /*********************************************************************************//**
                 *	@brief  Constructor
-                *   @param  hour is the hour component of the current time
+                *   @param  hours is the hour component of the current time
                 *   @param  minutes is the minutes component of the current time.
                 *   @param  seconds is the seconds component of the current time
                 *************************************************************************************/
@@ -38,7 +59,7 @@ namespace GU
 
                 /*********************************************************************************//**
                 *	@brief  This method copies the given object into the current object with deep copy.
-                *   @comp   is the object to be copied. 
+                *   @param  comp is the object to be copied. 
                 *   @return Is a reference to the current updated object
                 *************************************************************************************/
                 TimeComponent& operator = (const TimeComponent &comp);
@@ -51,9 +72,9 @@ namespace GU
                 *************************************************************************************/
                 GU::Core::String format();
             public:
-                int m_hours;
-                int m_minutes;
-                int m_seconds;
+                int m_hours;        /**< The total number of hours */
+                int m_minutes;      /**< The total number of minutes */
+                int m_seconds;      /**< The total number of seconds */
       };
     }
 }

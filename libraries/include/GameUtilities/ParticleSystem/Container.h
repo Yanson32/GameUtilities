@@ -39,7 +39,7 @@ namespace GU
 
                 /****************************************************//**
                 *   @brief  Constructor
-                *   @param  size the number of objects the container
+                *   @param  capacity size the number of objects the container
                 *           should hold.
                 ********************************************************/
                 Container(const std::size_t capacity);
@@ -202,8 +202,8 @@ namespace GU
 
 
         /****************************************************//**
-        *   @brief  Constructor
-        *   @param  size the number of objects the container
+        *   brief  Constructor
+        *   param  capacity size the number of objects the container
         *           should hold.
         ********************************************************/
         template <class T>
@@ -442,8 +442,6 @@ namespace GU
 
                 /****************************************************//**
                 *   @brief  Overloaded post increment operator.
-                *   @param  int this is a dummy parameter to differentiate
-                *           between the pre and post operator.
                 *   @return An iterator to the current element in the
                 *           container.
                 ********************************************************/
@@ -460,8 +458,6 @@ namespace GU
 
                 /****************************************************//**
                 *   @brief  Overloaded post decrement operator.
-                *   @param  int this is a dummy parameter to differentiate
-                *           between the pre and post operator.
                 *   @return An iterator to the current element in the
                 *           container.
                 ********************************************************/
@@ -480,7 +476,7 @@ namespace GU
 
                 /****************************************************//**
                 *   @brief  Overloaded post increment operator.
-                *   @param  int this is a dummy parameter to differentiate
+                *   @param  param this is a dummy parameter to differentiate
                 *           between the pre and post operator.
                 *   @return An iterator to the current element in the
                 *           container.
@@ -525,8 +521,6 @@ namespace GU
 
         /****************************************************//**
         *   @brief  Overloaded post increment operator.
-        *   @param  int this is a dummy parameter to differentiate
-        *           between the pre and post operator.
         *   @return An iterator to the current element in the
         *           container.
         ********************************************************/
@@ -554,8 +548,6 @@ namespace GU
 
         /****************************************************//**
         *   @brief  Overloaded post decrement operator.
-        *   @param  int this is a dummy parameter to differentiate
-        *           between the pre and post operator.
         *   @return An iterator to the current element in the
         *           container.
         ********************************************************/
@@ -585,7 +577,7 @@ namespace GU
 
         /****************************************************//**
         *   @brief  Overloaded post increment operator.
-        *   @param  int this is a dummy parameter to differentiate
+        *   @param  param this is a dummy parameter to differentiate
         *           between the pre and post operator.
         *   @return An iterator to the current element in the
         *           container.

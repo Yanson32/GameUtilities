@@ -1,9 +1,9 @@
 #ifndef GAMEUTILITIES_EVENT_ONREMOVE_H
 #define GAMEUTILITIES_EVENT_ONREMOVE_H
-/**************************************************************************
-*   @Author:     Wayne J Larson Jr.
-*   @Date:       10/10/22
-*   @Purpose:    This event is generated when something is removed. 
+/**********************************************************************//**
+*   @author Wayne J Larson Jr.
+*   @date   10/10/22
+*   @file   OnRemove.h
 **************************************************************************/
 
 /*************************************************************************
@@ -24,7 +24,7 @@
 * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ***************************************************************************/
 #include "event_export.h"
-#include "GameUtilities/Event/Event.h"
+#include "GameUtilities/Event/Events/Event.h"
 
 namespace GU
 {
@@ -32,21 +32,28 @@ namespace GU
     namespace Evt
     {
 
+        /**********************************************************************//**
+        *   @class  OnRemove
+        *   @brief  This event is generated when something is removed. 
+        **************************************************************************/
         class EVENT_EXPORT OnRemove : public Event
         {
             public:
-                /**************************************************************************
-                *   Constructor
+                /**********************************************************************//**
+                *   @brief  Constructor.
+                *   @param  removeId is a unique identifier for the entity to be removed. 
+                *   @param  line is the source code line number that generated the event.
+                *   @param  file is the source code file that generated the event
                 **************************************************************************/
                 OnRemove(const int &removeId, const int &line, const char* file = "");
 
                 
-                /**************************************************************************
-                *   Destructor
+                /**********************************************************************//**
+                *   @brief  Destructor
                 **************************************************************************/
                 virtual ~OnRemove(); 
             private:
-                const int m_removeId = -1;
+                const int m_removeId = -1;      /**< A unique identifier for the entity to be removed */
         };
 
     }

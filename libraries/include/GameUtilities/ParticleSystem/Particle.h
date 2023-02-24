@@ -2,9 +2,7 @@
 #define GU_PARTICLE_H_INCLUDED
 #include "particlesystem_export.h"
 #include "GameUtilities/ParticleSystem/Container.h"
-#include "GameUtilities/RGBA.h"
-#include "Math/Point.h"
-#include "Math/Vector.h"
+#include "Math/Vector2.h"
 #include <vector>
 
 namespace GU

@@ -1,9 +1,26 @@
-/*!
-*	\author Wayne J Larson Jr.
-*	\version 1.0
-*	\date 12/10/17
-*/
+/*********************************************************************************//**
+*	@author	        Wayne J Larson Jr.
+*	@date 	        02/08/17
+*	@file           EventQueue.cpp 
+*************************************************************************************/
 
+/*************************************************************************
+*                           COPYRIGHT NOTICE
+* GameUtilities is a toolkit for making 2d video games.
+* Copyright (C) 2018 Wayne J Larson Jr. 
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License version 3 as 
+* published by the Free Software Foundation.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+* 
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see <https://www.gnu.org/licenses/>.
+***************************************************************************/
 #include "GameUtilities/Event/EventQueue.h"
 #include <cassert>
 #include <queue>
@@ -17,84 +34,156 @@ namespace GU
 		class EventQueue::impl
 		{
 			public:
+                /***********************************************************************//**
+                *   @brief Constructor 
+                ***************************************************************************/
 				impl();
+                
+
+                /***********************************************************************//**
+                *   @brief  This method adds an event to the event queue.
+                *   @param  event is a pointer to an event to be added.
+                ***************************************************************************/
 				void post(EventPtr event);
+                
+
+                /***********************************************************************//**
+                *   @brief  This method returns a boolean value indicating whether
+                *           there is an event in the queue or not.
+                *   @return bool true if there is an event in the queue.
+                ***************************************************************************/
 				bool empty() const;
+                
+
+                /***********************************************************************//**
+                *   @brief  This method is used to remove an event from the queue.
+                *   @param  event is a pointer to the event taken from the queue.
+                *           This will be a = to nullptr if there are no events to be
+                *           removed.
+                *   @return bool true if an event has been taken from the queue, and
+                *           false otherwise.
+                ***************************************************************************/
 				bool poll(EventPtr &event);
+			
+
+                /***********************************************************************//**
+                *   @brief Destructor.
+                ***************************************************************************/
 				virtual ~impl();
 			private:
-				std::queue<EventPtr> eventQueue;
+				std::queue<EventPtr> m_eventQueue;        /*!< Queue data structure for the events */ 
 
 				#ifdef MULTITHREAD
-					mutable std::mutex eventQueueLock;
+					mutable std::mutex m_eventQueueLock;  /*!< Mutex for the queue */ 
 				#endif
 		};
 
-		//EventQueue constructor
+        
+        /***********************************************************************//**
+        *   @brief Constructor 
+        ***************************************************************************/
 		EventQueue::impl::impl()
 		{
 
 		}
 
-		//Post implimentation
+        
+        /***********************************************************************//**
+        *   @brief  This method adds an event to the event queue.
+        *   @param  event is a pointer to an event to be added.
+        ***************************************************************************/
 		void EventQueue::impl::post(EventPtr event)
 		{
 			assert(event != nullptr);
 			#ifdef MULTITHREAD
-				std::lock_guard<std::mutex> lock(eventQueueLock);
+				std::lock_guard<std::mutex> lock(m_eventQueueLock);
 			#endif
 
-			eventQueue.push(event);
+			m_eventQueue.push(event);
 		}
 
-		//empty implimentation
+        
+        /***********************************************************************//**
+        *   @brief  This method returns a boolean value indicating whether
+        *           there is an event in the queue or not.
+        *   @return bool true if there is an event in the queue.
+        ***************************************************************************/
 		bool EventQueue::impl::empty() const
 		{
-			return eventQueue.empty();
+			return m_eventQueue.empty();
 		}
 
-		//Poll Implimentation
+        
+        /***********************************************************************//**
+        *   @brief  This method is used to remove an event from the queue.
+        *   @param  event is a pointer to the event taken from the queue.
+        *           This will be a = to nullptr if there are no events to be
+        *           removed.
+        *   @return bool true if an event has been taken from the queue, and
+        *           false otherwise.
+        ***************************************************************************/
 		bool EventQueue::impl::poll(EventPtr &event)
 		{
 			#ifdef MULTITHREAD
-				std::lock_guard<std::mutex> lock(eventQueueLock);
+				std::lock_guard<std::mutex> lock(m_eventQueueLock);
 			#endif
 
-			if (!eventQueue.empty())
+			if (!m_eventQueue.empty())
 			{
-				event = eventQueue.front();
+				event = m_eventQueue.front();
 				assert(event != nullptr);
-				eventQueue.pop();
+				m_eventQueue.pop();
 				return true;
 			}
 			return false;
 		}
 
-		//Destructor
+        
+        /***********************************************************************//**
+        *   @brief Destructor.
+        ***************************************************************************/
 		EventQueue::impl::~impl()
 		{
 
 		}
-        /***************************************************************************
-        *   \brief	Constructor:
-        ***************************************************************************/
+		
+
+        /***********************************************************************//**
+		*   @brief Constructor 
+		***************************************************************************/
         EventQueue::EventQueue(): pimpl(new EventQueue::impl)
         {
             //ctor
         }
 
+        
+        /***********************************************************************//**
+        *   @brief Copy constructor 
+        *   @param queue the EventQueue to be copied
+        ***************************************************************************/
 		EventQueue::EventQueue(const EventQueue &queue)
 		{
             assert(pimpl != nullptr);
 			pimpl = queue.pimpl;
 		}
 
+        
+        /***********************************************************************//**
+        *   @brief Move constructor.
+        *   @param param the EventQueue to be moved. 
+        ***************************************************************************/
 		EventQueue::EventQueue(EventQueue&& param)
 		{
             assert(pimpl != nullptr);
 			pimpl = param.pimpl;
 		}
 
+        
+        /***********************************************************************//**
+        *   @brief  Assignment operator.
+        *   @param  param is the EventQueue to be copied.
+        *   @return A reference to the updated EventQueue. 
+        ***************************************************************************/
 		EventQueue& EventQueue::operator=(EventQueue&& param)
 		{
             assert(pimpl != nullptr);
@@ -103,9 +192,10 @@ namespace GU
 			return *this;
 		}
 
-        /***************************************************************************
-        *   \brief	This method adds an event to the event queue.
-        *   \brief 	param: EventPtr a pointer to an event to be added.
+        
+        /***********************************************************************//**
+        *   @brief  This method adds an event to the event queue.
+        *   @param  event is a pointer to an event to be added.
         ***************************************************************************/
         void EventQueue::post(EventPtr event)
         {
@@ -114,10 +204,10 @@ namespace GU
         }
 
 
-        /***************************************************************************
-        *   \brief	This method returns a boolean value indicating whether
-        *         	there is an event in the queue or not.
-        *   \brief 	bool true if there is an event in the queue.
+        /***********************************************************************//**
+        *   @brief  This method returns a boolean value indicating whether
+        *           there is an event in the queue or not.
+        *   @return bool true if there is an event in the queue.
         ***************************************************************************/
         bool EventQueue::empty() const
         {
@@ -126,12 +216,12 @@ namespace GU
         }
 
 
-        /***************************************************************************
-        *   \brief	This method is used to remove an event from the queue.
-        *   \brief 	param: EventPtr a pointer to the event taken from the queue.
+        /***********************************************************************//**
+        *   @brief  This method is used to remove an event from the queue.
+        *   @param  event is a pointer to the event taken from the queue.
         *           This will be a = to nullptr if there are no events to be
         *           removed.
-        *   \brief  Return: bool true if an event has been taken from the queue, and
+        *   @return bool true if an event has been taken from the queue, and
         *           false otherwise.
         ***************************************************************************/
         bool EventQueue::poll(EventPtr &event)
@@ -141,8 +231,8 @@ namespace GU
         }
 
 
-        /***************************************************************************
-        *   brief	Virtual destructor
+        /***********************************************************************//**
+        *   @brief Destructor.
         ***************************************************************************/
         EventQueue::~EventQueue()
         {

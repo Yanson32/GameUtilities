@@ -1,11 +1,28 @@
 #ifndef GAMEUTILITIES_LOG_LOGMANAGER_H
 #define GAMEUTILITIES_LOG_LOGMANAGER_H
 /*********************************************************************************//**
-*	@author	        Wayne J Larson Jr.
-*	@date 	        5/20/22
-*	@description    The purpose of this class is to write log entries to a log file. 
+*	@author	 Wayne J Larson Jr.
+*	@date 	 5/20/22
+*   @file    LogManager.h
 *************************************************************************************/
 
+/*************************************************************************
+*                           COPYRIGHT NOTICE
+* GameUtilities is a toolkit for making 2d video games.
+* Copyright (C) 2018 Wayne J Larson Jr. 
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License version 3 as 
+* published by the Free Software Foundation.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+* 
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see <https://www.gnu.org/licenses/>.
+***************************************************************************/
 #include "GameUtilities/Log/Target/LogTarget.h"
 #include "GameUtilities/Log/LogFormatter.h"
 #include "GameUtilities/Log/LogEntry.h"
@@ -17,6 +34,10 @@ namespace GU
 {
     namespace Log
     {
+        /*********************************************************************************//**
+        *   @class   LogManager
+        *	@brief   The purpose of this class is to write log entries to a log file. 
+        *************************************************************************************/
         class LOG_EXPORT LogManager
   	    {
   	        public:
@@ -79,6 +100,7 @@ namespace GU
                 /*********************************************************************************//**
                 *	@brief  This method returns the log formatter currently being used by the log 
                 *           manager. 
+                *   @return A pointer to the LogFormatter
                 *************************************************************************************/
                 std::shared_ptr<LogFormatter> getFormatter();
                 
@@ -89,7 +111,7 @@ namespace GU
                 virtual ~LogManager();
   	        private:
                 class Impl;
-                Impl* m_pimpl = nullptr;
+                Impl* m_pimpl = nullptr;        /**< Pointer to the class implimentation */
         };
     }
 }

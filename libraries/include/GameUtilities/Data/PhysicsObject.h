@@ -1,9 +1,9 @@
 #ifndef PHYSICS_OBJECT_H
 #define PHYSICS_OBJECT_H
-/**************************************************************************
-*   Author:     Wayne J Larson Jr.
-*   Date:       13/09/22
-*   Purpose:    This class represents a rectangle 
+/**********************************************************************//**
+*   @author Wayne J Larson Jr. 
+*   @date   13/09/22
+*   @file   PhysicsObject.h
 **************************************************************************/
 
 /*************************************************************************
@@ -31,13 +31,17 @@ namespace GU
 {
     namespace Data
     {
+        /**********************************************************************//**
+        *   @class  PhysicsObject
+        *   @brief  This class represents a rectangle 
+        **************************************************************************/
         class DATA_EXPORT PhysicsObject 
         {
             public:
-                /****************************************************************************************
-                *   @brief      This method returns a axis aligned bounding box for the object. 
-                *   @param      A axis aligned bounding box. 
-                ****************************************************************************************/
+                /*********************************************************************************//**
+                *   @brief  This method returns a axis aligned bounding box for the object. 
+                *   @return A axis aligned bounding box. 
+                *************************************************************************************/
                 virtual AABB getBounds() const = 0; 
         };
     }

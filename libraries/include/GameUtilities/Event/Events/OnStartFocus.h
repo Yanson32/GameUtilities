@@ -1,9 +1,9 @@
 #ifndef GAMEUTILITIES_EVENT_ONSTARTFOCUS_H
 #define GAMEUTILITIES_EVENT_ONSTARTFOCUS_H
-/**************************************************************************
-*   @Author:     Wayne J Larson Jr.
-*   @Date:       10/10/22
-*   @Purpose:    This event is generated when something is focused. 
+/**********************************************************************//**
+*   @author Wayne J Larson Jr.
+*   @date   10/10/22
+*   @file   OnStartFocus.h
 **************************************************************************/
 
 /*************************************************************************
@@ -24,7 +24,7 @@
 * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ***************************************************************************/
 #include "event_export.h"
-#include "GameUtilities/Event/Event.h"
+#include "GameUtilities/Event/Events/Event.h"
 
 namespace GU
 {
@@ -32,21 +32,28 @@ namespace GU
     namespace Evt
     {
 
+        /**********************************************************************//**
+        *   @class  OnStartFocus
+        *   @brief  This event is generated when something is focused. 
+        **************************************************************************/
         class EVENT_EXPORT OnStartFocus : public Event
         {
             public:
-                /**************************************************************************
-                *   Constructor
+                /**********************************************************************//**
+                *   @brief  Constructor.
+                *   @param  focusId is a unique id for the entity to be focused. 
+                *   @param  line is the source code line number that generated the event.
+                *   @param  file is the source code file that generated the event
                 **************************************************************************/
                 OnStartFocus(const int &focusId, const int &line, const char* file = "");
 
                 
-                /**************************************************************************
-                *   Destructor
+                /**********************************************************************//**
+                *   @brief Destructor
                 **************************************************************************/
                 virtual ~OnStartFocus(); 
             private:
-                const int m_focusId = -1;
+                const int m_focusId = -1;       /**< A unique id for the entity to be focused */
         };
 
     }

@@ -1,10 +1,9 @@
 #ifndef GAMEUTILITIES_ONPLAYMUSIC_H
 #define GAMEUTILITIES_ONPLAYMUSIC_H
-/**************************************************************************
-*   @Author:    Wayne J Larson Jr.
-*   @Date:      5/11/22
-*   Purpose:    This class is a subclass of the event class. This event
-*               is generated to indicate that the music should start playing. 
+/**********************************************************************//**
+*   @author Wayne J Larson Jr.
+*   @date   5/11/22
+*   @file   OnPlayMusic.h
 **************************************************************************/
 
 /*************************************************************************
@@ -25,17 +24,22 @@
 * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ***************************************************************************/
 #include "event_export.h"
-#include "GameUtilities/Event/Event.h"
+#include "GameUtilities/Event/Events/Event.h"
 
 namespace GU
 {
     namespace Evt
     {
 
+        /**********************************************************************//**
+        *   @class  OnPlayMusic
+        *   @brief  This class is a subclass of the event class. This event
+        *           is generated to indicate that the music should start playing. 
+        **************************************************************************/
 		class EVENT_EXPORT OnPlayMusic: public Event
 		{
 			public:
-                /**************************************************************************
+                /**********************************************************************//**
                 *   @brief  Constructor.
                 *   @param  musicFile is the music to be played.   
                 *   @param  line is the line in code where the event was generated.
@@ -44,12 +48,12 @@ namespace GU
 				OnPlayMusic(const char* musicFile, const int &line = 0, const char* file = "");
                 
 
-                /**************************************************************************
+                /**********************************************************************//**
                 *   @brief  Destructor.
                 **************************************************************************/
 				virtual ~OnPlayMusic();
             public:
-				const char* m_musicFile;
+				const char* m_musicFile;        /**< The name of the music to be played */
 		};
 	}
 }

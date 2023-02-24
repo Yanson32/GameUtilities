@@ -1,10 +1,9 @@
 #ifndef EVENT_ON_RETURN_PRESSED_H
 #define EVENT_ON_RETURN_PRESSED_H
-/**************************************************************************
-*   @Author:     Wayne J Larson Jr.
-*   @Date:       09/30/22
-*   @Purpose:    This event is generated when the user presses a key
-*                on the keyboard. 
+/**********************************************************************//**
+*   @author Wayne J Larson Jr.
+*   @date   09/30/22
+*   @file   OnKeyPressed.h
 **************************************************************************/
 
 /*************************************************************************
@@ -24,19 +23,36 @@
 * You should have received a copy of the GNU General Public License
 * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ***************************************************************************/
-#include "GameUtilities/Event/Event.h"
+#include "GameUtilities/Event/Events/Event.h"
 
 namespace GU
 {
     namespace Evt
     {
 
+        /**********************************************************************//**
+        *   @class  OnKeyPressed
+        *   @brief  This event is generated when the user presses a key 
+        *           on the keyboard. 
+        **************************************************************************/
         class OnKeyPressed: public GU::Evt::Event
         {
             public:
-                OnKeyPressed(const int &key, const int &line, const char* file = "");
+                /******************************************************************//**
+                *   @brief  Constructor.
+                *   @param  key is a unique identifier for the key that was pressed. 
+                *   @param  line the line where the event originates from.
+                *   @param  file the file where the event originates from.
+                **********************************************************************/
+                OnKeyPressed(const int &key, const int &line = -1, const char* file = "");
+                
+
+                /******************************************************************//**
+                *   @brief  Destructor.
+                **********************************************************************/
                 virtual ~OnKeyPressed();
-                const int m_keyId = -1;
+            public:
+                const int m_keyId = -1;     /**< A unique identifier for the key that was pressed. */
         };
     }
 }

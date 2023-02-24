@@ -1,9 +1,9 @@
 #ifndef GAMEUTILITIES_EVENT_ONSTART_H
 #define GAMEUTILITIES_EVENT_ONSTART_H
-/**************************************************************************
-*   @Author:     Wayne J Larson Jr.
-*   @Date:       10/01/22
-*   @Purpose:    This event is generates when something is started. 
+/**********************************************************************//**
+*   @author Wayne J Larson Jr.
+*   @date   10/01/22
+*   @file   OnStart.h
 **************************************************************************/
 
 /*************************************************************************
@@ -24,7 +24,7 @@
 * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ***************************************************************************/
 #include "event_export.h"
-#include "GameUtilities/Event/Event.h"
+#include "GameUtilities/Event/Events/Event.h"
 
 namespace GU
 {
@@ -32,21 +32,28 @@ namespace GU
     namespace Evt
     {
 
+        /**********************************************************************//**
+        *   @class  OnStart
+        *   @brief  This event is generates when something is started. 
+        **************************************************************************/
         class EVENT_EXPORT OnStart : public Event
         {
             public:
-                /**************************************************************************
-                *   Constructor
+                /**********************************************************************//**
+                *   @brief  Constructor.
+                *   @param  startId is a unique id for the entity to be started. 
+                *   @param  line is the source code line number that generated the event.
+                *   @param  file is the source code file that generated the event
                 **************************************************************************/
                 OnStart(const int &startId, const int &line, const char* file = "");
 
                 
-                /**************************************************************************
-                *   Destructor
+                /**********************************************************************//**
+                *   @brief  Destructor
                 **************************************************************************/
                 virtual ~OnStart(); 
             private:
-                const int m_startId = -1;
+                const int m_startId = -1;   /**< A unique id for the entity to be started */
         };
 
     }

@@ -1,9 +1,9 @@
 #ifndef GAMEUTILITIES_ON_COMBO_CHANGED_H 
 #define GAMEUTILITIES_ON_COMBO_CHANGED_H 
-/**************************************************************************
-*   @Author:     Wayne J Larson Jr.
-*   @Date:       05/07/22
-*   @Purpose:    This event is to indicate when a combo box has changed 
+/**********************************************************************//**
+*   @author Wayne J Larson Jr.
+*   @date   05/07/22
+*   @file   OnItemSelected.h
 **************************************************************************/
 
 /*************************************************************************
@@ -33,14 +33,22 @@ namespace GU
     namespace Evt
     {
 
+        /**********************************************************************//**
+        *   @class  OnItemSelected
+        *   @brief  This event is to indicate when a combo box has changed 
+        **************************************************************************/
         class EVENT_EXPORT OnItemSelected: public WidgetEvent
         {
             public:
                
-                /**************************************************************************
+                /**********************************************************************//**
                 *   @brief  Constructor   
-                *   @param  comboId is the id of the combo box
-                *   @param  index is the index of the data element that has changed. 
+                *   @param  parent is a pointer to the widget where the event originated.
+                *   @param  widgetId is the id of the combo box
+                *   @param  index is the index of the currently selected element. 
+                *   @param  text is the currently selected text.
+                *   @param  line is the line number in source code where the event originated.
+                *   @param  file is the source code file where the event originated.
                 **************************************************************************/
                 OnItemSelected(std::shared_ptr<void> parent, 
                 const int &widgetId, 
@@ -50,14 +58,14 @@ namespace GU
                 const char* file = "");
                 
 
-                /**************************************************************************
+                /**********************************************************************//**
                 *   @brief  Destructor
                 **************************************************************************/
                 virtual ~OnItemSelected();
                 
             public:
-                const int m_index;                            //Index of the data element
-                const GU::Core::String m_text;     
+                const int m_index;                            /**< Index of the data element */
+                const GU::Core::String m_text;                /**< The new text for the combo box */ 
         };
     }
 }

@@ -1,10 +1,9 @@
 #ifndef EVENT_ON_RETURN_RELEASED_H_
 #define EVENT_ON_RETURN_RELEASED_H
-/**************************************************************************
-*   @Author:     Wayne J Larson Jr.
-*   @Date:       09/30/22
-*   @Purpose:    This event is generated when the user releases a key
-*                on the keyboard. 
+/**********************************************************************//**
+*   @author Wayne J Larson Jr.
+*   @date   09/30/22
+*   @file   OnKeyReleased.h
 **************************************************************************/
 
 /*************************************************************************
@@ -24,19 +23,36 @@
 * You should have received a copy of the GNU General Public License
 * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ***************************************************************************/
-#include "GameUtilities/Event/Event.h"
+#include "GameUtilities/Event/Events/Event.h"
 
 namespace GU
 {
     namespace Evt
     {
 
+        /**********************************************************************//**
+        *   @class  OnKeyReleased
+        *   @brief  This event is generated when the user releases a key
+        *           on the keyboard. 
+        **************************************************************************/
         class OnKeyReleased: public GU::Evt::Event
         {
             public:
+                /******************************************************************//**
+                *   @brief  Constructor.
+                *   @param  key is the keyboard key that was released. 
+                *   @param  line the line where the event originates from.
+                *   @param  file the file where the event originates from.
+                **********************************************************************/
                 OnKeyReleased(const int &key, const int &line, const char* file = "");
+                
+
+                /******************************************************************//**
+                *   @brief  Destructor. 
+                **********************************************************************/
                 virtual ~OnKeyReleased();
-                const int m_keyId = -1;
+            public:
+                const int m_keyId = -1;     /**< The keyboard key that was released */
         };
     }
 }

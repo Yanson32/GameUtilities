@@ -24,7 +24,7 @@
 * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ***************************************************************************/
 
-#include "GameUtilities/Event/Event.h"
+#include "GameUtilities/Event/Events/Event.h"
 
 #include "event_export.h"
 
@@ -55,7 +55,7 @@ namespace GU
 
                 /***************************************************************************************//**
                 *   @brief      This method registers an event listener with an event.
-                *   @param [in] a pointer to the listener to be registered.
+                *   @param [in] listener a pointer to the listener to be registered.
                 *   @param [in] id of the event listener should listen for.
                 *               if id = ALL (-1) then the listener will receive all events
                 *******************************************************************************************/
@@ -153,7 +153,7 @@ namespace GU
                 /***************************************************************************************//**
                 *   @brief          This method returns true if a listener has already been registered with an
                 *                   event.
-                *   @param [in]     ListenerPtr a pointer to a listener in question of being registered with
+                *   @param [in]     listener a pointer to a listener in question of being registered with
                 *                   the given event.
                 *   @param [in]     id of the event in question of being registered with the
                 *                   given listener.
@@ -209,7 +209,7 @@ namespace GU
                 /***************************************************************************************//**
                 *   @brief      This method is used to send an event to any listeners that are registered
                 *               to listen for the event.
-                *   @param [in] a pointer to the event.
+                *   @param [in] event a pointer to the event.
                 *******************************************************************************************/
                 void Dispatch(EventPtr event);
 
@@ -225,11 +225,11 @@ namespace GU
 
 
         /***************************************************************************************//**
-        *   @brief		This method registers an event listener with an event.
-        *   @param [in]	listener a reference to the listener to be registered.
-        *	@param [in]	args A list of arguments used to construct the listener
-        *   @tparam		Type is the type of event the listener should listen for
-        *   @tparam		Args is an arbitrary number of arguments passed to the Events
+        *   brief		This method registers an event listener with an event.
+        *   param [in]	listener a reference to the listener to be registered.
+        *	param [in]	args A list of arguments used to construct the listener
+        *   tparam		Type is the type of event the listener should listen for
+        *   tparam		Args is an arbitrary number of arguments passed to the Events
         *               constructor. An event is created internally an registered with the listener.
         *******************************************************************************************/
         template<typename Type, typename... Args>
@@ -240,11 +240,11 @@ namespace GU
 
 
         /***************************************************************************************//**
-        *   @brief		This method unregisters an event listener.
-        *   @param [in]	listener a reference to the listener to be unregistered.
-        *	@param [in]	args a list of arguments used to construct the listener.
-        *   @tparam		Type the type of event the listener will listen for.
-        *   @tparam		Args an arbitrary number of arguments to pass to the events
+        *   brief		This method unregisters an event listener.
+        *   param [in]	listener a reference to the listener to be unregistered.
+        *	param [in]	args a list of arguments used to construct the listener.
+        *   tparam		Type the type of event the listener will listen for.
+        *   tparam		Args an arbitrary number of arguments to pass to the events
         *               constructor. An event is created internally when registering the listener
         *               and the events constructor must be called.
         *******************************************************************************************/

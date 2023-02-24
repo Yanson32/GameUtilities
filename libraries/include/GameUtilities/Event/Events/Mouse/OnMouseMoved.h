@@ -1,9 +1,9 @@
 #ifndef GAMEUTILITIES_EVNT_MOUSE_ON_MOUSEMOVED_H
 #define GAMEUTILITIES_EVNT_MOUSE_ON_MOUSEMOVED_H
-/***************************************************************************
-*   @Author:     Wayne J Larson Jr.
-*   @Date:       09/30/22
-*   @Purpose:    The OnMouseMoved should be generated when the mouse moves.
+/***********************************************************************//**
+*   @author Wayne J Larson Jr.
+*   @date   09/30/22
+*   @file   OnMouseMoved.h
 ***************************************************************************/
 
 /*************************************************************************
@@ -24,20 +24,36 @@
 * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ***************************************************************************/
 #include "event_export.h"
-#include "GameUtilities/Event/Event.h"
+#include "GameUtilities/Event/Events/Event.h"
 #include <Math/Vector2.h>
 
 namespace GU
 {
     namespace Evt
     {
+        /***********************************************************************//**
+        *   @class  OnMouseMoved
+        *   @brief  The OnMouseMoved should be generated when the mouse moves.
+        ***************************************************************************/
         class EVENT_EXPORT OnMouseMoved: public GU::Evt::Event
         {
             public:
+                /******************************************************************//**
+                *   @brief  Constructor
+                *   @param  pos is the location of the mouse when the move event 
+                *           was triggered. 
+                *   @param  line the line where the event originates from
+                *   @param  file the file where the event originates from
+                **********************************************************************/
                 OnMouseMoved(const Math::Vector2<float> &pos, const int &line, const char* file = "");
+                
+
+                /******************************************************************//**
+                *   @brief  Destructor.
+                **********************************************************************/
                 virtual ~OnMouseMoved();
             public:
-                const Math::Vector2<float> m_pos;
+                const Math::Vector2<float> m_pos;       /**< The location of the mouse when the move event was triggered */
         };
     }
 }

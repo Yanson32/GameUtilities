@@ -1,10 +1,8 @@
-/*******************************************************//**
+/******************************************************************//**
 *   @author Wayne J Larson Jr.
 *   @date   5/20/19
-*   @brief  The changestate class is a subclass of the
-*           Event class and is used to signal a change
-*           in the games state.
-***********************************************************/
+*   @file   OnChangeState.h
+**********************************************************************/
 
 /*************************************************************************
 *                           COPYRIGHT NOTICE
@@ -26,20 +24,25 @@
 #ifndef GAMEUTILITIES_ONCHANGESTATE_H
 #define GAMEUTILITIES_ONCHANGESTATE_H
 #include "event_export.h"
-#include "GameUtilities/Event/Event.h"
+#include "GameUtilities/Event/Events/Event.h"
 
 namespace GU
 {
     namespace Evt
     {
+        /******************************************************************//**
+        *   @class  OnChangeState
+        *   @brief  The changestate class is a subclass of the Event class 
+        *           and is used to signal a change in the games state.
+        **********************************************************************/
 		class EVENT_EXPORT OnChangeState: public Event
 		{
 			public:
                 /*******************************************************//**
                 *   @brief  Constructor
-                *   @param  newStateId a unique identifier of the new state
-                *   @param  newLine the line where the event originates from
-                *   @param  newFile the file where the event originates from
+                *   @param  stateId a unique identifier of the new state
+                *   @param  line the line where the event originates from
+                *   @param  file the file where the event originates from
                 ***********************************************************/
 				OnChangeState(const int &stateId, const int &line = 0, const char* file = "");
 
@@ -49,7 +52,7 @@ namespace GU
                 ***********************************************************/
 				virtual ~OnChangeState();
             public:
-                const int m_stateId;
+                const int m_stateId;    /**< A unique identifier for the new state */
 		};
 	}
 }

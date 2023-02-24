@@ -1,6 +1,7 @@
 #include "GameUtilities/Core/Paths.h"
 #ifdef _WIN32
 #include <windows.h>
+#include <iostream>
 #endif
 
 #ifdef linux
@@ -21,7 +22,8 @@ namespace GU
         GU::Core::String getConfigDir(const GU::Core::String &appName)
         {
             #ifdef _WIN32
-            return SHGetKnownFolderPath(CSIDL_APPDATA) + "/" + appName.toStdString();
+            std::cout << "getConfigDir not implimented on windows" << std::endl;
+            //return SHGetKnownFolderPath(CSIDL_APPDATA) + "/" + appName.toStdString();
             #endif 
     
             #ifdef linux

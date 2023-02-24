@@ -1,7 +1,7 @@
 /**************************************************************************
-*   @Author:     Wayne J Larson Jr.
-*   @Date:       10/10/22
-*   @Purpose:    This event is generated when something is removed. 
+*   @author Wayne J Larson Jr.
+*   @date   10/10/22
+*   @file   OnRemove.cpp
 **************************************************************************/
 
 /*************************************************************************
@@ -30,8 +30,11 @@ namespace GU
     namespace Evt
     {
 
-        /**************************************************************************
-        *   Constructor
+        /**********************************************************************//**
+        *   @brief  Constructor.
+        *   @param  removeId is a unique identifier for the entity to be removed. 
+        *   @param  line is the source code line number that generated the event.
+        *   @param  file is the source code file that generated the event
         **************************************************************************/
         OnRemove::OnRemove(const int &removeId, const int &line, const char* file):
         Event(static_cast<int>(GU::Evt::EventId::ON_PUSH), line, file),
@@ -41,8 +44,8 @@ namespace GU
         }
 
         
-        /**************************************************************************
-        *   Destructor
+        /**********************************************************************//**
+        *   @brief  Destructor
         **************************************************************************/
         OnRemove::~OnRemove()
         {

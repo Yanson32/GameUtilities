@@ -1,8 +1,26 @@
-/**************************************************************************
-*   Author:     Wayne J Larson Jr.
-*   Date:       10/01/22
-*   Purpose:    This event is generates when something is refreshed. 
+/**********************************************************************//**
+*   @author Wayne J Larson Jr.
+*   @date   10/01/22
+*   @file   OnRefresh.h
 **************************************************************************/
+
+/*************************************************************************
+*                           COPYRIGHT NOTICE
+* GameUtilities is a toolkit for making 2d video games.
+* Copyright (C) 2018 Wayne J Larson Jr. 
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License version 3 as 
+* published by the Free Software Foundation.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+* 
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see <https://www.gnu.org/licenses/>.
+***************************************************************************/
 #include "event_export.h"
 #include "GameUtilities/Event/Events/OnRefresh.h"
 #include "GameUtilities/Event/EventId.h"
@@ -13,8 +31,11 @@ namespace GU
     namespace Evt
     {
 
-        /**************************************************************************
-        *   Constructor
+        /**********************************************************************//**
+        *   @brief  Constructor.
+        *   @param  refreshId is a unique identifier for the entity to be refreshed. 
+        *   @param  line is the source code line number that generated the event.
+        *   @param  file is the source code file that generated the event
         **************************************************************************/
         OnRefresh::OnRefresh(const int &refreshId, const int &line, const char* file):
         Event(static_cast<int>(GU::Evt::EventId::ON_REFRESH),line,file),
@@ -24,8 +45,8 @@ namespace GU
         }
 
         
-        /**************************************************************************
-        *   Destructor
+        /**********************************************************************//**
+        *   @brief  Destructor
         **************************************************************************/
         OnRefresh::~OnRefresh()
         {

@@ -46,14 +46,45 @@ endforeach()
 add_subdirectory("include")
 add_subdirectory("src")
 
+#Find the Math library
 find_package("Math" REQUIRED)
+
+#Define dependancies for the ParticleSystem library
 target_link_libraries("ParticleSystem" PUBLIC Math::Math)
+
 
 #Link the log target against the Core target
 target_link_libraries("Log" PUBLIC "Core")
 
-#Link the log target against the Core target
+#Define dependancies for the Event library
 target_link_libraries("Event" PUBLIC "Core")
+target_link_libraries("Event" PUBLIC "Log")
+target_link_libraries("Event" PUBLIC Math::Math)
+
+#Define dependancies for the Data library
+target_link_libraries("Data" PUBLIC Math::Math)
+
+#Define dependancies for the Algorithm library
+target_link_libraries("Algorithm" PUBLIC Math::Math)
+
+#Define the Window library dependencies
+find_package(X11)
+if(X11_FOUND)
+    target_include_directories("Window" PUBLIC ${X11_INCLUDE_DIR})
+    target_link_libraries("Window" PUBLIC ${X11_LIBRARIES})
+    add_definitions(-DX11)
+endif()
+target_link_libraries("Window" PUBLIC Math::Math)
+target_link_libraries("Window" PUBLIC "Event")
+target_link_libraries("Window" PUBLIC "Core")
+target_link_libraries("Window" PUBLIC "Log")
+
+
+#Define dependancies for the ThreadPool library
+find_package(Threads)
+if(Threads_FOUND)
+    target_link_libraries("ThreadPool" PUBLIC Threads::Threads)
+endif()
 
 #install export file
 install(FILES
@@ -71,8 +102,7 @@ foreach(VAR ${GU_LIBS})
 	set(EXPORT_FILE_NAME "${PROJECT_NAME}${VAR}-Exports")
 	if(NOT BUILD_SHARED_LIBS)
 		set(EXPORT_FILE_NAME "${PROJECT_NAME}${VAR}Static-Exports")
-	endif()
-
+	endif() 
     install(TARGETS ${VAR} DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR} EXPORT "${EXPORT_FILE_NAME}" INCLUDES DESTINATION "include")
 
 	#Export to the install tree
@@ -94,9 +124,7 @@ include(CMakePackageConfigHelpers)
 write_basic_package_version_file("${GU_CONFIG_BUILD_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
 VERSION
 	${${PROJECT_NAME}_VERSION}
-COMPATIBILITY
-	AnyNewerVersion
-)
+COMPATIBILITY AnyNewerVersion)
 
 #Create package config file
 configure_package_config_file("${GameUtilities_SOURCE_DIR}/cmake/${PROJECT_NAME}Config.cmake.in"

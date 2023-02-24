@@ -1,9 +1,9 @@
 #ifndef GAMEUTILITIES_EVENT_ONENDCOLLISION_H
 #define GAMEUTILITIES_EVENT_ONENDCOLLISION_H
-/**************************************************************************
-*   @Author:     Wayne J Larson Jr.
-*   @Date:       10/01/22
-*   @Purpose:    This event is generated when collision has ended.
+/**********************************************************************//**
+*   @author Wayne J Larson Jr.
+*   @date   10/01/22
+*   @file   OnEndCollision.h
 **************************************************************************/
 
 /*************************************************************************
@@ -24,7 +24,7 @@
 * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ***************************************************************************/
 #include "event_export.h"
-#include "GameUtilities/Event/Event.h"
+#include "GameUtilities/Event/Events/Event.h"
 
 namespace GU
 {
@@ -32,22 +32,30 @@ namespace GU
     namespace Evt
     {
 
+        /**********************************************************************//**
+        *   @class  OnEndCollision
+        *   @brief  This event is generated when collision has ended.
+        **************************************************************************/
         class EVENT_EXPORT OnEndCollision : public Event
         {
             public:
-                /**************************************************************************
-                *   Constructor
+                /**********************************************************************//**
+                *   @brief  Constructor.
+                *   @param  obj1 is a pointer to a physics object involved in collision.
+                *   @param  obj2 is a pointer to a physics object involved in collision.
+                *   @param  line is the source code line number that generated the event.
+                *   @param  file is the source code file that generated the event
                 **************************************************************************/
                 OnEndCollision(void *obj1, void *obj2, const int &line, const char* file = "");
 
                 
-                /**************************************************************************
+                /**********************************************************************//**
                 *   Destructor
                 **************************************************************************/
                 virtual ~OnEndCollision(); 
             private:
-                void* m_obj1 = nullptr;
-                void* m_obj2 = nullptr; 
+                void* m_obj1 = nullptr;     /**< A pointer to a physics object */
+                void* m_obj2 = nullptr;     /**< A pointer to a physics object */
         };
 
     }

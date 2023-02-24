@@ -1,3 +1,26 @@
+/*********************************************************************************//**
+*	@author	 Wayne J Larson Jr.
+*	@date 	 5/20/22
+*   @file    LogManager.cpp
+*************************************************************************************/
+
+/*************************************************************************
+*                           COPYRIGHT NOTICE
+* GameUtilities is a toolkit for making 2d video games.
+* Copyright (C) 2018 Wayne J Larson Jr. 
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License version 3 as 
+* published by the Free Software Foundation.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+* 
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see <https://www.gnu.org/licenses/>.
+***************************************************************************/
 #include "GameUtilities/Log/LogManager.h"
 #include "GameUtilities/Log/LogFormatter.h"
 #include "GameUtilities/Core/Macros.h"
@@ -73,6 +96,7 @@ namespace GU
                 /*********************************************************************************//**
                 *	@brief  This method returns the log formatter currently being used by the Impl log 
                 *           manager. 
+                *   @return A pointer to the LogFormatter
                 *************************************************************************************/
 				std::shared_ptr<LogFormatter> getFormatter();
                 
@@ -92,7 +116,6 @@ namespace GU
         *************************************************************************************/
 		LogManager::Impl::Impl()
 		{
-
 		}
 
 
@@ -203,6 +226,7 @@ namespace GU
         /*********************************************************************************//**
         *	@brief  This method returns the log formatter currently being used by the Impl log 
         *           manager. 
+        *   @return A pointer to the LogFormatter
         *************************************************************************************/
 		std::shared_ptr<LogFormatter> LogManager::Impl::getFormatter()
 		{
@@ -307,6 +331,7 @@ namespace GU
         /*********************************************************************************//**
         *	@brief  This method returns the log formatter currently being used by the log 
         *           manager. 
+        *   @return A pointer to the LogFormatter
         *************************************************************************************/
         std::shared_ptr<LogFormatter> LogManager::getFormatter()
         {

@@ -1,9 +1,9 @@
 #ifndef GAMEUTILITIES_EVENT_ONUPDATE_H
 #define GAMEUTILITIES_EVENT_ONUPDATE_H
-/**************************************************************************
-*   @Author:     Wayne J Larson Jr.
-*   @Date:       10/01/22
-*   @Purpose:    This event is generated when somthing is updated.
+/**********************************************************************//**
+*   @author Wayne J Larson Jr.
+*   @date   10/01/22
+*   @file   OnUpdate.h
 **************************************************************************/
 
 /*************************************************************************
@@ -24,7 +24,7 @@
 * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ***************************************************************************/
 #include "event_export.h"
-#include "GameUtilities/Event/Event.h"
+#include "GameUtilities/Event/Events/Event.h"
 
 namespace GU
 {
@@ -32,21 +32,28 @@ namespace GU
     namespace Evt
     {
 
+        /**********************************************************************//**
+        *   @class  OnUpdate
+        *   @brief  This event is generated when somthing is updated.
+        **************************************************************************/
         class EVENT_EXPORT OnUpdate : public Event
         {
             public:
-                /**************************************************************************
-                *   Constructor
+                /**********************************************************************//**
+                *   @brief  Constructor.
+                *   @param  updateId is a unique id of the entity to be updated.
+                *   @param  line is the source code line number that generated the event.
+                *   @param  file is the source code file that generated the event
                 **************************************************************************/
                 OnUpdate(const int &updateId, const int &line, const char* file = "");
 
                 
-                /**************************************************************************
+                /**********************************************************************//**
                 *   Destructor
                 **************************************************************************/
                 virtual ~OnUpdate(); 
             private:
-                const int m_updateId = -1;
+                const int m_updateId = -1;      /**< A unique id of the entity to be updated */
         };
 
     }
