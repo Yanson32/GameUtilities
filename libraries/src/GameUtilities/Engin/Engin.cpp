@@ -177,10 +177,7 @@ namespace GU
 
 			///Remove any existing states
 			while (!m_pimpl->m_states.empty())
-            {
-                this->m_pimpl->m_states.top()->clean(frame);
 				this->pop(frame);
-            }
 
 			///Push the state onto the now empty stack
 			this->push(std::move(state), frame);
