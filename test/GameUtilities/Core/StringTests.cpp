@@ -523,6 +523,38 @@ TEST_CASE( "String class replace method ", "[String::replace]" )
     REQUIRE(test12 == "123987");
 }
 
+
+TEST_CASE( "String class swap", "[String::Swap]" ) 
+{
+    GU::Core::String test("123456");
+    std::string test2("ABCDEFG");
+    test.swap(test2);
+    REQUIRE(test == "ABCDEFG");
+    REQUIRE(test2 == "123456");
+    
+    GU::Core::String test3("123456");
+    GU::Core::String test4("ABCDEFG");
+    test3.swap(test4);
+    REQUIRE(test3 == "ABCDEFG");
+    REQUIRE(test4 == "123456");
+}
+
+TEST_CASE( "String class pop back", "[String::pop_back]" ) 
+{
+    GU::Core::String test("123456");
+    test.pop_back();
+    REQUIRE(test == "12345");
+    
+}
+
+TEST_CASE( "String class data", "[String::data]" ) 
+{
+    GU::Core::String test("123456");
+    REQUIRE(test.data() == test.c_str()); 
+    
+}
+
+
 TEST_CASE( "String class foreach loop", "[String::Foreach]" ) 
 {
     GU::Core::String test("123456");
