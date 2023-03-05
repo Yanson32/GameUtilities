@@ -30,6 +30,7 @@
 #include <stdexcept>
 #include <cctype>
 #include <iterator>
+#include <algorithm>
 
 namespace GU 
 {
@@ -251,7 +252,7 @@ namespace GU
                 }
                 else if(isShortKey(key))
                 {
-                    key.erase(std::remove(key.begin(), key.end(), '-'));
+                    key.erase(std::remove(key.begin(), key.end(), '-'), key.end()); 
                     
                     for(std::size_t i = 0; i < key.size(); ++i)
                     {
