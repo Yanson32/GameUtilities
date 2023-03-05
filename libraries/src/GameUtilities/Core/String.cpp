@@ -1002,12 +1002,19 @@ namespace GU
         *        characters in str.
         * @param str the string to swap the current string with
         **************************************************************/
-        void String::swap (std::string& str)
+        void String::swap (std::string &str)
         {
           assert(pimpl != nullptr);
           pimpl->m_data.swap(str);
         }
 
+        void String::swap (GU::Core::String &str)
+        {
+            assert(pimpl != nullptr);
+            std::string temp  = str.toStdString();
+            swap(temp); 
+            str.swap(temp);
+        }
 
         /**********************************************************//**
         * @brief  Remove the last character in the string.

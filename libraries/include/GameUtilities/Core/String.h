@@ -662,7 +662,8 @@ namespace GU
                 *        characters in str.
                 * @param str the string to swap the current string with
                 **************************************************************/
-                void swap (std::string& str);
+                void swap (std::string &str);
+                void swap (GU::Core::String &str);
 
 
                 /**********************************************************//**
