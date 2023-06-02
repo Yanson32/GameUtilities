@@ -1,5 +1,8 @@
 #!/bin/bash
-#This script install all dependencies for this package on arch linux
+#This script installes all dependencies using the pacman package manager 
+
+#Update the system
+sudo pacman -Syu --noconfirm
 
 #install a compiler
 sudo pacman -S gcc --noconfirm
