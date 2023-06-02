@@ -154,7 +154,7 @@ namespace GU
         bool String::operator==(const char* data) const
         {
           assert(pimpl != nullptr);
-          return this->pimpl->m_data == String(data);
+          return this->pimpl->m_data == String(data).c_str();
         }
 
 
