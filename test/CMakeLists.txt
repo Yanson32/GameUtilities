@@ -1,4 +1,9 @@
-list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/extlibs/Catch2/extras)
+#GIT_TAG        v3.0.1 # or a later release
+include("git")
+download_git_repo(Catch2 "git@github.com:catchorg/Catch2.git" devel)
+
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_BINARY_DIR}/_deps/catch2-src/extras)
+
 include(CTest)
 include(Catch)
 
