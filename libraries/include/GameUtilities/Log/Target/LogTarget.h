@@ -59,7 +59,7 @@ namespace GU
                 *   @return True if the current log target and passed log target are equal and false
                 *           otherwise. 
                 *************************************************************************************/
-                virtual bool operator == (const LogTarget &logTarget) const = 0;
+                virtual bool operator == (const LogTarget &logTarget) const;
                 
 
                 /*********************************************************************************//**
