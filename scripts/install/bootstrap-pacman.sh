@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #This script installes all dependencies using the pacman package manager 
 
 #Update the system
