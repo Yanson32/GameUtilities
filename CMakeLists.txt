@@ -18,6 +18,9 @@ include ("CPackConfig")
 #Give the project a name
 project("GameUtilities" VERSION "0.0.0.0")
 
+include("help")
+display_help_text()
+
 include ("GNUInstallDirs")
 
 #set output directory for binaries
