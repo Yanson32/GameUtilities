@@ -16,7 +16,8 @@ The goal of the GameUtiliites toolkit is to provide infrastructure for making 2d
 [GameUtilities](https://yanson32.github.io/GameUtilities/)
 
 ## Supported operating systems
-- Linux
+- Ubuntu
+- Arch Linux 
 - Windows
 
 ## Dependencies
